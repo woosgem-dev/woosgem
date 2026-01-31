@@ -5,12 +5,12 @@
     "paths": {
       "@woosgem/ds-core": ["../ds-core/src/index.ts"],
       "@woosgem/ds-react": ["../ds-react/src/index.ts"],
-      "@woosgem/ds-vue": ["../ds-vue/src/index.ts"],
+      "@woosgem/ds-icons": ["../ds-icons/svg"],
       "@woosgem/utils": ["../utils/src/index.ts"]
     },
     "jsx": "react-jsx",
     "exactOptionalPropertyTypes": false,
-    "types": ["vitest/globals", "@testing-library/jest-dom"]
+    "types": ["node"]
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", ".storybook/**/*"]
 }

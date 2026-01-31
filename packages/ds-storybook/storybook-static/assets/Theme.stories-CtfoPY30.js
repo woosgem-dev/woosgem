@@ -1,4 +1,4 @@
-import{R as e,r as A}from"./index-D4H_InIO.js";import{D as g,a as t,B as o,b as l,T as a,A as i}from"./Divider-Ropc6h_B.js";const P={title:"Design System/Theme",parameters:{layout:"fullscreen",docs:{description:{component:`Theme showcase and switcher stories\r
+import{R as e,r as A}from"./index-D4H_InIO.js";import{D as g,a as t,B as o,b as l,T as a,A as i}from"./Divider-Ddy17Ooe.js";const P={title:"Design System/Theme",parameters:{layout:"fullscreen",docs:{description:{component:`Theme showcase and switcher stories\r
 
 Available themes:\r
 - default (light theme)\r

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { SegmentedControl } from '@woosgem/ds-react';
 
@@ -85,7 +85,7 @@ export const Disabled: Story = {
 
 export const BuySellExample: Story = {
   render: () => {
-    const [selected, setSelected] = React.useState<'buy' | 'sell'>('buy');
+    const [selected, setSelected] = useState<'buy' | 'sell'>('buy');
 
     return (
       <div style={{ width: '300px' }}>
@@ -120,7 +120,7 @@ export const BuySellExample: Story = {
 
 export const FilterExample: Story = {
   render: () => {
-    const [filter, setFilter] = React.useState<'all' | 'active' | 'completed'>('all');
+    const [filter, setFilter] = useState<'all' | 'active' | 'completed'>('all');
 
     return (
       <div style={{ width: '400px' }}>

@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Checkbox } from '@woosgem/ds-react';
 
@@ -91,9 +90,9 @@ export const WithoutLabel: Story = {
 export const FormExample: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-      <Checkbox name="terms" checked>I agree to the Terms of Service</Checkbox>
-      <Checkbox name="newsletter">Subscribe to newsletter</Checkbox>
-      <Checkbox name="marketing">Receive marketing emails</Checkbox>
+      <Checkbox checked>I agree to the Terms of Service</Checkbox>
+      <Checkbox>Subscribe to newsletter</Checkbox>
+      <Checkbox>Receive marketing emails</Checkbox>
     </div>
   ),
 };
