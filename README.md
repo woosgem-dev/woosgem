@@ -1,21 +1,16 @@
 # WooSGem
 
 [![CI](https://github.com/hhk9292/woosgem/actions/workflows/test.yml/badge.svg)](https://github.com/hhk9292/woosgem/actions/workflows/test.yml)
-[![Tests](https://img.shields.io/badge/tests-295%20passed-brightgreen)](https://github.com/hhk9292/woosgem/actions/workflows/test.yml)
-[![Coverage](https://img.shields.io/badge/coverage-62%25-brightgreen)](https://github.com/hhk9292/woosgem/actions/workflows/test.yml)
+[![Tests](https://img.shields.io/badge/tests-295%20passed-brightgreen)](./docs/test-report.md)
+[![Coverage](https://img.shields.io/badge/coverage-62%25-brightgreen)](./docs/test-report.md)
 [![Components](https://img.shields.io/badge/components-10-blue)](./docs/roadmap.md)
 [![Vibe Coding](https://img.shields.io/badge/Vibe%20Coding-Claude%20Code-orange)](https://claude.ai/code)
 
 모던 웹 애플리케이션을 위한 확장 가능하고 테마를 지원하는 디자인 시스템입니다.
 이 프로젝트는 **Claude Code**를 활용한 **바이브코딩(Vibe Coding)**으로 제작되었습니다.
 
-## Status
-
-| Metric | Value | Target |
-|--------|-------|--------|
-| Tests | 295 passed | - |
-| Coverage | 62% | 60% |
-| Components | 10 | 25 |
+## Dashboard
+- [Test & Coverage 상세 리포트](./docs/test-report.md)
 
 ## Quick Links
 

@@ -23,6 +23,7 @@ function main() {
   const coveragePath = resolve(rootDir, 'coverage/coverage-summary.json');
   const testResultsPath = resolve(rootDir, 'coverage/test-results.json');
   const readmePath = resolve(rootDir, 'README.md');
+  const reportPath = resolve(rootDir, 'docs/test-report.md');
 
   const coverage = readJSON(coveragePath);
   const testResults = readJSON(testResultsPath);
@@ -60,30 +61,55 @@ function main() {
   const testsBadge = generateBadgeUrl('tests', `${testsPassed} passed`, testsColor);
   const coverageBadge = generateBadgeUrl('coverage', `${coveragePercent}%`, coverageColor);
 
-  let readme = readFileSync(readmePath, 'utf-8');
+  // 1. Update README.md (Badges only, linking to report)
+  if (existsSync(readmePath)) {
+    let readme = readFileSync(readmePath, 'utf-8');
 
-  readme = readme.replace(
-    /\[?!\[Tests\]\(https:\/\/img\.shields\.io\/badge\/tests-[^)]+\)\]?(\([^)]+\))?/,
-    `[![Tests](${testsBadge})](https://github.com/hhk9292/woosgem/actions/workflows/test.yml)`
-  );
+    readme = readme.replace(
+      /\[?!\[Tests\]\(https:\/\/img\.shields\.io\/badge\/tests-[^)]+\)\]?(\([^)]+\))?/,
+      `[![Tests](${testsBadge})](./docs/test-report.md)`
+    );
 
-  readme = readme.replace(
-    /\[?!\[Coverage\]\(https:\/\/img\.shields\.io\/badge\/coverage-[^)]+\)\]?(\([^)]+\))?/,
-    `[![Coverage](${coverageBadge})](https://github.com/hhk9292/woosgem/actions/workflows/test.yml)`
-  );
+    readme = readme.replace(
+      /\[?!\[Coverage\]\(https:\/\/img\.shields\.io\/badge\/coverage-[^)]+\)\]?(\([^)]+\))?/,
+      `[![Coverage](${coverageBadge})](./docs/test-report.md)`
+    );
 
-  readme = readme.replace(
-    /\| Tests \| .+ \| - \|/,
-    `| Tests | ${testsPassed} passed | - |`
-  );
+    // Status 테이블 제거 (이미 옮겼으므로)
+    readme = readme.replace(/\n## Status\n\n\| Metric \| Value \| Target \|\n\|--------\|-------\|--------\|\n\| Tests \| .+ \| - \|\n\| Coverage \| .+ \| 60% \|\n\| Components \| .+ \| 25 \|\n/, '');
 
-  readme = readme.replace(
-    /\| Coverage \| .+ \| 60% \|/,
-    `| Coverage | ${coveragePercent}% | 60% |`
-  );
+    writeFileSync(readmePath, readme);
+    console.log('README.md updated (badges only)');
+  }
 
-  writeFileSync(readmePath, readme);
-  console.log('README.md updated successfully');
+  // 2. Update docs/test-report.md (Detailed status)
+  if (existsSync(reportPath)) {
+    let report = readFileSync(reportPath, 'utf-8');
+
+    report = report.replace(
+      /\| Tests \| .+ \| - \|/,
+      `| Tests | ${testsPassed} passed | - |`
+    );
+
+    report = report.replace(
+      /\| Coverage \| .+ \| 60% \|/,
+      `| Coverage | ${coveragePercent}% | 60% |`
+    );
+
+    // 패키지별 상세 현황 업데이트 (현재는 core 정보만 활용 가능)
+    if (testResults) {
+      const passed = testResults.numPassedTests || 0;
+      const coreCoverage = coverage?.total?.lines?.pct ? `${Math.round(coverage.total.lines.pct)}%` : '-';
+      
+      report = report.replace(
+        /\| @woosgem\/ds-core \| - \| - \|/,
+        `| @woosgem/ds-core | ${passed} passed | ${coreCoverage} |`
+      );
+    }
+
+    writeFileSync(reportPath, report);
+    console.log('docs/test-report.md updated');
+  }
 }
 
 main();

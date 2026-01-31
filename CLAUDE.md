@@ -41,6 +41,7 @@ pnpm test:dashboard   # Tests + coverage dashboard
 
 | Document | Description |
 |----------|-------------|
+| [Test Dashboard](./docs/test-report.md) | 테스트 결과 및 커버리지 상세 현황 (자동 업데이트) |
 | [DS Policy](./docs/policies/design-system.md) | 아키텍처, 상태 관리, 에러 처리, 보호 속성 통합 정책 |
 | [Architecture](./docs/architecture.md) | Package structure, core patterns, theme system |
 | [Development Guide](./docs/guides/development.md) | Commands, dev notes, adding components |
