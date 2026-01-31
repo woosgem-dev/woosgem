@@ -1,4 +1,4 @@
-name: Test & Coverage
+name: Build & Test
 
 on:
   push:
@@ -6,29 +6,47 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: write
+
 jobs:
-  test:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - uses: pnpm/action-setup@v4
         with:
-          version: 10
+          version: 10.28.2
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
 
-      - run: pnpm install
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-      - name: Run tests with coverage
-        run: pnpm test --coverage
-
-      - name: Generate coverage badges
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: jpb06/coverage-badges-action@v2
+      - name: Cache Turbo
+        uses: actions/cache@v4
         with:
-          coverage-summary-path: ./coverage/coverage-summary.json
-          branches: main
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+
+      - name: Build
+        run: pnpm build
+
+      - name: Run tests with dashboard update
+        run: pnpm test:dashboard
+
+      - name: Commit and push changes
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config --local user.email "woosgem@gmail.com"
+          git config --local user.name "woosgem"
+          git add README.md
+          git diff --quiet && git diff --staged --quiet || (git commit -m "docs: update test dashboard [skip ci]" && git push)
