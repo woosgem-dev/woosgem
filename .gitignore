@@ -37,3 +37,6 @@ coverage/
 
 # Claude Code
 .claude/
+
+# Storybook Assets
+storybook-static
