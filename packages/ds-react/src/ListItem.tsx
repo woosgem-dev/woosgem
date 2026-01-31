@@ -1,24 +1,24 @@
-import type { MouseEventHandler, ReactNode, Ref } from 'react';
+import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 import { ListItem as ListItemDef, type ListItemStyleProps, type Prettify } from '@woosgem/ds-core';
 import { createComponent } from './createComponent.js';
 
 /**
  * ListItem component props.
- * Combines style props with specific allowed native props.
+ * Combines style props with all standard li HTML attributes,
+ * while excluding protected attributes used by the design system.
  */
 export type ListItemProps = Prettify<
-  ListItemStyleProps & {
-    /** ListItem content */
-    children?: ReactNode;
-    /** Click handler */
-    onClick?: MouseEventHandler<HTMLLIElement>;
-    /** Additional CSS class names */
-    className?: string;
-    /** Accessible label */
-    'aria-label'?: string;
-    /** Ref to the li element */
-    ref?: Ref<HTMLLIElement>;
-  }
+  ListItemStyleProps &
+    Omit<
+      ComponentPropsWithoutRef<'li'>,
+      keyof ListItemStyleProps | 'data-variant' | 'data-state' | 'data-divider' | 'aria-selected' | 'aria-disabled'
+    > & {
+      'data-variant'?: never;
+      'data-state'?: never;
+      'data-divider'?: never;
+      'aria-selected'?: never;
+      'aria-disabled'?: never;
+    }
 >;
 
 /** Ref type for ListItem component */
@@ -44,4 +44,4 @@ const BaseListItem = createComponent(ListItemDef);
  * </ListItem>
  * ```
  */
-export const ListItem = BaseListItem as React.ComponentType<ListItemProps>;
+export const ListItem = BaseListItem as ComponentType<ListItemProps>;

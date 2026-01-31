@@ -1,22 +1,19 @@
-import type { ReactNode, Ref } from 'react';
+import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 import { Avatar as AvatarDef, type AvatarStyleProps, type Prettify } from '@woosgem/ds-core';
 import { createComponent } from './createComponent.js';
 
 /**
  * Avatar component props.
- * Combines style props with specific allowed native props.
+ * Combines style props with all standard div HTML attributes,
+ * while excluding protected attributes used by the design system.
  */
 export type AvatarProps = Prettify<
-  AvatarStyleProps & {
-    /** Avatar content (fallback text or custom content) */
-    children?: ReactNode;
-    /** Additional CSS class names */
-    className?: string;
-    /** Accessible label */
-    'aria-label'?: string;
-    /** Ref to the div element */
-    ref?: Ref<HTMLDivElement>;
-  }
+  AvatarStyleProps &
+    Omit<ComponentPropsWithoutRef<'div'>, keyof AvatarStyleProps | 'data-size' | 'data-shape' | 'data-has-image'> & {
+      'data-size'?: never;
+      'data-shape'?: never;
+      'data-has-image'?: never;
+    }
 >;
 
 /** Ref type for Avatar component */
@@ -40,4 +37,4 @@ const BaseAvatar = createComponent(AvatarDef);
  * </Avatar>
  * ```
  */
-export const Avatar = BaseAvatar as React.ComponentType<AvatarProps>;
+export const Avatar = BaseAvatar as ComponentType<AvatarProps>;

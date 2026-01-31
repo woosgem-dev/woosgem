@@ -40,14 +40,24 @@ docs/test-cases/
 3. **예외 케이스** - 미입력, 잘못된 값, 경계값
 4. **에러 처리 정책** - throw vs fallback 결정
 
+## 테스트 코드 위치
+
+모든 테스트 파일은 `@woosgem/ds-test` 패키지 내부에서 통합 관리됩니다.
+
+```
+packages/ds-test/src/
+├── core/       # ds-core 로직 테스트
+├── react/      # ds-react 래퍼 테스트
+└── vue/        # ds-vue 래퍼 테스트
+```
+
 ## 테스트 실행
 
 ```bash
-pnpm test                    # 전체
-pnpm test:coverage           # 커버리지
+pnpm test:all                # 전체 테스트 실행
+pnpm test:dashboard          # 테스트 실행 및 대시보드 업데이트
+pnpm test:coverage           # 커버리지 측정
 pnpm test:watch              # Watch 모드
 ```
 
-## 관련 문서
-
-- [TC 목록](../test-cases/)
+빌드 과정 없이 소스 코드를 직접 참조하여 테스트가 수행되므로 빠른 피드백이 가능합니다.

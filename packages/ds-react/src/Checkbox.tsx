@@ -1,30 +1,18 @@
-import type { ChangeEventHandler, ReactNode, Ref } from 'react';
+import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 import { Checkbox as CheckboxDef, type CheckboxStyleProps, type Prettify } from '@woosgem/ds-core';
 import { createComponent } from './createComponent.js';
 
 /**
  * Checkbox component props.
- * Combines style props with specific allowed native props.
+ * Combines style props with all standard div HTML attributes,
+ * while excluding protected attributes used by the design system.
  */
 export type CheckboxProps = Prettify<
-  CheckboxStyleProps & {
-    /** Checkbox label content */
-    children?: ReactNode;
-    /** Change handler */
-    onChange?: ChangeEventHandler<HTMLInputElement>;
-    /** Additional CSS class names */
-    className?: string;
-    /** Checkbox name for forms */
-    name?: string;
-    /** Checkbox value for forms */
-    value?: string;
-    /** Accessible label */
-    'aria-label'?: string;
-    /** Accessible description */
-    'aria-describedby'?: string;
-    /** Ref to the div element */
-    ref?: Ref<HTMLDivElement>;
-  }
+  CheckboxStyleProps &
+    Omit<ComponentPropsWithoutRef<'div'>, keyof CheckboxStyleProps | 'data-size' | 'data-state'> & {
+      'data-size'?: never;
+      'data-state'?: never;
+    }
 >;
 
 /** Ref type for Checkbox component */
@@ -46,4 +34,4 @@ const BaseCheckbox = createComponent(CheckboxDef);
  * <Checkbox size="lg" checked>Large checkbox</Checkbox>
  * ```
  */
-export const Checkbox = BaseCheckbox as React.ComponentType<CheckboxProps>;
+export const Checkbox = BaseCheckbox as ComponentType<CheckboxProps>;

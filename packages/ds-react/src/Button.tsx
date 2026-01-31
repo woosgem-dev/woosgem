@@ -1,26 +1,24 @@
-import type { MouseEventHandler, ReactNode, Ref } from 'react';
+import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 import { Button as ButtonDef, type ButtonStyleProps, type Prettify } from '@woosgem/ds-core';
 import { createComponent } from './createComponent.js';
 
 /**
  * Button component props.
- * Combines style props with specific allowed native props.
+ * Combines style props with all standard button HTML attributes,
+ * while excluding protected attributes used by the design system.
  */
 export type ButtonProps = Prettify<
-  ButtonStyleProps & {
-    /** Button content */
-    children?: ReactNode;
-    /** Click handler */
-    onClick?: MouseEventHandler<HTMLButtonElement>;
-    /** Additional CSS class names */
-    className?: string;
-    /** Button type for forms */
-    type?: 'button' | 'submit' | 'reset';
-    /** Accessible label */
-    'aria-label'?: string;
-    /** Ref to the button element */
-    ref?: Ref<HTMLButtonElement>;
-  }
+  ButtonStyleProps &
+    Omit<
+      ComponentPropsWithoutRef<'button'>,
+      keyof ButtonStyleProps | 'data-variant' | 'data-color' | 'data-size' | 'data-state' | 'data-full-width'
+    > & {
+      'data-variant'?: never;
+      'data-color'?: never;
+      'data-size'?: never;
+      'data-state'?: never;
+      'data-full-width'?: never;
+    }
 >;
 
 /** Ref type for Button component */
@@ -44,4 +42,4 @@ const BaseButton = createComponent(ButtonDef, { type: 'button' });
  * </Button>
  * ```
  */
-export const Button = BaseButton as React.ComponentType<ButtonProps>;
+export const Button = BaseButton as ComponentType<ButtonProps>;

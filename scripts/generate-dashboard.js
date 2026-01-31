@@ -37,17 +37,10 @@ function main() {
   let coveragePercent = 62;
 
   if (testResults) {
-    const passed = testResults.numPassedTests || 0;
+    testsPassed = testResults.numPassedTests || 0;
     const failed = testResults.numFailedTests || 0;
     
-    // 합계 계산 로직 (임시: core 결과만 있는 경우 react/vue 결과 합산)
-    if (passed > 150 && passed < 200) {
-      testsPassed = passed + 105; // 190 + 58 + 47
-    } else {
-      testsPassed = passed;
-    }
-    
-    console.log(`Tests: ${testsPassed} passed (${passed} from core), ${failed} failed`);
+    console.log(`Tests: ${testsPassed} passed, ${failed} failed`);
   }
 
   if (coverage && coverage.total) {
@@ -96,14 +89,14 @@ function main() {
       `| Coverage | ${coveragePercent}% | 60% |`
     );
 
-    // 패키지별 상세 현황 업데이트 (현재는 core 정보만 활용 가능)
+    // 통합 현황 업데이트
     if (testResults) {
       const passed = testResults.numPassedTests || 0;
-      const coreCoverage = coverage?.total?.lines?.pct ? `${Math.round(coverage.total.lines.pct)}%` : '-';
+      const totalCoverage = coverage?.total?.lines?.pct ? `${Math.round(coverage.total.lines.pct)}%` : '-';
       
       report = report.replace(
-        /\| @woosgem\/ds-core \| - \| - \|/,
-        `| @woosgem/ds-core | ${passed} passed | ${coreCoverage} |`
+        /\| @woosgem\/ds-test \| .+ \| .+ \|/,
+        `| @woosgem/ds-test | ${passed} passed | ${totalCoverage} |`
       );
     }
 

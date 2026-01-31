@@ -21,7 +21,7 @@ WooSGem is a personal monorepo containing a multi-framework design system and ut
 **Packages:**
 - `@woosgem/ds-core` - Component definitions + CSP
 - `@woosgem/ds-icons` - Pure SVG icon assets (sm, md, lg)
-- `@woosgem/ds-test` - Shared test utilities
+- `@woosgem/ds-test` - Consolidated test suites and utilities
 - `@woosgem/ds-react` - React wrappers
 - `@woosgem/ds-vue` - Vue wrappers
 - `@woosgem/ds-styles` - SCSS styles
@@ -34,8 +34,8 @@ WooSGem is a personal monorepo containing a multi-framework design system and ut
 pnpm install          # Install dependencies
 pnpm dev              # Development mode
 pnpm build            # Build all packages
-pnpm test             # Run tests
-pnpm test:dashboard   # Tests + coverage dashboard
+pnpm test             # Run tests (Output saved to packages/ds-test/test_output.txt)
+pnpm test:dashboard   # Tests + coverage dashboard (Output saved to packages/ds-test/test_output.txt)
 ```
 
 ## Reference

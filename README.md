@@ -3,7 +3,7 @@
 ### Build & Quality
 [![CI](https://github.com/hhk9292/woosgem/actions/workflows/test.yml/badge.svg)](https://github.com/hhk9292/woosgem/actions/workflows/test.yml)
 [![Tests](https://img.shields.io/badge/tests-295%20passed-brightgreen)](./docs/test-report.md)
-[![Coverage](https://img.shields.io/badge/coverage-62%25-brightgreen)](./docs/test-report.md)
+[![Coverage](https://img.shields.io/badge/coverage-66%25-brightgreen)](./docs/test-report.md)
 
 ### Project Status
 [![Components](https://img.shields.io/badge/components-10-blue)](./docs/roadmap.md)
@@ -39,26 +39,26 @@
 
 ```bash
 # npm
-npm install @woosgem/react @woosgem/styles
+npm install @woosgem/ds-react @woosgem/ds-styles
 
 # pnpm
-pnpm add @woosgem/react @woosgem/styles
+pnpm add @woosgem/ds-react @woosgem/ds-styles
 
 # yarn
-yarn add @woosgem/react @woosgem/styles
+yarn add @woosgem/ds-react @woosgem/ds-styles
 ```
 
 ### Vue
 
 ```bash
 # npm
-npm install @woosgem/vue @woosgem/styles
+npm install @woosgem/ds-vue @woosgem/ds-styles
 
 # pnpm
-pnpm add @woosgem/vue @woosgem/styles
+pnpm add @woosgem/ds-vue @woosgem/ds-styles
 
 # yarn
-yarn add @woosgem/vue @woosgem/styles
+yarn add @woosgem/ds-vue @woosgem/ds-styles
 ```
 
 ## 빠른 시작
@@ -67,8 +67,8 @@ yarn add @woosgem/vue @woosgem/styles
 
 ```typescript
 // main.tsx 또는 App.tsx
-import '@woosgem/styles';
-import { Button, Badge, Input } from '@woosgem/react';
+import '@woosgem/ds-styles';
+import { Button, Badge, Input } from '@woosgem/ds-react';
 
 function App() {
   return (
@@ -139,10 +139,10 @@ function ThemeSwitcher() {
 
 ```typescript
 // 다크 테마만 사용
-import '@woosgem/styles/themes/dark';
+import '@woosgem/ds-styles/themes/dark';
 
 // 또는 라이트 테마만
-import '@woosgem/styles/themes/default';
+import '@woosgem/ds-styles/themes/default';
 ```
 
 ## Color Set Protocol (CSP)
@@ -150,7 +150,7 @@ import '@woosgem/styles/themes/default';
 최소한의 입력으로 완전한 테마를 생성하는 프로토콜입니다.
 
 ```typescript
-import { generateColorSet, generateThemeCSS } from '@woosgem/core';
+import { generateColorSet, generateThemeCSS } from '@woosgem/ds-core';
 
 // 최소 정의 (4개 필드만 필수)
 const myTheme = {
@@ -180,7 +180,7 @@ const css = generateThemeCSS(resolved);
 ### 요구사항
 
 - Node.js >= 18
-- pnpm >= 9.15.0
+- pnpm >= 10.28.2
 
 ### 설치 및 실행
 
@@ -195,22 +195,24 @@ pnpm dev
 pnpm build
 
 # Storybook 실행
-cd packages/storybook && pnpm dev
+pnpm --filter @woosgem/ds-storybook dev
 
 # 테스트
-pnpm test
+pnpm test:all
 ```
 
 ### 프로젝트 구조
 
 ```
-my-design-system/
+woosgem/
 ├── packages/
-│   ├── core/          # 컴포넌트 정의 + CSP
-│   ├── react/         # React 컴포넌트
-│   ├── vue/           # Vue 컴포넌트
-│   ├── styles/        # SCSS 스타일 및 테마
-│   └── storybook/     # Storybook 설정 및 스토리
+│   ├── ds-core/      # 컴포넌트 정의 + CSP
+│   ├── ds-react/     # React 컴포넌트
+│   ├── ds-vue/       # Vue 컴포넌트
+│   ├── ds-styles/    # SCSS 스타일 및 테마
+│   ├── ds-icons/     # SVG 아이콘 에셋
+│   ├── ds-test/      # 통합 테스트 스위트
+│   └── ds-storybook/ # Storybook 설정 및 스토리
 ├── turbo.json         # Turborepo 설정
 └── pnpm-workspace.yaml
 ```
@@ -219,15 +221,16 @@ my-design-system/
 
 ### 새 컴포넌트 추가
 
-1. `packages/core/src/components`에 컴포넌트 정의 추가
-2. `packages/styles/src/components`에 스타일 추가
-3. `packages/react/src` 및 `packages/vue/src`에 프레임워크별 구현 추가
-4. `packages/storybook/src/stories`에 스토리 추가
+1. `packages/ds-core/src/components`에 컴포넌트 정의 추가
+2. `packages/ds-styles/src/components`에 스타일 추가
+3. `packages/ds-react/src` 및 `packages/ds-vue/src`에 프레임워크별 구현 추가
+4. `packages/ds-storybook/src/stories`에 스토리 추가
+5. `packages/ds-test/src`에 테스트 추가
 
 ### 새 테마 추가 (CSP 사용)
 
 ```typescript
-import { generateColorSet, generateThemeCSS } from '@woosgem/core';
+import { generateColorSet, generateThemeCSS } from '@woosgem/ds-core';
 
 const newTheme = {
   id: 'custom',

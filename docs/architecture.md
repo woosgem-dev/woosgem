@@ -45,7 +45,7 @@ Framework adapters (`createComponent` in react/vue packages) consume these defin
 | Vue wrapper | `packages/ds-vue/src/Button.ts` |
 | SCSS styles | `packages/ds-styles/src/components/_button.scss` |
 | Stories | `packages/ds-storybook/src/stories/Button.stories.tsx` |
-| Tests | `packages/ds-core/src/__tests__/button.test.ts` |
+| Tests (Consolidated) | `packages/ds-test/src/{core,react,vue}/*.test.{ts,tsx}` |
 
 ## Color Set Protocol (CSP)
 
@@ -76,7 +76,7 @@ Available themes: `default`, `dark`.
 
 ## Key Technologies
 
-- **pnpm 9.15+** - Package manager with workspaces
+- **pnpm 10.x** - Package manager with workspaces (Strict mode)
 - **Turborepo** - Build orchestration
 - **TypeScript 5.7** - `target: ES2022`, `moduleResolution: bundler`
 - **Vitest** - Testing framework

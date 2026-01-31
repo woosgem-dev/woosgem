@@ -65,11 +65,13 @@ loading > disabled > error > success > normal
 **구현:**
 ```typescript
 // Core mapPropsToAttrs 내부
-'data-state': loading ? 'loading'
-            : disabled ? 'disabled'
-            : error ? 'error'
-            : success ? 'success'
-            : undefined
+const attrs = {
+  'data-state': loading ? 'loading'
+              : disabled ? 'disabled'
+              : error ? 'error'
+              : success ? 'success'
+              : undefined
+};
 ```
 
 **예시:**
@@ -138,52 +140,56 @@ if (process.env.NODE_ENV !== 'production') {
 
 ### 4.1 보호 속성 목록
 
-다음 속성들은 Core에서 관리하며 사용자가 오버라이드할 수 없습니다:
+다음 속성들은 Core에서 관리하며 사용자가 오버라이드할 수 없습니다. React에서는 타입 레벨(`never`)에서 차단되며, Vue에서는 런타임 필터링을 통해 차단됩니다.
 
 | 속성 | 이유 |
 |------|------|
 | `data-variant` | 디자인 일관성 |
 | `data-color` | 디자인 일관성 |
 | `data-size` | 디자인 일관성 |
-| `data-state` | 상태 관리 무결성 |
+| `data-state` | 상태 관리 무결성 (loading, disabled, error 등) |
 | `data-full-width` | 레이아웃 일관성 |
+| `data-shape` | 아이콘/아바타 모양 일관성 |
+| `data-divider` | 리스트 아이템 구분선 상태 |
+| `data-has-image` | 아바타 이미지 존재 여부 |
+| `data-orientation` | 구분선 방향 일관성 |
+| `data-spacing` | 구분선 간격 일관성 |
 | `role` | 접근성 일관성 (WAI-ARIA) |
-| `class` (직접) | className으로만 추가 |
+| `aria-selected` | 접근성 상태 관리 (Tab, ListItem) |
+| `aria-disabled` | 접근성 상태 관리 (ListItem) |
+| `aria-orientation` | 접근성 상태 관리 (Divider) |
 
 ### 4.2 구현 방식
 
-**React:**
+**React (Type-level Protection):**
+컴포넌트의 Props 타입 정의 시 `ComponentPropsWithoutRef`를 사용하고, 보호 속성들을 `never` 타입으로 정의하여 오버라이드 시도를 컴파일 타임에 차단합니다.
+
 ```typescript
-// createComponent.tsx
-const finalProps = {
-  ...nativeProps,      // 사용자 props (먼저)
-  ...attrs,            // Core attrs (덮어씀 = 보호)
-  className: finalClassName,
-  ref,
-};
+export type ButtonProps = Prettify<
+  ButtonStyleProps &
+    Omit<
+      ComponentPropsWithoutRef<'button'>,
+      keyof ButtonStyleProps | 'data-variant' | 'data-color' | 'data-size' | 'data-state' | 'data-full-width'
+    > & {
+      'data-variant'?: never;
+      'data-color'?: never;
+      'data-size'?: never;
+      'data-state'?: never;
+      'data-full-width'?: never;
+    }
+>;
 ```
 
-**Vue:**
+**Vue (Runtime Protection):**
+`createComponent` 내부에서 `PROTECTED_ATTRS` 세트를 사용하여 사용자가 전달한 `attrs`에서 보호 속성을 필터링합니다.
+
 ```typescript
-// createComponent.ts
 const PROTECTED_ATTRS = new Set([
-  'data-variant', 'data-color', 'data-size',
-  'data-state', 'data-full-width'
+  'data-variant', 'data-color', 'data-size', 'data-state',
+  'data-full-width', 'data-shape', 'data-divider', 'data-has-image',
+  'data-orientation', 'data-spacing', 'role', 'aria-selected',
+  'aria-disabled', 'aria-orientation'
 ]);
-
-// 보호 속성 필터링
-const safeAttrs: Record<string, unknown> = {};
-for (const key in attrs) {
-  if (!PROTECTED_ATTRS.has(key) && key !== 'class') {
-    safeAttrs[key] = attrs[key];
-  }
-}
-
-return h(tag, {
-  ...safeAttrs,
-  ...restAttrs,  // Core attrs
-  class: mergedClass,
-}, slots.default?.());
 ```
 
 ### 4.3 오버라이드 시도 시 동작
@@ -226,12 +232,8 @@ return h(tag, {
 **차단 (X):**
 | 항목 | 이유 |
 |------|------|
-| data-variant | 디자인 일관성 |
-| data-color | 디자인 일관성 |
-| data-size | 디자인 일관성 |
-| data-state | 상태 관리 무결성 |
-| data-full-width | 레이아웃 일관성 |
-| class (직접) | className으로만 추가 |
+| 보호 속성 목록 (4.1 참조) | 디자인 및 접근성 일관성 유지 |
+| `class` (직접) | className으로만 추가 (Vue: :class) |
 
 ---
 

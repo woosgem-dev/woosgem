@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
-import { Button } from '../Button.js';
+import { Button } from '@woosgem/ds-vue';
 import { Button as ButtonDef } from '@woosgem/ds-core';
 
 describe('Button', () => {

@@ -1,22 +1,19 @@
-import type { ReactNode, Ref } from 'react';
+import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 import { Badge as BadgeDef, type BadgeStyleProps, type Prettify } from '@woosgem/ds-core';
 import { createComponent } from './createComponent.js';
 
 /**
  * Badge component props.
- * Combines style props with specific allowed native props.
+ * Combines style props with all standard span HTML attributes,
+ * while excluding protected attributes used by the design system.
  */
 export type BadgeProps = Prettify<
-  BadgeStyleProps & {
-    /** Badge content */
-    children?: ReactNode;
-    /** Additional CSS class names */
-    className?: string;
-    /** Accessible label */
-    'aria-label'?: string;
-    /** Ref to the span element */
-    ref?: Ref<HTMLSpanElement>;
-  }
+  BadgeStyleProps &
+    Omit<ComponentPropsWithoutRef<'span'>, keyof BadgeStyleProps | 'data-variant' | 'data-color' | 'data-size'> & {
+      'data-variant'?: never;
+      'data-color'?: never;
+      'data-size'?: never;
+    }
 >;
 
 /** Ref type for Badge component */
@@ -38,4 +35,4 @@ const BaseBadge = createComponent(BadgeDef);
  * </Badge>
  * ```
  */
-export const Badge = BaseBadge as React.ComponentType<BadgeProps>;
+export const Badge = BaseBadge as ComponentType<BadgeProps>;

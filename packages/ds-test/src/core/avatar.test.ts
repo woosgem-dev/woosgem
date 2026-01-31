@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Avatar, AvatarSizes, AvatarShapes } from '../components/Avatar.js';
+import { Avatar, AvatarSizes, AvatarShapes } from '@woosgem/ds-core';
 
 describe('Avatar', () => {
   describe('displayName', () => {

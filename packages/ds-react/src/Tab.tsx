@@ -1,26 +1,25 @@
-import type { MouseEventHandler, ReactNode, Ref } from 'react';
+import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 import { Tab as TabDef, type TabStyleProps, type Prettify } from '@woosgem/ds-core';
 import { createComponent } from './createComponent.js';
 
 /**
  * Tab component props.
- * Combines style props with specific allowed native props.
+ * Combines style props with all standard button HTML attributes,
+ * while excluding protected attributes used by the design system.
  */
 export type TabProps = Prettify<
-  TabStyleProps & {
-    /** Tab content */
-    children?: ReactNode;
-    /** Click handler */
-    onClick?: MouseEventHandler<HTMLButtonElement>;
-    /** Additional CSS class names */
-    className?: string;
-    /** Button type for forms */
-    type?: 'button' | 'submit' | 'reset';
-    /** Accessible label */
-    'aria-label'?: string;
-    /** Ref to the button element */
-    ref?: Ref<HTMLButtonElement>;
-  }
+  TabStyleProps &
+    Omit<
+      ComponentPropsWithoutRef<'button'>,
+      keyof TabStyleProps | 'data-variant' | 'data-size' | 'data-state' | 'data-full-width' | 'role' | 'aria-selected'
+    > & {
+      'data-variant'?: never;
+      'data-size'?: never;
+      'data-state'?: never;
+      'data-full-width'?: never;
+      role?: never;
+      'aria-selected'?: never;
+    }
 >;
 
 /** Ref type for Tab component */
@@ -46,4 +45,4 @@ const BaseTab = createComponent(TabDef);
  * </Tab>
  * ```
  */
-export const Tab = BaseTab as React.ComponentType<TabProps>;
+export const Tab = BaseTab as ComponentType<TabProps>;

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Input, InputVariants, InputSizes } from '../components/Input.js';
+import { Input, InputVariants, InputSizes } from '@woosgem/ds-core';
 
 describe('Input', () => {
   describe('displayName', () => {

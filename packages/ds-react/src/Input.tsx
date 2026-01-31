@@ -1,38 +1,22 @@
-import type { ChangeEventHandler, FocusEventHandler, Ref } from 'react';
+import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 import { Input as InputDef, type InputStyleProps, type Prettify } from '@woosgem/ds-core';
 import { createComponent } from './createComponent.js';
 
 /**
  * Input component props.
- * Combines style props with specific allowed native props.
+ * Combines style props with all standard input HTML attributes,
+ * while excluding protected attributes used by the design system.
  */
 export type InputProps = Prettify<
-  InputStyleProps & {
-    /** Input value */
-    value?: string;
-    /** Default value for uncontrolled input */
-    defaultValue?: string;
-    /** Placeholder text */
-    placeholder?: string;
-    /** Change handler */
-    onChange?: ChangeEventHandler<HTMLInputElement>;
-    /** Focus handler */
-    onFocus?: FocusEventHandler<HTMLInputElement>;
-    /** Blur handler */
-    onBlur?: FocusEventHandler<HTMLInputElement>;
-    /** Additional CSS class names */
-    className?: string;
-    /** Input type */
-    type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search';
-    /** Input name for forms */
-    name?: string;
-    /** Accessible label */
-    'aria-label'?: string;
-    /** Accessible description */
-    'aria-describedby'?: string;
-    /** Ref to the input element */
-    ref?: Ref<HTMLInputElement>;
-  }
+  InputStyleProps &
+    Omit<
+      ComponentPropsWithoutRef<'input'>,
+      keyof InputStyleProps | 'data-variant' | 'data-size' | 'data-state'
+    > & {
+      'data-variant'?: never;
+      'data-size'?: never;
+      'data-state'?: never;
+    }
 >;
 
 /** Ref type for Input component */
@@ -54,4 +38,4 @@ const BaseInput = createComponent(InputDef);
  * <Input variant="filled" disabled placeholder="Disabled" />
  * ```
  */
-export const Input = BaseInput as React.ComponentType<InputProps>;
+export const Input = BaseInput as ComponentType<InputProps>;

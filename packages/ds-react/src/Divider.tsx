@@ -1,20 +1,29 @@
-import type { Ref } from 'react';
+import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 import { Divider as DividerDef, type DividerStyleProps, type Prettify } from '@woosgem/ds-core';
 import { createComponent } from './createComponent.js';
 
 /**
  * Divider component props.
- * Combines style props with specific allowed native props.
+ * Combines style props with all standard hr HTML attributes,
+ * while excluding protected attributes used by the design system.
  */
 export type DividerProps = Prettify<
-  DividerStyleProps & {
-    /** Additional CSS class names */
-    className?: string;
-    /** Accessible label */
-    'aria-label'?: string;
-    /** Ref to the hr element */
-    ref?: Ref<HTMLHRElement>;
-  }
+  DividerStyleProps &
+    Omit<
+      ComponentPropsWithoutRef<'hr'>,
+      | keyof DividerStyleProps
+      | 'data-orientation'
+      | 'data-variant'
+      | 'data-spacing'
+      | 'role'
+      | 'aria-orientation'
+    > & {
+      'data-orientation'?: never;
+      'data-variant'?: never;
+      'data-spacing'?: never;
+      role?: never;
+      'aria-orientation'?: never;
+    }
 >;
 
 /** Ref type for Divider component */
@@ -34,4 +43,4 @@ const BaseDivider = createComponent(DividerDef);
  * <Divider orientation="vertical" spacing="sm" />
  * ```
  */
-export const Divider = BaseDivider as React.ComponentType<DividerProps>;
+export const Divider = BaseDivider as ComponentType<DividerProps>;

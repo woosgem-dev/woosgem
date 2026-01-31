@@ -9,11 +9,11 @@
 | Input | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Checkbox | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Badge | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Tab | ✅ | ✅ | ❓ | ✅ | ❓ | ❌ |
-| Avatar | ✅ | ✅ | ❓ | ✅ | ❓ | ❌ |
-| ListItem | ✅ | ✅ | ❓ | ✅ | ❓ | ❌ |
-| SegmentedControl | ✅ | ✅ | ❓ | ✅ | ❓ | ❌ |
-| Divider | ✅ | ✅ | ❓ | ✅ | ❓ | ❌ |
+| Tab | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Avatar | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| ListItem | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| SegmentedControl | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Divider | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 
 ## 완성된 시스템
 
@@ -131,34 +131,26 @@ Phase 4: Table, DatePicker, Pagination 등 고급 컴포넌트
 
 - [x] CSP 구현 완료
 - [x] Smart defaults 적용 (primary.base → 81 tokens)
-- [x] crypto 테마 삭제
 - [x] 내부 문서 정리 (docs/ → .claude/)
-- [x] .claude/ gitignore 추가
-- [x] tsconfig 테스트 파일 빌드 제외
-- [x] README 업데이트
-- [x] docs/csp-schema.md 생성
+- [x] README 업데이트 (상태 배지 및 대시보드 연동)
 - [x] @woosgem/ds-icons 시스템 구축 및 48종 에셋 완료
+- [x] React 컴포넌트 타입 시스템 개선 (표준 HTML 속성 확장 및 보호 속성 차단)
+- [x] Vue 컴포넌트 보호 속성 정책 동기화
+- [x] pnpm 엄격 모드 적용 (hoist 제거) 및 의존성 최적화
+- [x] 모든 테스트를 @woosgem/ds-test 패키지로 통합 및 빌드 의존성 제거
 
 ## 테스트 현황
 
-```
-packages/core/src/__tests__/
-├── button.test.ts      ✅
-├── icon-button.test.ts ✅
-├── input.test.ts       ✅
-├── checkbox.test.ts    ✅
-├── badge.test.ts       ✅
-└── protocol.test.ts    ✅ (56 tests)
-
-Total: 123 tests passing
-```
+- [x] 전체 295개 테스트 통과 (Core 190, React 58, Vue 47)
+- [x] 커버리지 62% 달성 (목표 60% 달성)
+- [x] 모든 10개 컴포넌트에 대한 Core/React/Vue 테스트 스위트 구축
 
 ## 명령어
 
 ```bash
-pnpm install      # 의존성 설치
-pnpm dev          # 개발 모드
-pnpm build        # 빌드
-pnpm test         # 테스트
-pnpm clean        # 클린
+pnpm install          # 의존성 설치
+pnpm build            # 전체 빌드
+pnpm test:all         # 전체 테스트 실행
+pnpm test:dashboard   # 테스트 실행 및 대시보드 업데이트
+pnpm dev              # 개발 모드 (Turbo)
 ```

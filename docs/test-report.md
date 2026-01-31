@@ -8,17 +8,15 @@
 | Metric | Value | Target |
 |--------|-------|--------|
 | Tests | 295 passed | - |
-| Coverage | 62% | 60% |
+| Coverage | 66% | 60% |
 | Components | 10 | 25 |
 
 ---
 
-## 패키지별 상세 현황
+## 통합 테스트 현황
 
 | 패키지 | 테스트 결과 | 커버리지 |
 |--------|------------|----------|
-| @woosgem/ds-core | 190 passed | 62% |
-| @woosgem/ds-react | - | - |
-| @woosgem/ds-vue | - | - |
+| @woosgem/ds-test | 295 passed | 66% |
 
 > [GitHub Actions 상세 로그 보기](https://github.com/hhk9292/woosgem/actions/workflows/test.yml)

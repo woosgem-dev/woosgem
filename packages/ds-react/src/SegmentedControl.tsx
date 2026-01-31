@@ -1,4 +1,4 @@
-import type { MouseEventHandler, ReactNode, Ref } from 'react';
+import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 import {
   SegmentedControl as SegmentedControlDef,
   SegmentedControlItem as SegmentedControlItemDef,
@@ -10,40 +10,33 @@ import { createComponent } from './createComponent.js';
 
 /**
  * SegmentedControl component props.
- * Combines style props with specific allowed native props.
+ * Combines style props with all standard div HTML attributes,
+ * while excluding protected attributes used by the design system.
  */
 export type SegmentedControlProps = Prettify<
-  SegmentedControlStyleProps & {
-    /** SegmentedControl content (should contain SegmentedControlItem children) */
-    children?: ReactNode;
-    /** Additional CSS class names */
-    className?: string;
-    /** Accessible label */
-    'aria-label'?: string;
-    /** Ref to the div element */
-    ref?: Ref<HTMLDivElement>;
-  }
+  SegmentedControlStyleProps &
+    Omit<
+      ComponentPropsWithoutRef<'div'>,
+      keyof SegmentedControlStyleProps | 'data-size' | 'data-full-width' | 'data-disabled' | 'role'
+    > & {
+      'data-size'?: never;
+      'data-full-width'?: never;
+      'data-disabled'?: never;
+      role?: never;
+    }
 >;
 
 /**
  * SegmentedControlItem component props.
- * Combines style props with specific allowed native props.
+ * Combines style props with all standard button HTML attributes,
+ * while excluding protected attributes used by the design system.
  */
 export type SegmentedControlItemProps = Prettify<
-  SegmentedControlItemStyleProps & {
-    /** Item content */
-    children?: ReactNode;
-    /** Click handler */
-    onClick?: MouseEventHandler<HTMLButtonElement>;
-    /** Additional CSS class names */
-    className?: string;
-    /** Button type for forms */
-    type?: 'button' | 'submit' | 'reset';
-    /** Accessible label */
-    'aria-label'?: string;
-    /** Ref to the button element */
-    ref?: Ref<HTMLButtonElement>;
-  }
+  SegmentedControlItemStyleProps &
+    Omit<ComponentPropsWithoutRef<'button'>, keyof SegmentedControlItemStyleProps | 'data-state' | 'aria-selected'> & {
+      'data-state'?: never;
+      'aria-selected'?: never;
+    }
 >;
 
 /** Ref type for SegmentedControl component */
@@ -73,14 +66,14 @@ const BaseSegmentedControlItem = createComponent(SegmentedControlItemDef);
  * </SegmentedControl>
  * ```
  */
-export const SegmentedControl = BaseSegmentedControl as unknown as React.ComponentType<SegmentedControlProps> & {
-  Item: React.ComponentType<SegmentedControlItemProps>;
+export const SegmentedControl = BaseSegmentedControl as unknown as ComponentType<SegmentedControlProps> & {
+  Item: ComponentType<SegmentedControlItemProps>;
 };
 
 /**
  * SegmentedControlItem component for individual items within SegmentedControl.
  */
-export const SegmentedControlItem = BaseSegmentedControlItem as React.ComponentType<SegmentedControlItemProps>;
+export const SegmentedControlItem = BaseSegmentedControlItem as ComponentType<SegmentedControlItemProps>;
 
 // Attach Item as a property for compound component pattern
 SegmentedControl.Item = SegmentedControlItem;

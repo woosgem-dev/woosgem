@@ -5,7 +5,7 @@ import {
   IconButtonColors,
   IconButtonSizes,
   IconButtonShapes,
-} from '../components/IconButton.js';
+} from '@woosgem/ds-core';
 
 describe('IconButton', () => {
   describe('displayName', () => {

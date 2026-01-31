@@ -68,21 +68,20 @@
 ## TypeScript 타입 정책
 
 ```typescript
-// 보호 속성 타입에서 제외
-type ProtectedKeys =
-  | 'data-variant'
-  | 'data-color'
-  | 'data-size'
-  | 'data-state'
-  | 'data-full-width';
-
-// 컴포넌트 Props = StyleProps + 허용된 Native Props
-type ComponentProps<StyleProps, Element> =
-  StyleProps &
-  Omit<React.HTMLAttributes<Element>, ProtectedKeys | 'className'> & {
-    className?: string;
-    style?: React.CSSProperties;
-  };
+// 보호 속성 타입에서 'never'로 차단하여 오버라이드 방지
+export type ButtonProps = Prettify<
+  ButtonStyleProps &
+    Omit<
+      ComponentPropsWithoutRef<'button'>,
+      keyof ButtonStyleProps | 'data-variant' | 'data-color' | 'data-size' | 'data-state' | 'data-full-width'
+    > & {
+      'data-variant'?: never;
+      'data-color'?: never;
+      'data-size'?: never;
+      'data-state'?: never;
+      'data-full-width'?: never;
+    }
+>;
 ```
 
 ## 확장 패턴
@@ -122,5 +121,5 @@ const CustomButton = {
 | style prop | ✅ 완료 | nativeProps로 전달 |
 | 보호 속성 필터링 | ✅ 완료 | attrs가 nativeProps 덮어씀 |
 | type 기본값 | ✅ 완료 | Button: `type="button"` |
-| 타입 확장 | ❌ 제한적 | 확장 필요 |
+| 타입 확장 | ✅ 완료 | ComponentPropsWithoutRef 기반 |
 | DEV 경고 | ❌ 미구현 | 추가 필요 |

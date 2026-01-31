@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Badge, BadgeVariants, BadgeColors, BadgeSizes } from '../components/Badge.js';
+import { Badge, BadgeVariants, BadgeColors, BadgeSizes } from '@woosgem/ds-core';
 
 describe('Badge', () => {
   describe('displayName', () => {

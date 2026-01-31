@@ -4,7 +4,7 @@ import {
   DividerOrientations,
   DividerVariants,
   DividerSpacings,
-} from '../components/Divider.js';
+} from '@woosgem/ds-core';
 
 describe('Divider', () => {
   describe('displayName', () => {

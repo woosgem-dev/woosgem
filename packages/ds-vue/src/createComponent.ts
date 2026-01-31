@@ -13,6 +13,15 @@ const PROTECTED_ATTRS = new Set([
   'data-size',
   'data-state',
   'data-full-width',
+  'data-shape',
+  'data-divider',
+  'data-has-image',
+  'data-orientation',
+  'data-spacing',
+  'role',
+  'aria-selected',
+  'aria-disabled',
+  'aria-orientation',
 ]);
 
 // Vue prop definition type
