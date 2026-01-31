@@ -6,7 +6,9 @@
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "scripts": {
-    "test": "vitest run > test_output.txt 2>&1"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:log": "vitest run > test_output.txt 2>&1"
   },
   "dependencies": {
     "@woosgem/ds-core": "workspace:*",
