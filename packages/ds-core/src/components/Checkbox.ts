@@ -5,6 +5,155 @@ import { filterNullish } from '../types';
 export const CheckboxSizes = ['sm', 'md', 'lg'] as const;
 export type CheckboxSize = (typeof CheckboxSizes)[number];
 
+/** Checkbox state */
+export type CheckboxState = 'unchecked' | 'checked' | 'indeterminate' | 'disabled';
+
+// ===================
+// Checkbox Root (Wrapper)
+// ===================
+
+/** Style props for Checkbox root */
+export interface CheckboxRootStyleProps {
+  size?: CheckboxSize;
+  disabled?: boolean;
+}
+
+/** DOM attributes for Checkbox root */
+export interface CheckboxRootAttrs {
+  class: string;
+  'data-size': CheckboxSize;
+  'data-disabled'?: true | undefined;
+}
+
+/** Checkbox root component definition */
+export const CheckboxRoot = {
+  displayName: 'CheckboxRoot',
+
+  defaultProps: {
+    size: 'md',
+    disabled: false,
+  },
+
+  propTypes: {
+    size: CheckboxSizes,
+  },
+
+  mapPropsToAttrs: (props: CheckboxRootStyleProps): CheckboxRootAttrs => {
+    const merged = { ...CheckboxRoot.defaultProps, ...filterNullish(props) };
+    return {
+      class: 'checkbox-root',
+      'data-size': merged.size,
+      'data-disabled': merged.disabled || undefined,
+    };
+  },
+
+  template: {
+    tag: 'label',
+    slots: ['default'],
+  },
+} as const satisfies ComponentDefinition<CheckboxRootStyleProps, CheckboxRootAttrs, 'label'>;
+
+// ===================
+// Checkbox Indicator (Visual box)
+// ===================
+
+/** Style props for Checkbox indicator */
+export interface CheckboxIndicatorStyleProps {
+  size?: CheckboxSize;
+  checked?: boolean;
+  indeterminate?: boolean;
+  disabled?: boolean;
+}
+
+/** DOM attributes for Checkbox indicator */
+export interface CheckboxIndicatorAttrs {
+  class: string;
+  'data-size': CheckboxSize;
+  'data-state': CheckboxState;
+  'aria-hidden': true;
+}
+
+/** Checkbox indicator component definition */
+export const CheckboxIndicator = {
+  displayName: 'CheckboxIndicator',
+
+  defaultProps: {
+    size: 'md',
+    checked: false,
+    indeterminate: false,
+    disabled: false,
+  },
+
+  propTypes: {
+    size: CheckboxSizes,
+  },
+
+  mapPropsToAttrs: (props: CheckboxIndicatorStyleProps): CheckboxIndicatorAttrs => {
+    const merged = { ...CheckboxIndicator.defaultProps, ...filterNullish(props) };
+    const state: CheckboxState = merged.disabled
+      ? 'disabled'
+      : merged.indeterminate
+      ? 'indeterminate'
+      : merged.checked
+      ? 'checked'
+      : 'unchecked';
+    return {
+      class: 'checkbox-indicator',
+      'data-size': merged.size,
+      'data-state': state,
+      'aria-hidden': true,
+    };
+  },
+
+  template: {
+    tag: 'span',
+    slots: ['default'],
+  },
+} as const satisfies ComponentDefinition<CheckboxIndicatorStyleProps, CheckboxIndicatorAttrs, 'span'>;
+
+// ===================
+// Checkbox Label
+// ===================
+
+/** Style props for Checkbox label */
+export interface CheckboxLabelStyleProps {
+  disabled?: boolean;
+}
+
+/** DOM attributes for Checkbox label */
+export interface CheckboxLabelAttrs {
+  class: string;
+  'data-disabled'?: true | undefined;
+}
+
+/** Checkbox label component definition */
+export const CheckboxLabel = {
+  displayName: 'CheckboxLabel',
+
+  defaultProps: {
+    disabled: false,
+  },
+
+  propTypes: {},
+
+  mapPropsToAttrs: (props: CheckboxLabelStyleProps): CheckboxLabelAttrs => {
+    const merged = { ...CheckboxLabel.defaultProps, ...filterNullish(props) };
+    return {
+      class: 'checkbox-label',
+      'data-disabled': merged.disabled || undefined,
+    };
+  },
+
+  template: {
+    tag: 'span',
+    slots: ['default'],
+  },
+} as const satisfies ComponentDefinition<CheckboxLabelStyleProps, CheckboxLabelAttrs, 'span'>;
+
+// ===================
+// Legacy Checkbox (for backwards compatibility)
+// ===================
+
 /** Style props for Checkbox component */
 export interface CheckboxStyleProps {
   size?: CheckboxSize;
@@ -17,10 +166,10 @@ export interface CheckboxStyleProps {
 export interface CheckboxAttrs {
   class: string;
   'data-size': CheckboxSize;
-  'data-state': 'unchecked' | 'checked' | 'indeterminate' | 'disabled';
+  'data-state': CheckboxState;
 }
 
-/** Checkbox component definition */
+/** Checkbox component definition (legacy single-element) */
 export const Checkbox = {
   displayName: 'Checkbox',
 
@@ -37,7 +186,7 @@ export const Checkbox = {
 
   mapPropsToAttrs: (props: CheckboxStyleProps): CheckboxAttrs => {
     const merged = { ...Checkbox.defaultProps, ...filterNullish(props) };
-    const state = merged.disabled
+    const state: CheckboxState = merged.disabled
       ? 'disabled'
       : merged.indeterminate
       ? 'indeterminate'
