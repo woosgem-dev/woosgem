@@ -33,8 +33,20 @@ export {
 } from './Badge';
 
 export {
+  // Headless UI parts
+  CheckboxRoot,
+  CheckboxIndicator,
+  CheckboxLabel,
+  // Legacy
   Checkbox,
   CheckboxSizes,
+  type CheckboxState,
+  type CheckboxRootStyleProps,
+  type CheckboxRootAttrs,
+  type CheckboxIndicatorStyleProps,
+  type CheckboxIndicatorAttrs,
+  type CheckboxLabelStyleProps,
+  type CheckboxLabelAttrs,
   type CheckboxStyleProps,
   type CheckboxAttrs,
   type CheckboxSize,
@@ -159,3 +171,14 @@ export {
   type RadioGroupStyleProps,
   type RadioGroupAttrs,
 } from './Radio';
+
+export {
+  Icon,
+  IconSizes,
+  IconColors,
+  IconSizeMap,
+  type IconStyleProps,
+  type IconAttrs,
+  type IconSize,
+  type IconColor,
+} from './Icon';

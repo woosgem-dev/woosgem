@@ -19,6 +19,7 @@ export { Alert, type AlertProps } from './Alert';
 export { Switch, type SwitchProps } from './Switch';
 export { Textarea, type TextareaProps } from './Textarea';
 export { Radio, RadioGroup, type RadioProps, type RadioGroupProps } from './Radio';
+export { Icon, type IconProps } from './Icon';
 
 // Factory (for advanced usage)
 export { createComponent } from './createComponent';

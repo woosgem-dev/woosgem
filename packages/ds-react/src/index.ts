@@ -21,6 +21,7 @@ export { Alert, type AlertProps, type AlertRef } from './Alert';
 export { Switch, type SwitchProps, type SwitchRef } from './Switch';
 export { Textarea, type TextareaProps, type TextareaRef } from './Textarea';
 export { Radio, RadioGroup, type RadioProps, type RadioRef, type RadioGroupProps, type RadioGroupRef } from './Radio';
+export { Icon, type IconProps, type IconRef } from './Icon';
 
 // Factory (for advanced usage)
 export { createComponent } from './createComponent';
