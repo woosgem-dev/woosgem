@@ -6,7 +6,7 @@ import {
   type SegmentedControlItemStyleProps,
   type Prettify,
 } from '@woosgem/ds-core';
-import { createComponent } from './createComponent.js';
+import { createComponent } from './_internal/createComponent';
 
 /**
  * SegmentedControl component props.

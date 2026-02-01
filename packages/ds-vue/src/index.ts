@@ -22,4 +22,4 @@ export { Radio, RadioGroup, type RadioProps, type RadioGroupProps } from './Radi
 export { Icon, type IconProps } from './Icon';
 
 // Factory (for advanced usage)
-export { createComponent } from './createComponent';
+export { createComponent } from './_internal/createComponent';

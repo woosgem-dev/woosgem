@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 import { Divider as DividerDef, type DividerStyleProps, type Prettify } from '@woosgem/ds-core';
-import { createComponent } from './createComponent.js';
+import { createComponent } from './_internal/createComponent';
 
 /**
  * Divider component props.

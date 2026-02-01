@@ -6,7 +6,7 @@ import {
   type RadioGroupStyleProps,
   type Prettify,
 } from '@woosgem/ds-core';
-import { createComponent } from './createComponent';
+import { createComponent } from './_internal/createComponent';
 
 /**
  * Radio component props.

@@ -1,6 +1,6 @@
 import type { DefineComponent } from 'vue';
 import { Avatar as AvatarDef, type AvatarStyleProps, type Prettify } from '@woosgem/ds-core';
-import { createComponent } from './createComponent';
+import { createComponent } from './_internal/createComponent';
 
 /**
  * Avatar component props.

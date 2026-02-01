@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 import { Spinner as SpinnerDef, type SpinnerStyleProps, type Prettify } from '@woosgem/ds-core';
-import { createComponent } from './createComponent';
+import { createComponent } from './_internal/createComponent';
 
 /**
  * Spinner component props.

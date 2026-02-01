@@ -15,12 +15,23 @@
  */
 
 // Components
-export * from './components';
+export { Button } from './Button';
+export { Overlay } from './Overlay';
 
-// Internal utilities (for advanced usage)
-export * from './internal';
+// Utilities
+export {
+  createComponent,
+  applyAttrsToElement,
+  emitEvent,
+} from './_internal/createComponent';
 
-// Re-export core types for convenience
+export type {
+  CoreComponentDefinition,
+  PropDefinition,
+  CreateComponentOptions,
+} from './_internal/createComponent';
+
+// Re-export core types
 export type {
   ButtonStyleProps,
   ButtonVariant,

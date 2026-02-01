@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 import { Textarea as TextareaDef, type TextareaStyleProps, type Prettify } from '@woosgem/ds-core';
-import { createComponent } from './createComponent';
+import { createComponent } from './_internal/createComponent';
 
 /**
  * Textarea component props.

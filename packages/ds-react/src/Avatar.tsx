@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 import { Avatar as AvatarDef, type AvatarStyleProps, type Prettify } from '@woosgem/ds-core';
-import { createComponent } from './createComponent.js';
+import { createComponent } from './_internal/createComponent';
 
 /**
  * Avatar component props.

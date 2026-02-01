@@ -1,11 +1,10 @@
-import { Button as ButtonCore, type ButtonStyleProps } from '@woosgem/ds-core';
-import { createLitComponent } from '../internal/createComponent';
+import { Button as ButtonCore } from '@woosgem/ds-core';
+import { createComponent } from './_internal/createComponent';
 
 /**
- * WooSGem Button - Lit Web Component
+ * Button - Lit Web Component
  *
  * @element wg-button
- *
  * @slot - 버튼 내용
  *
  * @example
@@ -14,7 +13,7 @@ import { createLitComponent } from '../internal/createComponent';
  * <wg-button variant="outline" color="danger" disabled>Disabled</wg-button>
  * ```
  */
-export const WgButton = createLitComponent(
+export const Button = createComponent(
   ButtonCore,
   'wg-button',
   {
@@ -27,7 +26,7 @@ export const WgButton = createLitComponent(
       fullWidth: { type: Boolean, default: false, attribute: 'full-width' },
     },
     events: {
-      click: (e, component) => {
+      click: (e: MouseEvent, component) => {
         const el = component as unknown as { loading: boolean; disabled: boolean };
         if (el.loading || el.disabled) {
           e.preventDefault();
@@ -38,11 +37,10 @@ export const WgButton = createLitComponent(
   }
 );
 
-// Custom Element 등록
-customElements.define('wg-button', WgButton);
+customElements.define('wg-button', Button);
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wg-button': InstanceType<typeof WgButton>;
+    'wg-button': InstanceType<typeof Button>;
   }
 }

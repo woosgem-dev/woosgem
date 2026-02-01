@@ -1,6 +1,6 @@
 import type { DefineComponent } from 'vue';
 import { Icon as IconDef, type IconStyleProps, type Prettify } from '@woosgem/ds-core';
-import { createComponent } from './createComponent';
+import { createComponent } from './_internal/createComponent';
 
 /**
  * Icon component props.

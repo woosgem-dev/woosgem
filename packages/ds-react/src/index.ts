@@ -24,7 +24,7 @@ export { Radio, RadioGroup, type RadioProps, type RadioRef, type RadioGroupProps
 export { Icon, type IconProps, type IconRef } from './Icon';
 
 // Factory (for advanced usage)
-export { createComponent } from './createComponent';
+export { createComponent } from './_internal/createComponent';
 
 // Internal utilities and hooks
 export {

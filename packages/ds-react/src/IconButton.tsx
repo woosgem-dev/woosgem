@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 import { IconButton as IconButtonDef, type IconButtonStyleProps, type Prettify } from '@woosgem/ds-core';
-import { createComponent } from './createComponent.js';
+import { createComponent } from './_internal/createComponent';
 
 /**
  * IconButton component props.

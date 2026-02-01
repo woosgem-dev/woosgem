@@ -1,6 +1,6 @@
 import type { DefineComponent } from 'vue';
 import { Button as ButtonDef, type ButtonStyleProps, type Prettify } from '@woosgem/ds-core';
-import { createComponent } from './createComponent';
+import { createComponent } from './_internal/createComponent';
 
 /**
  * Button component props.

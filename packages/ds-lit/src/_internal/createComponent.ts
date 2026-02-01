@@ -28,9 +28,9 @@ export interface PropDefinition {
 }
 
 /**
- * createLitComponent 옵션
+ * createComponent 옵션
  */
-export interface CreateLitComponentOptions<StyleProps> {
+export interface CreateComponentOptions<StyleProps> {
   /** 컴포넌트 프로퍼티 정의 */
   props: {
     [K in keyof StyleProps]?: PropDefinition;
@@ -70,7 +70,7 @@ export function applyAttrsToElement(
  * ```ts
  * import { Button } from '@woosgem/ds-core';
  *
- * const WgButton = createLitComponent(Button, 'wg-button', {
+ * const WgButton = createComponent(Button, 'wg-button', {
  *   props: {
  *     variant: { type: String, default: 'filled' },
  *     color: { type: String, default: 'primary' },
@@ -84,13 +84,13 @@ export function applyAttrsToElement(
  * customElements.define('wg-button', WgButton);
  * ```
  */
-export function createLitComponent<
+export function createComponent<
   StyleProps,
   Attrs,
 >(
   coreDefinition: CoreComponentDefinition<StyleProps, Attrs>,
   tagName: string,
-  options: CreateLitComponentOptions<StyleProps>
+  options: CreateComponentOptions<StyleProps>
 ): typeof LitElement {
   const { defaultProps, mapPropsToAttrs } = coreDefinition;
   const { props, events } = options;
