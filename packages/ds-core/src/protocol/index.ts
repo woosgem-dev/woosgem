@@ -70,7 +70,7 @@ export type {
   ValidationWarning,
   ContrastResult,
   OutputOptions,
-} from './schema.js';
+} from './schema';
 
 // Color transformer utilities
 export {
@@ -92,7 +92,7 @@ export {
   isDark,
   parseColor,
   isValidHex,
-} from './transformer.js';
+} from './transformer';
 
 // Transformation rules
 export {
@@ -101,7 +101,7 @@ export {
   applyTransform,
   type TransformFn,
   type DerivedTokenRule,
-} from './transformations.js';
+} from './transformations';
 
 // Generator
 export {
@@ -109,7 +109,7 @@ export {
   generateColorSet,
   generateColorSets,
   type GeneratorOptions,
-} from './generator.js';
+} from './generator';
 
 // Validation
 export {
@@ -125,7 +125,7 @@ export {
   WarningCodes,
   type ContrastValidationResult,
   type ContrastCheckResult,
-} from './validation/index.js';
+} from './validation/index';
 
 // Output generators
 export {
@@ -145,7 +145,7 @@ export {
   generateTypeScriptModule,
   generateTypeScriptFile,
   generateCSSVarHelper,
-} from './output/index.js';
+} from './output/index';
 
 // Presets
 export {
@@ -154,4 +154,4 @@ export {
   presets,
   getPreset,
   getPresetIds,
-} from './presets/index.js';
+} from './presets/index';

@@ -8,7 +8,7 @@ export {
   type ButtonVariant,
   type ButtonColor,
   type ButtonSize,
-} from './Button.js';
+} from './Button';
 
 export {
   Input,
@@ -18,7 +18,7 @@ export {
   type InputAttrs,
   type InputVariant,
   type InputSize,
-} from './Input.js';
+} from './Input';
 
 export {
   Badge,
@@ -30,7 +30,7 @@ export {
   type BadgeVariant,
   type BadgeColor,
   type BadgeSize,
-} from './Badge.js';
+} from './Badge';
 
 export {
   Checkbox,
@@ -38,7 +38,7 @@ export {
   type CheckboxStyleProps,
   type CheckboxAttrs,
   type CheckboxSize,
-} from './Checkbox.js';
+} from './Checkbox';
 
 export {
   IconButton,
@@ -52,7 +52,7 @@ export {
   type IconButtonColor,
   type IconButtonSize,
   type IconButtonShape,
-} from './IconButton.js';
+} from './IconButton';
 
 export {
   Tab,
@@ -62,7 +62,7 @@ export {
   type TabAttrs,
   type TabVariant,
   type TabSize,
-} from './Tab.js';
+} from './Tab';
 
 export {
   Avatar,
@@ -72,7 +72,7 @@ export {
   type AvatarAttrs,
   type AvatarSize,
   type AvatarShape,
-} from './Avatar.js';
+} from './Avatar';
 
 export {
   ListItem,
@@ -80,7 +80,7 @@ export {
   type ListItemStyleProps,
   type ListItemAttrs,
   type ListItemVariant,
-} from './ListItem.js';
+} from './ListItem';
 
 export {
   SegmentedControl,
@@ -91,7 +91,7 @@ export {
   type SegmentedControlSize,
   type SegmentedControlItemStyleProps,
   type SegmentedControlItemAttrs,
-} from './SegmentedControl.js';
+} from './SegmentedControl';
 
 export {
   Divider,
@@ -103,4 +103,59 @@ export {
   type DividerOrientation,
   type DividerVariant,
   type DividerSpacing,
-} from './Divider.js';
+} from './Divider';
+
+export {
+  Spinner,
+  SpinnerSizes,
+  SpinnerColors,
+  type SpinnerStyleProps,
+  type SpinnerAttrs,
+  type SpinnerSize,
+  type SpinnerColor,
+} from './Spinner';
+
+export {
+  Alert,
+  AlertVariants,
+  AlertStatuses,
+  type AlertStyleProps,
+  type AlertAttrs,
+  type AlertVariant,
+  type AlertStatus,
+} from './Alert';
+
+export {
+  Switch,
+  SwitchSizes,
+  SwitchColors,
+  type SwitchStyleProps,
+  type SwitchAttrs,
+  type SwitchSize,
+  type SwitchColor,
+} from './Switch';
+
+export {
+  Textarea,
+  TextareaVariants,
+  TextareaSizes,
+  TextareaResizes,
+  type TextareaStyleProps,
+  type TextareaAttrs,
+  type TextareaVariant,
+  type TextareaSize,
+  type TextareaResize,
+} from './Textarea';
+
+export {
+  Radio,
+  RadioGroup,
+  RadioSizes,
+  RadioColors,
+  type RadioStyleProps,
+  type RadioAttrs,
+  type RadioSize,
+  type RadioColor,
+  type RadioGroupStyleProps,
+  type RadioGroupAttrs,
+} from './Radio';

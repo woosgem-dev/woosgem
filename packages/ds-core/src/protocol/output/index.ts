@@ -7,7 +7,7 @@ export {
   generateThemeCSS,
   generateMultiThemeCSS,
   generateCSSFile,
-} from './css-generator.js';
+} from './css-generator';
 
 export {
   generateSCSSMap,
@@ -16,7 +16,7 @@ export {
   generateSCSSFile,
   generateSCSSMixin,
   generateSCSSThemeMixins,
-} from './scss-generator.js';
+} from './scss-generator';
 
 export {
   toPascalCase,
@@ -26,4 +26,4 @@ export {
   generateTypeScriptModule,
   generateTypeScriptFile,
   generateCSSVarHelper,
-} from './ts-generator.js';
+} from './ts-generator';

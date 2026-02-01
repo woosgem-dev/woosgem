@@ -3,12 +3,12 @@
  * Pre-defined theme definitions for the design system
  */
 
-export { defaultTheme } from './default.js';
-export { darkTheme } from './dark.js';
+export { defaultTheme } from './default';
+export { darkTheme } from './dark';
 
-import { defaultTheme } from './default.js';
-import { darkTheme } from './dark.js';
-import type { ColorSetDefinition } from '../schema.js';
+import { defaultTheme } from './default';
+import { darkTheme } from './dark';
+import type { ColorSetDefinition } from '../schema';
 
 /**
  * All available preset themes

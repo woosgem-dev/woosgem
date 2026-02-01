@@ -1,19 +1,24 @@
 // Components
-export { Button, type ButtonProps } from './Button.js';
-export { Input, type InputProps } from './Input.js';
-export { Badge, type BadgeProps } from './Badge.js';
-export { Checkbox, type CheckboxProps } from './Checkbox.js';
-export { IconButton, type IconButtonProps } from './IconButton.js';
-export { Tab, type TabProps } from './Tab.js';
-export { Avatar, type AvatarProps } from './Avatar.js';
-export { ListItem, type ListItemProps } from './ListItem.js';
+export { Button, type ButtonProps } from './Button';
+export { Input, type InputProps } from './Input';
+export { Badge, type BadgeProps } from './Badge';
+export { Checkbox, type CheckboxProps } from './Checkbox';
+export { IconButton, type IconButtonProps } from './IconButton';
+export { Tab, type TabProps } from './Tab';
+export { Avatar, type AvatarProps } from './Avatar';
+export { ListItem, type ListItemProps } from './ListItem';
 export {
   SegmentedControl,
   SegmentedControlItem,
   type SegmentedControlProps,
   type SegmentedControlItemProps,
-} from './SegmentedControl.js';
-export { Divider, type DividerProps } from './Divider.js';
+} from './SegmentedControl';
+export { Divider, type DividerProps } from './Divider';
+export { Spinner, type SpinnerProps } from './Spinner';
+export { Alert, type AlertProps } from './Alert';
+export { Switch, type SwitchProps } from './Switch';
+export { Textarea, type TextareaProps } from './Textarea';
+export { Radio, RadioGroup, type RadioProps, type RadioGroupProps } from './Radio';
 
 // Factory (for advanced usage)
-export { createComponent } from './createComponent.js';
+export { createComponent } from './createComponent';

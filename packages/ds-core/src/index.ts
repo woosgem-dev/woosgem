@@ -5,13 +5,13 @@ export type {
   ExtractAttrs,
   ExtractTag,
   Prettify,
-} from './types.js';
+} from './types';
 
 // Components
-export * from './components/index.js';
+export * from './components/index';
 
 // Tokens
-export * as tokens from './tokens/index.js';
+export * as tokens from './tokens/index';
 
 // Color Set Protocol (CSP)
-export * from './protocol/index.js';
+export * from './protocol/index';

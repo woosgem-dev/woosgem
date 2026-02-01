@@ -7,7 +7,7 @@ export {
   isValidColorSetDefinition,
   ErrorCodes,
   WarningCodes,
-} from './schema-validator.js';
+} from './schema-validator';
 
 export {
   checkContrast,
@@ -17,7 +17,7 @@ export {
   WCAG,
   type ContrastValidationResult,
   type ContrastCheckResult,
-} from './contrast-validator.js';
+} from './contrast-validator';
 
 // Zod-based validation
 export {
@@ -30,11 +30,11 @@ export {
   safeValidateColorSet,
   isColorSetDefinition,
   type ColorSetDefinitionInput,
-} from './zod-schema.js';
+} from './zod-schema';
 
-import type { ColorSetDefinition, ValidationResult, ValidationWarning } from '../schema.js';
-import { validateColorSetSchema } from './schema-validator.js';
-import { validateDefinitionContrast } from './contrast-validator.js';
+import type { ColorSetDefinition, ValidationResult, ValidationWarning } from '../schema';
+import { validateColorSetSchema } from './schema-validator';
+import { validateDefinitionContrast } from './contrast-validator';
 
 /**
  * Comprehensive validation of a color set definition
