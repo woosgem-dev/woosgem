@@ -1,0 +1,134 @@
+@use '../tokens' as tokens;
+
+.switch {
+  // Reset
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+
+  // Base styles
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: tokens.$radius-full;
+  background-color: var(--wg-switch-bg, #{tokens.$border});
+  transition:
+    background-color tokens.$transition-fast,
+    box-shadow tokens.$transition-fast;
+  position: relative;
+
+  // Focus state
+  &:focus-visible {
+    outline: tokens.$focus-ring-width solid tokens.$focus-ring-color;
+    outline-offset: tokens.$focus-ring-offset;
+  }
+
+  // Thumb
+  &::after {
+    content: '';
+    display: block;
+    border-radius: tokens.$radius-full;
+    background-color: var(--wg-switch-thumb, #{tokens.$background});
+    box-shadow: tokens.$shadow-sm;
+    transition: transform tokens.$transition-fast;
+  }
+
+  // ===================
+  // Sizes
+  // ===================
+  &[data-size='sm'] {
+    width: 32px;
+    height: 18px;
+    padding: 2px;
+
+    &::after {
+      width: 14px;
+      height: 14px;
+    }
+
+    &[data-state='checked'],
+    &[data-state='checked-disabled'] {
+      &::after {
+        transform: translateX(14px);
+      }
+    }
+  }
+
+  &[data-size='md'] {
+    width: 44px;
+    height: 24px;
+    padding: 3px;
+
+    &::after {
+      width: 18px;
+      height: 18px;
+    }
+
+    &[data-state='checked'],
+    &[data-state='checked-disabled'] {
+      &::after {
+        transform: translateX(20px);
+      }
+    }
+  }
+
+  &[data-size='lg'] {
+    width: 56px;
+    height: 30px;
+    padding: 3px;
+
+    &::after {
+      width: 24px;
+      height: 24px;
+    }
+
+    &[data-state='checked'],
+    &[data-state='checked-disabled'] {
+      &::after {
+        transform: translateX(26px);
+      }
+    }
+  }
+
+  // ===================
+  // States
+  // ===================
+  &:hover:not(:disabled):not([data-state='disabled']):not([data-state='checked-disabled']) {
+    --wg-switch-bg: #{tokens.$border-hover};
+  }
+
+  &[data-state='checked'] {
+    --wg-switch-bg: var(--wg-switch-checked-bg, #{tokens.$primary});
+
+    &:hover:not(:disabled) {
+      --wg-switch-bg: var(--wg-switch-checked-hover, #{tokens.$primary-hover});
+    }
+  }
+
+  &[data-state='disabled'],
+  &[data-state='checked-disabled'] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  // ===================
+  // Colors
+  // ===================
+  &[data-color='primary'] {
+    --wg-switch-checked-bg: #{tokens.$primary};
+    --wg-switch-checked-hover: #{tokens.$primary-hover};
+  }
+
+  &[data-color='secondary'] {
+    --wg-switch-checked-bg: #{tokens.$secondary};
+    --wg-switch-checked-hover: #{tokens.$secondary-hover};
+  }
+
+  &[data-color='success'] {
+    --wg-switch-checked-bg: #{tokens.$success};
+    --wg-switch-checked-hover: #{tokens.$success-hover};
+  }
+}

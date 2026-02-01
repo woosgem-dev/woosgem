@@ -1,0 +1,154 @@
+@use '../tokens' as tokens;
+
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: tokens.$spacing-3;
+  padding: tokens.$spacing-4;
+  border-radius: tokens.$radius-8;
+  font-family: tokens.$font-family-default;
+  font-size: tokens.$font-size-14;
+  line-height: tokens.$line-height-normal;
+
+  background-color: var(--wg-alert-bg, #{tokens.$background-muted});
+  color: var(--wg-alert-color, #{tokens.$text});
+  border: 1px solid var(--wg-alert-border, transparent);
+
+  // Icon slot
+  .alert-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: var(--wg-alert-icon, currentColor);
+  }
+
+  // Content
+  .alert-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .alert-title {
+    font-weight: tokens.$font-weight-semibold;
+    margin-bottom: tokens.$spacing-1;
+  }
+
+  .alert-description {
+    color: var(--wg-alert-description, #{tokens.$text-muted});
+  }
+
+  // Action slot (close button, etc.)
+  .alert-action {
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  // ===================
+  // Filled Variant
+  // ===================
+  &[data-variant='filled'] {
+    &[data-status='info'] {
+      --wg-alert-bg: #{tokens.$info};
+      --wg-alert-color: #{tokens.$text-inverse};
+      --wg-alert-description: #{tokens.$text-inverse};
+      --wg-alert-icon: #{tokens.$text-inverse};
+    }
+
+    &[data-status='success'] {
+      --wg-alert-bg: #{tokens.$success};
+      --wg-alert-color: #{tokens.$text-inverse};
+      --wg-alert-description: #{tokens.$text-inverse};
+      --wg-alert-icon: #{tokens.$text-inverse};
+    }
+
+    &[data-status='warning'] {
+      --wg-alert-bg: #{tokens.$warning};
+      --wg-alert-color: #{tokens.$text};
+      --wg-alert-description: #{tokens.$text};
+      --wg-alert-icon: #{tokens.$text};
+    }
+
+    &[data-status='error'] {
+      --wg-alert-bg: #{tokens.$danger};
+      --wg-alert-color: #{tokens.$text-inverse};
+      --wg-alert-description: #{tokens.$text-inverse};
+      --wg-alert-icon: #{tokens.$text-inverse};
+    }
+  }
+
+  // ===================
+  // Outline Variant
+  // ===================
+  &[data-variant='outline'] {
+    --wg-alert-bg: transparent;
+
+    &[data-status='info'] {
+      --wg-alert-border: #{tokens.$info};
+      --wg-alert-color: #{tokens.$info};
+      --wg-alert-icon: #{tokens.$info};
+    }
+
+    &[data-status='success'] {
+      --wg-alert-border: #{tokens.$success};
+      --wg-alert-color: #{tokens.$success};
+      --wg-alert-icon: #{tokens.$success};
+    }
+
+    &[data-status='warning'] {
+      --wg-alert-border: #{tokens.$warning};
+      --wg-alert-color: #{tokens.$warning};
+      --wg-alert-icon: #{tokens.$warning};
+    }
+
+    &[data-status='error'] {
+      --wg-alert-border: #{tokens.$danger};
+      --wg-alert-color: #{tokens.$danger};
+      --wg-alert-icon: #{tokens.$danger};
+    }
+  }
+
+  // ===================
+  // Subtle Variant (default)
+  // ===================
+  &[data-variant='subtle'] {
+    &[data-status='info'] {
+      --wg-alert-bg: #{tokens.$blue-light};
+      --wg-alert-color: #{tokens.$info};
+      --wg-alert-icon: #{tokens.$info};
+      --wg-alert-description: #{tokens.$text};
+    }
+
+    &[data-status='success'] {
+      --wg-alert-bg: #{tokens.$green-light};
+      --wg-alert-color: #{tokens.$success};
+      --wg-alert-icon: #{tokens.$success};
+      --wg-alert-description: #{tokens.$text};
+    }
+
+    &[data-status='warning'] {
+      --wg-alert-bg: #{tokens.$yellow-light};
+      --wg-alert-color: #{tokens.$warning};
+      --wg-alert-icon: #{tokens.$warning};
+      --wg-alert-description: #{tokens.$text};
+    }
+
+    &[data-status='error'] {
+      --wg-alert-bg: #{tokens.$red-light};
+      --wg-alert-color: #{tokens.$danger};
+      --wg-alert-icon: #{tokens.$danger};
+      --wg-alert-description: #{tokens.$text};
+    }
+  }
+
+  // Closable
+  &[data-closable] {
+    padding-right: tokens.$spacing-10;
+    position: relative;
+
+    .alert-close {
+      position: absolute;
+      top: tokens.$spacing-3;
+      right: tokens.$spacing-3;
+    }
+  }
+}

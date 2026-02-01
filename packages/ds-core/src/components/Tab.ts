@@ -9,10 +9,15 @@ export type TabVariant = (typeof TabVariants)[number];
 export const TabSizes = ['sm', 'md', 'lg'] as const;
 export type TabSize = (typeof TabSizes)[number];
 
+/** Tab color options */
+export const TabColors = ['primary', 'secondary'] as const;
+export type TabColor = (typeof TabColors)[number];
+
 /** Style props for Tab component */
 export interface TabStyleProps {
   variant?: TabVariant;
   size?: TabSize;
+  color?: TabColor;
   selected?: boolean;
   disabled?: boolean;
   fullWidth?: boolean;
@@ -23,6 +28,7 @@ export interface TabAttrs {
   class: string;
   'data-variant': TabVariant;
   'data-size': TabSize;
+  'data-color': TabColor;
   'data-state'?: 'selected' | 'disabled' | undefined;
   'data-full-width'?: boolean | undefined;
   disabled?: boolean | undefined;
@@ -37,6 +43,7 @@ export const Tab = {
   defaultProps: {
     variant: 'underline',
     size: 'md',
+    color: 'primary',
     selected: false,
     disabled: false,
     fullWidth: false,
@@ -45,6 +52,7 @@ export const Tab = {
   propTypes: {
     variant: TabVariants,
     size: TabSizes,
+    color: TabColors,
   },
 
   mapPropsToAttrs: (props: TabStyleProps): TabAttrs => {
@@ -54,6 +62,7 @@ export const Tab = {
       role: 'tab',
       'data-variant': merged.variant,
       'data-size': merged.size,
+      'data-color': merged.color,
       'data-state': merged.selected ? 'selected' : merged.disabled ? 'disabled' : undefined,
       'data-full-width': merged.fullWidth || undefined,
       'aria-selected': merged.selected || undefined,

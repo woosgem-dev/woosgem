@@ -27,9 +27,9 @@
     box-shadow tokens.$transition-fast;
 
   // CSS custom properties for variant colors
-  color: var(--tab-color, #{tokens.$text});
-  background-color: var(--tab-bg, transparent);
-  border: 1px solid var(--tab-border, transparent);
+  color: var(--wg-tab-color, #{tokens.$text});
+  background-color: var(--wg-tab-bg, transparent);
+  border: 1px solid var(--wg-tab-border, transparent);
 
   // Focus state
   &:focus-visible {
@@ -74,84 +74,74 @@
   // Variants
   // ===================
 
-  // Underline variant
+  // Underline variant (default primary color)
   &[data-variant='underline'] {
-    border-bottom-width: 2px;
+    border: none;
+    border-bottom: 2px solid var(--wg-tab-border, #{tokens.$border});
     border-radius: 0;
+    --wg-tab-color: #{tokens.$text-muted};
+    --wg-tab-border: #{tokens.$border};
 
-    &[data-color='primary'] {
-      --tab-color: #{tokens.$text};
-      --tab-border: transparent;
-
-      &:hover:not(:disabled):not([data-state='selected']) {
-        --tab-color: #{tokens.$primary};
-      }
-
-      &[data-state='selected'] {
-        --tab-color: #{tokens.$primary};
-        --tab-border: #{tokens.$primary};
-      }
+    &:hover:not(:disabled):not([data-state='selected']):not([data-state='disabled']) {
+      --wg-tab-color: #{tokens.$text};
+      --wg-tab-border: #{tokens.$border-hover};
     }
 
+    &[data-state='selected'] {
+      --wg-tab-color: #{tokens.$primary};
+      --wg-tab-border: #{tokens.$primary};
+    }
+
+    &:disabled,
+    &[data-state='disabled'] {
+      --wg-tab-color: #{tokens.$text-subtle};
+      --wg-tab-border: #{tokens.$border};
+    }
+
+    // Secondary color override
     &[data-color='secondary'] {
-      --tab-color: #{tokens.$text};
-      --tab-border: transparent;
-
-      &:hover:not(:disabled):not([data-state='selected']) {
-        --tab-color: #{tokens.$text};
-      }
-
       &[data-state='selected'] {
-        --tab-color: #{tokens.$text};
-        --tab-border: #{tokens.$secondary};
+        --wg-tab-color: #{tokens.$secondary};
+        --wg-tab-border: #{tokens.$secondary};
       }
     }
   }
 
-  // Filled variant
+  // Filled variant (default primary color)
   &[data-variant='filled'] {
     border-radius: tokens.$radius-8;
+    --wg-tab-bg: transparent;
+    --wg-tab-color: #{tokens.$text};
 
-    &[data-color='primary'] {
-      --tab-bg: transparent;
-      --tab-color: #{tokens.$text};
+    &:hover:not(:disabled):not([data-state='selected']) {
+      --wg-tab-bg: #{tokens.$background-muted};
+    }
 
-      &:hover:not(:disabled):not([data-state='selected']) {
-        --tab-bg: #{tokens.$background-muted};
+    &[data-state='selected'] {
+      --wg-tab-bg: #{tokens.$primary};
+      --wg-tab-color: #{tokens.$text-inverse};
+
+      &:hover:not(:disabled) {
+        --wg-tab-bg: #{tokens.$primary-hover};
       }
 
-      &[data-state='selected'] {
-        --tab-bg: #{tokens.$primary};
-        --tab-color: #{tokens.$text-inverse};
-
-        &:hover:not(:disabled) {
-          --tab-bg: #{tokens.$primary-hover};
-        }
-
-        &:active:not(:disabled) {
-          --tab-bg: #{tokens.$primary-active};
-        }
+      &:active:not(:disabled) {
+        --wg-tab-bg: #{tokens.$primary-active};
       }
     }
 
+    // Secondary color override
     &[data-color='secondary'] {
-      --tab-bg: transparent;
-      --tab-color: #{tokens.$text};
-
-      &:hover:not(:disabled):not([data-state='selected']) {
-        --tab-bg: #{tokens.$background-muted};
-      }
-
       &[data-state='selected'] {
-        --tab-bg: #{tokens.$secondary};
-        --tab-color: #{tokens.$text-inverse};
+        --wg-tab-bg: #{tokens.$secondary};
+        --wg-tab-color: #{tokens.$text-inverse};
 
         &:hover:not(:disabled) {
-          --tab-bg: #{tokens.$secondary-hover};
+          --wg-tab-bg: #{tokens.$secondary-hover};
         }
 
         &:active:not(:disabled) {
-          --tab-bg: #{tokens.$secondary-active};
+          --wg-tab-bg: #{tokens.$secondary-active};
         }
       }
     }

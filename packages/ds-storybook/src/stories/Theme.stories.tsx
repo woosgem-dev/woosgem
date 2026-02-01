@@ -8,7 +8,6 @@ import { Button, Badge, Input, Tab, Avatar, Divider } from '@woosgem/ds-react';
  * Available themes:
  * - default (light theme)
  * - dark (dark theme)
- * - crypto (crypto-themed UI)
  */
 const meta: Meta = {
   title: 'Design System/Theme',
@@ -22,20 +21,21 @@ export default meta;
 type Story = StoryObj;
 
 const ThemeShowcase: React.FC<{ theme: string }> = ({ theme }) => {
+  const isDark = theme === 'dark';
   return (
     <div
       data-theme={theme}
       style={{
         padding: '32px',
         minHeight: '400px',
-        background: 'var(--wg-color-bg-primary, #ffffff)',
-        color: 'var(--wg-color-text-primary, #000000)',
+        background: isDark ? '#1A1A1A' : 'var(--wg-color-background, #ffffff)',
+        color: isDark ? '#FFFFFF' : 'var(--wg-color-text, #000000)',
       }}
     >
       <h2 style={{ marginBottom: '8px', fontSize: '24px', fontWeight: 600 }}>
         {theme.charAt(0).toUpperCase() + theme.slice(1)} Theme
       </h2>
-      <p style={{ marginBottom: '24px', color: 'var(--wg-color-text-secondary, #666666)' }}>
+      <p style={{ marginBottom: '24px', color: isDark ? '#C4C4C4' : 'var(--wg-color-text-muted, #666666)' }}>
         Preview of all components in {theme} theme
       </p>
 
@@ -111,15 +111,14 @@ export const AllThemes: Story = {
       <ThemeShowcase theme="default" />
       <Divider spacing="none" />
       <ThemeShowcase theme="dark" />
-      <Divider spacing="none" />
-      <ThemeShowcase theme="crypto" />
     </div>
   ),
 };
 
 export const ThemeSwitcher: Story = {
   render: () => {
-    const [theme, setTheme] = useState<'default' | 'dark' | 'crypto'>('default');
+    const [theme, setTheme] = useState<'default' | 'dark'>('default');
+    const isDark = theme === 'dark';
 
     return (
       <div
@@ -127,8 +126,8 @@ export const ThemeSwitcher: Story = {
         style={{
           padding: '32px',
           minHeight: '100vh',
-          background: 'var(--wg-color-bg-primary, #ffffff)',
-          color: 'var(--wg-color-text-primary, #000000)',
+          background: isDark ? '#1A1A1A' : '#ffffff',
+          color: isDark ? '#FFFFFF' : '#000000',
           transition: 'background-color 0.3s ease, color 0.3s ease',
         }}
       >
@@ -136,7 +135,7 @@ export const ThemeSwitcher: Story = {
           <h1 style={{ marginBottom: '8px', fontSize: '32px', fontWeight: 700 }}>
             Theme Switcher Demo
           </h1>
-          <p style={{ marginBottom: '24px', color: 'var(--wg-color-text-secondary, #666666)' }}>
+          <p style={{ marginBottom: '24px', color: isDark ? '#C4C4C4' : '#666666' }}>
             Click the buttons below to switch between themes
           </p>
 
@@ -156,13 +155,6 @@ export const ThemeSwitcher: Story = {
             >
               Dark Theme
             </Button>
-            <Button
-              variant={theme === 'crypto' ? 'filled' : 'outline'}
-              color="primary"
-              onClick={() => setTheme('crypto')}
-            >
-              Crypto Theme
-            </Button>
           </div>
 
           {/* Current Theme Info */}
@@ -170,7 +162,7 @@ export const ThemeSwitcher: Story = {
             style={{
               padding: '24px',
               borderRadius: '12px',
-              background: 'var(--wg-color-bg-secondary, #f5f5f5)',
+              background: isDark ? '#121212' : '#f5f5f5',
               marginBottom: '32px',
             }}
           >
@@ -179,7 +171,7 @@ export const ThemeSwitcher: Story = {
                 Current Theme: {theme}
               </Badge>
             </div>
-            <p style={{ color: 'var(--wg-color-text-secondary, #666666)', marginBottom: '16px' }}>
+            <p style={{ color: isDark ? '#C4C4C4' : '#666666', marginBottom: '16px' }}>
               Themes are applied using the <code>data-theme</code> attribute. All colors update automatically
               based on CSS custom properties.
             </p>
@@ -187,7 +179,7 @@ export const ThemeSwitcher: Story = {
               style={{
                 display: 'block',
                 padding: '12px',
-                background: 'var(--wg-color-bg-primary, #ffffff)',
+                background: isDark ? '#1A1A1A' : '#ffffff',
                 borderRadius: '8px',
                 fontSize: '14px',
                 fontFamily: 'monospace',
@@ -257,7 +249,7 @@ export const ThemeSwitcher: Story = {
                 style={{
                   padding: '24px',
                   borderRadius: '12px',
-                  background: 'var(--wg-color-bg-secondary, #f5f5f5)',
+                  background: isDark ? '#121212' : '#f5f5f5',
                   maxWidth: '400px',
                 }}
               >
@@ -267,7 +259,7 @@ export const ThemeSwitcher: Story = {
                     <h4 style={{ fontSize: '18px', fontWeight: 600, marginBottom: '4px' }}>
                       John Doe
                     </h4>
-                    <p style={{ fontSize: '14px', color: 'var(--wg-color-text-secondary, #666666)' }}>
+                    <p style={{ fontSize: '14px', color: isDark ? '#C4C4C4' : '#666666' }}>
                       john.doe@example.com
                     </p>
                   </div>
@@ -293,8 +285,4 @@ export const DefaultTheme: Story = {
 
 export const DarkTheme: Story = {
   render: () => <ThemeShowcase theme="dark" />,
-};
-
-export const CryptoTheme: Story = {
-  render: () => <ThemeShowcase theme="crypto" />,
 };

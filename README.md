@@ -3,10 +3,11 @@
 ### Build & Quality
 [![CI](https://github.com/hhk9292/woosgem/actions/workflows/test.yml/badge.svg)](https://github.com/hhk9292/woosgem/actions/workflows/test.yml)
 [![Tests](https://img.shields.io/badge/tests-1136%20passed-brightgreen)](./docs/test-report.md)
-[![Coverage](https://img.shields.io/badge/coverage-68%25-brightgreen)](./docs/test-report.md)
+[![Coverage](https://img.shields.io/badge/coverage-62%25-brightgreen)](./docs/test-report.md)
 
 ### Project Status
-[![Components](https://img.shields.io/badge/components-10-blue)](./docs/roadmap.md)
+[![Components](https://img.shields.io/badge/components-15-blue)](./docs/roadmap.md)
+[![Storybook](https://img.shields.io/badge/stories-106-blueviolet)](./packages/ds-storybook)
 [![Vibe Coding](https://img.shields.io/badge/Vibe%20Coding-Claude%20Code-orange)](https://claude.ai/code)
 [![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org)
 [![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
@@ -94,23 +95,43 @@ export default App;
 
 ## 컴포넌트
 
-- **Button** - 다양한 스타일과 크기를 지원하는 버튼
-- **IconButton** - 아이콘 전용 버튼
-- **Input** - 텍스트 입력 필드
-- **Checkbox** - 체크박스
-- **Badge** - 상태 표시 배지
-- **Tab** - 탭 네비게이션
-- **Avatar** - 사용자 아바타
+현재 **15개 컴포넌트**가 제공되며, 모두 React와 Vue 버전을 지원합니다.
+
+### Action (2)
+- **Button** - filled/outline/ghost/link 변형, 6가지 색상 (primary/secondary/danger/success/warning/info)
+- **IconButton** - 아이콘 전용 버튼, 3가지 형태 (circle/square/none)
+
+### Form (5)
+- **Input** - outline/filled/underline 변형, error/success 상태
+- **Textarea** - outline/filled 변형, resize 옵션 (none/vertical/horizontal/both)
+- **Checkbox** - headless compound 패턴
+- **Radio** - RadioGroup 포함, horizontal/vertical 레이아웃
+- **Switch** - 토글 스위치, 3가지 색상 (primary/secondary/success)
+
+### Feedback (2)
+- **Alert** - info/success/warning/error 상태, filled/outline/subtle 변형, closable 옵션
+- **Spinner** - 로딩 인디케이터, 4가지 크기 (xs/sm/md/lg)
+
+### Data Display (3)
+- **Badge** - filled/outline/subtle 변형, 6가지 색상
+- **Avatar** - circle/square 형태, xs~xl 크기
 - **ListItem** - 리스트 아이템
+
+### Navigation (2)
+- **Tab** - underline/filled 변형, primary/secondary 색상
 - **SegmentedControl** - 세그먼트 컨트롤
-- **Divider** - 구분선
+
+### Layout (1)
+- **Divider** - 6가지 색상 지원 (default/muted/primary/secondary/danger/success)
+
+> 전체 컴포넌트 로드맵은 [Roadmap](./docs/roadmap.md)을 참고하세요.
 
 ## 테마 시스템
 
 ### 사용 가능한 테마
 
 - **default** - 라이트 테마 (기본)
-- **dark** - 다크 테마
+- **dark** - 다크 테마 (Carbon-inspired)
 
 ### 런타임 테마 전환
 
@@ -206,13 +227,14 @@ pnpm test:all
 ```
 woosgem/
 ├── packages/
-│   ├── ds-core/      # 컴포넌트 정의 + CSP
-│   ├── ds-react/     # React 컴포넌트
-│   ├── ds-vue/       # Vue 컴포넌트
-│   ├── ds-styles/    # SCSS 스타일 및 테마
-│   ├── ds-icons/     # SVG 아이콘 에셋
-│   ├── ds-test/      # 통합 테스트 스위트
-│   └── ds-storybook/ # Storybook 설정 및 스토리
+│   ├── ds-core/      # 컴포넌트 정의 + CSP + 토큰 시스템
+│   ├── ds-react/     # React 컴포넌트 (15개)
+│   ├── ds-vue/       # Vue 컴포넌트 (15개)
+│   ├── ds-styles/    # SCSS 스타일 및 테마 (default/dark)
+│   ├── ds-icons/     # SVG 아이콘 에셋 (sm/md/lg)
+│   ├── ds-test/      # 통합 테스트 스위트 (1,136개 테스트)
+│   ├── ds-storybook/ # Storybook (106개 스토리)
+│   └── utils/        # 유틸리티 함수
 ├── turbo.json         # Turborepo 설정
 └── pnpm-workspace.yaml
 ```

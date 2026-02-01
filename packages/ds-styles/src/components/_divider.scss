@@ -4,13 +4,13 @@
   // Base styles
   display: block;
   flex-shrink: 0;
-  background-color: var(--divider-color, #{tokens.$border});
+  background-color: var(--wg-divider-color, #{tokens.$border});
   border: none;
   margin: 0;
   padding: 0;
 
   // CSS custom properties
-  --divider-color: #{tokens.$border};
+  --wg-divider-color: #{tokens.$border};
 
   // ===================
   // Orientations
@@ -29,7 +29,7 @@
   // Variants
   // ===================
   &[data-variant='solid'] {
-    background-color: var(--divider-color);
+    background-color: var(--wg-divider-color);
     border: none;
   }
 
@@ -37,12 +37,12 @@
     background-color: transparent;
 
     &[data-orientation='horizontal'] {
-      border-top: 1px dashed var(--divider-color);
+      border-top: 1px dashed var(--wg-divider-color);
       height: 0;
     }
 
     &[data-orientation='vertical'] {
-      border-left: 1px dashed var(--divider-color);
+      border-left: 1px dashed var(--wg-divider-color);
       width: 0;
     }
   }
@@ -87,27 +87,27 @@
   // ===================
   // Color variants
   // ===================
-  &[data-color='primary'] {
-    --divider-color: #{tokens.$primary};
-  }
-
-  &[data-color='danger'] {
-    --divider-color: #{tokens.$danger};
-  }
-
-  &[data-color='success'] {
-    --divider-color: #{tokens.$success};
-  }
-
-  &[data-color='warning'] {
-    --divider-color: #{tokens.$warning};
-  }
-
-  &[data-color='info'] {
-    --divider-color: #{tokens.$info};
+  &[data-color='default'] {
+    --wg-divider-color: #{tokens.$border};
   }
 
   &[data-color='muted'] {
-    --divider-color: #{tokens.$text-muted};
+    --wg-divider-color: #{tokens.$border-hover};
+  }
+
+  &[data-color='primary'] {
+    --wg-divider-color: #{tokens.$primary};
+  }
+
+  &[data-color='secondary'] {
+    --wg-divider-color: #{tokens.$secondary};
+  }
+
+  &[data-color='danger'] {
+    --wg-divider-color: #{tokens.$danger};
+  }
+
+  &[data-color='success'] {
+    --wg-divider-color: #{tokens.$success};
   }
 }

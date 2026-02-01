@@ -28,9 +28,9 @@
     box-shadow tokens.$transition-fast;
 
   // CSS custom properties for variant colors
-  background-color: var(--btn-bg, transparent);
-  color: var(--btn-color, inherit);
-  border: 1px solid var(--btn-border, transparent);
+  background-color: var(--wg-btn-bg, transparent);
+  color: var(--wg-btn-color, inherit);
+  border: 1px solid var(--wg-btn-border, transparent);
 
   // Focus state
   &:focus-visible {
@@ -60,7 +60,7 @@
       border-right-color: transparent;
       border-radius: tokens.$radius-full;
       animation: btn-spin 0.6s linear infinite;
-      color: var(--btn-color, inherit);
+      color: var(--wg-btn-color, inherit);
     }
   }
 
@@ -103,284 +103,320 @@
   // Filled variant
   &[data-variant='filled'] {
     &[data-color='primary'] {
-      --btn-bg: #{tokens.$primary};
-      --btn-color: #{tokens.$text-inverse};
+      --wg-btn-bg: #{tokens.$primary};
+      --wg-btn-color: #{tokens.$text-inverse};
 
       &:hover:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$primary-hover};
+        --wg-btn-bg: #{tokens.$primary-hover};
       }
 
       &:active:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$primary-active};
+        --wg-btn-bg: #{tokens.$primary-active};
       }
     }
 
     &[data-color='secondary'] {
-      --btn-bg: #{tokens.$secondary};
-      --btn-color: #{tokens.$text-inverse};
+      --wg-btn-bg: #{tokens.$secondary};
+      --wg-btn-color: #{tokens.$text-inverse};
 
       &:hover:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$secondary-hover};
+        --wg-btn-bg: #{tokens.$secondary-hover};
       }
 
       &:active:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$secondary-active};
+        --wg-btn-bg: #{tokens.$secondary-active};
       }
     }
 
     &[data-color='danger'] {
-      --btn-bg: #{tokens.$danger};
-      --btn-color: #{tokens.$text-inverse};
+      --wg-btn-bg: #{tokens.$danger};
+      --wg-btn-color: #{tokens.$text-inverse};
 
       &:hover:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$danger-hover};
+        --wg-btn-bg: #{tokens.$danger-hover};
       }
 
       &:active:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$danger-active};
+        --wg-btn-bg: #{tokens.$danger-active};
       }
     }
 
     &[data-color='success'] {
-      --btn-bg: #{tokens.$success};
-      --btn-color: #{tokens.$text-inverse};
+      --wg-btn-bg: #{tokens.$success};
+      --wg-btn-color: #{tokens.$text-inverse};
 
       &:hover:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$success-hover};
+        --wg-btn-bg: #{tokens.$success-hover};
       }
 
       &:active:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$success-active};
+        --wg-btn-bg: #{tokens.$success-active};
       }
     }
 
     &[data-color='warning'] {
-      --btn-bg: #{tokens.$warning};
-      --btn-color: #{tokens.$text};
+      --wg-btn-bg: #{tokens.$warning};
+      --wg-btn-color: #{tokens.$text};
 
       &:hover:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$warning-hover};
+        --wg-btn-bg: #{tokens.$warning-hover};
       }
 
       &:active:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$warning-active};
+        --wg-btn-bg: #{tokens.$warning-active};
       }
     }
 
     &[data-color='info'] {
-      --btn-bg: #{tokens.$info};
-      --btn-color: #{tokens.$text-inverse};
+      --wg-btn-bg: #{tokens.$info};
+      --wg-btn-color: #{tokens.$text-inverse};
 
       &:hover:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$info-hover};
+        --wg-btn-bg: #{tokens.$info-hover};
       }
 
       &:active:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$info-active};
+        --wg-btn-bg: #{tokens.$info-active};
       }
     }
   }
 
   // Outline variant
   &[data-variant='outline'] {
-    --btn-bg: transparent;
+    --wg-btn-bg: transparent;
 
     &[data-color='primary'] {
-      --btn-border: #{tokens.$primary};
-      --btn-color: #{tokens.$primary};
+      --wg-btn-border: #{tokens.$primary};
+      --wg-btn-color: #{tokens.$primary};
 
       &:hover:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$primary-alpha-10};
+        --wg-btn-bg: #{tokens.$primary-alpha-10};
       }
 
       &:active:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$primary-alpha-20};
+        --wg-btn-bg: #{tokens.$primary-alpha-20};
       }
     }
 
     &[data-color='secondary'] {
-      --btn-border: #{tokens.$border};
-      --btn-color: #{tokens.$text};
+      --wg-btn-border: #{tokens.$border};
+      --wg-btn-color: #{tokens.$text};
 
       &:hover:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$background-muted};
-        --btn-border: #{tokens.$border-hover};
+        --wg-btn-bg: #{tokens.$background-muted};
+        --wg-btn-border: #{tokens.$border-hover};
       }
 
       &:active:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$background-muted-darken-3};
+        --wg-btn-bg: #{tokens.$background-muted-darken-3};
       }
     }
 
     &[data-color='danger'] {
-      --btn-border: #{tokens.$danger};
-      --btn-color: #{tokens.$danger};
+      --wg-btn-border: #{tokens.$danger};
+      --wg-btn-color: #{tokens.$danger};
 
       &:hover:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$red-light};
+        --wg-btn-bg: #{tokens.$red-light};
       }
 
       &:active:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$red-light-darken-5};
+        --wg-btn-bg: #{tokens.$red-light-darken-5};
       }
     }
 
     &[data-color='success'] {
-      --btn-border: #{tokens.$success};
-      --btn-color: #{tokens.$success};
+      --wg-btn-border: #{tokens.$success};
+      --wg-btn-color: #{tokens.$success};
 
       &:hover:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$green-light};
+        --wg-btn-bg: #{tokens.$green-light};
       }
 
       &:active:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$green-light-darken-5};
+        --wg-btn-bg: #{tokens.$green-light-darken-5};
       }
     }
 
     &[data-color='warning'] {
-      --btn-border: #{tokens.$warning};
-      --btn-color: #{tokens.$warning};
+      --wg-btn-border: #{tokens.$warning};
+      --wg-btn-color: #{tokens.$warning};
 
       &:hover:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$yellow-light};
+        --wg-btn-bg: #{tokens.$yellow-light};
       }
 
       &:active:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$yellow-light-darken-5};
+        --wg-btn-bg: #{tokens.$yellow-light-darken-5};
       }
     }
 
     &[data-color='info'] {
-      --btn-border: #{tokens.$info};
-      --btn-color: #{tokens.$info};
+      --wg-btn-border: #{tokens.$info};
+      --wg-btn-color: #{tokens.$info};
 
       &:hover:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$blue-light};
+        --wg-btn-bg: #{tokens.$blue-light};
       }
 
       &:active:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$blue-light-darken-5};
+        --wg-btn-bg: #{tokens.$blue-light-darken-5};
       }
     }
   }
 
   // Ghost variant
   &[data-variant='ghost'] {
-    --btn-bg: transparent;
-    --btn-border: transparent;
+    --wg-btn-bg: transparent;
+    --wg-btn-border: transparent;
 
     &[data-color='primary'] {
-      --btn-color: #{tokens.$primary};
+      --wg-btn-color: #{tokens.$primary};
 
       &:hover:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$primary-alpha-10};
+        --wg-btn-bg: #{tokens.$primary-alpha-10};
       }
 
       &:active:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$primary-alpha-20};
+        --wg-btn-bg: #{tokens.$primary-alpha-20};
       }
     }
 
     &[data-color='secondary'] {
-      --btn-color: #{tokens.$text};
+      --wg-btn-color: #{tokens.$text};
 
       &:hover:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$background-muted};
+        --wg-btn-bg: #{tokens.$background-muted};
       }
 
       &:active:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$background-muted-darken-3};
+        --wg-btn-bg: #{tokens.$background-muted-darken-3};
       }
     }
 
     &[data-color='danger'] {
-      --btn-color: #{tokens.$danger};
+      --wg-btn-color: #{tokens.$danger};
 
       &:hover:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$red-light};
+        --wg-btn-bg: #{tokens.$red-light};
       }
 
       &:active:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$red-light-darken-5};
+        --wg-btn-bg: #{tokens.$red-light-darken-5};
       }
     }
 
     &[data-color='success'] {
-      --btn-color: #{tokens.$success};
+      --wg-btn-color: #{tokens.$success};
 
       &:hover:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$green-light};
+        --wg-btn-bg: #{tokens.$green-light};
       }
 
       &:active:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$green-light-darken-5};
+        --wg-btn-bg: #{tokens.$green-light-darken-5};
       }
     }
 
     &[data-color='warning'] {
-      --btn-color: #{tokens.$warning};
+      --wg-btn-color: #{tokens.$warning};
 
       &:hover:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$yellow-light};
+        --wg-btn-bg: #{tokens.$yellow-light};
       }
 
       &:active:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$yellow-light-darken-5};
+        --wg-btn-bg: #{tokens.$yellow-light-darken-5};
       }
     }
 
     &[data-color='info'] {
-      --btn-color: #{tokens.$info};
+      --wg-btn-color: #{tokens.$info};
 
       &:hover:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$blue-light};
+        --wg-btn-bg: #{tokens.$blue-light};
       }
 
       &:active:not(:disabled):not([data-state='loading']) {
-        --btn-bg: #{tokens.$blue-light-darken-5};
+        --wg-btn-bg: #{tokens.$blue-light-darken-5};
       }
     }
   }
 
   // Link variant
   &[data-variant='link'] {
-    --btn-bg: transparent;
-    --btn-border: transparent;
-    --btn-color: #{tokens.$primary};
+    --wg-btn-bg: transparent;
+    --wg-btn-border: transparent;
+    --wg-btn-color: #{tokens.$primary};
     padding: 0;
     height: auto;
     text-decoration: underline;
 
     &:hover:not(:disabled):not([data-state='loading']) {
-      --btn-color: #{tokens.$primary-hover};
+      --wg-btn-color: #{tokens.$primary-hover};
     }
 
     &:active:not(:disabled):not([data-state='loading']) {
-      --btn-color: #{tokens.$primary-active};
+      --wg-btn-color: #{tokens.$primary-active};
     }
 
     &[data-color='danger'] {
-      --btn-color: #{tokens.$danger};
+      --wg-btn-color: #{tokens.$danger};
 
       &:hover:not(:disabled):not([data-state='loading']) {
-        --btn-color: #{tokens.$danger-hover};
+        --wg-btn-color: #{tokens.$danger-hover};
       }
 
       &:active:not(:disabled):not([data-state='loading']) {
-        --btn-color: #{tokens.$danger-active};
+        --wg-btn-color: #{tokens.$danger-active};
       }
     }
 
     &[data-color='secondary'] {
-      --btn-color: #{tokens.$text-muted};
+      --wg-btn-color: #{tokens.$text-muted};
 
       &:hover:not(:disabled):not([data-state='loading']) {
-        --btn-color: #{tokens.$text};
+        --wg-btn-color: #{tokens.$text};
       }
 
       &:active:not(:disabled):not([data-state='loading']) {
-        --btn-color: #{tokens.$text};
+        --wg-btn-color: #{tokens.$text};
+      }
+    }
+
+    &[data-color='success'] {
+      --wg-btn-color: #{tokens.$success};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --wg-btn-color: #{tokens.$success-hover};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --wg-btn-color: #{tokens.$success-active};
+      }
+    }
+
+    &[data-color='warning'] {
+      --wg-btn-color: #{tokens.$warning};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --wg-btn-color: #{tokens.$warning-hover};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --wg-btn-color: #{tokens.$warning-active};
+      }
+    }
+
+    &[data-color='info'] {
+      --wg-btn-color: #{tokens.$info};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --wg-btn-color: #{tokens.$info-hover};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --wg-btn-color: #{tokens.$info-active};
       }
     }
   }

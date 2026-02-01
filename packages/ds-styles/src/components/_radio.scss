@@ -1,0 +1,153 @@
+@use '../tokens' as tokens;
+
+.radio {
+  // Reset
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+
+  // Base styles
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: tokens.$radius-full;
+  border: 2px solid var(--wg-radio-border, #{tokens.$border});
+  background-color: var(--wg-radio-bg, transparent);
+  transition:
+    border-color tokens.$transition-fast,
+    background-color tokens.$transition-fast,
+    box-shadow tokens.$transition-fast;
+  position: relative;
+
+  // Inner dot
+  &::after {
+    content: '';
+    display: block;
+    border-radius: tokens.$radius-full;
+    background-color: var(--wg-radio-dot, transparent);
+    transform: scale(0);
+    transition: transform tokens.$transition-fast;
+  }
+
+  // Focus state
+  &:focus-visible {
+    outline: tokens.$focus-ring-width solid tokens.$focus-ring-color;
+    outline-offset: tokens.$focus-ring-offset;
+  }
+
+  // ===================
+  // Sizes
+  // ===================
+  &[data-size='sm'] {
+    width: 16px;
+    height: 16px;
+
+    &::after {
+      width: 6px;
+      height: 6px;
+    }
+  }
+
+  &[data-size='md'] {
+    width: 20px;
+    height: 20px;
+
+    &::after {
+      width: 8px;
+      height: 8px;
+    }
+  }
+
+  &[data-size='lg'] {
+    width: 24px;
+    height: 24px;
+
+    &::after {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  // ===================
+  // States
+  // ===================
+  &:hover:not(:disabled):not([data-state='disabled']):not([data-state='checked-disabled']) {
+    --wg-radio-border: #{tokens.$border-hover};
+  }
+
+  &[data-state='checked'] {
+    --wg-radio-border: var(--wg-radio-color, #{tokens.$primary});
+    --wg-radio-dot: var(--wg-radio-color, #{tokens.$primary});
+
+    &::after {
+      transform: scale(1);
+    }
+
+    &:hover:not(:disabled) {
+      --wg-radio-border: var(--wg-radio-hover, #{tokens.$primary-hover});
+      --wg-radio-dot: var(--wg-radio-hover, #{tokens.$primary-hover});
+    }
+  }
+
+  &[data-state='disabled'],
+  &[data-state='checked-disabled'] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  // ===================
+  // Colors
+  // ===================
+  &[data-color='primary'] {
+    --wg-radio-color: #{tokens.$primary};
+    --wg-radio-hover: #{tokens.$primary-hover};
+  }
+
+  &[data-color='secondary'] {
+    --wg-radio-color: #{tokens.$secondary};
+    --wg-radio-hover: #{tokens.$secondary-hover};
+  }
+
+  &[data-color='success'] {
+    --wg-radio-color: #{tokens.$success};
+    --wg-radio-hover: #{tokens.$success-hover};
+  }
+}
+
+.radio-group {
+  display: flex;
+  gap: tokens.$spacing-3;
+
+  &[data-orientation='vertical'] {
+    flex-direction: column;
+  }
+
+  &[data-orientation='horizontal'] {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  // RadioGroup item wrapper
+  .radio-item {
+    display: inline-flex;
+    align-items: center;
+    gap: tokens.$spacing-2;
+    cursor: pointer;
+
+    &:has(.radio:disabled),
+    &:has(.radio[data-state='disabled']),
+    &:has(.radio[data-state='checked-disabled']) {
+      cursor: not-allowed;
+    }
+  }
+
+  .radio-label {
+    font-family: tokens.$font-family-default;
+    font-size: tokens.$font-size-14;
+    color: tokens.$text;
+    user-select: none;
+  }
+}

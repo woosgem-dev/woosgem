@@ -6,7 +6,7 @@ export const ButtonVariants = ['filled', 'outline', 'ghost', 'link'] as const;
 export type ButtonVariant = (typeof ButtonVariants)[number];
 
 /** Button color options */
-export const ButtonColors = ['primary', 'secondary', 'danger', 'success'] as const;
+export const ButtonColors = ['primary', 'secondary', 'danger', 'success', 'warning', 'info'] as const;
 export type ButtonColor = (typeof ButtonColors)[number];
 
 /** Button size options */

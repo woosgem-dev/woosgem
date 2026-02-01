@@ -1,0 +1,110 @@
+@use '../tokens' as tokens;
+
+.textarea {
+  // Reset
+  appearance: none;
+  margin: 0;
+
+  // Base styles
+  display: block;
+  width: 100%;
+  min-height: 80px;
+  font-family: tokens.$font-family-default;
+  line-height: tokens.$line-height-normal;
+  background-color: var(--wg-textarea-bg, #{tokens.$background});
+  color: var(--wg-textarea-color, #{tokens.$text});
+  border: 1px solid var(--wg-textarea-border, #{tokens.$border});
+  border-radius: tokens.$radius-8;
+  transition:
+    border-color tokens.$transition-fast,
+    background-color tokens.$transition-fast,
+    box-shadow tokens.$transition-fast;
+
+  // Focus state
+  &:focus {
+    outline: none;
+    --wg-textarea-border: #{tokens.$primary};
+    box-shadow: 0 0 0 3px #{tokens.$primary-alpha-20};
+  }
+
+  // Placeholder
+  &::placeholder {
+    color: tokens.$text-subtle;
+  }
+
+  // ===================
+  // Sizes
+  // ===================
+  &[data-size='sm'] {
+    padding: tokens.$spacing-2 tokens.$spacing-3;
+    font-size: tokens.$font-size-13;
+  }
+
+  &[data-size='md'] {
+    padding: tokens.$spacing-3 tokens.$spacing-4;
+    font-size: tokens.$font-size-14;
+  }
+
+  &[data-size='lg'] {
+    padding: tokens.$spacing-4 tokens.$spacing-5;
+    font-size: tokens.$font-size-16;
+  }
+
+  // ===================
+  // Variants
+  // ===================
+  &[data-variant='outline'] {
+    --wg-textarea-bg: transparent;
+    --wg-textarea-border: #{tokens.$border};
+
+    &:hover:not(:focus):not(:disabled):not([data-state='disabled']) {
+      --wg-textarea-border: #{tokens.$border-hover};
+    }
+  }
+
+  &[data-variant='filled'] {
+    --wg-textarea-bg: #{tokens.$background-muted};
+    --wg-textarea-border: transparent;
+
+    &:hover:not(:focus):not(:disabled):not([data-state='disabled']) {
+      --wg-textarea-bg: #{tokens.$background-subtle};
+    }
+  }
+
+  // ===================
+  // Resize
+  // ===================
+  &[data-resize='none'] {
+    resize: none;
+  }
+
+  &[data-resize='vertical'] {
+    resize: vertical;
+  }
+
+  &[data-resize='horizontal'] {
+    resize: horizontal;
+  }
+
+  &[data-resize='both'] {
+    resize: both;
+  }
+
+  // ===================
+  // States
+  // ===================
+  &[data-state='error'] {
+    --wg-textarea-border: #{tokens.$danger};
+
+    &:focus {
+      box-shadow: 0 0 0 3px #{tokens.$danger-alpha-20};
+    }
+  }
+
+  &[data-state='disabled'],
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    --wg-textarea-bg: #{tokens.$background-muted};
+  }
+}
