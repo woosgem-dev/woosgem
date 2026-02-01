@@ -182,3 +182,13 @@ export {
   type IconSize,
   type IconColor,
 } from './Icon';
+
+export {
+  Overlay,
+  OverlayOpacities,
+  OverlayLevels,
+  type OverlayStyleProps,
+  type OverlayAttrs,
+  type OverlayOpacity,
+  type OverlayLevel,
+} from './Overlay';
