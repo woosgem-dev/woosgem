@@ -1,132 +1,58 @@
 /**
- * Spacing Tokens
- * Synced from ds-styles (SCSS is source of truth)
+ * Spacing Token Types
+ *
+ * 실제 값은 ds-styles에서 CSS 변수로 정의됨
  */
 
 // ===================
-// Spacing Scale (4px base unit)
+// Spacing Scale Keys
 // ===================
 
-export const spacing = {
-  0: '0',
-  1: '0.25rem',   // 4px
-  2: '0.5rem',    // 8px
-  3: '0.75rem',   // 12px
-  4: '1rem',      // 16px
-  5: '1.25rem',   // 20px
-  6: '1.5rem',    // 24px
-  7: '1.75rem',   // 28px
-  8: '2rem',      // 32px
-  9: '2.25rem',   // 36px
-  10: '2.5rem',   // 40px
-  11: '2.75rem',  // 44px
-  12: '3rem',     // 48px
-  14: '3.5rem',   // 56px
-  16: '4rem',     // 64px
-  20: '5rem',     // 80px
-  24: '6rem',     // 96px
-} as const;
+export const SpacingKeys = [
+  '0', '1', '2', '3', '4', '5', '6', '7', '8',
+  '9', '10', '11', '12', '14', '16', '20', '24',
+] as const;
 
-export type SpacingKey = keyof typeof spacing;
-export type SpacingValue = (typeof spacing)[SpacingKey];
+export type SpacingKey = (typeof SpacingKeys)[number];
 
 // ===================
-// Border Radius
+// Border Radius Keys
 // ===================
 
-export const radius = {
-  none: '0',
-  xs: '0.125rem',  // 2px
-  sm: '0.25rem',   // 4px
-  md: '0.375rem',  // 6px
-  lg: '0.5rem',    // 8px
-  xl: '0.75rem',   // 12px
-  '2xl': '1rem',   // 16px
-  full: '9999px',
-} as const;
+export const RadiusKeys = [
+  'none', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', 'full',
+] as const;
 
-export type RadiusKey = keyof typeof radius;
-export type RadiusValue = (typeof radius)[RadiusKey];
+export type RadiusKey = (typeof RadiusKeys)[number];
 
 // ===================
-// Component Sizes
+// Size Keys (Component Heights)
 // ===================
 
-export const size = {
-  xs: '1.5rem',   // 24px
-  sm: '2rem',     // 32px
-  md: '2.5rem',   // 40px
-  lg: '3rem',     // 48px
-  xl: '4rem',     // 64px
-  '2xl': '5rem',  // 80px
-} as const;
+export const SizeKeys = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] as const;
 
-export type SizeKey = keyof typeof size;
-export type SizeValue = (typeof size)[SizeKey];
+export type SizeKey = (typeof SizeKeys)[number];
 
 // ===================
-// Container Heights
-// Standard heights for interactive components (buttons, inputs, etc.)
+// Z-Index Keys
 // ===================
 
-export const container = {
-  '01': '1.5rem',   // 24px - xs (compact buttons, tags)
-  '02': '2rem',     // 32px - sm (small buttons, inputs)
-  '03': '2.5rem',   // 40px - md (default buttons, inputs)
-  '04': '3rem',     // 48px - lg (large buttons, inputs)
-  '05': '4rem',     // 64px - xl (extra large)
-  // Semantic aliases
-  xs: '1.5rem',
-  sm: '2rem',
-  md: '2.5rem',
-  lg: '3rem',
-  xl: '4rem',
-} as const;
+export const ZIndexKeys = [
+  'dropdown',
+  'sticky',
+  'fixed',
+  'modalBackdrop',
+  'modal',
+  'popover',
+  'tooltip',
+] as const;
 
-export type ContainerKey = keyof typeof container;
-export type ContainerValue = (typeof container)[ContainerKey];
+export type ZIndexKey = (typeof ZIndexKeys)[number];
 
 // ===================
-// Icon Sizes
+// Breakpoint Keys
 // ===================
 
-export const iconSize = {
-  sm: '1rem',     // 16px
-  md: '1.25rem',  // 20px
-  lg: '1.5rem',   // 24px
-} as const;
+export const BreakpointKeys = ['sm', 'md', 'lg', 'xlg', 'max'] as const;
 
-export type IconSizeKey = keyof typeof iconSize;
-export type IconSizeValue = (typeof iconSize)[IconSizeKey];
-
-// ===================
-// Z-Index Scale
-// ===================
-
-export const zIndex = {
-  dropdown: 1000,
-  sticky: 1020,
-  fixed: 1030,
-  modalBackdrop: 1040,
-  modal: 1050,
-  popover: 1060,
-  tooltip: 1070,
-} as const;
-
-export type ZIndexKey = keyof typeof zIndex;
-export type ZIndexValue = (typeof zIndex)[ZIndexKey];
-
-// ===================
-// Breakpoints
-// ===================
-
-export const breakpoints = {
-  sm: '320px',
-  md: '672px',
-  lg: '1056px',
-  xlg: '1312px',
-  max: '1584px',
-} as const;
-
-export type BreakpointKey = keyof typeof breakpoints;
-export type BreakpointValue = (typeof breakpoints)[BreakpointKey];
+export type BreakpointKey = (typeof BreakpointKeys)[number];
