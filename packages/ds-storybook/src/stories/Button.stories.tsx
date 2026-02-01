@@ -13,18 +13,36 @@ const meta: Meta<typeof Button> = {
     variant: {
       control: 'select',
       options: ['filled', 'outline', 'ghost', 'link'],
+      description: 'Visual style of the button',
+      table: { category: 'Style' },
     },
     color: {
       control: 'select',
       options: ['primary', 'secondary', 'danger', 'success'],
+      description: 'Color theme of the button',
+      table: { category: 'Style' },
     },
     size: {
       control: 'select',
       options: ['xs', 'sm', 'md', 'lg'],
+      description: 'Size of the button',
+      table: { category: 'Style' },
     },
-    disabled: { control: 'boolean' },
-    loading: { control: 'boolean' },
-    fullWidth: { control: 'boolean' },
+    disabled: {
+      control: 'boolean',
+      description: 'Disables the button',
+      table: { category: 'State' },
+    },
+    loading: {
+      control: 'boolean',
+      description: 'Shows loading state',
+      table: { category: 'State' },
+    },
+    fullWidth: {
+      control: 'boolean',
+      description: 'Makes button full width',
+      table: { category: 'Layout' },
+    },
   },
 };
 
@@ -109,6 +127,17 @@ export const Loading: Story = {
   },
 };
 
+export const LinkVariants: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+      <Button variant="link" color="primary">Primary</Button>
+      <Button variant="link" color="secondary">Secondary</Button>
+      <Button variant="link" color="danger">Danger</Button>
+      <Button variant="link" color="success">Success</Button>
+    </div>
+  ),
+};
+
 export const FullWidth: Story = {
   args: {
     children: 'Full Width Button',
@@ -121,4 +150,15 @@ export const FullWidth: Story = {
       </div>
     ),
   ],
+};
+
+export const DisabledStates: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
+      <Button disabled>Disabled</Button>
+      <Button loading>Loading</Button>
+      <Button disabled variant="outline">Disabled Outline</Button>
+      <Button loading variant="ghost">Loading Ghost</Button>
+    </div>
+  ),
 };

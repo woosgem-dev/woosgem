@@ -39,20 +39,37 @@ const meta: Meta<typeof IconButton> = {
     variant: {
       control: 'select',
       options: ['filled', 'outline', 'ghost'],
+      description: 'Visual style of the icon button',
+      table: { category: 'Style' },
     },
     color: {
       control: 'select',
       options: ['primary', 'secondary', 'danger'],
+      description: 'Color theme of the icon button',
+      table: { category: 'Style' },
     },
     size: {
       control: 'select',
       options: ['xs', 'sm', 'md', 'lg'],
+      description: 'Size of the icon button',
+      table: { category: 'Style' },
     },
     shape: {
       control: 'select',
       options: ['square', 'circle'],
+      description: 'Shape of the icon button',
+      table: { category: 'Style' },
     },
-    disabled: { control: 'boolean' },
+    disabled: {
+      control: 'boolean',
+      description: 'Disables the icon button',
+      table: { category: 'State' },
+    },
+    'aria-label': {
+      control: 'text',
+      description: 'Accessible label for the icon button (required)',
+      table: { category: 'Accessibility' },
+    },
   },
 };
 
@@ -188,6 +205,62 @@ export const Disabled: Story = {
     'aria-label': 'Add item',
     disabled: true,
   },
+};
+
+export const DisabledStates: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+      <IconButton disabled aria-label="Disabled filled">
+        <PlusIcon />
+      </IconButton>
+      <IconButton disabled variant="outline" aria-label="Disabled outline">
+        <PlusIcon />
+      </IconButton>
+      <IconButton disabled variant="ghost" aria-label="Disabled ghost">
+        <PlusIcon />
+      </IconButton>
+      <IconButton disabled shape="circle" aria-label="Disabled circle">
+        <PlusIcon />
+      </IconButton>
+    </div>
+  ),
+};
+
+export const AllSizesWithShapes: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+        <div style={{ fontSize: '14px', width: '80px' }}>Square:</div>
+        <IconButton size="xs" shape="square" aria-label="XS">
+          <CloseIcon />
+        </IconButton>
+        <IconButton size="sm" shape="square" aria-label="SM">
+          <CloseIcon />
+        </IconButton>
+        <IconButton size="md" shape="square" aria-label="MD">
+          <CloseIcon />
+        </IconButton>
+        <IconButton size="lg" shape="square" aria-label="LG">
+          <CloseIcon />
+        </IconButton>
+      </div>
+      <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+        <div style={{ fontSize: '14px', width: '80px' }}>Circle:</div>
+        <IconButton size="xs" shape="circle" aria-label="XS">
+          <CloseIcon />
+        </IconButton>
+        <IconButton size="sm" shape="circle" aria-label="SM">
+          <CloseIcon />
+        </IconButton>
+        <IconButton size="md" shape="circle" aria-label="MD">
+          <CloseIcon />
+        </IconButton>
+        <IconButton size="lg" shape="circle" aria-label="LG">
+          <CloseIcon />
+        </IconButton>
+      </div>
+    </div>
+  ),
 };
 
 export const ActionBar: Story = {

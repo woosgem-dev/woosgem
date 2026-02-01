@@ -13,15 +13,35 @@ const meta: Meta<typeof Input> = {
     variant: {
       control: 'select',
       options: ['outline', 'filled', 'underline'],
+      description: 'Visual style of the input',
+      table: { category: 'Style' },
     },
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
+      description: 'Size of the input',
+      table: { category: 'Style' },
     },
-    error: { control: 'boolean' },
-    success: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    placeholder: { control: 'text' },
+    error: {
+      control: 'boolean',
+      description: 'Shows error state',
+      table: { category: 'State' },
+    },
+    success: {
+      control: 'boolean',
+      description: 'Shows success state',
+      table: { category: 'State' },
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disables the input',
+      table: { category: 'State' },
+    },
+    placeholder: {
+      control: 'text',
+      description: 'Placeholder text',
+      table: { category: 'Content' },
+    },
   },
 };
 

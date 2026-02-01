@@ -13,14 +13,20 @@ const meta: Meta<typeof Badge> = {
     variant: {
       control: 'select',
       options: ['solid', 'outline', 'subtle'],
+      description: 'Visual style of the badge',
+      table: { category: 'Style' },
     },
     color: {
       control: 'select',
       options: ['primary', 'secondary', 'danger', 'success', 'warning', 'info'],
+      description: 'Color theme of the badge',
+      table: { category: 'Style' },
     },
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
+      description: 'Size of the badge',
+      table: { category: 'Style' },
     },
   },
 };

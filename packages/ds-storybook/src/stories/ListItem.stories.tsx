@@ -13,10 +13,24 @@ const meta: Meta<typeof ListItem> = {
     variant: {
       control: 'select',
       options: ['default', 'interactive'],
+      description: 'Visual style of the list item',
+      table: { category: 'Style' },
     },
-    selected: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    divider: { control: 'boolean' },
+    selected: {
+      control: 'boolean',
+      description: 'Whether the item is selected',
+      table: { category: 'State' },
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disables the item',
+      table: { category: 'State' },
+    },
+    divider: {
+      control: 'boolean',
+      description: 'Shows bottom divider',
+      table: { category: 'Style' },
+    },
   },
 };
 

@@ -13,14 +13,20 @@ const meta: Meta<typeof Divider> = {
     orientation: {
       control: 'select',
       options: ['horizontal', 'vertical'],
+      description: 'Orientation of the divider',
+      table: { category: 'Layout' },
     },
     variant: {
       control: 'select',
       options: ['solid', 'dashed'],
+      description: 'Visual style of the divider',
+      table: { category: 'Style' },
     },
     spacing: {
       control: 'select',
       options: ['none', 'sm', 'md', 'lg'],
+      description: 'Spacing around the divider',
+      table: { category: 'Layout' },
     },
   },
 };

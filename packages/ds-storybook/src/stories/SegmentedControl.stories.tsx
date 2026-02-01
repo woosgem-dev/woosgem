@@ -13,9 +13,19 @@ const meta: Meta<typeof SegmentedControl> = {
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
+      description: 'Size of the segmented control',
+      table: { category: 'Style' },
     },
-    fullWidth: { control: 'boolean' },
-    disabled: { control: 'boolean' },
+    fullWidth: {
+      control: 'boolean',
+      description: 'Makes control full width',
+      table: { category: 'Layout' },
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disables the entire control',
+      table: { category: 'State' },
+    },
   },
 };
 

@@ -13,14 +13,30 @@ const meta: Meta<typeof Tab> = {
     variant: {
       control: 'select',
       options: ['underline', 'filled'],
+      description: 'Visual style of the tab',
+      table: { category: 'Style' },
     },
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
+      description: 'Size of the tab',
+      table: { category: 'Style' },
     },
-    selected: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    fullWidth: { control: 'boolean' },
+    selected: {
+      control: 'boolean',
+      description: 'Whether the tab is selected',
+      table: { category: 'State' },
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disables the tab',
+      table: { category: 'State' },
+    },
+    fullWidth: {
+      control: 'boolean',
+      description: 'Makes tab full width',
+      table: { category: 'Layout' },
+    },
   },
 };
 
@@ -81,6 +97,50 @@ export const FullWidth: Story = {
         <Tab fullWidth selected>Home</Tab>
         <Tab fullWidth>Profile</Tab>
         <Tab fullWidth>Settings</Tab>
+      </div>
+    </div>
+  ),
+};
+
+export const UnderlineSizes: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'flex-start' }}>
+      <div style={{ display: 'flex', gap: '0' }}>
+        <Tab variant="underline" size="sm" selected>Small</Tab>
+        <Tab variant="underline" size="sm">Tab 2</Tab>
+        <Tab variant="underline" size="sm">Tab 3</Tab>
+      </div>
+      <div style={{ display: 'flex', gap: '0' }}>
+        <Tab variant="underline" size="md" selected>Medium</Tab>
+        <Tab variant="underline" size="md">Tab 2</Tab>
+        <Tab variant="underline" size="md">Tab 3</Tab>
+      </div>
+      <div style={{ display: 'flex', gap: '0' }}>
+        <Tab variant="underline" size="lg" selected>Large</Tab>
+        <Tab variant="underline" size="lg">Tab 2</Tab>
+        <Tab variant="underline" size="lg">Tab 3</Tab>
+      </div>
+    </div>
+  ),
+};
+
+export const FilledSizes: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'flex-start' }}>
+      <div style={{ display: 'flex', gap: '4px' }}>
+        <Tab variant="filled" size="sm" selected>Small</Tab>
+        <Tab variant="filled" size="sm">Tab 2</Tab>
+        <Tab variant="filled" size="sm">Tab 3</Tab>
+      </div>
+      <div style={{ display: 'flex', gap: '4px' }}>
+        <Tab variant="filled" size="md" selected>Medium</Tab>
+        <Tab variant="filled" size="md">Tab 2</Tab>
+        <Tab variant="filled" size="md">Tab 3</Tab>
+      </div>
+      <div style={{ display: 'flex', gap: '4px' }}>
+        <Tab variant="filled" size="lg" selected>Large</Tab>
+        <Tab variant="filled" size="lg">Tab 2</Tab>
+        <Tab variant="filled" size="lg">Tab 3</Tab>
       </div>
     </div>
   ),

@@ -13,14 +13,30 @@ const meta: Meta<typeof Avatar> = {
     size: {
       control: 'select',
       options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      description: 'Size of the avatar',
+      table: { category: 'Style' },
     },
     shape: {
       control: 'select',
       options: ['circle', 'square'],
+      description: 'Shape of the avatar',
+      table: { category: 'Style' },
     },
-    src: { control: 'text' },
-    alt: { control: 'text' },
-    fallback: { control: 'text' },
+    src: {
+      control: 'text',
+      description: 'Image source URL',
+      table: { category: 'Content' },
+    },
+    alt: {
+      control: 'text',
+      description: 'Alternative text for the image',
+      table: { category: 'Accessibility' },
+    },
+    fallback: {
+      control: 'text',
+      description: 'Fallback text when no image',
+      table: { category: 'Content' },
+    },
   },
 };
 

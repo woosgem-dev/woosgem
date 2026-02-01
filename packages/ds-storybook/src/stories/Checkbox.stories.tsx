@@ -12,10 +12,24 @@ const meta: Meta<typeof Checkbox> = {
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
+      description: 'Size of the checkbox',
+      table: { category: 'Style' },
     },
-    checked: { control: 'boolean' },
-    indeterminate: { control: 'boolean' },
-    disabled: { control: 'boolean' },
+    checked: {
+      control: 'boolean',
+      description: 'Whether the checkbox is checked',
+      table: { category: 'State' },
+    },
+    indeterminate: {
+      control: 'boolean',
+      description: 'Shows indeterminate state',
+      table: { category: 'State' },
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disables the checkbox',
+      table: { category: 'State' },
+    },
   },
 };
 
