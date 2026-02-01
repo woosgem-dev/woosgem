@@ -1,10 +1,20 @@
+// ===================
 // Token Exports
-// Color system
+// ===================
+
+// Color system (must be first)
 @forward 'color-sets';
 @forward 'theme-generator';
 @forward 'colors';
 
-// Other tokens
+// Layout & Spacing
 @forward 'spacing';
+
+// Typography
 @forward 'typography';
+
+// Motion & Animation
+@forward 'motion';
+
+// Effects (shadows, focus, layers)
 @forward 'effects';

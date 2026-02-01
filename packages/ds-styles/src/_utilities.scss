@@ -1,0 +1,181 @@
+// ===================
+// Data Attribute Utilities
+// Apply styles via data-* attributes
+// ===================
+
+@use 'tokens/spacing' as *;
+@use 'tokens/typography' as *;
+@use 'tokens/effects' as *;
+
+// ===================
+// Border Radius
+// Usage: data-radius="sm|md|lg|xl|full"
+// ===================
+
+*[data-radius="none"] { border-radius: $radius-none; }
+*[data-radius="xs"] { border-radius: $radius-xs; }
+*[data-radius="sm"] { border-radius: $radius-sm; }
+*[data-radius="md"] { border-radius: $radius-md; }
+*[data-radius="lg"] { border-radius: $radius-lg; }
+*[data-radius="xl"] { border-radius: $radius-xl; }
+*[data-radius="2xl"] { border-radius: $radius-2xl; }
+*[data-radius="full"] { border-radius: $radius-full; }
+
+// ===================
+// Component Sizes
+// Usage: data-size="xs|sm|md|lg|xl|2xl"
+// ===================
+
+*[data-size="xs"] { --wg-size: #{$size-xs}; }
+*[data-size="sm"] { --wg-size: #{$size-sm}; }
+*[data-size="md"] { --wg-size: #{$size-md}; }
+*[data-size="lg"] { --wg-size: #{$size-lg}; }
+*[data-size="xl"] { --wg-size: #{$size-xl}; }
+*[data-size="2xl"] { --wg-size: #{$size-2xl}; }
+
+// ===================
+// Spacing (padding/margin)
+// Usage: data-spacing="1|2|3|4|..." or data-gap="1|2|3|..."
+// ===================
+
+@each $key, $value in $spacing-scale {
+  *[data-spacing="#{$key}"] { padding: $value; }
+  *[data-gap="#{$key}"] { gap: $value; }
+}
+
+// ===================
+// Shadow
+// Usage: data-shadow="sm|md|lg|xl|2xl"
+// ===================
+
+*[data-shadow="none"] { box-shadow: none; }
+*[data-shadow="sm"] { box-shadow: $shadow-sm; }
+*[data-shadow="md"] { box-shadow: $shadow-md; }
+*[data-shadow="lg"] { box-shadow: $shadow-lg; }
+*[data-shadow="xl"] { box-shadow: $shadow-xl; }
+*[data-shadow="2xl"] { box-shadow: $shadow-2xl; }
+*[data-shadow="inner"] { box-shadow: $shadow-inner; }
+
+// ===================
+// Typography
+// Usage: data-typography="caption-01|body-01|heading-03|..."
+// ===================
+
+*[data-typography="caption-01"] { @include type-caption-01; }
+*[data-typography="caption-02"] { @include type-caption-02; }
+*[data-typography="label-01"] { @include type-label-01; }
+*[data-typography="label-02"] { @include type-label-02; }
+*[data-typography="helper-01"] { @include type-helper-01; }
+*[data-typography="helper-02"] { @include type-helper-02; }
+*[data-typography="body-compact-01"] { @include type-body-compact-01; }
+*[data-typography="body-compact-02"] { @include type-body-compact-02; }
+*[data-typography="body-01"] { @include type-body-01; }
+*[data-typography="body-02"] { @include type-body-02; }
+*[data-typography="code-01"] { @include type-code-01; }
+*[data-typography="code-02"] { @include type-code-02; }
+*[data-typography="heading-compact-01"] { @include type-heading-compact-01; }
+*[data-typography="heading-compact-02"] { @include type-heading-compact-02; }
+*[data-typography="heading-03"] { @include type-heading-03; }
+*[data-typography="heading-04"] { @include type-heading-04; }
+*[data-typography="heading-05"] { @include type-heading-05; }
+*[data-typography="heading-06"] { @include type-heading-06; }
+*[data-typography="heading-07"] { @include type-heading-07; }
+
+// ===================
+// Truncation
+// Usage: data-truncate or data-truncate="2" (line clamp)
+// ===================
+
+*[data-truncate] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+*[data-truncate="2"],
+*[data-truncate="3"],
+*[data-truncate="4"] {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: normal;
+}
+
+*[data-truncate="2"] { -webkit-line-clamp: 2; }
+*[data-truncate="3"] { -webkit-line-clamp: 3; }
+*[data-truncate="4"] { -webkit-line-clamp: 4; }
+
+// ===================
+// Visibility
+// Usage: data-hidden, data-visible
+// ===================
+
+*[data-hidden] { display: none !important; }
+*[data-sr-only] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// ===================
+// Interactive States
+// Usage: data-interactive
+// ===================
+
+*[data-interactive] {
+  @include interactive;
+}
+
+// ===================
+// Focus Ring
+// Usage: data-focus-ring="default|inset"
+// ===================
+
+*[data-focus-ring] {
+  @include focus-visible;
+}
+
+*[data-focus-ring="inset"] {
+  @include focus-visible-inset;
+}
+
+// ===================
+// Loading/Skeleton
+// Usage: data-skeleton
+// ===================
+
+*[data-skeleton] {
+  @include skeleton-animation;
+  color: transparent !important;
+  pointer-events: none;
+  user-select: none;
+
+  * {
+    visibility: hidden;
+  }
+}
+
+// ===================
+// Layer (UI Depth)
+// Usage: data-layer="01|02|03"
+// ===================
+
+*[data-layer="01"] { background-color: $layer-01; }
+*[data-layer="02"] { background-color: $layer-02; }
+*[data-layer="03"] { background-color: $layer-03; }
+
+// ===================
+// Disabled State
+// Usage: data-disabled or [disabled]
+// ===================
+
+*[data-disabled],
+*:disabled {
+  @include disabled-state;
+}

@@ -1,24 +1,260 @@
-// Font families
-$font-family-default: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+// ===================
+// Typography Tokens
+// Carbon-inspired type system
+// ===================
+
+@use 'sass:map';
+
+// ===================
+// Font Families
+// ===================
+
+$font-family-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 $font-family-mono: "JetBrains Mono", "Fira Code", Consolas, monospace;
+$font-family-serif: Georgia, "Times New Roman", serif;
 
-// Font sizes
-$font-size-12: 0.75rem;    // 12px
-$font-size-13: 0.8125rem;  // 13px
-$font-size-14: 0.875rem;   // 14px
-$font-size-16: 1rem;       // 16px
-$font-size-18: 1.125rem;   // 18px
-$font-size-20: 1.25rem;    // 20px
-$font-size-24: 1.5rem;     // 24px
-$font-size-32: 2rem;       // 32px
+// Default
+$font-family-default: $font-family-sans;
 
-// Font weights
+// ===================
+// Type Scale (rem based)
+// ===================
+
+$type-scale: (
+  01: 0.75rem,    // 12px
+  02: 0.875rem,   // 14px
+  03: 1rem,       // 16px
+  04: 1.125rem,   // 18px
+  05: 1.25rem,    // 20px
+  06: 1.5rem,     // 24px
+  07: 1.75rem,    // 28px
+  08: 2rem,       // 32px
+  09: 2.25rem,    // 36px
+  10: 2.625rem,   // 42px
+  11: 3rem,       // 48px
+  12: 3.375rem,   // 54px
+);
+
+// Font size aliases
+$font-size-12: map.get($type-scale, 01);
+$font-size-14: map.get($type-scale, 02);
+$font-size-16: map.get($type-scale, 03);
+$font-size-18: map.get($type-scale, 04);
+$font-size-20: map.get($type-scale, 05);
+$font-size-24: map.get($type-scale, 06);
+$font-size-28: map.get($type-scale, 07);
+$font-size-32: map.get($type-scale, 08);
+
+// Legacy
+$font-size-13: 0.8125rem;
+
+// ===================
+// Font Weights
+// ===================
+
+$font-weight-light: 300;
 $font-weight-normal: 400;
 $font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
-// Line heights
+// ===================
+// Line Heights
+// ===================
+
 $line-height-tight: 1.25;
+$line-height-snug: 1.375;
 $line-height-normal: 1.5;
-$line-height-relaxed: 1.75;
+$line-height-relaxed: 1.625;
+$line-height-loose: 1.75;
+
+// ===================
+// Letter Spacing
+// ===================
+
+$letter-spacing-tight: -0.02em;
+$letter-spacing-normal: 0;
+$letter-spacing-wide: 0.02em;
+$letter-spacing-wider: 0.04em;
+
+// ===================
+// Semantic Type Tokens
+// ===================
+
+// Caption - smallest text
+$type-caption-01: (
+  font-size: $font-size-12,
+  font-weight: $font-weight-normal,
+  line-height: 1.333,
+  letter-spacing: 0.02em,
+);
+
+$type-caption-02: (
+  font-size: $font-size-14,
+  font-weight: $font-weight-normal,
+  line-height: 1.286,
+  letter-spacing: 0.02em,
+);
+
+// Label - form labels, badges
+$type-label-01: (
+  font-size: $font-size-12,
+  font-weight: $font-weight-medium,
+  line-height: 1.333,
+  letter-spacing: 0.02em,
+);
+
+$type-label-02: (
+  font-size: $font-size-14,
+  font-weight: $font-weight-medium,
+  line-height: 1.286,
+  letter-spacing: 0.01em,
+);
+
+// Helper text - input hints, descriptions
+$type-helper-01: (
+  font-size: $font-size-12,
+  font-weight: $font-weight-normal,
+  line-height: 1.333,
+  letter-spacing: 0.02em,
+);
+
+$type-helper-02: (
+  font-size: $font-size-14,
+  font-weight: $font-weight-normal,
+  line-height: 1.286,
+  letter-spacing: 0.01em,
+);
+
+// Body - main content
+$type-body-compact-01: (
+  font-size: $font-size-14,
+  font-weight: $font-weight-normal,
+  line-height: 1.286,
+  letter-spacing: 0.01em,
+);
+
+$type-body-compact-02: (
+  font-size: $font-size-16,
+  font-weight: $font-weight-normal,
+  line-height: 1.375,
+  letter-spacing: 0,
+);
+
+$type-body-01: (
+  font-size: $font-size-14,
+  font-weight: $font-weight-normal,
+  line-height: 1.429,
+  letter-spacing: 0.01em,
+);
+
+$type-body-02: (
+  font-size: $font-size-16,
+  font-weight: $font-weight-normal,
+  line-height: 1.5,
+  letter-spacing: 0,
+);
+
+// Code - monospace
+$type-code-01: (
+  font-family: $font-family-mono,
+  font-size: $font-size-12,
+  font-weight: $font-weight-normal,
+  line-height: 1.333,
+  letter-spacing: 0.02em,
+);
+
+$type-code-02: (
+  font-family: $font-family-mono,
+  font-size: $font-size-14,
+  font-weight: $font-weight-normal,
+  line-height: 1.429,
+  letter-spacing: 0.02em,
+);
+
+// Headings - fixed size
+$type-heading-compact-01: (
+  font-size: $font-size-14,
+  font-weight: $font-weight-semibold,
+  line-height: 1.286,
+  letter-spacing: 0.01em,
+);
+
+$type-heading-compact-02: (
+  font-size: $font-size-16,
+  font-weight: $font-weight-semibold,
+  line-height: 1.375,
+  letter-spacing: 0,
+);
+
+$type-heading-03: (
+  font-size: $font-size-20,
+  font-weight: $font-weight-normal,
+  line-height: 1.4,
+  letter-spacing: 0,
+);
+
+$type-heading-04: (
+  font-size: $font-size-28,
+  font-weight: $font-weight-normal,
+  line-height: 1.286,
+  letter-spacing: 0,
+);
+
+$type-heading-05: (
+  font-size: $font-size-32,
+  font-weight: $font-weight-normal,
+  line-height: 1.25,
+  letter-spacing: 0,
+);
+
+$type-heading-06: (
+  font-size: 2.625rem,
+  font-weight: $font-weight-light,
+  line-height: 1.199,
+  letter-spacing: 0,
+);
+
+$type-heading-07: (
+  font-size: 3rem,
+  font-weight: $font-weight-light,
+  line-height: 1.199,
+  letter-spacing: 0,
+);
+
+// ===================
+// Type Mixin
+// ===================
+
+@mixin type($token) {
+  @if map.has-key($token, font-family) {
+    font-family: map.get($token, font-family);
+  }
+  font-size: map.get($token, font-size);
+  font-weight: map.get($token, font-weight);
+  line-height: map.get($token, line-height);
+  @if map.has-key($token, letter-spacing) and map.get($token, letter-spacing) != 0 {
+    letter-spacing: map.get($token, letter-spacing);
+  }
+}
+
+// Shorthand mixins
+@mixin type-caption-01 { @include type($type-caption-01); }
+@mixin type-caption-02 { @include type($type-caption-02); }
+@mixin type-label-01 { @include type($type-label-01); }
+@mixin type-label-02 { @include type($type-label-02); }
+@mixin type-helper-01 { @include type($type-helper-01); }
+@mixin type-helper-02 { @include type($type-helper-02); }
+@mixin type-body-compact-01 { @include type($type-body-compact-01); }
+@mixin type-body-compact-02 { @include type($type-body-compact-02); }
+@mixin type-body-01 { @include type($type-body-01); }
+@mixin type-body-02 { @include type($type-body-02); }
+@mixin type-code-01 { @include type($type-code-01); }
+@mixin type-code-02 { @include type($type-code-02); }
+@mixin type-heading-compact-01 { @include type($type-heading-compact-01); }
+@mixin type-heading-compact-02 { @include type($type-heading-compact-02); }
+@mixin type-heading-03 { @include type($type-heading-03); }
+@mixin type-heading-04 { @include type($type-heading-04); }
+@mixin type-heading-05 { @include type($type-heading-05); }
+@mixin type-heading-06 { @include type($type-heading-06); }
+@mixin type-heading-07 { @include type($type-heading-07); }

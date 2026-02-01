@@ -1,0 +1,104 @@
+// ===================
+// Motion Tokens
+// Carbon-inspired animation system
+// ===================
+
+// ===================
+// Duration
+// ===================
+
+$duration-fast-01: 70ms;
+$duration-fast-02: 110ms;
+$duration-moderate-01: 150ms;
+$duration-moderate-02: 240ms;
+$duration-slow-01: 400ms;
+$duration-slow-02: 700ms;
+
+$duration-scale: (
+  fast-01: $duration-fast-01,
+  fast-02: $duration-fast-02,
+  moderate-01: $duration-moderate-01,
+  moderate-02: $duration-moderate-02,
+  slow-01: $duration-slow-01,
+  slow-02: $duration-slow-02,
+);
+
+// Legacy aliases
+$transition-fast: $duration-moderate-01;
+$transition-normal: $duration-moderate-02;
+$transition-slow: $duration-slow-01;
+
+// ===================
+// Easing Functions
+// ===================
+
+// Standard - default for most animations
+$easing-standard-productive: cubic-bezier(0.2, 0, 0.38, 0.9);
+$easing-standard-expressive: cubic-bezier(0.4, 0.14, 0.3, 1);
+
+// Entrance - elements entering the screen
+$easing-entrance-productive: cubic-bezier(0, 0, 0.38, 0.9);
+$easing-entrance-expressive: cubic-bezier(0, 0, 0.3, 1);
+
+// Exit - elements leaving the screen
+$easing-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
+$easing-exit-expressive: cubic-bezier(0.4, 0.14, 1, 1);
+
+// Default easings (productive mode)
+$easing-standard: $easing-standard-productive;
+$easing-entrance: $easing-entrance-productive;
+$easing-exit: $easing-exit-productive;
+
+// ===================
+// Transition Presets
+// ===================
+
+// Quick interactions (hover, focus)
+$motion-quick: $duration-fast-02 $easing-standard;
+
+// Standard interactions (expand, toggle)
+$motion-standard: $duration-moderate-01 $easing-standard;
+
+// Deliberate actions (modal open, page transition)
+$motion-deliberate: $duration-moderate-02 $easing-standard;
+
+// Slow, attention-drawing animations
+$motion-slow: $duration-slow-01 $easing-standard;
+
+// Entrance transitions
+$motion-enter: $duration-moderate-02 $easing-entrance;
+
+// Exit transitions
+$motion-exit: $duration-moderate-01 $easing-exit;
+
+// ===================
+// Motion Mixin
+// ===================
+
+@mixin motion($property: all, $duration: $duration-moderate-01, $easing: $easing-standard) {
+  transition: $property $duration $easing;
+}
+
+// Shorthand mixins
+@mixin motion-quick($property: all) {
+  transition: $property $motion-quick;
+}
+
+@mixin motion-standard($property: all) {
+  transition: $property $motion-standard;
+}
+
+@mixin motion-deliberate($property: all) {
+  transition: $property $motion-deliberate;
+}
+
+// ===================
+// Reduced Motion
+// ===================
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    animation: none;
+  }
+}

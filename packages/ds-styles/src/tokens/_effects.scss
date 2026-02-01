@@ -1,14 +1,168 @@
-// Transitions
-$transition-fast: 150ms ease;
-$transition-normal: 200ms ease;
-$transition-slow: 300ms ease;
+// ===================
+// Effects Tokens
+// Shadows, focus, overlays
+// ===================
 
+@use 'colors' as *;
+@use 'motion' as *;
+
+// ===================
 // Shadows
+// ===================
+
 $shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 $shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 $shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+$shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+$shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 
-// Focus ring
+// Inset shadow
+$shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+
+// Shadow scale map
+$shadow-scale: (
+  sm: $shadow-sm,
+  md: $shadow-md,
+  lg: $shadow-lg,
+  xl: $shadow-xl,
+  2xl: $shadow-2xl,
+  inner: $shadow-inner,
+);
+
+// ===================
+// Focus Ring
+// ===================
+
 $focus-ring-width: 2px;
 $focus-ring-offset: 2px;
-$focus-ring-color: rgb(14 165 233 / 0.5);
+$focus-ring-color: $focus-ring;
+
+// Focus ring styles
+@mixin focus-ring {
+  outline: $focus-ring-width solid $focus-ring-color;
+  outline-offset: $focus-ring-offset;
+}
+
+@mixin focus-ring-inset {
+  outline: $focus-ring-width solid $focus-ring-color;
+  outline-offset: -$focus-ring-width;
+}
+
+// Focus-visible pattern
+@mixin focus-visible {
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+@mixin focus-visible-inset {
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    @include focus-ring-inset;
+  }
+}
+
+// ===================
+// Layer Tokens (UI Depth)
+// Carbon-inspired layering system
+// ===================
+
+// Layer backgrounds (for nested UI elements)
+$layer-01: $background-subtle;
+$layer-02: $background;
+$layer-03: $background-subtle;
+
+// Layer hover states
+$layer-hover-01: $background-muted;
+$layer-hover-02: $background-subtle;
+$layer-hover-03: $background-muted;
+
+// Layer active states
+$layer-active-01: $background-muted;
+$layer-active-02: $background-muted;
+$layer-active-03: $background-muted;
+
+// Layer selected states
+$layer-selected-01: var(--wg-color-primary-alpha-10);
+$layer-selected-02: var(--wg-color-primary-alpha-10);
+$layer-selected-03: var(--wg-color-primary-alpha-10);
+
+// ===================
+// Overlay
+// ===================
+
+$overlay: rgba(0, 0, 0, 0.5);
+$overlay-light: rgba(0, 0, 0, 0.3);
+$overlay-dark: rgba(0, 0, 0, 0.7);
+
+// ===================
+// Skeleton (Loading states)
+// ===================
+
+$skeleton-background: $background-muted;
+$skeleton-element: $gray-300;
+
+// Skeleton animation
+@mixin skeleton-animation {
+  background: linear-gradient(
+    90deg,
+    $skeleton-background 25%,
+    $skeleton-element 50%,
+    $skeleton-background 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+// ===================
+// Interactive States
+// ===================
+
+// Hover overlay (for interactive elements)
+@mixin hover-state {
+  transition: background-color $motion-quick;
+
+  &:hover:not(:disabled) {
+    background-color: var(--wg-color-background-hover, rgba(0, 0, 0, 0.04));
+  }
+}
+
+// Active/pressed state
+@mixin active-state {
+  &:active:not(:disabled) {
+    background-color: var(--wg-color-background-active, rgba(0, 0, 0, 0.08));
+  }
+}
+
+// Disabled state
+@mixin disabled-state {
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// Combined interactive states
+@mixin interactive {
+  @include hover-state;
+  @include active-state;
+  @include focus-visible;
+  @include disabled-state;
+}
