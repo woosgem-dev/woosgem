@@ -56,7 +56,8 @@ export function applyAttrsToElement(
     } else if (value === undefined || value === null || value === false) {
       element.removeAttribute(key);
     } else if (value === true) {
-      element.setAttribute(key, '');
+      // data-* 속성은 'true' 문자열로, 일반 boolean 속성은 빈 문자열로
+      element.setAttribute(key, key.startsWith('data-') ? 'true' : '');
     } else {
       element.setAttribute(key, String(value));
     }

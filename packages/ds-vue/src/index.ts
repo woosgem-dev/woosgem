@@ -20,6 +20,45 @@ export { Switch, type SwitchProps } from './Switch';
 export { Textarea, type TextareaProps } from './Textarea';
 export { Radio, RadioGroup, type RadioProps, type RadioGroupProps } from './Radio';
 export { Icon, type IconProps } from './Icon';
+export {
+  Select,
+  SelectMenu,
+  SelectOption,
+  type SelectProps,
+  type SelectMenuProps,
+  type SelectOptionProps,
+} from './Select';
+export {
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  type ModalProps,
+  type ModalHeaderProps,
+  type ModalBodyProps,
+  type ModalFooterProps,
+} from './Modal';
+export { Tooltip, type TooltipProps } from './Tooltip';
+export {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  type CardProps,
+  type CardHeaderProps,
+  type CardBodyProps,
+  type CardFooterProps,
+} from './Card';
+export {
+  Toast,
+  ToastContainer,
+  useToast,
+  type ToastProps,
+  type ToastItem,
+  type ToastContainerProps,
+  type UseToastOptions,
+  type UseToastReturn,
+} from './Toast';
 
 // Factory (for advanced usage)
 export { createComponent } from './_internal/createComponent';

@@ -1,0 +1,189 @@
+@use '../tokens' as tokens;
+
+// ============================================
+// Card Component
+// ============================================
+.card {
+  // Base styles
+  display: block;
+  border-radius: tokens.$radius-12;
+  background-color: var(--wg-card-bg, #{tokens.$background});
+  color: var(--wg-card-color, #{tokens.$text});
+  transition:
+    box-shadow tokens.$transition-fast,
+    transform tokens.$transition-fast,
+    border-color tokens.$transition-fast;
+
+  // ===================
+  // Variants
+  // ===================
+  &[data-variant='outlined'] {
+    border: 1px solid var(--wg-card-border, #{tokens.$border});
+    box-shadow: none;
+  }
+
+  &[data-variant='elevated'] {
+    border: none;
+    box-shadow: tokens.$shadow-md;
+  }
+
+  &[data-variant='filled'] {
+    border: none;
+    background-color: var(--wg-card-bg, #{tokens.$background-muted});
+    box-shadow: none;
+  }
+
+  // ===================
+  // Padding
+  // ===================
+  &[data-padding='none'] {
+    --wg-card-padding: 0;
+  }
+
+  &[data-padding='sm'] {
+    --wg-card-padding: #{tokens.$spacing-3};
+  }
+
+  &[data-padding='md'] {
+    --wg-card-padding: #{tokens.$spacing-4};
+  }
+
+  &[data-padding='lg'] {
+    --wg-card-padding: #{tokens.$spacing-6};
+  }
+
+  // Default content padding (when not using compound components)
+  > :not(.card-header):not(.card-body):not(.card-footer) {
+    padding: var(--wg-card-padding, #{tokens.$spacing-4});
+  }
+
+  // ===================
+  // Hoverable
+  // ===================
+  &[data-hoverable] {
+    cursor: default;
+
+    &:hover {
+      &[data-variant='outlined'] {
+        border-color: var(--wg-card-border-hover, #{tokens.$border-hover});
+      }
+
+      &[data-variant='elevated'] {
+        box-shadow: tokens.$shadow-lg;
+        transform: translateY(-2px);
+      }
+
+      &[data-variant='filled'] {
+        background-color: var(--wg-card-bg-hover, #{tokens.$background-muted-darken-3});
+      }
+    }
+  }
+
+  // ===================
+  // Clickable
+  // ===================
+  &[data-clickable] {
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      &[data-variant='outlined'] {
+        border-color: var(--wg-card-border-hover, #{tokens.$primary});
+        background-color: var(--wg-card-bg-hover, #{tokens.$primary-alpha-10});
+      }
+
+      &[data-variant='elevated'] {
+        box-shadow: tokens.$shadow-lg;
+        transform: translateY(-2px);
+      }
+
+      &[data-variant='filled'] {
+        background-color: var(--wg-card-bg-hover, #{tokens.$background-muted-darken-3});
+      }
+    }
+
+    &:active {
+      transform: translateY(0);
+
+      &[data-variant='elevated'] {
+        box-shadow: tokens.$shadow-md;
+      }
+    }
+
+    // Focus state for keyboard navigation
+    &:focus-visible {
+      outline: tokens.$focus-ring-width solid tokens.$focus-ring-color;
+      outline-offset: tokens.$focus-ring-offset;
+    }
+  }
+}
+
+// ============================================
+// CardHeader
+// ============================================
+.card-header {
+  padding: var(--wg-card-padding, #{tokens.$spacing-4});
+  font-weight: tokens.$font-weight-semibold;
+  font-size: tokens.$font-size-16;
+  line-height: tokens.$line-height-tight;
+
+  &[data-divider] {
+    border-bottom: 1px solid tokens.$border;
+    margin-bottom: 0;
+    padding-bottom: var(--wg-card-padding, #{tokens.$spacing-4});
+  }
+
+  // When followed by card-body or card-footer without divider
+  &:not([data-divider]) + .card-body,
+  &:not([data-divider]) + .card-footer {
+    padding-top: 0;
+  }
+}
+
+// ============================================
+// CardBody
+// ============================================
+.card-body {
+  padding: var(--wg-card-padding, #{tokens.$spacing-4});
+  font-size: tokens.$font-size-14;
+  line-height: tokens.$line-height-normal;
+}
+
+// ============================================
+// CardFooter
+// ============================================
+.card-footer {
+  display: flex;
+  align-items: center;
+  gap: tokens.$spacing-2;
+  padding: var(--wg-card-padding, #{tokens.$spacing-4});
+
+  &[data-divider] {
+    border-top: 1px solid tokens.$border;
+    margin-top: 0;
+    padding-top: var(--wg-card-padding, #{tokens.$spacing-4});
+  }
+
+  // When preceded by card-body or card-header without divider
+  .card-body:not([data-divider]) + &:not([data-divider]),
+  .card-header:not([data-divider]) + &:not([data-divider]) {
+    padding-top: 0;
+  }
+
+  // Alignment
+  &[data-align='start'] {
+    justify-content: flex-start;
+  }
+
+  &[data-align='center'] {
+    justify-content: center;
+  }
+
+  &[data-align='end'] {
+    justify-content: flex-end;
+  }
+
+  &[data-align='between'] {
+    justify-content: space-between;
+  }
+}

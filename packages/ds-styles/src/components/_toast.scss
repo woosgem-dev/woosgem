@@ -1,0 +1,311 @@
+@use '../tokens' as tokens;
+
+// ===================
+// Toast Component
+// ===================
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: tokens.$spacing-3;
+  padding: tokens.$spacing-3 tokens.$spacing-4;
+  border-radius: tokens.$radius-lg;
+  font-family: tokens.$font-family-default;
+  font-size: tokens.$font-size-14;
+  line-height: tokens.$line-height-normal;
+  min-width: 280px;
+  max-width: 400px;
+
+  background-color: var(--wg-toast-bg, #{tokens.$background});
+  color: var(--wg-toast-color, #{tokens.$text});
+  border: 1px solid var(--wg-toast-border, #{tokens.$border});
+  box-shadow: tokens.$shadow-md;
+
+  // Animation
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity tokens.$duration-moderate-02 tokens.$easing-standard,
+    transform tokens.$duration-moderate-02 tokens.$easing-standard;
+
+  // Icon slot
+  .toast-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: var(--wg-toast-icon, currentColor);
+  }
+
+  // Content
+  .toast-content {
+    flex: 1;
+    min-width: 0;
+    word-wrap: break-word;
+  }
+
+  .toast-title {
+    font-weight: tokens.$font-weight-semibold;
+    margin-bottom: tokens.$spacing-1;
+  }
+
+  .toast-description {
+    color: var(--wg-toast-description, #{tokens.$text-muted});
+  }
+
+  // Action slot (close button, etc.)
+  .toast-action {
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  // Close button
+  .toast-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--wg-toast-close, #{tokens.$text-muted});
+    cursor: pointer;
+    border-radius: tokens.$radius-sm;
+    transition: background-color tokens.$duration-moderate-01 tokens.$easing-standard;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    &:focus-visible {
+      outline: 2px solid tokens.$primary;
+      outline-offset: 2px;
+    }
+  }
+
+  // ===================
+  // Variants
+  // ===================
+  &[data-variant='info'] {
+    --wg-toast-bg: #{tokens.$blue-light};
+    --wg-toast-color: #{tokens.$info};
+    --wg-toast-icon: #{tokens.$info};
+    --wg-toast-border: #{tokens.$info};
+    --wg-toast-description: #{tokens.$text};
+  }
+
+  &[data-variant='success'] {
+    --wg-toast-bg: #{tokens.$green-light};
+    --wg-toast-color: #{tokens.$success};
+    --wg-toast-icon: #{tokens.$success};
+    --wg-toast-border: #{tokens.$success};
+    --wg-toast-description: #{tokens.$text};
+  }
+
+  &[data-variant='warning'] {
+    --wg-toast-bg: #{tokens.$yellow-light};
+    --wg-toast-color: #{tokens.$warning};
+    --wg-toast-icon: #{tokens.$warning};
+    --wg-toast-border: #{tokens.$warning};
+    --wg-toast-description: #{tokens.$text};
+  }
+
+  &[data-variant='error'] {
+    --wg-toast-bg: #{tokens.$red-light};
+    --wg-toast-color: #{tokens.$danger};
+    --wg-toast-icon: #{tokens.$danger};
+    --wg-toast-border: #{tokens.$danger};
+    --wg-toast-description: #{tokens.$text};
+  }
+
+  // Closable state
+  &[data-closable] {
+    padding-right: tokens.$spacing-10;
+    position: relative;
+
+    .toast-close {
+      position: absolute;
+      top: tokens.$spacing-2;
+      right: tokens.$spacing-2;
+    }
+  }
+
+  // Hidden state (for animation)
+  &:not([data-visible]) {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+// ===================
+// Toast Container
+// ===================
+
+.toast-container {
+  position: fixed;
+  z-index: tokens.$z-index-tooltip;
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-3;
+  pointer-events: none;
+
+  // All toasts inside should be interactive
+  > .toast,
+  > wg-toast {
+    pointer-events: auto;
+  }
+
+  // ===================
+  // Positions
+  // ===================
+  &[data-position='top-right'] {
+    top: tokens.$spacing-4;
+    right: tokens.$spacing-4;
+    align-items: flex-end;
+  }
+
+  &[data-position='top-left'] {
+    top: tokens.$spacing-4;
+    left: tokens.$spacing-4;
+    align-items: flex-start;
+  }
+
+  &[data-position='bottom-right'] {
+    bottom: tokens.$spacing-4;
+    right: tokens.$spacing-4;
+    align-items: flex-end;
+  }
+
+  &[data-position='bottom-left'] {
+    bottom: tokens.$spacing-4;
+    left: tokens.$spacing-4;
+    align-items: flex-start;
+  }
+
+  &[data-position='top-center'] {
+    top: tokens.$spacing-4;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+  }
+
+  &[data-position='bottom-center'] {
+    bottom: tokens.$spacing-4;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+  }
+}
+
+// ===================
+// Toast Animations
+// ===================
+
+// Entry animations by position
+@keyframes toast-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes toast-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes toast-slide-in-top {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toast-slide-in-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Apply animations based on position
+.toast-container {
+  &[data-position='top-right'],
+  &[data-position='bottom-right'] {
+    .toast[data-visible],
+    wg-toast[data-visible] {
+      animation: toast-slide-in-right tokens.$duration-moderate-02 tokens.$easing-entrance;
+    }
+  }
+
+  &[data-position='top-left'],
+  &[data-position='bottom-left'] {
+    .toast[data-visible],
+    wg-toast[data-visible] {
+      animation: toast-slide-in-left tokens.$duration-moderate-02 tokens.$easing-entrance;
+    }
+  }
+
+  &[data-position='top-center'] {
+    .toast[data-visible],
+    wg-toast[data-visible] {
+      animation: toast-slide-in-top tokens.$duration-moderate-02 tokens.$easing-entrance;
+    }
+  }
+
+  &[data-position='bottom-center'] {
+    .toast[data-visible],
+    wg-toast[data-visible] {
+      animation: toast-slide-in-bottom tokens.$duration-moderate-02 tokens.$easing-entrance;
+    }
+  }
+}
+
+// ===================
+// Responsive
+// ===================
+
+@media (max-width: 480px) {
+  .toast {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .toast-container {
+    &[data-position='top-right'],
+    &[data-position='top-left'],
+    &[data-position='top-center'] {
+      top: tokens.$spacing-2;
+      left: tokens.$spacing-2;
+      right: tokens.$spacing-2;
+      transform: none;
+    }
+
+    &[data-position='bottom-right'],
+    &[data-position='bottom-left'],
+    &[data-position='bottom-center'] {
+      bottom: tokens.$spacing-2;
+      left: tokens.$spacing-2;
+      right: tokens.$spacing-2;
+      transform: none;
+    }
+  }
+}

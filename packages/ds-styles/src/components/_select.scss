@@ -1,0 +1,420 @@
+@use '../tokens' as tokens;
+
+// ===================
+// Select Trigger
+// ===================
+.select {
+  // Reset
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: inherit;
+
+  // Base styles
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: tokens.$spacing-2;
+  width: 100%;
+  font-family: tokens.$font-family-default;
+  font-size: tokens.$font-size-14;
+  line-height: tokens.$line-height-normal;
+  background-color: var(--wg-select-bg, #{tokens.$background});
+  color: tokens.$text;
+  border-radius: tokens.$radius-8;
+  transition:
+    background-color tokens.$transition-fast,
+    border-color tokens.$transition-fast,
+    box-shadow tokens.$transition-fast;
+
+  // Default state
+  border: 1px solid var(--wg-select-border, #{tokens.$border});
+
+  // Dropdown icon
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid currentColor;
+    opacity: 0.6;
+    transition: transform tokens.$transition-fast;
+    flex-shrink: 0;
+  }
+
+  // Focus state
+  &:focus-visible {
+    outline: tokens.$focus-ring-width solid tokens.$focus-ring-color;
+    outline-offset: tokens.$focus-ring-offset;
+  }
+
+  // Placeholder text style
+  .select-placeholder {
+    color: tokens.$text-subtle;
+  }
+
+  // Value display
+  .select-value {
+    flex: 1;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  // ===================
+  // Variants
+  // ===================
+
+  // Outline variant (default)
+  &[data-variant='outline'] {
+    --wg-select-bg: #{tokens.$background};
+    --wg-select-border: #{tokens.$border};
+
+    &:hover:not(:disabled):not([data-state='disabled']) {
+      --wg-select-border: #{tokens.$border-hover};
+    }
+
+    &:focus,
+    &:focus-visible {
+      --wg-select-border: #{tokens.$primary};
+      box-shadow: 0 0 0 2px #{tokens.$primary-alpha-20};
+    }
+
+    &[data-state='error'] {
+      --wg-select-border: #{tokens.$danger};
+
+      &:focus,
+      &:focus-visible {
+        box-shadow: 0 0 0 2px #{tokens.$danger-alpha-20};
+      }
+    }
+
+    &[data-state='open'] {
+      --wg-select-border: #{tokens.$primary};
+      box-shadow: 0 0 0 2px #{tokens.$primary-alpha-20};
+
+      &::after {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  // Filled variant
+  &[data-variant='filled'] {
+    --wg-select-bg: #{tokens.$background-subtle};
+    --wg-select-border: transparent;
+
+    &:hover:not(:disabled):not([data-state='disabled']) {
+      --wg-select-bg: #{tokens.$background-subtle-darken-3};
+    }
+
+    &:focus,
+    &:focus-visible {
+      --wg-select-border: #{tokens.$primary};
+      --wg-select-bg: #{tokens.$background};
+      box-shadow: 0 0 0 2px #{tokens.$primary-alpha-20};
+    }
+
+    &[data-state='error'] {
+      --wg-select-border: #{tokens.$danger};
+
+      &:focus,
+      &:focus-visible {
+        box-shadow: 0 0 0 2px #{tokens.$danger-alpha-20};
+      }
+    }
+
+    &[data-state='open'] {
+      --wg-select-border: #{tokens.$primary};
+      --wg-select-bg: #{tokens.$background};
+      box-shadow: 0 0 0 2px #{tokens.$primary-alpha-20};
+
+      &::after {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  // ===================
+  // Sizes
+  // ===================
+  &[data-size='sm'] {
+    height: 32px;
+    padding: tokens.$spacing-1 tokens.$spacing-3;
+    font-size: tokens.$font-size-13;
+  }
+
+  &[data-size='md'] {
+    height: 40px;
+    padding: tokens.$spacing-2 tokens.$spacing-4;
+    font-size: tokens.$font-size-14;
+  }
+
+  &[data-size='lg'] {
+    height: 48px;
+    padding: tokens.$spacing-3 tokens.$spacing-4;
+    font-size: tokens.$font-size-16;
+  }
+
+  // ===================
+  // States
+  // ===================
+
+  // Disabled state
+  &:disabled,
+  &[data-state='disabled'] {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: tokens.$background-muted;
+  }
+
+  // Error state
+  &[data-state='error'] {
+    --wg-select-border: #{tokens.$danger};
+  }
+
+  // Multiple mode indicator
+  &[data-multiple] {
+    .select-value {
+      display: flex;
+      flex-wrap: wrap;
+      gap: tokens.$spacing-1;
+    }
+  }
+}
+
+// ===================
+// Select Menu (Dropdown)
+// ===================
+.select-menu {
+  // Reset
+  list-style: none;
+  margin: 0;
+  padding: tokens.$spacing-1 0;
+
+  // Base styles
+  position: absolute;
+  z-index: tokens.$z-index-dropdown;
+  min-width: 100%;
+  max-height: 240px;
+  overflow-y: auto;
+  background-color: tokens.$background;
+  border: 1px solid tokens.$border;
+  border-radius: tokens.$radius-8;
+  box-shadow: tokens.$shadow-lg;
+
+  // Hidden by default
+  display: none;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    opacity tokens.$transition-fast,
+    transform tokens.$transition-fast;
+
+  // Open state
+  &[data-state='open'] {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  // Scrollbar styling
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: tokens.$border;
+    border-radius: tokens.$radius-full;
+
+    &:hover {
+      background: tokens.$border-hover;
+    }
+  }
+}
+
+// ===================
+// Select Option
+// ===================
+.select-option {
+  // Reset
+  list-style: none;
+  margin: 0;
+
+  // Base styles
+  display: flex;
+  align-items: center;
+  gap: tokens.$spacing-2;
+  cursor: pointer;
+  font-family: tokens.$font-family-default;
+  color: tokens.$text;
+  transition:
+    background-color tokens.$transition-fast,
+    color tokens.$transition-fast;
+
+  // Option content
+  .select-option-content {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  // Checkmark
+  .select-option-checkmark {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    display: none;
+    color: tokens.$primary;
+  }
+
+  // Hover state
+  &:hover:not([data-state='disabled']):not([data-state='selected-disabled']) {
+    background-color: tokens.$background-subtle;
+  }
+
+  // ===================
+  // Sizes
+  // ===================
+  &[data-size='sm'] {
+    padding: tokens.$spacing-1 tokens.$spacing-3;
+    font-size: tokens.$font-size-13;
+    min-height: 32px;
+  }
+
+  &[data-size='md'] {
+    padding: tokens.$spacing-2 tokens.$spacing-4;
+    font-size: tokens.$font-size-14;
+    min-height: 40px;
+  }
+
+  &[data-size='lg'] {
+    padding: tokens.$spacing-3 tokens.$spacing-4;
+    font-size: tokens.$font-size-16;
+    min-height: 48px;
+  }
+
+  // ===================
+  // States
+  // ===================
+
+  // Highlighted state (keyboard navigation)
+  &[data-state='highlighted'] {
+    background-color: tokens.$background-subtle;
+  }
+
+  // Selected state
+  &[data-state='selected'] {
+    background-color: #{tokens.$primary-alpha-10};
+    color: tokens.$primary;
+    font-weight: tokens.$font-weight-medium;
+
+    .select-option-checkmark {
+      display: block;
+    }
+
+    &:hover {
+      background-color: #{tokens.$primary-alpha-20};
+    }
+  }
+
+  // Disabled state
+  &[data-state='disabled'] {
+    cursor: not-allowed;
+    opacity: 0.5;
+    color: tokens.$text-muted;
+  }
+
+  // Selected + Disabled state
+  &[data-state='selected-disabled'] {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: #{tokens.$primary-alpha-10};
+    color: tokens.$primary;
+
+    .select-option-checkmark {
+      display: block;
+    }
+  }
+}
+
+// ===================
+// Select Container (for positioning)
+// ===================
+.select-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+// ===================
+// Select Tags (for multiple mode)
+// ===================
+.select-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: tokens.$spacing-1;
+  padding: 2px tokens.$spacing-2;
+  background-color: tokens.$primary-alpha-10;
+  color: tokens.$primary;
+  border-radius: tokens.$radius-4;
+  font-size: tokens.$font-size-12;
+  max-width: 120px;
+
+  .select-tag-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .select-tag-remove {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity tokens.$transition-fast;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+// ===================
+// Select Empty State
+// ===================
+.select-empty {
+  padding: tokens.$spacing-4;
+  text-align: center;
+  color: tokens.$text-muted;
+  font-size: tokens.$font-size-14;
+}
+
+// ===================
+// Select Group
+// ===================
+.select-group {
+  &:not(:first-child) {
+    border-top: 1px solid tokens.$border;
+    margin-top: tokens.$spacing-1;
+    padding-top: tokens.$spacing-1;
+  }
+}
+
+.select-group-label {
+  padding: tokens.$spacing-1 tokens.$spacing-4;
+  font-size: tokens.$font-size-12;
+  font-weight: tokens.$font-weight-medium;
+  color: tokens.$text-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

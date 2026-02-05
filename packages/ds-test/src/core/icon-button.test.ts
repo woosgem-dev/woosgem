@@ -21,6 +21,7 @@ describe('IconButton', () => {
         color: 'primary',
         size: 'md',
         shape: 'square',
+        disabled: false,
       });
     });
   });
@@ -100,6 +101,18 @@ describe('IconButton', () => {
         const attrs = IconButton.mapPropsToAttrs({ shape });
         expect(attrs['data-shape']).toBe(shape);
       });
+    });
+
+    it('should handle disabled state', () => {
+      const attrs = IconButton.mapPropsToAttrs({ disabled: true });
+      expect(attrs['data-state']).toBe('disabled');
+      expect(attrs.disabled).toBe(true);
+    });
+
+    it('should not have disabled state when disabled is false', () => {
+      const attrs = IconButton.mapPropsToAttrs({ disabled: false });
+      expect(attrs['data-state']).toBeUndefined();
+      expect(attrs.disabled).toBeUndefined();
     });
   });
 

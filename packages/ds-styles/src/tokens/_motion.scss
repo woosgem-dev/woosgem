@@ -28,6 +28,11 @@ $transition-fast: $duration-moderate-01;
 $transition-normal: $duration-moderate-02;
 $transition-slow: $duration-slow-01;
 
+// Numeric duration aliases (for compatibility)
+$duration-150: $duration-moderate-01;
+$duration-200: $duration-moderate-02;
+$duration-300: $duration-slow-01;
+
 // ===================
 // Easing Functions
 // ===================
@@ -48,6 +53,11 @@ $easing-exit-expressive: cubic-bezier(0.4, 0.14, 1, 1);
 $easing-standard: $easing-standard-productive;
 $easing-entrance: $easing-entrance-productive;
 $easing-exit: $easing-exit-productive;
+
+// CSS-style easing aliases (for compatibility)
+$ease-in: cubic-bezier(0.4, 0, 1, 1);
+$ease-out: cubic-bezier(0, 0, 0.2, 1);
+$ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 
 // ===================
 // Transition Presets

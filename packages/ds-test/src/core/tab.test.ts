@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Tab, TabVariants, TabSizes } from '@woosgem/ds-core';
+import { Tab, TabVariants, TabSizes, TabColors } from '@woosgem/ds-core';
 
 describe('Tab', () => {
   describe('displayName', () => {
@@ -13,6 +13,7 @@ describe('Tab', () => {
       expect(Tab.defaultProps).toEqual({
         variant: 'underline',
         size: 'md',
+        color: 'primary',
         selected: false,
         disabled: false,
         fullWidth: false,
@@ -31,6 +32,11 @@ describe('Tab', () => {
       expect(TabSizes).toContain('md');
       expect(TabSizes).toContain('lg');
     });
+
+    it('should include all colors', () => {
+      expect(TabColors).toContain('primary');
+      expect(TabColors).toContain('secondary');
+    });
   });
 
   describe('mapPropsToAttrs', () => {
@@ -40,6 +46,7 @@ describe('Tab', () => {
       expect(attrs.role).toBe('tab');
       expect(attrs['data-variant']).toBe('underline');
       expect(attrs['data-size']).toBe('md');
+      expect(attrs['data-color']).toBe('primary');
       expect(attrs['data-state']).toBeUndefined();
       expect(attrs['data-full-width']).toBeUndefined();
     });
@@ -51,6 +58,20 @@ describe('Tab', () => {
       });
       expect(attrs['data-variant']).toBe('filled');
       expect(attrs['data-size']).toBe('lg');
+    });
+
+    it('should apply custom color', () => {
+      const attrs = Tab.mapPropsToAttrs({
+        color: 'secondary',
+      });
+      expect(attrs['data-color']).toBe('secondary');
+    });
+
+    it('should handle all color variants', () => {
+      for (const color of TabColors) {
+        const attrs = Tab.mapPropsToAttrs({ color });
+        expect(attrs['data-color']).toBe(color);
+      }
     });
 
     it('should set selected state', () => {
@@ -73,6 +94,19 @@ describe('Tab', () => {
     it('should set fullWidth attribute', () => {
       const attrs = Tab.mapPropsToAttrs({ fullWidth: true });
       expect(attrs['data-full-width']).toBe(true);
+    });
+
+    it('should combine multiple props correctly', () => {
+      const attrs = Tab.mapPropsToAttrs({
+        variant: 'filled',
+        size: 'lg',
+        color: 'secondary',
+        selected: true,
+      });
+      expect(attrs['data-variant']).toBe('filled');
+      expect(attrs['data-size']).toBe('lg');
+      expect(attrs['data-color']).toBe('secondary');
+      expect(attrs['data-state']).toBe('selected');
     });
   });
 

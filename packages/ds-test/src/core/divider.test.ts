@@ -4,6 +4,7 @@ import {
   DividerOrientations,
   DividerVariants,
   DividerSpacings,
+  DividerColors,
 } from '@woosgem/ds-core';
 
 describe('Divider', () => {
@@ -19,6 +20,7 @@ describe('Divider', () => {
         orientation: 'horizontal',
         variant: 'solid',
         spacing: 'md',
+        color: 'default',
       });
     });
   });
@@ -40,6 +42,15 @@ describe('Divider', () => {
       expect(DividerSpacings).toContain('md');
       expect(DividerSpacings).toContain('lg');
     });
+
+    it('should include all colors', () => {
+      expect(DividerColors).toContain('default');
+      expect(DividerColors).toContain('muted');
+      expect(DividerColors).toContain('primary');
+      expect(DividerColors).toContain('secondary');
+      expect(DividerColors).toContain('danger');
+      expect(DividerColors).toContain('success');
+    });
   });
 
   describe('mapPropsToAttrs', () => {
@@ -50,6 +61,7 @@ describe('Divider', () => {
       expect(attrs['data-orientation']).toBe('horizontal');
       expect(attrs['data-variant']).toBe('solid');
       expect(attrs['data-spacing']).toBe('md');
+      expect(attrs['data-color']).toBe('default');
       expect(attrs['aria-orientation']).toBe('horizontal');
     });
 
@@ -69,6 +81,11 @@ describe('Divider', () => {
       expect(attrs['data-spacing']).toBe('lg');
     });
 
+    it('should apply custom color', () => {
+      const attrs = Divider.mapPropsToAttrs({ color: 'primary' });
+      expect(attrs['data-color']).toBe('primary');
+    });
+
     it('should handle all orientation variants', () => {
       for (const orientation of DividerOrientations) {
         const attrs = Divider.mapPropsToAttrs({ orientation });
@@ -84,15 +101,24 @@ describe('Divider', () => {
       }
     });
 
+    it('should handle all color variants', () => {
+      for (const color of DividerColors) {
+        const attrs = Divider.mapPropsToAttrs({ color });
+        expect(attrs['data-color']).toBe(color);
+      }
+    });
+
     it('should combine multiple props correctly', () => {
       const attrs = Divider.mapPropsToAttrs({
         orientation: 'vertical',
         variant: 'dashed',
         spacing: 'none',
+        color: 'danger',
       });
       expect(attrs['data-orientation']).toBe('vertical');
       expect(attrs['data-variant']).toBe('dashed');
       expect(attrs['data-spacing']).toBe('none');
+      expect(attrs['data-color']).toBe('danger');
       expect(attrs['aria-orientation']).toBe('vertical');
     });
   });

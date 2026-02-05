@@ -15,6 +15,7 @@ export default defineConfig({
       '@woosgem/ds-core': path.resolve(root, 'packages/ds-core/src/index.ts'),
       '@woosgem/ds-react': path.resolve(root, 'packages/ds-react/src/index.ts'),
       '@woosgem/ds-vue': path.resolve(root, 'packages/ds-vue/src/index.ts'),
+      '@woosgem/ds-lit': path.resolve(root, 'packages/ds-lit/src/index.ts'),
       '@woosgem/ds-test': path.resolve(root, 'packages/ds-test/src/index.ts'),
       '@woosgem/utils': path.resolve(root, 'packages/utils/src/index.ts'),
     },
@@ -30,6 +31,7 @@ export default defineConfig({
     setupFiles: [
       'packages/ds-test/src/react/setup.ts',
       'packages/ds-test/src/vue/setup.ts',
+      'packages/ds-test/src/lit/setup.ts',
     ],
     coverage: {
       provider: 'v8',
@@ -38,7 +40,8 @@ export default defineConfig({
       include: [
         'packages/ds-core/src/**/*.ts',
         'packages/ds-react/src/**/*.tsx',
-        'packages/ds-vue/src/**/*.ts'
+        'packages/ds-vue/src/**/*.ts',
+        'packages/ds-lit/src/**/*.ts'
       ],
       exclude: [
         '**/node_modules/**',
