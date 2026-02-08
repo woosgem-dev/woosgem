@@ -83,3 +83,69 @@ Available themes: `default`, `dark`.
 - **Storybook 8** - Component documentation
 - **SVGO** - SVG optimization tool for `@woosgem/ds-icons`
 - **dart-sass** - SCSS compilation (custom script in `packages/ds-styles/scripts/build.js`)
+
+---
+
+## Headless Layer (Planned)
+
+> 새로운 레이어: UI 로직/렌더링 담당, 스타일 없음
+
+### 동기
+
+현재 `ds-react`의 Modal, Tooltip 등에 로직(Portal, FocusTrap, 위치 계산)이 하드코딩됨.
+→ 재사용 어려움, 테스트 어려움, 스타일 강제
+
+### 구조 (계획)
+
+```
+@woosgem-dev/headless (또는 primitives)
+├── components/
+│   ├── Portal.tsx       # DOM 트리 밖 렌더링
+│   ├── FocusTrap.tsx    # 포커스 가두기
+│   ├── Popover.tsx      # 앵커 기준 위치 계산
+│   └── Label.tsx        # 폼 필드 구조 (wrapping 패턴)
+├── hooks/
+│   ├── useScrollLock.ts # body 스크롤 방지/복원
+│   ├── useClickOutside.ts
+│   └── useEscapeKey.ts
+└── index.ts
+```
+
+### 레이어 관계
+
+```
+┌─────────────────────────────────────────────┐
+│  @woosgem-dev/react (Styled Components)     │
+│  Modal, Tooltip, Select, Toast, ...         │
+├─────────────────────────────────────────────┤
+│  @woosgem-dev/headless (Logic/Primitives)   │
+│  Portal, FocusTrap, Popover, Label, ...     │
+├─────────────────────────────────────────────┤
+│  @woosgem-dev/core (Definitions + CSP)      │
+│  mapPropsToAttrs, types, tokens             │
+└─────────────────────────────────────────────┘
+```
+
+### 사용 예시
+
+```tsx
+// Headless 직접 사용
+import { Portal, FocusTrap, useScrollLock } from '@woosgem-dev/headless';
+
+function CustomModal({ open, children }) {
+  useScrollLock(open);
+  return (
+    <Portal>
+      <FocusTrap active={open}>
+        {children}
+      </FocusTrap>
+    </Portal>
+  );
+}
+
+// 또는 조합된 Styled 버전 사용
+import { Modal } from '@woosgem-dev/react';
+<Modal open={isOpen}>...</Modal>
+```
+
+> 상세: [docs/roadmap.md](./roadmap.md) "Headless Layer" 섹션 참조

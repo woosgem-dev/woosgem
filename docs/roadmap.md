@@ -57,12 +57,82 @@
 - [ ] CSP를 실제 SCSS 테마 생성에 연동
 - [ ] 테마 빌드 자동화 (CSP → SCSS → CSS)
 - [ ] 접근성(a11y) 테스트 추가
+- [ ] **Headless Layer** 구현 (아래 섹션 참조)
 
 ### 낮은 우선순위
 
 - [ ] 애니메이션 시스템
 - [ ] Figma 플러그인
 - [ ] Svelte 지원
+
+---
+
+## Headless Layer (계획)
+
+> UI 로직/렌더링 담당, 스타일 없음, DOM 추상화
+> 패키지: `@woosgem-dev/headless` 또는 `primitives` (TBD)
+
+### 배경
+
+현재 Modal, Tooltip 등에 로직이 하드코딩되어 있음:
+- Modal: Portal, FocusTrap, ScrollLock, ESC 핸들링 내장
+- Tooltip: 진짜 위치 계산 없이 CSS `data-position`만 사용
+
+**목표:** 로직을 분리해서 재사용 가능하게 만들기
+
+### 컴포넌트
+
+| 컴포넌트 | 역할 | 사용처 |
+|---------|------|--------|
+| **Label** | 폼 필드 구조, wrapping 패턴 | Input, Checkbox, Radio 등 |
+| **Popover** | 앵커 기준 위치 계산 | Tooltip, Dropdown, Select, Menu |
+| **Portal** | DOM 트리 밖 렌더링 | Modal, Toast, Popover |
+| **FocusTrap** | 포커스 가두기 | Modal, Dialog |
+
+### 유틸리티 (Hooks)
+
+| Hook | 역할 |
+|------|------|
+| **useScrollLock** | body 스크롤 방지/복원 |
+| **useClickOutside** | 외부 클릭 감지 |
+| **useEscapeKey** | ESC 키 핸들링 |
+
+### 사용 예시
+
+```tsx
+// Before (현재) - 로직 내장
+<Modal open={isOpen}>...</Modal>
+
+// After (Headless 분리) - 조합 가능
+<Portal>
+  <ScrollLock active={isOpen} />
+  <FocusTrap active={isOpen}>
+    <Overlay onClick={onClose} />
+    <ModalContent>...</ModalContent>
+  </FocusTrap>
+</Portal>
+
+// 또는 합성된 버전
+<Modal.Root>
+  <Modal.Overlay />
+  <Modal.Content>...</Modal.Content>
+</Modal.Root>
+```
+
+### 영감
+
+- [Radix Primitives](https://radix-ui.com) — a11y + 로직
+- [Floating UI](https://floating-ui.com) — 위치 계산 전문
+- [Headless UI](https://headlessui.com) — Tailwind 팀
+
+### 구현 순서 (안)
+
+```
+Phase H1: Portal, ScrollLock, useEscapeKey, useClickOutside
+Phase H2: FocusTrap, Popover (위치 계산)
+Phase H3: Label (폼 필드 구조)
+Phase H4: 기존 Modal, Tooltip 리팩토링
+```
 
 ---
 

@@ -9,12 +9,40 @@ export type InputVariant = (typeof InputVariants)[number];
 export const InputSizes = ['sm', 'md', 'lg'] as const;
 export type InputSize = (typeof InputSizes)[number];
 
-/** Style props for Input component */
+/**
+ * Style props for Input component.
+ *
+ * @remarks
+ * For accessibility, always provide:
+ * - `id` - Required for label association (`<label htmlFor="id">`)
+ * - `name` - Required for form submission
+ * - `aria-describedby` - Reference to error/help text element
+ * - `aria-label` or associated `<label>` - Required for screen readers
+ *
+ * @example
+ * ```tsx
+ * <label htmlFor="email">Email</label>
+ * <Input
+ *   id="email"
+ *   name="email"
+ *   type="email"
+ *   required
+ *   error={!!errors.email}
+ *   aria-describedby="email-error"
+ * />
+ * <span id="email-error">{errors.email}</span>
+ * ```
+ */
 export interface InputStyleProps {
+  /** Visual variant */
   variant?: InputVariant;
+  /** Size of the input */
   size?: InputSize;
+  /** Shows error state. Automatically sets aria-invalid="true" */
   error?: boolean;
+  /** Shows success state */
   success?: boolean;
+  /** Disables the input */
   disabled?: boolean;
 }
 
@@ -24,6 +52,7 @@ export interface InputAttrs {
   'data-variant': InputVariant;
   'data-size': InputSize;
   'data-state'?: 'error' | 'success' | 'disabled' | undefined;
+  'aria-invalid'?: 'true' | undefined;
   disabled?: boolean | undefined;
 }
 
@@ -52,6 +81,7 @@ export const Input = {
       'data-variant': merged.variant,
       'data-size': merged.size,
       'data-state': state,
+      'aria-invalid': merged.error ? 'true' : undefined,
       disabled: merged.disabled || undefined,
     };
   },

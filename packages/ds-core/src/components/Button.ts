@@ -31,6 +31,7 @@ export interface ButtonAttrs {
   'data-size': ButtonSize;
   'data-state'?: 'loading' | 'disabled' | undefined;
   'data-full-width'?: boolean | undefined;
+  'aria-busy'?: 'true' | undefined;
   disabled?: boolean | undefined;
 }
 
@@ -62,6 +63,7 @@ export const Button = {
       'data-size': merged.size,
       'data-state': merged.loading ? 'loading' : merged.disabled ? 'disabled' : undefined,
       'data-full-width': merged.fullWidth || undefined,
+      'aria-busy': merged.loading ? 'true' : undefined,
       disabled: merged.disabled || merged.loading || undefined,
     };
   },

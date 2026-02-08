@@ -30,7 +30,7 @@ export interface TextareaAttrs {
   'data-resize': TextareaResize;
   'data-state'?: 'disabled' | 'error' | undefined;
   disabled?: boolean | undefined;
-  'aria-invalid'?: boolean | undefined;
+  'aria-invalid'?: 'true' | undefined;
 }
 
 /** Textarea component definition */
@@ -54,7 +54,7 @@ export const Textarea = {
   mapPropsToAttrs: (props: TextareaStyleProps): TextareaAttrs => {
     const merged = { ...Textarea.defaultProps, ...filterNullish(props) };
 
-    // disabled가 error보다 ?�선
+    // disabled가 error보다 ?�선
     const state = merged.disabled ? 'disabled' : merged.error ? 'error' : undefined;
 
     return {
@@ -64,7 +64,7 @@ export const Textarea = {
       'data-resize': merged.resize,
       'data-state': state,
       disabled: merged.disabled || undefined,
-      'aria-invalid': merged.error || undefined,
+      'aria-invalid': merged.error ? 'true' : undefined,
     };
   },
 
