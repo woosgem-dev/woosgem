@@ -1,4 +1,4 @@
-import { Icon as IconCore } from '@woosgem/ds-core';
+import { Icon as IconCore } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

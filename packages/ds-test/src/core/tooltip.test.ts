@@ -3,7 +3,7 @@ import {
   Tooltip,
   TooltipPositions,
   TooltipTriggers,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';
 
 describe('Tooltip Core', () => {
   describe('displayName', () => {

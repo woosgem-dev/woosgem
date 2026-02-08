@@ -1,5 +1,5 @@
 import type { DefineComponent } from 'vue';
-import { Checkbox as CheckboxDef, type CheckboxStyleProps, type Prettify } from '@woosgem/ds-core';
+import { Checkbox as CheckboxDef, type CheckboxStyleProps, type Prettify } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

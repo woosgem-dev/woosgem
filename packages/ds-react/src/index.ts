@@ -89,6 +89,7 @@ export {
 } from './Toast';
 export { Skeleton, type SkeletonProps, type SkeletonRef } from './Skeleton';
 export { Progress, type ProgressProps, type ProgressRef } from './Progress';
+export { Kbd, type KbdProps, type KbdRef } from './Kbd';
 
 // Factory (for advanced usage)
 export { createComponent } from './_internal/createComponent';

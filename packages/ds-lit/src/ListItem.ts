@@ -1,4 +1,4 @@
-import { ListItem as ListItemCore } from '@woosgem/ds-core';
+import { ListItem as ListItemCore } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

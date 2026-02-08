@@ -1,4 +1,4 @@
-import { Spinner as SpinnerCore } from '@woosgem/ds-core';
+import { Spinner as SpinnerCore } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

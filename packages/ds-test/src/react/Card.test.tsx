@@ -6,11 +6,11 @@ import {
   CardHeader as CardHeaderDef,
   CardBody as CardBodyDef,
   CardFooter as CardFooterDef,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';
 
 describe('Card (React)', () => {
-  describe('Core 일치 검증', () => {
-    it('TC-R100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
+  describe('Core ?�치 검�?, () => {
+    it('TC-R100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
       const coreAttrs = CardDef.mapPropsToAttrs({});
 
       render(<Card>Content</Card>);
@@ -21,7 +21,7 @@ describe('Card (React)', () => {
       expect(card).toHaveClass(coreAttrs.class);
     });
 
-    it('TC-R101: variant prop이 core 결과와 일치한다', () => {
+    it('TC-R101: variant prop??core 결과?� ?�치?�다', () => {
       const coreAttrs = CardDef.mapPropsToAttrs({ variant: 'elevated' });
 
       render(<Card variant="elevated">Content</Card>);
@@ -30,7 +30,7 @@ describe('Card (React)', () => {
       expect(card).toHaveAttribute('data-variant', coreAttrs['data-variant']);
     });
 
-    it('TC-R102: padding prop이 core 결과와 일치한다', () => {
+    it('TC-R102: padding prop??core 결과?� ?�치?�다', () => {
       const coreAttrs = CardDef.mapPropsToAttrs({ padding: 'lg' });
 
       render(<Card padding="lg">Content</Card>);
@@ -39,7 +39,7 @@ describe('Card (React)', () => {
       expect(card).toHaveAttribute('data-padding', coreAttrs['data-padding']);
     });
 
-    it('TC-R103: clickable prop이 core 결과와 일치한다', () => {
+    it('TC-R103: clickable prop??core 결과?� ?�치?�다', () => {
       const coreAttrs = CardDef.mapPropsToAttrs({ clickable: true });
 
       render(<Card clickable>Click me</Card>);
@@ -49,73 +49,73 @@ describe('Card (React)', () => {
     });
   });
 
-  describe('Variant 변형', () => {
-    it('TC-C110: variant: outlined가 적용된다', () => {
+  describe('Variant 변??, () => {
+    it('TC-C110: variant: outlined가 ?�용?�다', () => {
       render(<Card variant="outlined">Content</Card>);
       const card = screen.getByText('Content').closest('.card')!;
       expect(card).toHaveAttribute('data-variant', 'outlined');
     });
 
-    it('TC-C111: variant: elevated가 적용된다', () => {
+    it('TC-C111: variant: elevated가 ?�용?�다', () => {
       render(<Card variant="elevated">Content</Card>);
       const card = screen.getByText('Content').closest('.card')!;
       expect(card).toHaveAttribute('data-variant', 'elevated');
     });
 
-    it('TC-C112: variant: filled가 적용된다', () => {
+    it('TC-C112: variant: filled가 ?�용?�다', () => {
       render(<Card variant="filled">Content</Card>);
       const card = screen.getByText('Content').closest('.card')!;
       expect(card).toHaveAttribute('data-variant', 'filled');
     });
   });
 
-  describe('Padding 변형', () => {
-    it('TC-C120: padding: none이 적용된다', () => {
+  describe('Padding 변??, () => {
+    it('TC-C120: padding: none???�용?�다', () => {
       render(<Card padding="none">Content</Card>);
       const card = screen.getByText('Content').closest('.card')!;
       expect(card).toHaveAttribute('data-padding', 'none');
     });
 
-    it('TC-C121: padding: sm이 적용된다', () => {
+    it('TC-C121: padding: sm???�용?�다', () => {
       render(<Card padding="sm">Content</Card>);
       const card = screen.getByText('Content').closest('.card')!;
       expect(card).toHaveAttribute('data-padding', 'sm');
     });
 
-    it('TC-C122: padding: md가 적용된다', () => {
+    it('TC-C122: padding: md가 ?�용?�다', () => {
       render(<Card padding="md">Content</Card>);
       const card = screen.getByText('Content').closest('.card')!;
       expect(card).toHaveAttribute('data-padding', 'md');
     });
 
-    it('TC-C123: padding: lg가 적용된다', () => {
+    it('TC-C123: padding: lg가 ?�용?�다', () => {
       render(<Card padding="lg">Content</Card>);
       const card = screen.getByText('Content').closest('.card')!;
       expect(card).toHaveAttribute('data-padding', 'lg');
     });
   });
 
-  describe('기본값', () => {
-    it('TC-C010: variant 기본값은 outlined이다', () => {
+  describe('기본�?, () => {
+    it('TC-C010: variant 기본값�? outlined?�다', () => {
       render(<Card>Content</Card>);
       const card = screen.getByText('Content').closest('.card')!;
       expect(card).toHaveAttribute('data-variant', 'outlined');
     });
 
-    it('TC-C011: padding 기본값은 md이다', () => {
+    it('TC-C011: padding 기본값�? md?�다', () => {
       render(<Card>Content</Card>);
       const card = screen.getByText('Content').closest('.card')!;
       expect(card).toHaveAttribute('data-padding', 'md');
     });
   });
 
-  describe('React 전용 props', () => {
-    it('TC-R200: children이 렌더링된다', () => {
+  describe('React ?�용 props', () => {
+    it('TC-R200: children???�더링된??, () => {
       render(<Card>Card content</Card>);
       expect(screen.getByText('Card content')).toBeInTheDocument();
     });
 
-    it('TC-R201: JSX children이 렌더링된다', () => {
+    it('TC-R201: JSX children???�더링된??, () => {
       render(
         <Card>
           <span data-testid="icon">Icon</span>
@@ -126,7 +126,7 @@ describe('Card (React)', () => {
       expect(screen.getByText('Content')).toBeInTheDocument();
     });
 
-    it('TC-R202: className이 병합된다', () => {
+    it('TC-R202: className??병합?�다', () => {
       render(<Card className="custom-card">Content</Card>);
       const card = screen.getByText('Content').closest('.card')!;
       expect(card).toHaveClass('card');
@@ -134,34 +134,34 @@ describe('Card (React)', () => {
     });
   });
 
-  describe('커스터마이즈 오버라이드', () => {
-    it('TC-O100: className 추가 시 병합된다', () => {
+  describe('커스?�마?�즈 ?�버?�이??, () => {
+    it('TC-O100: className 추�? ??병합?�다', () => {
       render(<Card className="my-card">Content</Card>);
       const card = screen.getByText('Content').closest('.card')!;
       expect(card).toHaveClass('card');
       expect(card).toHaveClass('my-card');
     });
 
-    it('TC-O110: style 인라인 적용', () => {
+    it('TC-O110: style ?�라???�용', () => {
       render(<Card style={{ marginTop: 16 }}>Content</Card>);
       const card = screen.getByText('Content').closest('.card')!;
       expect(card).toHaveStyle({ marginTop: '16px' });
     });
 
-    it('TC-O120: data-testid 추가 허용', () => {
+    it('TC-O120: data-testid 추�? ?�용', () => {
       render(<Card data-testid="test-card">Content</Card>);
       expect(screen.getByTestId('test-card')).toBeInTheDocument();
     });
 
-    it('TC-O130: 보호 속성 data-variant 오버라이드 차단', () => {
-      // @ts-expect-error - 보호 속성 오버라이드 시도
+    it('TC-O130: 보호 ?�성 data-variant ?�버?�이??차단', () => {
+      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
       render(<Card data-variant="custom" variant="elevated">Content</Card>);
       const card = screen.getByText('Content').closest('.card')!;
       expect(card).toHaveAttribute('data-variant', 'elevated');
     });
 
-    it('TC-O131: 보호 속성 data-padding 오버라이드 차단', () => {
-      // @ts-expect-error - 보호 속성 오버라이드 시도
+    it('TC-O131: 보호 ?�성 data-padding ?�버?�이??차단', () => {
+      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
       render(<Card data-padding="custom" padding="lg">Content</Card>);
       const card = screen.getByText('Content').closest('.card')!;
       expect(card).toHaveAttribute('data-padding', 'lg');

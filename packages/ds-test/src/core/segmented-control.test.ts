@@ -3,7 +3,7 @@ import {
   SegmentedControl,
   SegmentedControlItem,
   SegmentedControlSizes,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';
 
 describe('SegmentedControl', () => {
   describe('displayName', () => {

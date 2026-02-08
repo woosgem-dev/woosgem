@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/vue';
 import { Badge } from '@woosgem/ds-vue';
-import { Badge as BadgeDef } from '@woosgem/ds-core';
+import { Badge as BadgeDef } from '@woosgem-dev/core';
 
 describe('Badge', () => {
-  describe('core 일치 검증', () => {
-    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
+  describe('core ?�치 검�?, () => {
+    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
       const coreAttrs = BadgeDef.mapPropsToAttrs({});
 
       render(Badge, { slots: { default: 'New' } });
@@ -17,7 +17,7 @@ describe('Badge', () => {
       expect(badge).toHaveClass(coreAttrs.class);
     });
 
-    it('TC-V101: variant prop이 core 결과와 일치한다', () => {
+    it('TC-V101: variant prop??core 결과?� ?�치?�다', () => {
       const coreAttrs = BadgeDef.mapPropsToAttrs({ variant: 'outline' });
 
       render(Badge, {
@@ -30,7 +30,7 @@ describe('Badge', () => {
       expect(badge).toHaveAttribute('data-variant', 'outline');
     });
 
-    it('TC-V102: color prop이 core 결과와 일치한다', () => {
+    it('TC-V102: color prop??core 결과?� ?�치?�다', () => {
       const coreAttrs = BadgeDef.mapPropsToAttrs({ color: 'danger' });
 
       render(Badge, {
@@ -43,7 +43,7 @@ describe('Badge', () => {
       expect(badge).toHaveAttribute('data-color', 'danger');
     });
 
-    it('TC-V103: size prop이 core 결과와 일치한다', () => {
+    it('TC-V103: size prop??core 결과?� ?�치?�다', () => {
       const coreAttrs = BadgeDef.mapPropsToAttrs({ size: 'lg' });
 
       render(Badge, {
@@ -56,7 +56,7 @@ describe('Badge', () => {
       expect(badge).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-V104: variant: subtle이 core 결과와 일치한다', () => {
+    it('TC-V104: variant: subtle??core 결과?� ?�치?�다', () => {
       const coreAttrs = BadgeDef.mapPropsToAttrs({ variant: 'subtle' });
 
       render(Badge, {
@@ -68,7 +68,7 @@ describe('Badge', () => {
       expect(badge).toHaveAttribute('data-variant', coreAttrs['data-variant']);
     });
 
-    it('TC-V105: color: success가 core 결과와 일치한다', () => {
+    it('TC-V105: color: success가 core 결과?� ?�치?�다', () => {
       const coreAttrs = BadgeDef.mapPropsToAttrs({ color: 'success' });
 
       render(Badge, {
@@ -80,7 +80,7 @@ describe('Badge', () => {
       expect(badge).toHaveAttribute('data-color', coreAttrs['data-color']);
     });
 
-    it('TC-V106: color: warning이 core 결과와 일치한다', () => {
+    it('TC-V106: color: warning??core 결과?� ?�치?�다', () => {
       const coreAttrs = BadgeDef.mapPropsToAttrs({ color: 'warning' });
 
       render(Badge, {
@@ -92,7 +92,7 @@ describe('Badge', () => {
       expect(badge).toHaveAttribute('data-color', coreAttrs['data-color']);
     });
 
-    it('TC-V107: color: info가 core 결과와 일치한다', () => {
+    it('TC-V107: color: info가 core 결과?� ?�치?�다', () => {
       const coreAttrs = BadgeDef.mapPropsToAttrs({ color: 'info' });
 
       render(Badge, {
@@ -104,7 +104,7 @@ describe('Badge', () => {
       expect(badge).toHaveAttribute('data-color', coreAttrs['data-color']);
     });
 
-    it('TC-V108: color: secondary가 core 결과와 일치한다', () => {
+    it('TC-V108: color: secondary가 core 결과?� ?�치?�다', () => {
       const coreAttrs = BadgeDef.mapPropsToAttrs({ color: 'secondary' });
 
       render(Badge, {
@@ -116,7 +116,7 @@ describe('Badge', () => {
       expect(badge).toHaveAttribute('data-color', coreAttrs['data-color']);
     });
 
-    it('TC-V109: size: sm이 core 결과와 일치한다', () => {
+    it('TC-V109: size: sm??core 결과?� ?�치?�다', () => {
       const coreAttrs = BadgeDef.mapPropsToAttrs({ size: 'sm' });
 
       render(Badge, {
@@ -128,7 +128,7 @@ describe('Badge', () => {
       expect(badge).toHaveAttribute('data-size', coreAttrs['data-size']);
     });
 
-    it('TC-V110: 복합 props가 core 결과와 일치한다', () => {
+    it('TC-V110: 복합 props가 core 결과?� ?�치?�다', () => {
       const props = {
         variant: 'subtle' as const,
         color: 'success' as const,
@@ -148,13 +148,13 @@ describe('Badge', () => {
     });
   });
 
-  describe('Vue 전용 props', () => {
-    it('TC-V300: slot이 렌더링된다', () => {
+  describe('Vue ?�용 props', () => {
+    it('TC-V300: slot???�더링된??, () => {
       render(Badge, { slots: { default: 'Active' } });
       expect(screen.getByText('Active')).toBeInTheDocument();
     });
 
-    it('TC-V301: class가 병합된다', () => {
+    it('TC-V301: class가 병합?�다', () => {
       render(Badge, {
         attrs: { class: 'custom-class' },
         slots: { default: 'Badge' },
@@ -165,7 +165,7 @@ describe('Badge', () => {
       expect(badge).toHaveClass('custom-class');
     });
 
-    it('TC-V302: aria-label이 적용된다', () => {
+    it('TC-V302: aria-label???�용?�다', () => {
       render(Badge, {
         attrs: { 'aria-label': 'Status badge' },
         slots: { default: 'Active' },
@@ -174,8 +174,8 @@ describe('Badge', () => {
     });
   });
 
-  describe('커스터마이즈 오버라이드', () => {
-    it('TC-O100: class 추가 시 병합된다', () => {
+  describe('커스?�마?�즈 ?�버?�이??, () => {
+    it('TC-O100: class 추�? ??병합?�다', () => {
       render(Badge, {
         attrs: { class: 'custom' },
         slots: { default: 'Badge' },
@@ -186,7 +186,7 @@ describe('Badge', () => {
       expect(badge).toHaveClass('custom');
     });
 
-    it('TC-O120: data-testid 추가 허용', () => {
+    it('TC-O120: data-testid 추�? ?�용', () => {
       render(Badge, {
         attrs: { 'data-testid': 'status-badge' },
         slots: { default: 'New' },
@@ -194,7 +194,7 @@ describe('Badge', () => {
       expect(screen.getByTestId('status-badge')).toBeInTheDocument();
     });
 
-    it('TC-O200: 보호 속성 data-variant 오버라이드 차단', () => {
+    it('TC-O200: 보호 ?�성 data-variant ?�버?�이??차단', () => {
       render(Badge, {
         props: { variant: 'outline' },
         attrs: { 'data-variant': 'custom' },
@@ -205,7 +205,7 @@ describe('Badge', () => {
       expect(badge).toHaveAttribute('data-variant', 'outline');
     });
 
-    it('TC-O201: 보호 속성 data-color 오버라이드 차단', () => {
+    it('TC-O201: 보호 ?�성 data-color ?�버?�이??차단', () => {
       render(Badge, {
         props: { color: 'danger' },
         attrs: { 'data-color': 'custom' },
@@ -216,7 +216,7 @@ describe('Badge', () => {
       expect(badge).toHaveAttribute('data-color', 'danger');
     });
 
-    it('TC-O202: 보호 속성 data-size 오버라이드 차단', () => {
+    it('TC-O202: 보호 ?�성 data-size ?�버?�이??차단', () => {
       render(Badge, {
         props: { size: 'lg' },
         attrs: { 'data-size': 'custom' },
@@ -227,7 +227,7 @@ describe('Badge', () => {
       expect(badge).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-O180: style 속성 전달 허용', () => {
+    it('TC-O180: style ?�성 ?�달 ?�용', () => {
       render(Badge, {
         attrs: { style: 'margin-left: 4px;' },
         slots: { default: 'Badge' },
@@ -237,7 +237,7 @@ describe('Badge', () => {
       expect(badge).toHaveStyle({ marginLeft: '4px' });
     });
 
-    it('TC-O170: id 속성 전달 허용', () => {
+    it('TC-O170: id ?�성 ?�달 ?�용', () => {
       render(Badge, {
         attrs: { id: 'my-badge' },
         slots: { default: 'Badge' },
@@ -245,7 +245,7 @@ describe('Badge', () => {
       expect(screen.getByText('Badge')).toHaveAttribute('id', 'my-badge');
     });
 
-    it('TC-O140: aria-describedby 속성 전달 허용', () => {
+    it('TC-O140: aria-describedby ?�성 ?�달 ?�용', () => {
       render(Badge, {
         attrs: { 'aria-describedby': 'badge-desc' },
         slots: { default: 'Badge' },
@@ -253,7 +253,7 @@ describe('Badge', () => {
       expect(screen.getByText('Badge')).toHaveAttribute('aria-describedby', 'badge-desc');
     });
 
-    it('TC-O141: title 속성 전달 허용', () => {
+    it('TC-O141: title ?�성 ?�달 ?�용', () => {
       render(Badge, {
         attrs: { title: 'Status: Active' },
         slots: { default: 'Active' },

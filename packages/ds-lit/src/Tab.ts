@@ -1,4 +1,4 @@
-import { Tab as TabCore } from '@woosgem/ds-core';
+import { Tab as TabCore } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

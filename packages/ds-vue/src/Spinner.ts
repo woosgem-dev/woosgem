@@ -1,5 +1,5 @@
 import type { DefineComponent } from 'vue';
-import { Spinner as SpinnerDef, type SpinnerStyleProps, type Prettify } from '@woosgem/ds-core';
+import { Spinner as SpinnerDef, type SpinnerStyleProps, type Prettify } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**
@@ -22,7 +22,7 @@ export type SpinnerProps = Prettify<
  *
  * <Spinner size="lg" color="secondary" />
  *
- * <Spinner label="데이터 불러오는 중..." />
+ * <Spinner label="?�이??불러?�는 �?.." />
  * ```
  */
 export const Spinner = createComponent(SpinnerDef) as DefineComponent<SpinnerProps>;

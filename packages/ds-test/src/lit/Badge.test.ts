@@ -4,11 +4,11 @@
 import { describe, it, expect } from 'vitest';
 import { html, fixture } from './setup';
 import { Badge } from '@woosgem/ds-lit';
-import { Badge as BadgeDef } from '@woosgem/ds-core';
+import { Badge as BadgeDef } from '@woosgem-dev/core';
 
 describe('Badge (Lit)', () => {
-  describe('core 일치 검증', () => {
-    it('TC-L100: 기본 props가 core 결과와 일치한다', async () => {
+  describe('core ?�치 검�?, () => {
+    it('TC-L100: 기본 props가 core 결과?� ?�치?�다', async () => {
       const coreAttrs = BadgeDef.mapPropsToAttrs({});
 
       const el = await fixture<InstanceType<typeof Badge>>(html`
@@ -20,7 +20,7 @@ describe('Badge (Lit)', () => {
       expect(el.classList.contains('badge')).toBe(true);
     });
 
-    it('TC-L101: variant prop이 core 결과와 일치한다', async () => {
+    it('TC-L101: variant prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = BadgeDef.mapPropsToAttrs({ variant: 'outline' });
 
       const el = await fixture<InstanceType<typeof Badge>>(html`
@@ -31,7 +31,7 @@ describe('Badge (Lit)', () => {
       expect(el.getAttribute('data-variant')).toBe('outline');
     });
 
-    it('TC-L102: color prop이 core 결과와 일치한다', async () => {
+    it('TC-L102: color prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = BadgeDef.mapPropsToAttrs({ color: 'danger' });
 
       const el = await fixture<InstanceType<typeof Badge>>(html`
@@ -42,7 +42,7 @@ describe('Badge (Lit)', () => {
       expect(el.getAttribute('data-color')).toBe('danger');
     });
 
-    it('TC-L103: size prop이 core 결과와 일치한다', async () => {
+    it('TC-L103: size prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = BadgeDef.mapPropsToAttrs({ size: 'lg' });
 
       const el = await fixture<InstanceType<typeof Badge>>(html`
@@ -54,8 +54,8 @@ describe('Badge (Lit)', () => {
     });
   });
 
-  describe('Web Component 전용', () => {
-    it('TC-L300: slot 컨텐츠가 렌더링된다', async () => {
+  describe('Web Component ?�용', () => {
+    it('TC-L300: slot 컨텐츠�? ?�더링된??, async () => {
       const el = await fixture<InstanceType<typeof Badge>>(html`
         <wg-badge>Test Badge</wg-badge>
       `);
@@ -63,7 +63,7 @@ describe('Badge (Lit)', () => {
       expect(el.textContent?.trim()).toBe('Test Badge');
     });
 
-    it('TC-L301: 프로퍼티 변경 시 속성이 업데이트된다', async () => {
+    it('TC-L301: ?�로?�티 변�????�성???�데?�트?�다', async () => {
       const el = await fixture<InstanceType<typeof Badge>>(html`
         <wg-badge color="primary">Badge</wg-badge>
       `);

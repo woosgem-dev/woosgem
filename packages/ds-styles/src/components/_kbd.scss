@@ -1,0 +1,92 @@
+// Kbd Component Styles
+// Displays keyboard shortcuts in a visually distinct way
+
+.kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ds-font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  border-radius: var(--ds-radius-sm, 4px);
+  
+  // Sizes
+  &[data-size="sm"] {
+    font-size: var(--ds-font-size-xs, 0.75rem);
+    padding: 0.125rem 0.375rem;
+    min-width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  &[data-size="md"] {
+    font-size: var(--ds-font-size-sm, 0.875rem);
+    padding: 0.1875rem 0.5rem;
+    min-width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  &[data-size="lg"] {
+    font-size: var(--ds-font-size-base, 1rem);
+    padding: 0.25rem 0.625rem;
+    min-width: 1.75rem;
+    height: 1.75rem;
+  }
+  
+  // Variants
+  &[data-variant="raised"] {
+    background: linear-gradient(
+      180deg,
+      var(--ds-color-gray-50, #f9fafb) 0%,
+      var(--ds-color-gray-100, #f3f4f6) 100%
+    );
+    border: 1px solid var(--ds-color-gray-300, #d1d5db);
+    box-shadow: 
+      0 1px 0 0 var(--ds-color-gray-300, #d1d5db),
+      0 2px 0 0 var(--ds-color-gray-200, #e5e7eb),
+      inset 0 -1px 0 0 var(--ds-color-gray-200, #e5e7eb);
+    color: var(--ds-color-gray-700, #374151);
+  }
+  
+  &[data-variant="flat"] {
+    background: var(--ds-color-gray-100, #f3f4f6);
+    border: 1px solid var(--ds-color-gray-200, #e5e7eb);
+    color: var(--ds-color-gray-600, #4b5563);
+  }
+  
+  &[data-variant="outline"] {
+    background: transparent;
+    border: 1px solid var(--ds-color-gray-300, #d1d5db);
+    color: var(--ds-color-gray-600, #4b5563);
+  }
+}
+
+// Dark mode support
+[data-theme="dark"] {
+  .kbd {
+    &[data-variant="raised"] {
+      background: linear-gradient(
+        180deg,
+        var(--ds-color-gray-700, #374151) 0%,
+        var(--ds-color-gray-800, #1f2937) 100%
+      );
+      border-color: var(--ds-color-gray-600, #4b5563);
+      box-shadow: 
+        0 1px 0 0 var(--ds-color-gray-600, #4b5563),
+        0 2px 0 0 var(--ds-color-gray-700, #374151),
+        inset 0 -1px 0 0 var(--ds-color-gray-700, #374151);
+      color: var(--ds-color-gray-200, #e5e7eb);
+    }
+    
+    &[data-variant="flat"] {
+      background: var(--ds-color-gray-800, #1f2937);
+      border-color: var(--ds-color-gray-700, #374151);
+      color: var(--ds-color-gray-300, #d1d5db);
+    }
+    
+    &[data-variant="outline"] {
+      border-color: var(--ds-color-gray-600, #4b5563);
+      color: var(--ds-color-gray-400, #9ca3af);
+    }
+  }
+}

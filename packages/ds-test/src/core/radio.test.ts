@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Radio, RadioGroup, RadioSizes, RadioColors } from '@woosgem/ds-core';
+import { Radio, RadioGroup, RadioSizes, RadioColors } from '@woosgem-dev/core';
 
 describe('Radio Core', () => {
   describe('displayName', () => {

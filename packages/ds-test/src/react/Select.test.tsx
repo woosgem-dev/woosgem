@@ -5,11 +5,11 @@ import {
   Select as SelectDef,
   SelectMenu as SelectMenuDef,
   SelectOption as SelectOptionDef,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';
 
 describe('Select (React)', () => {
-  describe('Core 일치 검증', () => {
-    it('TC-R100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
+  describe('Core ?�치 검�?, () => {
+    it('TC-R100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
       const coreAttrs = SelectDef.mapPropsToAttrs({});
 
       render(<Select aria-label="test-select">Choose</Select>);
@@ -20,7 +20,7 @@ describe('Select (React)', () => {
       expect(select).toHaveClass(coreAttrs.class);
     });
 
-    it('TC-R101: variant prop이 core 결과와 일치한다', () => {
+    it('TC-R101: variant prop??core 결과?� ?�치?�다', () => {
       const coreAttrs = SelectDef.mapPropsToAttrs({ variant: 'filled' });
 
       render(<Select variant="filled" aria-label="test">Choose</Select>);
@@ -29,7 +29,7 @@ describe('Select (React)', () => {
       expect(select).toHaveAttribute('data-variant', coreAttrs['data-variant']);
     });
 
-    it('TC-R102: size prop이 core 결과와 일치한다', () => {
+    it('TC-R102: size prop??core 결과?� ?�치?�다', () => {
       const coreAttrs = SelectDef.mapPropsToAttrs({ size: 'lg' });
 
       render(<Select size="lg" aria-label="test">Choose</Select>);
@@ -38,7 +38,7 @@ describe('Select (React)', () => {
       expect(select).toHaveAttribute('data-size', coreAttrs['data-size']);
     });
 
-    it('TC-R103: disabled prop이 core 결과와 일치한다', () => {
+    it('TC-R103: disabled prop??core 결과?� ?�치?�다', () => {
       const coreAttrs = SelectDef.mapPropsToAttrs({ disabled: true });
 
       render(<Select disabled aria-label="test">Choose</Select>);
@@ -48,74 +48,74 @@ describe('Select (React)', () => {
     });
   });
 
-  describe('Variant 변형', () => {
-    it('TC-C110: variant: outline이 적용된다', () => {
+  describe('Variant 변??, () => {
+    it('TC-C110: variant: outline???�용?�다', () => {
       render(<Select variant="outline" aria-label="test">Choose</Select>);
       expect(screen.getByRole('combobox')).toHaveAttribute('data-variant', 'outline');
     });
 
-    it('TC-C111: variant: filled가 적용된다', () => {
+    it('TC-C111: variant: filled가 ?�용?�다', () => {
       render(<Select variant="filled" aria-label="test">Choose</Select>);
       expect(screen.getByRole('combobox')).toHaveAttribute('data-variant', 'filled');
     });
   });
 
-  describe('Size 변형', () => {
-    it('TC-C120: size: sm이 적용된다', () => {
+  describe('Size 변??, () => {
+    it('TC-C120: size: sm???�용?�다', () => {
       render(<Select size="sm" aria-label="test">Choose</Select>);
       expect(screen.getByRole('combobox')).toHaveAttribute('data-size', 'sm');
     });
 
-    it('TC-C121: size: md가 적용된다', () => {
+    it('TC-C121: size: md가 ?�용?�다', () => {
       render(<Select size="md" aria-label="test">Choose</Select>);
       expect(screen.getByRole('combobox')).toHaveAttribute('data-size', 'md');
     });
 
-    it('TC-C122: size: lg가 적용된다', () => {
+    it('TC-C122: size: lg가 ?�용?�다', () => {
       render(<Select size="lg" aria-label="test">Choose</Select>);
       expect(screen.getByRole('combobox')).toHaveAttribute('data-size', 'lg');
     });
   });
 
-  describe('접근성', () => {
-    it('TC-A100: role="combobox"가 항상 적용된다', () => {
+  describe('?�근??, () => {
+    it('TC-A100: role="combobox"가 ??�� ?�용?�다', () => {
       render(<Select aria-label="test">Choose</Select>);
       expect(screen.getByRole('combobox')).toBeInTheDocument();
     });
 
-    it('TC-A101: aria-expanded가 올바르게 적용된다', () => {
+    it('TC-A101: aria-expanded가 ?�바르게 ?�용?�다', () => {
       render(<Select open aria-label="test">Choose</Select>);
       expect(screen.getByRole('combobox')).toHaveAttribute('aria-expanded', 'true');
     });
 
-    it('TC-A102: aria-haspopup="listbox"가 적용된다', () => {
+    it('TC-A102: aria-haspopup="listbox"가 ?�용?�다', () => {
       render(<Select aria-label="test">Choose</Select>);
       expect(screen.getByRole('combobox')).toHaveAttribute('aria-haspopup', 'listbox');
     });
   });
 
-  describe('기본값', () => {
-    it('TC-C010: variant 기본값은 outline이다', () => {
+  describe('기본�?, () => {
+    it('TC-C010: variant 기본값�? outline?�다', () => {
       render(<Select aria-label="test">Choose</Select>);
       expect(screen.getByRole('combobox')).toHaveAttribute('data-variant', 'outline');
     });
 
-    it('TC-C011: size 기본값은 md이다', () => {
+    it('TC-C011: size 기본값�? md?�다', () => {
       render(<Select aria-label="test">Choose</Select>);
       expect(screen.getByRole('combobox')).toHaveAttribute('data-size', 'md');
     });
   });
 
-  describe('커스터마이즈 오버라이드', () => {
-    it('TC-O100: className 추가 시 병합된다', () => {
+  describe('커스?�마?�즈 ?�버?�이??, () => {
+    it('TC-O100: className 추�? ??병합?�다', () => {
       render(<Select className="custom-select" aria-label="test">Choose</Select>);
       const select = screen.getByRole('combobox');
       expect(select).toHaveClass('select');
       expect(select).toHaveClass('custom-select');
     });
 
-    it('TC-O130: 보호 속성 data-variant 오버라이드 차단', () => {
-      // @ts-expect-error - 보호 속성 오버라이드 시도
+    it('TC-O130: 보호 ?�성 data-variant ?�버?�이??차단', () => {
+      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
       render(<Select data-variant="custom" variant="filled" aria-label="test">Choose</Select>);
       expect(screen.getByRole('combobox')).toHaveAttribute('data-variant', 'filled');
     });

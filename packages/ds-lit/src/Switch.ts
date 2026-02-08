@@ -1,4 +1,4 @@
-import { Switch as SwitchCore } from '@woosgem/ds-core';
+import { Switch as SwitchCore } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

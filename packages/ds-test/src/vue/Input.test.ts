@@ -2,11 +2,11 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { Input } from '@woosgem/ds-vue';
-import { Input as InputDef } from '@woosgem/ds-core';
+import { Input as InputDef } from '@woosgem-dev/core';
 
 describe('Input', () => {
-  describe('core 일치 검증', () => {
-    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
+  describe('core ?�치 검�?, () => {
+    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
       const coreAttrs = InputDef.mapPropsToAttrs({});
 
       render(Input, { attrs: { 'aria-label': 'test input' } });
@@ -17,7 +17,7 @@ describe('Input', () => {
       expect(input).toHaveClass(coreAttrs.class);
     });
 
-    it('TC-V101: variant prop이 core 결과와 일치한다', () => {
+    it('TC-V101: variant prop??core 결과?� ?�치?�다', () => {
       const coreAttrs = InputDef.mapPropsToAttrs({ variant: 'filled' });
 
       render(Input, {
@@ -30,7 +30,7 @@ describe('Input', () => {
       expect(input).toHaveAttribute('data-variant', 'filled');
     });
 
-    it('TC-V102: size prop이 core 결과와 일치한다', () => {
+    it('TC-V102: size prop??core 결과?� ?�치?�다', () => {
       const coreAttrs = InputDef.mapPropsToAttrs({ size: 'lg' });
 
       render(Input, {
@@ -43,7 +43,7 @@ describe('Input', () => {
       expect(input).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-V103: disabled prop이 core 결과와 일치한다', () => {
+    it('TC-V103: disabled prop??core 결과?� ?�치?�다', () => {
       const coreAttrs = InputDef.mapPropsToAttrs({ disabled: true });
 
       render(Input, {
@@ -57,7 +57,7 @@ describe('Input', () => {
       expect(input).toBeDisabled();
     });
 
-    it('TC-V104: error prop이 core 결과와 일치한다', () => {
+    it('TC-V104: error prop??core 결과?� ?�치?�다', () => {
       const coreAttrs = InputDef.mapPropsToAttrs({ error: true });
 
       render(Input, {
@@ -70,7 +70,7 @@ describe('Input', () => {
       expect(input).toHaveAttribute('data-state', 'error');
     });
 
-    it('TC-V105: success prop이 core 결과와 일치한다', () => {
+    it('TC-V105: success prop??core 결과?� ?�치?�다', () => {
       const coreAttrs = InputDef.mapPropsToAttrs({ success: true });
 
       render(Input, {
@@ -83,7 +83,7 @@ describe('Input', () => {
       expect(input).toHaveAttribute('data-state', 'success');
     });
 
-    it('TC-V106: error가 success보다 우선순위가 높다', () => {
+    it('TC-V106: error가 success보다 ?�선?�위가 ?�다', () => {
       const coreAttrs = InputDef.mapPropsToAttrs({ error: true, success: true });
 
       render(Input, {
@@ -96,7 +96,7 @@ describe('Input', () => {
       expect(input).toHaveAttribute('data-state', 'error');
     });
 
-    it('TC-V107: 복합 props가 core 결과와 일치한다', () => {
+    it('TC-V107: 복합 props가 core 결과?� ?�치?�다', () => {
       const props = {
         variant: 'filled' as const,
         size: 'sm' as const,
@@ -116,8 +116,8 @@ describe('Input', () => {
     });
   });
 
-  describe('이벤트 핸들러', () => {
-    it('TC-V200: onInput 핸들러가 호출된다', async () => {
+  describe('?�벤???�들??, () => {
+    it('TC-V200: onInput ?�들?��? ?�출?�다', async () => {
       const user = userEvent.setup();
       const handleInput = vi.fn();
 
@@ -132,7 +132,7 @@ describe('Input', () => {
       expect(handleInput).toHaveBeenCalled();
     });
 
-    it('TC-V201: onFocus 핸들러가 호출된다', async () => {
+    it('TC-V201: onFocus ?�들?��? ?�출?�다', async () => {
       const user = userEvent.setup();
       const handleFocus = vi.fn();
 
@@ -147,7 +147,7 @@ describe('Input', () => {
       expect(handleFocus).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-V202: onBlur 핸들러가 호출된다', async () => {
+    it('TC-V202: onBlur ?�들?��? ?�출?�다', async () => {
       const user = userEvent.setup();
       const handleBlur = vi.fn();
 
@@ -163,7 +163,7 @@ describe('Input', () => {
       expect(handleBlur).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-V203: disabled 상태에서 입력이 되지 않는다', async () => {
+    it('TC-V203: disabled ?�태?�서 ?�력???��? ?�는??, async () => {
       const user = userEvent.setup();
       const handleInput = vi.fn();
 
@@ -179,15 +179,15 @@ describe('Input', () => {
     });
   });
 
-  describe('Vue 전용 props', () => {
-    it('TC-V300: placeholder가 렌더링된다', () => {
+  describe('Vue ?�용 props', () => {
+    it('TC-V300: placeholder가 ?�더링된??, () => {
       render(Input, {
         attrs: { placeholder: 'Enter text', 'aria-label': 'test input' },
       });
       expect(screen.getByPlaceholderText('Enter text')).toBeInTheDocument();
     });
 
-    it('TC-V301: class가 병합된다', () => {
+    it('TC-V301: class가 병합?�다', () => {
       render(Input, {
         attrs: { class: 'custom-class', 'aria-label': 'test input' },
       });
@@ -197,14 +197,14 @@ describe('Input', () => {
       expect(input).toHaveClass('custom-class');
     });
 
-    it('TC-V302: type prop이 적용된다', () => {
+    it('TC-V302: type prop???�용?�다', () => {
       render(Input, {
         attrs: { type: 'email', 'aria-label': 'email input' },
       });
       expect(screen.getByRole('textbox')).toHaveAttribute('type', 'email');
     });
 
-    it('TC-V303: name prop이 적용된다', () => {
+    it('TC-V303: name prop???�용?�다', () => {
       render(Input, {
         attrs: { name: 'email', 'aria-label': 'email input' },
       });
@@ -212,8 +212,8 @@ describe('Input', () => {
     });
   });
 
-  describe('커스터마이즈 오버라이드', () => {
-    it('TC-O100: class 추가 시 병합된다', () => {
+  describe('커스?�마?�즈 ?�버?�이??, () => {
+    it('TC-O100: class 추�? ??병합?�다', () => {
       render(Input, {
         attrs: { class: 'custom', 'aria-label': 'test' },
       });
@@ -223,14 +223,14 @@ describe('Input', () => {
       expect(input).toHaveClass('custom');
     });
 
-    it('TC-O120: data-testid 추가 허용', () => {
+    it('TC-O120: data-testid 추�? ?�용', () => {
       render(Input, {
         attrs: { 'data-testid': 'email-input', 'aria-label': 'test' },
       });
       expect(screen.getByTestId('email-input')).toBeInTheDocument();
     });
 
-    it('TC-O200: 보호 속성 data-variant 오버라이드 차단', () => {
+    it('TC-O200: 보호 ?�성 data-variant ?�버?�이??차단', () => {
       render(Input, {
         props: { variant: 'filled' },
         attrs: { 'data-variant': 'custom', 'aria-label': 'test' },
@@ -240,7 +240,7 @@ describe('Input', () => {
       expect(input).toHaveAttribute('data-variant', 'filled');
     });
 
-    it('TC-O201: 보호 속성 data-size 오버라이드 차단', () => {
+    it('TC-O201: 보호 ?�성 data-size ?�버?�이??차단', () => {
       render(Input, {
         props: { size: 'lg' },
         attrs: { 'data-size': 'custom', 'aria-label': 'test' },
@@ -250,7 +250,7 @@ describe('Input', () => {
       expect(input).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-O202: 보호 속성 data-state 오버라이드 차단', () => {
+    it('TC-O202: 보호 ?�성 data-state ?�버?�이??차단', () => {
       render(Input, {
         props: { error: true },
         attrs: { 'data-state': 'custom', 'aria-label': 'test' },
@@ -260,7 +260,7 @@ describe('Input', () => {
       expect(input).toHaveAttribute('data-state', 'error');
     });
 
-    it('TC-O180: style 속성 전달 허용', () => {
+    it('TC-O180: style ?�성 ?�달 ?�용', () => {
       render(Input, {
         attrs: { style: 'margin-top: 8px; width: 200px;', 'aria-label': 'test' },
       });
@@ -270,7 +270,7 @@ describe('Input', () => {
       expect(input).toHaveStyle({ width: '200px' });
     });
 
-    it('TC-O170: id 속성 전달 허용', () => {
+    it('TC-O170: id ?�성 ?�달 ?�용', () => {
       render(Input, {
         attrs: { id: 'my-input', 'aria-label': 'test' },
       });

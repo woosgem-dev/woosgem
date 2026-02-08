@@ -13,7 +13,7 @@ import {
   Tooltip as TooltipDef,
   type TooltipStyleProps,
   type Prettify,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';
 import { useId } from './internal/useId';
 
 /**

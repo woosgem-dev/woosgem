@@ -1,4 +1,4 @@
-import { Avatar as AvatarCore } from '@woosgem/ds-core';
+import { Avatar as AvatarCore } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

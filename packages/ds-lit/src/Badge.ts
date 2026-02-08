@@ -1,4 +1,4 @@
-import { Badge as BadgeCore } from '@woosgem/ds-core';
+import { Badge as BadgeCore } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

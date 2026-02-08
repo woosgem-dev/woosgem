@@ -54,7 +54,7 @@ export const Textarea = {
   mapPropsToAttrs: (props: TextareaStyleProps): TextareaAttrs => {
     const merged = { ...Textarea.defaultProps, ...filterNullish(props) };
 
-    // disabled가 error보다 우선
+    // disabled가 error보다 ?�선
     const state = merged.disabled ? 'disabled' : merged.error ? 'error' : undefined;
 
     return {

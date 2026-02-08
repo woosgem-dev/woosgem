@@ -6,7 +6,7 @@ import {
   type ReactNode,
   type Ref,
 } from 'react';
-import type { ComponentDefinition } from '@woosgem/ds-core';
+import type { ComponentDefinition } from '@woosgem-dev/core';
 
 /**
  * Base props that all created components receive

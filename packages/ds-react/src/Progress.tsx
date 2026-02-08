@@ -5,7 +5,7 @@ import {
   type ProgressStyleProps,
   type Prettify,
   filterNullish,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';
 
 /**
  * Progress component props.
@@ -71,12 +71,13 @@ export const Progress = memo(
     const { styleProps, nativeProps } = useMemo(() => {
       const styleProps: Record<string, unknown> = {};
       const nativeProps: Record<string, unknown> = {};
+      const rest = restProps as Record<string, unknown>;
 
-      for (const key in restProps) {
+      for (const key in rest) {
         if (stylePropsKeys.has(key)) {
-          styleProps[key] = restProps[key];
+          styleProps[key] = rest[key];
         } else {
-          nativeProps[key] = restProps[key];
+          nativeProps[key] = rest[key];
         }
       }
 

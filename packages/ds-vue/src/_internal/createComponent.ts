@@ -1,5 +1,5 @@
 import { defineComponent, h, computed, type PropType, type SetupContext } from 'vue';
-import type { ComponentDefinition } from '@woosgem/ds-core';
+import type { ComponentDefinition } from '@woosgem-dev/core';
 
 type AnyComponentDefinition = ComponentDefinition<any, any, any>;
 

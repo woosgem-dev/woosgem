@@ -7,6 +7,9 @@ export type {
   Prettify,
 } from './types';
 
+// Utilities
+export { filterNullish } from './types';
+
 // Components
 export * from './components/index';
 

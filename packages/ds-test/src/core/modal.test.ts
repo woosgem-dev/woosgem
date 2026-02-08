@@ -5,7 +5,7 @@ import {
   ModalBody,
   ModalFooter,
   ModalSizes,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';
 
 describe('Modal Core', () => {
   describe('displayName', () => {

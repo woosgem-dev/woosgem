@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { ListItem, ListItemVariants } from '@woosgem/ds-core';
+import { ListItem, ListItemVariants } from '@woosgem-dev/core';
 
 describe('ListItem', () => {
   describe('displayName', () => {

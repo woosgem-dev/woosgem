@@ -1,4 +1,4 @@
-import { Radio as RadioCore, RadioGroup as RadioGroupCore } from '@woosgem/ds-core';
+import { Radio as RadioCore, RadioGroup as RadioGroupCore } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

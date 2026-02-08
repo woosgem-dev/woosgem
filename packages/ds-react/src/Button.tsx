@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
-import { Button as ButtonDef, type ButtonStyleProps, type Prettify } from '@woosgem/ds-core';
+import { Button as ButtonDef, type ButtonStyleProps, type Prettify } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

@@ -2,7 +2,7 @@ import { LitElement, html } from 'lit';
 import type { TemplateResult, PropertyDeclaration } from 'lit';
 
 /**
- * Core 컴포넌트 정의 타입
+ * Core 컴포?�트 ?�의 ?�??
  */
 export interface CoreComponentDefinition<
   StyleProps,
@@ -18,7 +18,7 @@ export interface CoreComponentDefinition<
 }
 
 /**
- * Property 정의 타입
+ * Property ?�의 ?�??
  */
 export interface PropDefinition {
   type: typeof String | typeof Number | typeof Boolean;
@@ -28,14 +28,14 @@ export interface PropDefinition {
 }
 
 /**
- * createComponent 옵션
+ * createComponent ?�션
  */
 export interface CreateComponentOptions<StyleProps> {
-  /** 컴포넌트 프로퍼티 정의 */
+  /** 컴포?�트 ?�로?�티 ?�의 */
   props: {
     [K in keyof StyleProps]?: PropDefinition;
   };
-  /** 추가 이벤트 핸들러 */
+  /** 추�? ?�벤???�들??*/
   events?: {
     click?: (e: MouseEvent, component: LitElement) => void;
     keydown?: (e: KeyboardEvent, component: LitElement) => void;
@@ -43,7 +43,7 @@ export interface CreateComponentOptions<StyleProps> {
 }
 
 /**
- * 속성을 DOM에 적용하는 헬퍼
+ * ?�성??DOM???�용?�는 ?�퍼
  */
 export function applyAttrsToElement(
   element: HTMLElement,
@@ -56,7 +56,7 @@ export function applyAttrsToElement(
     } else if (value === undefined || value === null || value === false) {
       element.removeAttribute(key);
     } else if (value === true) {
-      // data-* 속성은 'true' 문자열로, 일반 boolean 속성은 빈 문자열로
+      // data-* ?�성?� 'true' 문자?�로, ?�반 boolean ?�성?� �?문자?�로
       element.setAttribute(key, key.startsWith('data-') ? 'true' : '');
     } else {
       element.setAttribute(key, String(value));
@@ -65,11 +65,11 @@ export function applyAttrsToElement(
 }
 
 /**
- * Core 컴포넌트를 Lit Web Component로 변환하는 팩토리 함수
+ * Core 컴포?�트�?Lit Web Component�?변?�하???�토�??�수
  *
  * @example
  * ```ts
- * import { Button } from '@woosgem/ds-core';
+ * import { Button } from '@woosgem-dev/core';
  *
  * const WgButton = createComponent(Button, 'wg-button', {
  *   props: {
@@ -96,7 +96,7 @@ export function createComponent<
   const { defaultProps, mapPropsToAttrs } = coreDefinition;
   const { props, events } = options;
 
-  // Lit properties 정의 생성
+  // Lit properties ?�의 ?�성
   const properties: Record<string, PropertyDeclaration> = {};
 
   for (const [key, def] of Object.entries(props)) {
@@ -110,15 +110,15 @@ export function createComponent<
     }
   }
 
-  // 동적 클래스 생성
+  // ?�적 ?�래???�성
   class GeneratedComponent extends LitElement {
     static properties = properties;
 
-    // 프로퍼티 기본값 설정
+    // ?�로?�티 기본�??�정
     constructor() {
       super();
 
-      // props에서 기본값 설정
+      // props?�서 기본�??�정
       for (const [key, def] of Object.entries(props)) {
         if (def) {
           const propDef = def as PropDefinition;
@@ -130,12 +130,12 @@ export function createComponent<
       }
     }
 
-    // Light DOM 사용
+    // Light DOM ?�용
     createRenderRoot(): HTMLElement {
       return this;
     }
 
-    // Core에서 생성된 attrs를 적용
+    // Core?�서 ?�성??attrs�??�용
     private applyAttrs(): void {
       const styleProps: Record<string, unknown> = {};
 
@@ -156,7 +156,7 @@ export function createComponent<
       this.applyAttrs();
     }
 
-    // 클릭 핸들러
+    // ?�릭 ?�들??
     private handleClick(e: MouseEvent): void {
       if (events?.click) {
         events.click(e, this);
@@ -168,14 +168,14 @@ export function createComponent<
     }
   }
 
-  // 태그 이름 저장 (디버깅용)
+  // ?�그 ?�름 ?�??(?�버깅용)
   Object.defineProperty(GeneratedComponent, 'name', { value: tagName });
 
   return GeneratedComponent as typeof LitElement;
 }
 
 /**
- * 이벤트를 발생시키는 헬퍼
+ * ?�벤?��? 발생?�키???�퍼
  */
 export function emitEvent(
   element: HTMLElement,

@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
-import { Alert as AlertDef, type AlertStyleProps, type Prettify } from '@woosgem/ds-core';
+import { Alert as AlertDef, type AlertStyleProps, type Prettify } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

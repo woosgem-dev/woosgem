@@ -3,7 +3,7 @@ import {
   CardHeader as CardHeaderCore,
   CardBody as CardBodyCore,
   CardFooter as CardFooterCore,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

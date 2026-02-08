@@ -19,7 +19,7 @@ import {
   type CheckboxLabelStyleProps,
   type CheckboxSize,
   type Prettify,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 // ===================

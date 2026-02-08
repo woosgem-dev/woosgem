@@ -7,7 +7,7 @@ import {
   type TooltipTrigger,
   type Prettify,
   type TooltipStyleProps,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';
 
 /**
  * Tooltip component props.

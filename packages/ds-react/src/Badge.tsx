@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
-import { Badge as BadgeDef, type BadgeStyleProps, type Prettify } from '@woosgem/ds-core';
+import { Badge as BadgeDef, type BadgeStyleProps, type Prettify } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

@@ -4,11 +4,11 @@
 import { describe, it, expect } from 'vitest';
 import { html, fixture } from './setup';
 import { Switch } from '@woosgem/ds-lit';
-import { Switch as SwitchDef } from '@woosgem/ds-core';
+import { Switch as SwitchDef } from '@woosgem-dev/core';
 
 describe('Switch (Lit)', () => {
-  describe('core 일치 검증', () => {
-    it('TC-L100: 기본 props가 core 결과와 일치한다', async () => {
+  describe('core ?�치 검�?, () => {
+    it('TC-L100: 기본 props가 core 결과?� ?�치?�다', async () => {
       const coreAttrs = SwitchDef.mapPropsToAttrs({});
 
       const el = await fixture<InstanceType<typeof Switch>>(html`
@@ -19,7 +19,7 @@ describe('Switch (Lit)', () => {
       expect(el.classList.contains('switch')).toBe(true);
     });
 
-    it('TC-L101: size prop이 core 결과와 일치한다', async () => {
+    it('TC-L101: size prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = SwitchDef.mapPropsToAttrs({ size: 'lg' });
 
       const el = await fixture<InstanceType<typeof Switch>>(html`
@@ -30,7 +30,7 @@ describe('Switch (Lit)', () => {
       expect(el.getAttribute('data-size')).toBe('lg');
     });
 
-    it('TC-L102: checked prop이 core 결과와 일치한다', async () => {
+    it('TC-L102: checked prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = SwitchDef.mapPropsToAttrs({ checked: true });
 
       const el = await fixture<InstanceType<typeof Switch>>(html`
@@ -41,7 +41,7 @@ describe('Switch (Lit)', () => {
       expect(el.getAttribute('data-state')).toBe('checked');
     });
 
-    it('TC-L103: disabled prop이 core 결과와 일치한다', async () => {
+    it('TC-L103: disabled prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = SwitchDef.mapPropsToAttrs({ disabled: true });
 
       const el = await fixture<InstanceType<typeof Switch>>(html`
@@ -54,8 +54,8 @@ describe('Switch (Lit)', () => {
     });
   });
 
-  describe('Web Component 전용', () => {
-    it('TC-L300: 프로퍼티 변경 시 속성이 업데이트된다', async () => {
+  describe('Web Component ?�용', () => {
+    it('TC-L300: ?�로?�티 변�????�성???�데?�트?�다', async () => {
       const el = await fixture<InstanceType<typeof Switch>>(html`
         <wg-switch></wg-switch>
       `);

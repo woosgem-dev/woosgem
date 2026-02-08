@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Tab, TabVariants, TabSizes, TabColors } from '@woosgem/ds-core';
+import { Tab, TabVariants, TabSizes, TabColors } from '@woosgem-dev/core';
 
 describe('Tab', () => {
   describe('displayName', () => {

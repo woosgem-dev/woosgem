@@ -4,7 +4,7 @@ import {
   Tooltip as TooltipCore,
   type TooltipPosition,
   type TooltipTrigger,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';
 import { applyAttrsToElement } from './_internal/createComponent';
 
 let tooltipIdCounter = 0;

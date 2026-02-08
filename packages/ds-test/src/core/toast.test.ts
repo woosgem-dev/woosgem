@@ -3,7 +3,7 @@ import {
   Toast,
   ToastVariants,
   ToastPositions,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';
 
 describe('Toast Core', () => {
   describe('displayName', () => {

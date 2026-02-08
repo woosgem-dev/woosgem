@@ -4,11 +4,11 @@
 import { describe, it, expect } from 'vitest';
 import { html, fixture } from './setup';
 import { Checkbox } from '@woosgem/ds-lit';
-import { Checkbox as CheckboxDef } from '@woosgem/ds-core';
+import { Checkbox as CheckboxDef } from '@woosgem-dev/core';
 
 describe('Checkbox (Lit)', () => {
-  describe('core 일치 검증', () => {
-    it('TC-L100: 기본 props가 core 결과와 일치한다', async () => {
+  describe('core ?�치 검�?, () => {
+    it('TC-L100: 기본 props가 core 결과?� ?�치?�다', async () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({});
 
       const el = await fixture<InstanceType<typeof Checkbox>>(html`
@@ -19,7 +19,7 @@ describe('Checkbox (Lit)', () => {
       expect(el.classList.contains('checkbox')).toBe(true);
     });
 
-    it('TC-L101: size prop이 core 결과와 일치한다', async () => {
+    it('TC-L101: size prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ size: 'lg' });
 
       const el = await fixture<InstanceType<typeof Checkbox>>(html`
@@ -30,7 +30,7 @@ describe('Checkbox (Lit)', () => {
       expect(el.getAttribute('data-size')).toBe('lg');
     });
 
-    it('TC-L102: checked prop이 core 결과와 일치한다', async () => {
+    it('TC-L102: checked prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ checked: true });
 
       const el = await fixture<InstanceType<typeof Checkbox>>(html`
@@ -41,7 +41,7 @@ describe('Checkbox (Lit)', () => {
       expect(el.getAttribute('data-state')).toBe('checked');
     });
 
-    it('TC-L103: disabled prop이 core 결과와 일치한다', async () => {
+    it('TC-L103: disabled prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ disabled: true });
 
       const el = await fixture<InstanceType<typeof Checkbox>>(html`
@@ -53,7 +53,7 @@ describe('Checkbox (Lit)', () => {
       expect(el.hasAttribute('disabled')).toBe(true);
     });
 
-    it('TC-L104: indeterminate prop이 core 결과와 일치한다', async () => {
+    it('TC-L104: indeterminate prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ indeterminate: true });
 
       const el = await fixture<InstanceType<typeof Checkbox>>(html`
@@ -65,8 +65,8 @@ describe('Checkbox (Lit)', () => {
     });
   });
 
-  describe('Web Component 전용', () => {
-    it('TC-L300: 프로퍼티 변경 시 속성이 업데이트된다', async () => {
+  describe('Web Component ?�용', () => {
+    it('TC-L300: ?�로?�티 변�????�성???�데?�트?�다', async () => {
       const el = await fixture<InstanceType<typeof Checkbox>>(html`
         <wg-checkbox></wg-checkbox>
       `);
@@ -79,7 +79,7 @@ describe('Checkbox (Lit)', () => {
       expect(el.getAttribute('data-state')).toBe('checked');
     });
 
-    it('TC-L301: checked + indeterminate 시 indeterminate 우선', async () => {
+    it('TC-L301: checked + indeterminate ??indeterminate ?�선', async () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ checked: true, indeterminate: true });
 
       const el = await fixture<InstanceType<typeof Checkbox>>(html`

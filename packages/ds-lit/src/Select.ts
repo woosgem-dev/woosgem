@@ -2,7 +2,7 @@ import {
   Select as SelectCore,
   SelectMenu as SelectMenuCore,
   SelectOption as SelectOptionCore,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

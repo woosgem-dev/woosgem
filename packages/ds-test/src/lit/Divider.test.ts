@@ -4,11 +4,11 @@
 import { describe, it, expect } from 'vitest';
 import { html, fixture } from './setup';
 import { Divider } from '@woosgem/ds-lit';
-import { Divider as DividerDef } from '@woosgem/ds-core';
+import { Divider as DividerDef } from '@woosgem-dev/core';
 
 describe('Divider (Lit)', () => {
-  describe('core 일치 검증', () => {
-    it('TC-L100: 기본 props가 core 결과와 일치한다', async () => {
+  describe('core ?�치 검�?, () => {
+    it('TC-L100: 기본 props가 core 결과?� ?�치?�다', async () => {
       const coreAttrs = DividerDef.mapPropsToAttrs({});
 
       const el = await fixture<InstanceType<typeof Divider>>(html`
@@ -19,7 +19,7 @@ describe('Divider (Lit)', () => {
       expect(el.classList.contains('divider')).toBe(true);
     });
 
-    it('TC-L101: orientation prop이 core 결과와 일치한다', async () => {
+    it('TC-L101: orientation prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = DividerDef.mapPropsToAttrs({ orientation: 'vertical' });
 
       const el = await fixture<InstanceType<typeof Divider>>(html`
@@ -30,7 +30,7 @@ describe('Divider (Lit)', () => {
       expect(el.getAttribute('data-orientation')).toBe('vertical');
     });
 
-    it('TC-L102: variant prop이 core 결과와 일치한다', async () => {
+    it('TC-L102: variant prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = DividerDef.mapPropsToAttrs({ variant: 'dashed' });
 
       const el = await fixture<InstanceType<typeof Divider>>(html`
@@ -42,8 +42,8 @@ describe('Divider (Lit)', () => {
     });
   });
 
-  describe('Web Component 전용', () => {
-    it('TC-L300: 프로퍼티 변경 시 속성이 업데이트된다', async () => {
+  describe('Web Component ?�용', () => {
+    it('TC-L300: ?�로?�티 변�????�성???�데?�트?�다', async () => {
       const el = await fixture<InstanceType<typeof Divider>>(html`
         <wg-divider orientation="horizontal"></wg-divider>
       `);

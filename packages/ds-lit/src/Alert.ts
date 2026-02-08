@@ -1,4 +1,4 @@
-import { Alert as AlertCore } from '@woosgem/ds-core';
+import { Alert as AlertCore } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

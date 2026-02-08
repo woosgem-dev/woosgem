@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
-import { Switch as SwitchDef, type SwitchStyleProps, type Prettify } from '@woosgem/ds-core';
+import { Switch as SwitchDef, type SwitchStyleProps, type Prettify } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

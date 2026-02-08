@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
-import { Overlay as OverlayDef, type OverlayStyleProps, type Prettify } from '@woosgem/ds-core';
+import { Overlay as OverlayDef, type OverlayStyleProps, type Prettify } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

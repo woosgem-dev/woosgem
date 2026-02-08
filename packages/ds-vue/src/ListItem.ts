@@ -1,5 +1,5 @@
 import type { DefineComponent } from 'vue';
-import { ListItem as ListItemDef, type ListItemStyleProps, type Prettify } from '@woosgem/ds-core';
+import { ListItem as ListItemDef, type ListItemStyleProps, type Prettify } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

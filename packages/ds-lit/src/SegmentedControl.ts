@@ -1,7 +1,7 @@
 import {
   SegmentedControl as SegmentedControlCore,
   SegmentedControlItem as SegmentedControlItemCore,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

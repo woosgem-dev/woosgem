@@ -327,10 +327,10 @@ export const Interactive: Story = {
     };
 
     const cardData = [
-      { title: 'Analytics', desc: 'View your statistics', icon: 'ðŸ“Š' },
-      { title: 'Settings', desc: 'Manage preferences', icon: 'âš™ï¸' },
-      { title: 'Messages', desc: '3 unread messages', icon: 'ðŸ“§' },
-      { title: 'Profile', desc: 'Update your info', icon: 'ðŸ‘¤' },
+      { title: 'Analytics', desc: 'View your statistics', icon: '?“Š' },
+      { title: 'Settings', desc: 'Manage preferences', icon: '?™ï¸' },
+      { title: 'Messages', desc: '3 unread messages', icon: '?“§' },
+      { title: 'Profile', desc: 'Update your info', icon: '?‘¤' },
     ];
 
     return (
@@ -369,7 +369,7 @@ export const RealWorldExample: Story = {
           color: 'white',
           fontSize: '48px'
         }}>
-          ðŸŽ§
+          ?Ž§
         </div>
         <CardBody style={{ padding: '16px' }}>
           <h3 style={{ margin: '0 0 8px', fontSize: '18px', fontWeight: 600 }}>Wireless Headphones</h3>
@@ -395,7 +395,7 @@ export const RealWorldExample: Story = {
           color: 'white',
           fontSize: '48px'
         }}>
-          âŒš
+          ??
         </div>
         <CardBody style={{ padding: '16px' }}>
           <h3 style={{ margin: '0 0 8px', fontSize: '18px', fontWeight: 600 }}>Smart Watch Pro</h3>
@@ -421,7 +421,7 @@ export const RealWorldExample: Story = {
           color: 'white',
           fontSize: '48px'
         }}>
-          ðŸ“±
+          ?“±
         </div>
         <CardBody style={{ padding: '16px' }}>
           <h3 style={{ margin: '0 0 8px', fontSize: '18px', fontWeight: 600 }}>Latest Smartphone</h3>

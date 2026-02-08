@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Switch, SwitchSizes, SwitchColors } from '@woosgem/ds-core';
+import { Switch, SwitchSizes, SwitchColors } from '@woosgem-dev/core';
 
 describe('Switch Core', () => {
   describe('displayName', () => {

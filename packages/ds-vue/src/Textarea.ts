@@ -1,5 +1,5 @@
 import type { DefineComponent } from 'vue';
-import { Textarea as TextareaDef, type TextareaStyleProps, type Prettify } from '@woosgem/ds-core';
+import { Textarea as TextareaDef, type TextareaStyleProps, type Prettify } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { Spinner } from '@woosgem/ds-react';
-import { Spinner as SpinnerDef } from '@woosgem/ds-core';
+import { Spinner as SpinnerDef } from '@woosgem-dev/core';
 
 describe('Spinner', () => {
-  describe('Core 일치 검증', () => {
-    it('TC-R100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
+  describe('Core ?�치 검�?, () => {
+    it('TC-R100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
       const coreAttrs = SpinnerDef.mapPropsToAttrs({});
 
       render(<Spinner />);
@@ -17,7 +17,7 @@ describe('Spinner', () => {
       expect(spinner).toHaveClass(coreAttrs.class);
     });
 
-    it('TC-R101: size prop이 core 결과와 일치한다', () => {
+    it('TC-R101: size prop??core 결과?� ?�치?�다', () => {
       const coreAttrs = SpinnerDef.mapPropsToAttrs({ size: 'lg' });
 
       render(<Spinner size="lg" />);
@@ -27,7 +27,7 @@ describe('Spinner', () => {
       expect(spinner).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-R102: color prop이 core 결과와 일치한다', () => {
+    it('TC-R102: color prop??core 결과?� ?�치?�다', () => {
       const coreAttrs = SpinnerDef.mapPropsToAttrs({ color: 'secondary' });
 
       render(<Spinner color="secondary" />);
@@ -37,17 +37,17 @@ describe('Spinner', () => {
       expect(spinner).toHaveAttribute('data-color', 'secondary');
     });
 
-    it('TC-R103: label prop이 core 결과와 일치한다', () => {
-      const coreAttrs = SpinnerDef.mapPropsToAttrs({ label: '데이터 불러오는 중...' });
+    it('TC-R103: label prop??core 결과?� ?�치?�다', () => {
+      const coreAttrs = SpinnerDef.mapPropsToAttrs({ label: '?�이??불러?�는 �?..' });
 
-      render(<Spinner label="데이터 불러오는 중..." />);
+      render(<Spinner label="?�이??불러?�는 �?.." />);
       const spinner = screen.getByRole('status');
 
       expect(spinner).toHaveAttribute('aria-label', coreAttrs['aria-label']);
-      expect(spinner).toHaveAttribute('aria-label', '데이터 불러오는 중...');
+      expect(spinner).toHaveAttribute('aria-label', '?�이??불러?�는 �?..');
     });
 
-    it('TC-R104: 복합 props가 core 결과와 일치한다', () => {
+    it('TC-R104: 복합 props가 core 결과?� ?�치?�다', () => {
       const props = {
         size: 'lg' as const,
         color: 'muted' as const,
@@ -64,86 +64,86 @@ describe('Spinner', () => {
     });
   });
 
-  describe('Size 변형', () => {
-    it('TC-C110: size: xs가 적용된다', () => {
+  describe('Size 변??, () => {
+    it('TC-C110: size: xs가 ?�용?�다', () => {
       render(<Spinner size="xs" />);
       expect(screen.getByRole('status')).toHaveAttribute('data-size', 'xs');
     });
 
-    it('TC-C111: size: sm이 적용된다', () => {
+    it('TC-C111: size: sm???�용?�다', () => {
       render(<Spinner size="sm" />);
       expect(screen.getByRole('status')).toHaveAttribute('data-size', 'sm');
     });
 
-    it('TC-C112: size: md가 적용된다', () => {
+    it('TC-C112: size: md가 ?�용?�다', () => {
       render(<Spinner size="md" />);
       expect(screen.getByRole('status')).toHaveAttribute('data-size', 'md');
     });
 
-    it('TC-C113: size: lg가 적용된다', () => {
+    it('TC-C113: size: lg가 ?�용?�다', () => {
       render(<Spinner size="lg" />);
       expect(screen.getByRole('status')).toHaveAttribute('data-size', 'lg');
     });
   });
 
-  describe('Color 변형', () => {
-    it('TC-C120: color: primary가 적용된다', () => {
+  describe('Color 변??, () => {
+    it('TC-C120: color: primary가 ?�용?�다', () => {
       render(<Spinner color="primary" />);
       expect(screen.getByRole('status')).toHaveAttribute('data-color', 'primary');
     });
 
-    it('TC-C121: color: secondary가 적용된다', () => {
+    it('TC-C121: color: secondary가 ?�용?�다', () => {
       render(<Spinner color="secondary" />);
       expect(screen.getByRole('status')).toHaveAttribute('data-color', 'secondary');
     });
 
-    it('TC-C122: color: muted가 적용된다', () => {
+    it('TC-C122: color: muted가 ?�용?�다', () => {
       render(<Spinner color="muted" />);
       expect(screen.getByRole('status')).toHaveAttribute('data-color', 'muted');
     });
 
-    it('TC-C123: color: current가 적용된다', () => {
+    it('TC-C123: color: current가 ?�용?�다', () => {
       render(<Spinner color="current" />);
       expect(screen.getByRole('status')).toHaveAttribute('data-color', 'current');
     });
   });
 
-  describe('접근성', () => {
-    it('TC-A100: role="status"가 항상 적용된다', () => {
+  describe('?�근??, () => {
+    it('TC-A100: role="status"가 ??�� ?�용?�다', () => {
       render(<Spinner />);
       expect(screen.getByRole('status')).toBeInTheDocument();
     });
 
-    it('TC-A101: 기본 aria-label이 적용된다', () => {
+    it('TC-A101: 기본 aria-label???�용?�다', () => {
       render(<Spinner />);
       expect(screen.getByRole('status')).toHaveAttribute('aria-label', 'Loading...');
     });
 
-    it('TC-A102: 커스텀 label이 aria-label로 적용된다', () => {
+    it('TC-A102: 커스?� label??aria-label�??�용?�다', () => {
       render(<Spinner label="Saving changes..." />);
       expect(screen.getByRole('status')).toHaveAttribute('aria-label', 'Saving changes...');
     });
   });
 
-  describe('기본값', () => {
-    it('TC-C010: size 기본값은 md이다', () => {
+  describe('기본�?, () => {
+    it('TC-C010: size 기본값�? md?�다', () => {
       render(<Spinner />);
       expect(screen.getByRole('status')).toHaveAttribute('data-size', 'md');
     });
 
-    it('TC-C011: color 기본값은 primary이다', () => {
+    it('TC-C011: color 기본값�? primary?�다', () => {
       render(<Spinner />);
       expect(screen.getByRole('status')).toHaveAttribute('data-color', 'primary');
     });
 
-    it('TC-C012: label 기본값은 "Loading..."이다', () => {
+    it('TC-C012: label 기본값�? "Loading..."?�다', () => {
       render(<Spinner />);
       expect(screen.getByRole('status')).toHaveAttribute('aria-label', 'Loading...');
     });
   });
 
-  describe('커스터마이즈 오버라이드', () => {
-    it('TC-O100: className 추가 시 병합된다', () => {
+  describe('커스?�마?�즈 ?�버?�이??, () => {
+    it('TC-O100: className 추�? ??병합?�다', () => {
       render(<Spinner className="custom-spinner" />);
       const spinner = screen.getByRole('status');
 
@@ -151,43 +151,43 @@ describe('Spinner', () => {
       expect(spinner).toHaveClass('custom-spinner');
     });
 
-    it('TC-O110: style 인라인 적용', () => {
+    it('TC-O110: style ?�라???�용', () => {
       render(<Spinner style={{ marginTop: 16 }} />);
       const spinner = screen.getByRole('status');
 
       expect(spinner).toHaveStyle({ marginTop: '16px' });
     });
 
-    it('TC-O120: data-testid 추가 허용', () => {
+    it('TC-O120: data-testid 추�? ?�용', () => {
       render(<Spinner data-testid="loading-spinner" />);
       expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
     });
 
-    it('TC-O130: 보호 속성 data-size 오버라이드 차단', () => {
-      // @ts-expect-error - 보호 속성 오버라이드 시도
+    it('TC-O130: 보호 ?�성 data-size ?�버?�이??차단', () => {
+      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
       render(<Spinner data-size="custom" size="lg" />);
       const spinner = screen.getByRole('status');
 
       expect(spinner).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-O131: 보호 속성 data-color 오버라이드 차단', () => {
-      // @ts-expect-error - 보호 속성 오버라이드 시도
+    it('TC-O131: 보호 ?�성 data-color ?�버?�이??차단', () => {
+      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
       render(<Spinner data-color="custom" color="muted" />);
       const spinner = screen.getByRole('status');
 
       expect(spinner).toHaveAttribute('data-color', 'muted');
     });
 
-    it('TC-O132: 보호 속성 role 오버라이드 차단', () => {
-      // @ts-expect-error - 보호 속성 오버라이드 시도
+    it('TC-O132: 보호 ?�성 role ?�버?�이??차단', () => {
+      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
       render(<Spinner role="progressbar" />);
       const spinner = screen.getByRole('status');
 
       expect(spinner).toHaveAttribute('role', 'status');
     });
 
-    it('TC-O160: id 속성 전달 허용', () => {
+    it('TC-O160: id ?�성 ?�달 ?�용', () => {
       render(<Spinner id="main-spinner" />);
       const spinner = screen.getByRole('status');
 

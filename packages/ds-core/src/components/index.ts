@@ -296,3 +296,13 @@ export {
   type SkeletonSize,
   type SkeletonAnimation,
 } from './Skeleton';
+
+export {
+  Kbd,
+  KbdSizes,
+  KbdVariants,
+  type KbdStyleProps,
+  type KbdAttrs,
+  type KbdSize,
+  type KbdVariant,
+} from './Kbd';

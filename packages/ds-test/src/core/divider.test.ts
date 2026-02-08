@@ -5,7 +5,7 @@ import {
   DividerVariants,
   DividerSpacings,
   DividerColors,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';
 
 describe('Divider', () => {
   describe('displayName', () => {

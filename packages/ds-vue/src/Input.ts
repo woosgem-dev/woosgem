@@ -1,5 +1,5 @@
 import type { DefineComponent } from 'vue';
-import { Input as InputDef, type InputStyleProps, type Prettify } from '@woosgem/ds-core';
+import { Input as InputDef, type InputStyleProps, type Prettify } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

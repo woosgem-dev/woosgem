@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Spinner, SpinnerSizes, SpinnerColors } from '@woosgem/ds-core';
+import { Spinner, SpinnerSizes, SpinnerColors } from '@woosgem-dev/core';
 
 describe('Spinner Core', () => {
   describe('displayName', () => {
@@ -55,8 +55,8 @@ describe('Spinner Core', () => {
     });
 
     it('should apply custom label', () => {
-      const attrs = Spinner.mapPropsToAttrs({ label: '데이터 불러오는 중...' });
-      expect(attrs['aria-label']).toBe('데이터 불러오는 중...');
+      const attrs = Spinner.mapPropsToAttrs({ label: '?�이??불러?�는 �?..' });
+      expect(attrs['aria-label']).toBe('?�이??불러?�는 �?..');
     });
 
     it('should always have role="status"', () => {

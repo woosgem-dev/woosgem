@@ -155,4 +155,4 @@ export type {
   TooltipStyleProps,
   TooltipPosition,
   TooltipTrigger,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';

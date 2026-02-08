@@ -93,23 +93,23 @@ export const SizesWithLabels: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
         <Icon size="xs"><BellIcon /></Icon>
-        <span>xs (12px) - 뱃지, 태그 내 아이콘</span>
+        <span>xs (12px) - 뱃�?, ?�그 ???�이�?/span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
         <Icon size="sm"><BellIcon /></Icon>
-        <span>sm (16px) - 인라인 텍스트, 작은 버튼</span>
+        <span>sm (16px) - ?�라???�스?? ?��? 버튼</span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
         <Icon size="md"><BellIcon /></Icon>
-        <span>md (20px) - 기본 버튼, 입력 필드 (기본값)</span>
+        <span>md (20px) - 기본 버튼, ?�력 ?�드 (기본�?</span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
         <Icon size="lg"><BellIcon /></Icon>
-        <span>lg (24px) - 네비게이션, 강조 아이콘</span>
+        <span>lg (24px) - ?�비게이?? 강조 ?�이�?/span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
         <Icon size="xl"><BellIcon /></Icon>
-        <span>xl (32px) - 히어로, 빈 상태 표시</span>
+        <span>xl (32px) - ?�어�? �??�태 ?�시</span>
       </div>
     </div>
   ),

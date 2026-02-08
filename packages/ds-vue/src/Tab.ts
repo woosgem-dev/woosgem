@@ -1,5 +1,5 @@
 import type { DefineComponent } from 'vue';
-import { Tab as TabDef, type TabStyleProps, type Prettify } from '@woosgem/ds-core';
+import { Tab as TabDef, type TabStyleProps, type Prettify } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

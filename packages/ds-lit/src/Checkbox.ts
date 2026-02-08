@@ -1,4 +1,4 @@
-import { Checkbox as CheckboxCore } from '@woosgem/ds-core';
+import { Checkbox as CheckboxCore } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

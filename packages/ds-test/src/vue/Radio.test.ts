@@ -1,11 +1,11 @@
 import { describe, it, expect, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
 import { Radio, RadioGroup } from '@woosgem/ds-vue';
-import { Radio as RadioDef, RadioGroup as RadioGroupDef } from '@woosgem/ds-core';
+import { Radio as RadioDef, RadioGroup as RadioGroupDef } from '@woosgem-dev/core';
 
 describe('Radio (Vue)', () => {
-  describe('Core 일치 검증', () => {
-    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
+  describe('Core ?�치 검�?, () => {
+    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
       const coreAttrs = RadioDef.mapPropsToAttrs({});
       const wrapper = mount(Radio, { slots: { default: 'Option' } });
 
@@ -16,21 +16,21 @@ describe('Radio (Vue)', () => {
       expect(wrapper.classes()).toContain(coreAttrs.class);
     });
 
-    it('TC-V101: size prop이 core 결과와 일치한다', () => {
+    it('TC-V101: size prop??core 결과?� ?�치?�다', () => {
       const coreAttrs = RadioDef.mapPropsToAttrs({ size: 'lg' });
       const wrapper = mount(Radio, { props: { size: 'lg' } });
 
       expect(wrapper.attributes('data-size')).toBe(coreAttrs['data-size']);
     });
 
-    it('TC-V102: color prop이 core 결과와 일치한다', () => {
+    it('TC-V102: color prop??core 결과?� ?�치?�다', () => {
       const coreAttrs = RadioDef.mapPropsToAttrs({ color: 'success' });
       const wrapper = mount(Radio, { props: { color: 'success' } });
 
       expect(wrapper.attributes('data-color')).toBe(coreAttrs['data-color']);
     });
 
-    it('TC-V103: checked prop이 core 결과와 일치한다', () => {
+    it('TC-V103: checked prop??core 결과?� ?�치?�다', () => {
       const coreAttrs = RadioDef.mapPropsToAttrs({ checked: true });
       const wrapper = mount(Radio, { props: { checked: true } });
 
@@ -39,56 +39,56 @@ describe('Radio (Vue)', () => {
     });
   });
 
-  describe('Size 변형', () => {
-    it('TC-C110: size: sm이 적용된다', () => {
+  describe('Size 변??, () => {
+    it('TC-C110: size: sm???�용?�다', () => {
       const wrapper = mount(Radio, { props: { size: 'sm' } });
       expect(wrapper.attributes('data-size')).toBe('sm');
     });
 
-    it('TC-C111: size: md가 적용된다', () => {
+    it('TC-C111: size: md가 ?�용?�다', () => {
       const wrapper = mount(Radio, { props: { size: 'md' } });
       expect(wrapper.attributes('data-size')).toBe('md');
     });
 
-    it('TC-C112: size: lg가 적용된다', () => {
+    it('TC-C112: size: lg가 ?�용?�다', () => {
       const wrapper = mount(Radio, { props: { size: 'lg' } });
       expect(wrapper.attributes('data-size')).toBe('lg');
     });
   });
 
-  describe('Color 변형', () => {
-    it('TC-C120: color: primary가 적용된다', () => {
+  describe('Color 변??, () => {
+    it('TC-C120: color: primary가 ?�용?�다', () => {
       const wrapper = mount(Radio, { props: { color: 'primary' } });
       expect(wrapper.attributes('data-color')).toBe('primary');
     });
 
-    it('TC-C121: color: secondary가 적용된다', () => {
+    it('TC-C121: color: secondary가 ?�용?�다', () => {
       const wrapper = mount(Radio, { props: { color: 'secondary' } });
       expect(wrapper.attributes('data-color')).toBe('secondary');
     });
 
-    it('TC-C122: color: success가 적용된다', () => {
+    it('TC-C122: color: success가 ?�용?�다', () => {
       const wrapper = mount(Radio, { props: { color: 'success' } });
       expect(wrapper.attributes('data-color')).toBe('success');
     });
   });
 
-  describe('상태 변형', () => {
-    it('TC-S100: checked 상태가 적용된다', () => {
+  describe('?�태 변??, () => {
+    it('TC-S100: checked ?�태가 ?�용?�다', () => {
       const wrapper = mount(Radio, { props: { checked: true } });
 
       expect(wrapper.attributes('data-state')).toBe('checked');
       expect(wrapper.attributes('aria-checked')).toBe('true');
     });
 
-    it('TC-S101: disabled 상태가 적용된다', () => {
+    it('TC-S101: disabled ?�태가 ?�용?�다', () => {
       const wrapper = mount(Radio, { props: { disabled: true } });
 
       expect(wrapper.attributes('data-state')).toBe('disabled');
       expect(wrapper.attributes('disabled')).toBeDefined();
     });
 
-    it('TC-S102: checked + disabled 상태가 적용된다', () => {
+    it('TC-S102: checked + disabled ?�태가 ?�용?�다', () => {
       const wrapper = mount(Radio, { props: { checked: true, disabled: true } });
 
       expect(wrapper.attributes('data-state')).toBe('checked-disabled');
@@ -97,37 +97,37 @@ describe('Radio (Vue)', () => {
     });
   });
 
-  describe('접근성', () => {
-    it('TC-A100: role="radio"가 항상 적용된다', () => {
+  describe('?�근??, () => {
+    it('TC-A100: role="radio"가 ??�� ?�용?�다', () => {
       const wrapper = mount(Radio);
       expect(wrapper.attributes('role')).toBe('radio');
     });
 
-    it('TC-A101: aria-checked가 checked 상태를 반영한다', () => {
+    it('TC-A101: aria-checked가 checked ?�태�?반영?�다', () => {
       const wrapper = mount(Radio, { props: { checked: false } });
       expect(wrapper.attributes('aria-checked')).toBe('false');
     });
   });
 
-  describe('기본값', () => {
-    it('TC-C010: size 기본값은 md이다', () => {
+  describe('기본�?, () => {
+    it('TC-C010: size 기본값�? md?�다', () => {
       const wrapper = mount(Radio);
       expect(wrapper.attributes('data-size')).toBe('md');
     });
 
-    it('TC-C011: color 기본값은 primary이다', () => {
+    it('TC-C011: color 기본값�? primary?�다', () => {
       const wrapper = mount(Radio);
       expect(wrapper.attributes('data-color')).toBe('primary');
     });
 
-    it('TC-C012: checked 기본값은 false이다', () => {
+    it('TC-C012: checked 기본값�? false?�다', () => {
       const wrapper = mount(Radio);
       expect(wrapper.attributes('aria-checked')).toBe('false');
     });
   });
 
-  describe('이벤트 핸들러', () => {
-    it('TC-O150: click 이벤트가 발생한다', async () => {
+  describe('?�벤???�들??, () => {
+    it('TC-O150: click ?�벤?��? 발생?�다', async () => {
       const handleClick = vi.fn();
       const wrapper = mount(Radio, {
         attrs: { onClick: handleClick },
@@ -139,15 +139,15 @@ describe('Radio (Vue)', () => {
     });
   });
 
-  describe('커스터마이즈 오버라이드', () => {
-    it('TC-O100: class 추가 시 병합된다', () => {
+  describe('커스?�마?�즈 ?�버?�이??, () => {
+    it('TC-O100: class 추�? ??병합?�다', () => {
       const wrapper = mount(Radio, { props: { class: 'custom-radio' } });
 
       expect(wrapper.classes()).toContain('radio');
       expect(wrapper.classes()).toContain('custom-radio');
     });
 
-    it('TC-O130: 보호 속성 role 오버라이드 차단', () => {
+    it('TC-O130: 보호 ?�성 role ?�버?�이??차단', () => {
       const wrapper = mount(Radio, {
         attrs: { role: 'checkbox' },
       });
@@ -158,8 +158,8 @@ describe('Radio (Vue)', () => {
 });
 
 describe('RadioGroup (Vue)', () => {
-  describe('Core 일치 검증', () => {
-    it('TC-V200: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
+  describe('Core ?�치 검�?, () => {
+    it('TC-V200: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
       const coreAttrs = RadioGroupDef.mapPropsToAttrs({});
       const wrapper = mount(RadioGroup, {
         slots: { default: '<div>radios</div>' },
@@ -170,7 +170,7 @@ describe('RadioGroup (Vue)', () => {
       expect(wrapper.classes()).toContain(coreAttrs.class);
     });
 
-    it('TC-V201: orientation prop이 core 결과와 일치한다', () => {
+    it('TC-V201: orientation prop??core 결과?� ?�치?�다', () => {
       const coreAttrs = RadioGroupDef.mapPropsToAttrs({ orientation: 'horizontal' });
       const wrapper = mount(RadioGroup, { props: { orientation: 'horizontal' } });
 
@@ -178,20 +178,20 @@ describe('RadioGroup (Vue)', () => {
     });
   });
 
-  describe('접근성', () => {
-    it('TC-A200: role="radiogroup"가 항상 적용된다', () => {
+  describe('?�근??, () => {
+    it('TC-A200: role="radiogroup"가 ??�� ?�용?�다', () => {
       const wrapper = mount(RadioGroup);
       expect(wrapper.attributes('role')).toBe('radiogroup');
     });
 
-    it('TC-A201: disabled 시 aria-disabled가 적용된다', () => {
+    it('TC-A201: disabled ??aria-disabled가 ?�용?�다', () => {
       const wrapper = mount(RadioGroup, { props: { disabled: true } });
       expect(wrapper.attributes('aria-disabled')).toBe('true');
     });
   });
 
-  describe('기본값', () => {
-    it('TC-C200: orientation 기본값은 vertical이다', () => {
+  describe('기본�?, () => {
+    it('TC-C200: orientation 기본값�? vertical?�다', () => {
       const wrapper = mount(RadioGroup);
       expect(wrapper.attributes('data-orientation')).toBe('vertical');
     });

@@ -1,4 +1,4 @@
-import { Input as InputCore } from '@woosgem/ds-core';
+import { Input as InputCore } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

@@ -4,11 +4,11 @@
 import { describe, it, expect } from 'vitest';
 import { html, fixture } from './setup';
 import { Radio } from '@woosgem/ds-lit';
-import { Radio as RadioDef } from '@woosgem/ds-core';
+import { Radio as RadioDef } from '@woosgem-dev/core';
 
 describe('Radio (Lit)', () => {
-  describe('core 일치 검증', () => {
-    it('TC-L100: 기본 props가 core 결과와 일치한다', async () => {
+  describe('core ?�치 검�?, () => {
+    it('TC-L100: 기본 props가 core 결과?� ?�치?�다', async () => {
       const coreAttrs = RadioDef.mapPropsToAttrs({});
 
       const el = await fixture<InstanceType<typeof Radio>>(html`
@@ -19,7 +19,7 @@ describe('Radio (Lit)', () => {
       expect(el.classList.contains('radio')).toBe(true);
     });
 
-    it('TC-L101: size prop이 core 결과와 일치한다', async () => {
+    it('TC-L101: size prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = RadioDef.mapPropsToAttrs({ size: 'lg' });
 
       const el = await fixture<InstanceType<typeof Radio>>(html`
@@ -30,7 +30,7 @@ describe('Radio (Lit)', () => {
       expect(el.getAttribute('data-size')).toBe('lg');
     });
 
-    it('TC-L102: checked prop이 core 결과와 일치한다', async () => {
+    it('TC-L102: checked prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = RadioDef.mapPropsToAttrs({ checked: true });
 
       const el = await fixture<InstanceType<typeof Radio>>(html`
@@ -41,7 +41,7 @@ describe('Radio (Lit)', () => {
       expect(el.getAttribute('data-state')).toBe('checked');
     });
 
-    it('TC-L103: disabled prop이 core 결과와 일치한다', async () => {
+    it('TC-L103: disabled prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = RadioDef.mapPropsToAttrs({ disabled: true });
 
       const el = await fixture<InstanceType<typeof Radio>>(html`
@@ -54,8 +54,8 @@ describe('Radio (Lit)', () => {
     });
   });
 
-  describe('Web Component 전용', () => {
-    it('TC-L300: 프로퍼티 변경 시 속성이 업데이트된다', async () => {
+  describe('Web Component ?�용', () => {
+    it('TC-L300: ?�로?�티 변�????�성???�데?�트?�다', async () => {
       const el = await fixture<InstanceType<typeof Radio>>(html`
         <wg-radio></wg-radio>
       `);

@@ -5,7 +5,7 @@ import {
   ModalHeader as ModalHeaderCore,
   ModalBody as ModalBodyCore,
   ModalFooter as ModalFooterCore,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';
 import { applyAttrsToElement, emitEvent } from './_internal/createComponent';
 
 /**

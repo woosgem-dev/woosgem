@@ -1,4 +1,4 @@
-import { IconButton as IconButtonCore } from '@woosgem/ds-core';
+import { IconButton as IconButtonCore } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

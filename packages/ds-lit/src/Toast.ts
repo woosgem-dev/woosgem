@@ -1,6 +1,6 @@
 import { LitElement, html } from 'lit';
 import type { TemplateResult } from 'lit';
-import { Toast as ToastCore } from '@woosgem/ds-core';
+import { Toast as ToastCore } from '@woosgem-dev/core';
 import { createComponent, applyAttrsToElement, emitEvent } from './_internal/createComponent';
 
 /**
@@ -57,7 +57,7 @@ class ToastElement extends LitElement {
 
   private timerId: ReturnType<typeof setTimeout> | null = null;
 
-  // Light DOM 사용
+  // Light DOM ?�용
   createRenderRoot(): HTMLElement {
     return this;
   }

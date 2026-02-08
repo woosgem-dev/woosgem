@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Alert, AlertVariants, AlertStatuses } from '@woosgem/ds-core';
+import { Alert, AlertVariants, AlertStatuses } from '@woosgem-dev/core';
 
 describe('Alert Core', () => {
   describe('displayName', () => {

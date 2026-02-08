@@ -3,8 +3,8 @@ import { render, screen, fireEvent, act } from '@testing-library/react';
 import { Tooltip } from '@woosgem/ds-react';
 
 describe('Tooltip (React)', () => {
-  describe('기본 렌더링', () => {
-    it('TC-R100: children이 렌더링된다', () => {
+  describe('기본 ?�더�?, () => {
+    it('TC-R100: children???�더링된??, () => {
       render(
         <Tooltip content="Hello">
           <button>Hover me</button>
@@ -13,7 +13,7 @@ describe('Tooltip (React)', () => {
       expect(screen.getByText('Hover me')).toBeInTheDocument();
     });
 
-    it('TC-R101: tooltip 래퍼가 렌더링된다', () => {
+    it('TC-R101: tooltip ?�퍼가 ?�더링된??, () => {
       render(
         <Tooltip content="Tooltip text">
           <button>Trigger</button>
@@ -23,7 +23,7 @@ describe('Tooltip (React)', () => {
       expect(wrapper).toBeInTheDocument();
     });
 
-    it('TC-R102: tooltip 내용이 숨겨진 상태로 렌더링된다', () => {
+    it('TC-R102: tooltip ?�용???�겨�??�태�??�더링된??, () => {
       render(
         <Tooltip content="Hidden text">
           <button>Trigger</button>
@@ -34,8 +34,8 @@ describe('Tooltip (React)', () => {
     });
   });
 
-  describe('Position 변형', () => {
-    it('TC-C110: position: top이 적용된다', () => {
+  describe('Position 변??, () => {
+    it('TC-C110: position: top???�용?�다', () => {
       render(
         <Tooltip content="Text" position="top">
           <button>Trigger</button>
@@ -45,7 +45,7 @@ describe('Tooltip (React)', () => {
       expect(tooltip).toHaveAttribute('data-position', 'top');
     });
 
-    it('TC-C111: position: bottom이 적용된다', () => {
+    it('TC-C111: position: bottom???�용?�다', () => {
       render(
         <Tooltip content="Text" position="bottom">
           <button>Trigger</button>
@@ -55,7 +55,7 @@ describe('Tooltip (React)', () => {
       expect(tooltip).toHaveAttribute('data-position', 'bottom');
     });
 
-    it('TC-C112: position: left가 적용된다', () => {
+    it('TC-C112: position: left가 ?�용?�다', () => {
       render(
         <Tooltip content="Text" position="left">
           <button>Trigger</button>
@@ -65,7 +65,7 @@ describe('Tooltip (React)', () => {
       expect(tooltip).toHaveAttribute('data-position', 'left');
     });
 
-    it('TC-C113: position: right가 적용된다', () => {
+    it('TC-C113: position: right가 ?�용?�다', () => {
       render(
         <Tooltip content="Text" position="right">
           <button>Trigger</button>
@@ -76,8 +76,8 @@ describe('Tooltip (React)', () => {
     });
   });
 
-  describe('Trigger 동작', () => {
-    it('TC-T100: hover 시 tooltip이 보인다', () => {
+  describe('Trigger ?�작', () => {
+    it('TC-T100: hover ??tooltip??보인??, () => {
       render(
         <Tooltip content="Hover tooltip" trigger="hover">
           <button>Hover me</button>
@@ -94,7 +94,7 @@ describe('Tooltip (React)', () => {
       expect(tooltip).toHaveAttribute('data-visible', 'true');
     });
 
-    it('TC-T101: hover 해제 시 tooltip이 숨겨진다', () => {
+    it('TC-T101: hover ?�제 ??tooltip???�겨진다', () => {
       render(
         <Tooltip content="Hover tooltip" trigger="hover">
           <button>Hover me</button>
@@ -115,7 +115,7 @@ describe('Tooltip (React)', () => {
       expect(tooltip).toHaveAttribute('aria-hidden', 'true');
     });
 
-    it('TC-T110: click 시 tooltip이 토글된다', () => {
+    it('TC-T110: click ??tooltip???��??�다', () => {
       render(
         <Tooltip content="Click tooltip" trigger="click">
           <button>Click me</button>
@@ -138,7 +138,7 @@ describe('Tooltip (React)', () => {
       expect(tooltip).toHaveAttribute('aria-hidden', 'true');
     });
 
-    it('TC-T120: focus 시 tooltip이 보인다', () => {
+    it('TC-T120: focus ??tooltip??보인??, () => {
       render(
         <Tooltip content="Focus tooltip" trigger="focus">
           <button>Focus me</button>
@@ -156,8 +156,8 @@ describe('Tooltip (React)', () => {
     });
   });
 
-  describe('Disabled 상태', () => {
-    it('TC-D100: disabled 시 hover해도 tooltip이 보이지 않는다', () => {
+  describe('Disabled ?�태', () => {
+    it('TC-D100: disabled ??hover?�도 tooltip??보이지 ?�는??, () => {
       render(
         <Tooltip content="Disabled tooltip" disabled>
           <button>Hover me</button>
@@ -176,7 +176,7 @@ describe('Tooltip (React)', () => {
   });
 
   describe('Arrow', () => {
-    it('TC-A100: arrow=true일 때 arrow 요소가 렌더링된다', () => {
+    it('TC-A100: arrow=true????arrow ?�소가 ?�더링된??, () => {
       render(
         <Tooltip content="Arrow tooltip" arrow>
           <button>Trigger</button>
@@ -188,7 +188,7 @@ describe('Tooltip (React)', () => {
       expect(arrow).toBeInTheDocument();
     });
 
-    it('TC-A101: arrow=false일 때 arrow 요소가 렌더링되지 않는다', () => {
+    it('TC-A101: arrow=false????arrow ?�소가 ?�더링되지 ?�는??, () => {
       render(
         <Tooltip content="No arrow" arrow={false}>
           <button>Trigger</button>
@@ -201,8 +201,8 @@ describe('Tooltip (React)', () => {
     });
   });
 
-  describe('접근성', () => {
-    it('TC-A200: role="tooltip"가 항상 적용된다', () => {
+  describe('?�근??, () => {
+    it('TC-A200: role="tooltip"가 ??�� ?�용?�다', () => {
       render(
         <Tooltip content="Accessible tooltip">
           <button>Trigger</button>
@@ -211,7 +211,7 @@ describe('Tooltip (React)', () => {
       expect(screen.getByRole('tooltip', { hidden: true })).toBeInTheDocument();
     });
 
-    it('TC-A201: visible 시 aria-describedby가 설정된다', () => {
+    it('TC-A201: visible ??aria-describedby가 ?�정?�다', () => {
       render(
         <Tooltip content="Desc tooltip" trigger="hover">
           <button>Trigger</button>
@@ -229,8 +229,8 @@ describe('Tooltip (React)', () => {
     });
   });
 
-  describe('기본값', () => {
-    it('TC-C010: position 기본값은 top이다', () => {
+  describe('기본�?, () => {
+    it('TC-C010: position 기본값�? top?�다', () => {
       render(
         <Tooltip content="Default">
           <button>Trigger</button>
@@ -239,7 +239,7 @@ describe('Tooltip (React)', () => {
       expect(screen.getByRole('tooltip', { hidden: true })).toHaveAttribute('data-position', 'top');
     });
 
-    it('TC-C011: trigger 기본값은 hover이다', () => {
+    it('TC-C011: trigger 기본값�? hover?�다', () => {
       render(
         <Tooltip content="Default">
           <button>Trigger</button>
@@ -250,7 +250,7 @@ describe('Tooltip (React)', () => {
   });
 
   describe('Delay', () => {
-    it('TC-DL100: delay가 0이면 즉시 보인다', () => {
+    it('TC-DL100: delay가 0?�면 즉시 보인??, () => {
       render(
         <Tooltip content="Immediate" delay={0}>
           <button>Trigger</button>
@@ -266,7 +266,7 @@ describe('Tooltip (React)', () => {
       expect(screen.getByRole('tooltip')).toHaveAttribute('data-visible', 'true');
     });
 
-    it('TC-DL101: delay가 설정되면 타이머 후 보인다', () => {
+    it('TC-DL101: delay가 ?�정?�면 ?�?�머 ??보인??, () => {
       vi.useFakeTimers();
 
       render(
@@ -294,8 +294,8 @@ describe('Tooltip (React)', () => {
     });
   });
 
-  describe('커스터마이즈', () => {
-    it('TC-O100: className 추가 시 병합된다', () => {
+  describe('커스?�마?�즈', () => {
+    it('TC-O100: className 추�? ??병합?�다', () => {
       render(
         <Tooltip content="Custom" className="custom-tooltip">
           <button>Trigger</button>

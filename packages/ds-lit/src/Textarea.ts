@@ -1,4 +1,4 @@
-import { Textarea as TextareaCore } from '@woosgem/ds-core';
+import { Textarea as TextareaCore } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Textarea, TextareaVariants, TextareaSizes, TextareaResizes } from '@woosgem/ds-core';
+import { Textarea, TextareaVariants, TextareaSizes, TextareaResizes } from '@woosgem-dev/core';
 
 describe('Textarea Core', () => {
   describe('displayName', () => {

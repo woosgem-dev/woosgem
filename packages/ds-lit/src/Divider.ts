@@ -1,4 +1,4 @@
-import { Divider as DividerCore } from '@woosgem/ds-core';
+import { Divider as DividerCore } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

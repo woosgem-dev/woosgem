@@ -7,7 +7,7 @@ import {
   CardVariants,
   CardPaddings,
   CardFooterAligns,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';
 
 describe('Card Core', () => {
   describe('displayName', () => {

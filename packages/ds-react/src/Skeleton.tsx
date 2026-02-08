@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef, ComponentType, CSSProperties } from 'react';
-import { Skeleton as SkeletonDef, type SkeletonStyleProps, type Prettify } from '@woosgem/ds-core';
+import { Skeleton as SkeletonDef, type SkeletonStyleProps, type Prettify } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

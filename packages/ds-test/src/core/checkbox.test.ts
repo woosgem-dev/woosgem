@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Checkbox, CheckboxSizes } from '@woosgem/ds-core';
+import { Checkbox, CheckboxSizes } from '@woosgem-dev/core';
 
 describe('Checkbox', () => {
   describe('displayName', () => {

@@ -1,11 +1,11 @@
-import { Button as ButtonCore } from '@woosgem/ds-core';
+import { Button as ButtonCore } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**
  * Button - Lit Web Component
  *
  * @element wg-button
- * @slot - 버튼 내용
+ * @slot - 버튼 ?�용
  *
  * @example
  * ```html

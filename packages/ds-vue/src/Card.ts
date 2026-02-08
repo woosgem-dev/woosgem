@@ -9,7 +9,7 @@ import {
   type CardBodyStyleProps,
   type CardFooterStyleProps,
   type Prettify,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Button, ButtonVariants, ButtonColors, ButtonSizes } from '@woosgem/ds-core';
+import { Button, ButtonVariants, ButtonColors, ButtonSizes } from '@woosgem-dev/core';
 
 describe('Button', () => {
   describe('displayName', () => {

@@ -40,7 +40,7 @@ import {
   // Types
   type ColorSetDefinition,
   type HexColor,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';
 
 describe('Color Transformer', () => {
   describe('hexToRgb', () => {

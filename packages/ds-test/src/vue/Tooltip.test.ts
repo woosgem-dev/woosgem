@@ -3,8 +3,8 @@ import { mount } from '@vue/test-utils';
 import { Tooltip } from '@woosgem/ds-vue';
 
 describe('Tooltip (Vue)', () => {
-  describe('기본 렌더링', () => {
-    it('TC-V100: default 슬롯이 렌더링된다', () => {
+  describe('기본 ?�더�?, () => {
+    it('TC-V100: default ?�롯???�더링된??, () => {
       const wrapper = mount(Tooltip, {
         props: { content: 'Hello' },
         slots: { default: '<button>Hover me</button>' },
@@ -12,7 +12,7 @@ describe('Tooltip (Vue)', () => {
       expect(wrapper.text()).toContain('Hover me');
     });
 
-    it('TC-V101: tooltip 래퍼가 렌더링된다', () => {
+    it('TC-V101: tooltip ?�퍼가 ?�더링된??, () => {
       const wrapper = mount(Tooltip, {
         props: { content: 'Tooltip text' },
         slots: { default: '<button>Trigger</button>' },
@@ -20,7 +20,7 @@ describe('Tooltip (Vue)', () => {
       expect(wrapper.classes()).toContain('tooltip-wrapper');
     });
 
-    it('TC-V102: tooltip 내용이 숨겨진 상태로 렌더링된다', () => {
+    it('TC-V102: tooltip ?�용???�겨�??�태�??�더링된??, () => {
       const wrapper = mount(Tooltip, {
         props: { content: 'Hidden text' },
         slots: { default: '<button>Trigger</button>' },
@@ -30,8 +30,8 @@ describe('Tooltip (Vue)', () => {
     });
   });
 
-  describe('Position 변형', () => {
-    it('TC-C110: position: top이 적용된다', () => {
+  describe('Position 변??, () => {
+    it('TC-C110: position: top???�용?�다', () => {
       const wrapper = mount(Tooltip, {
         props: { content: 'Text', position: 'top' },
         slots: { default: '<button>Trigger</button>' },
@@ -40,7 +40,7 @@ describe('Tooltip (Vue)', () => {
       expect(tooltip.attributes('data-position')).toBe('top');
     });
 
-    it('TC-C111: position: bottom이 적용된다', () => {
+    it('TC-C111: position: bottom???�용?�다', () => {
       const wrapper = mount(Tooltip, {
         props: { content: 'Text', position: 'bottom' },
         slots: { default: '<button>Trigger</button>' },
@@ -49,7 +49,7 @@ describe('Tooltip (Vue)', () => {
       expect(tooltip.attributes('data-position')).toBe('bottom');
     });
 
-    it('TC-C112: position: left가 적용된다', () => {
+    it('TC-C112: position: left가 ?�용?�다', () => {
       const wrapper = mount(Tooltip, {
         props: { content: 'Text', position: 'left' },
         slots: { default: '<button>Trigger</button>' },
@@ -58,7 +58,7 @@ describe('Tooltip (Vue)', () => {
       expect(tooltip.attributes('data-position')).toBe('left');
     });
 
-    it('TC-C113: position: right가 적용된다', () => {
+    it('TC-C113: position: right가 ?�용?�다', () => {
       const wrapper = mount(Tooltip, {
         props: { content: 'Text', position: 'right' },
         slots: { default: '<button>Trigger</button>' },
@@ -68,8 +68,8 @@ describe('Tooltip (Vue)', () => {
     });
   });
 
-  describe('Trigger 동작', () => {
-    it('TC-T100: hover 시 tooltip이 보인다', async () => {
+  describe('Trigger ?�작', () => {
+    it('TC-T100: hover ??tooltip??보인??, async () => {
       const wrapper = mount(Tooltip, {
         props: { content: 'Hover tooltip', trigger: 'hover' },
         slots: { default: '<button>Hover me</button>' },
@@ -81,7 +81,7 @@ describe('Tooltip (Vue)', () => {
       expect(tooltip.attributes('data-visible')).toBe('true');
     });
 
-    it('TC-T101: hover 해제 시 tooltip이 숨겨진다', async () => {
+    it('TC-T101: hover ?�제 ??tooltip???�겨진다', async () => {
       const wrapper = mount(Tooltip, {
         props: { content: 'Hover tooltip', trigger: 'hover' },
         slots: { default: '<button>Hover me</button>' },
@@ -94,7 +94,7 @@ describe('Tooltip (Vue)', () => {
       expect(tooltip.attributes('aria-hidden')).toBe('true');
     });
 
-    it('TC-T110: click 시 tooltip이 토글된다', async () => {
+    it('TC-T110: click ??tooltip???��??�다', async () => {
       const wrapper = mount(Tooltip, {
         props: { content: 'Click tooltip', trigger: 'click' },
         slots: { default: '<button>Click me</button>' },
@@ -109,7 +109,7 @@ describe('Tooltip (Vue)', () => {
       expect(tooltip.attributes('aria-hidden')).toBe('true');
     });
 
-    it('TC-T120: focus 시 tooltip이 보인다', async () => {
+    it('TC-T120: focus ??tooltip??보인??, async () => {
       const wrapper = mount(Tooltip, {
         props: { content: 'Focus tooltip', trigger: 'focus' },
         slots: { default: '<button>Focus me</button>' },
@@ -122,8 +122,8 @@ describe('Tooltip (Vue)', () => {
     });
   });
 
-  describe('Disabled 상태', () => {
-    it('TC-D100: disabled 시 hover해도 tooltip이 보이지 않는다', async () => {
+  describe('Disabled ?�태', () => {
+    it('TC-D100: disabled ??hover?�도 tooltip??보이지 ?�는??, async () => {
       const wrapper = mount(Tooltip, {
         props: { content: 'Disabled', disabled: true },
         slots: { default: '<button>Hover me</button>' },
@@ -137,7 +137,7 @@ describe('Tooltip (Vue)', () => {
   });
 
   describe('Arrow', () => {
-    it('TC-A100: arrow=true일 때 arrow 요소가 렌더링된다', () => {
+    it('TC-A100: arrow=true????arrow ?�소가 ?�더링된??, () => {
       const wrapper = mount(Tooltip, {
         props: { content: 'Arrow', arrow: true },
         slots: { default: '<button>Trigger</button>' },
@@ -145,7 +145,7 @@ describe('Tooltip (Vue)', () => {
       expect(wrapper.find('.tooltip-arrow').exists()).toBe(true);
     });
 
-    it('TC-A101: arrow=false일 때 arrow 요소가 렌더링되지 않는다', () => {
+    it('TC-A101: arrow=false????arrow ?�소가 ?�더링되지 ?�는??, () => {
       const wrapper = mount(Tooltip, {
         props: { content: 'No arrow', arrow: false },
         slots: { default: '<button>Trigger</button>' },
@@ -154,8 +154,8 @@ describe('Tooltip (Vue)', () => {
     });
   });
 
-  describe('접근성', () => {
-    it('TC-A200: role="tooltip"가 항상 적용된다', () => {
+  describe('?�근??, () => {
+    it('TC-A200: role="tooltip"가 ??�� ?�용?�다', () => {
       const wrapper = mount(Tooltip, {
         props: { content: 'Tooltip' },
         slots: { default: '<button>Trigger</button>' },
@@ -164,7 +164,7 @@ describe('Tooltip (Vue)', () => {
       expect(tooltip.attributes('role')).toBe('tooltip');
     });
 
-    it('TC-A201: visible 시 aria-describedby가 설정된다', async () => {
+    it('TC-A201: visible ??aria-describedby가 ?�정?�다', async () => {
       const wrapper = mount(Tooltip, {
         props: { content: 'Desc tooltip', trigger: 'hover' },
         slots: { default: '<button>Trigger</button>' },
@@ -177,8 +177,8 @@ describe('Tooltip (Vue)', () => {
     });
   });
 
-  describe('기본값', () => {
-    it('TC-C010: position 기본값은 top이다', () => {
+  describe('기본�?, () => {
+    it('TC-C010: position 기본값�? top?�다', () => {
       const wrapper = mount(Tooltip, {
         props: { content: 'Default' },
         slots: { default: '<button>Trigger</button>' },
@@ -187,7 +187,7 @@ describe('Tooltip (Vue)', () => {
       expect(tooltip.attributes('data-position')).toBe('top');
     });
 
-    it('TC-C011: trigger 기본값은 hover이다', () => {
+    it('TC-C011: trigger 기본값�? hover?�다', () => {
       const wrapper = mount(Tooltip, {
         props: { content: 'Default' },
         slots: { default: '<button>Trigger</button>' },
@@ -198,7 +198,7 @@ describe('Tooltip (Vue)', () => {
   });
 
   describe('Delay', () => {
-    it('TC-DL100: delay가 0이면 즉시 보인다', async () => {
+    it('TC-DL100: delay가 0?�면 즉시 보인??, async () => {
       const wrapper = mount(Tooltip, {
         props: { content: 'Immediate', delay: 0 },
         slots: { default: '<button>Trigger</button>' },
@@ -210,7 +210,7 @@ describe('Tooltip (Vue)', () => {
       expect(tooltip.attributes('data-visible')).toBe('true');
     });
 
-    it('TC-DL101: delay가 설정되면 타이머 후 보인다', async () => {
+    it('TC-DL101: delay가 ?�정?�면 ?�?�머 ??보인??, async () => {
       vi.useFakeTimers();
 
       const wrapper = mount(Tooltip, {
@@ -234,8 +234,8 @@ describe('Tooltip (Vue)', () => {
     });
   });
 
-  describe('v-model:visible 지원', () => {
-    it('TC-VM100: update:visible 이벤트가 발생한다', async () => {
+  describe('v-model:visible 지??, () => {
+    it('TC-VM100: update:visible ?�벤?��? 발생?�다', async () => {
       const wrapper = mount(Tooltip, {
         props: { content: 'Model', trigger: 'hover' },
         slots: { default: '<button>Trigger</button>' },

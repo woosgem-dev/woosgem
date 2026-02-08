@@ -4,11 +4,11 @@
 import { describe, it, expect } from 'vitest';
 import { html, fixture } from './setup';
 import { Alert } from '@woosgem/ds-lit';
-import { Alert as AlertDef } from '@woosgem/ds-core';
+import { Alert as AlertDef } from '@woosgem-dev/core';
 
 describe('Alert (Lit)', () => {
-  describe('core 일치 검증', () => {
-    it('TC-L100: 기본 props가 core 결과와 일치한다', async () => {
+  describe('core ?�치 검�?, () => {
+    it('TC-L100: 기본 props가 core 결과?� ?�치?�다', async () => {
       const coreAttrs = AlertDef.mapPropsToAttrs({});
 
       const el = await fixture<InstanceType<typeof Alert>>(html`
@@ -20,7 +20,7 @@ describe('Alert (Lit)', () => {
       expect(el.classList.contains('alert')).toBe(true);
     });
 
-    it('TC-L101: status prop이 core 결과와 일치한다', async () => {
+    it('TC-L101: status prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = AlertDef.mapPropsToAttrs({ status: 'error' });
 
       const el = await fixture<InstanceType<typeof Alert>>(html`
@@ -31,7 +31,7 @@ describe('Alert (Lit)', () => {
       expect(el.getAttribute('data-status')).toBe('error');
     });
 
-    it('TC-L102: variant prop이 core 결과와 일치한다', async () => {
+    it('TC-L102: variant prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = AlertDef.mapPropsToAttrs({ variant: 'filled' });
 
       const el = await fixture<InstanceType<typeof Alert>>(html`
@@ -42,7 +42,7 @@ describe('Alert (Lit)', () => {
       expect(el.getAttribute('data-variant')).toBe('filled');
     });
 
-    it('TC-L103: closable prop이 core 결과와 일치한다', async () => {
+    it('TC-L103: closable prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = AlertDef.mapPropsToAttrs({ closable: true });
 
       const el = await fixture<InstanceType<typeof Alert>>(html`
@@ -53,8 +53,8 @@ describe('Alert (Lit)', () => {
     });
   });
 
-  describe('Web Component 전용', () => {
-    it('TC-L300: slot 컨텐츠가 렌더링된다', async () => {
+  describe('Web Component ?�용', () => {
+    it('TC-L300: slot 컨텐츠�? ?�더링된??, async () => {
       const el = await fixture<InstanceType<typeof Alert>>(html`
         <wg-alert>Alert content</wg-alert>
       `);
@@ -62,7 +62,7 @@ describe('Alert (Lit)', () => {
       expect(el.textContent?.trim()).toBe('Alert content');
     });
 
-    it('TC-L301: 프로퍼티 변경 시 속성이 업데이트된다', async () => {
+    it('TC-L301: ?�로?�티 변�????�성???�데?�트?�다', async () => {
       const el = await fixture<InstanceType<typeof Alert>>(html`
         <wg-alert status="info">Alert</wg-alert>
       `);

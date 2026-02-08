@@ -1,5 +1,5 @@
 import type { DefineComponent } from 'vue';
-import { Icon as IconDef, type IconStyleProps, type Prettify } from '@woosgem/ds-core';
+import { Icon as IconDef, type IconStyleProps, type Prettify } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**

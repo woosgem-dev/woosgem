@@ -5,7 +5,7 @@ import {
   SelectOption,
   SelectVariants,
   SelectSizes,
-} from '@woosgem/ds-core';
+} from '@woosgem-dev/core';
 
 describe('Select Core', () => {
   describe('displayName', () => {

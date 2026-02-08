@@ -1,10 +1,10 @@
-import { Overlay as OverlayCore } from '@woosgem/ds-core';
+import { Overlay as OverlayCore } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
 /**
  * Overlay - Lit Web Component
  *
- * Modal, BottomSheet, Drawer 등의 배경 오버레이
+ * Modal, BottomSheet, Drawer ?�의 배경 ?�버?�이
  *
  * @element wg-overlay
  *

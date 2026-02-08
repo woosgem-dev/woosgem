@@ -4,11 +4,11 @@
 import { describe, it, expect } from 'vitest';
 import { html, fixture } from './setup';
 import { Tab } from '@woosgem/ds-lit';
-import { Tab as TabDef } from '@woosgem/ds-core';
+import { Tab as TabDef } from '@woosgem-dev/core';
 
 describe('Tab (Lit)', () => {
-  describe('core 일치 검증', () => {
-    it('TC-L100: 기본 props가 core 결과와 일치한다', async () => {
+  describe('core ?�치 검�?, () => {
+    it('TC-L100: 기본 props가 core 결과?� ?�치?�다', async () => {
       const coreAttrs = TabDef.mapPropsToAttrs({});
 
       const el = await fixture<InstanceType<typeof Tab>>(html`
@@ -20,7 +20,7 @@ describe('Tab (Lit)', () => {
       expect(el.classList.contains('tab')).toBe(true);
     });
 
-    it('TC-L101: variant prop이 core 결과와 일치한다', async () => {
+    it('TC-L101: variant prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = TabDef.mapPropsToAttrs({ variant: 'filled' });
 
       const el = await fixture<InstanceType<typeof Tab>>(html`
@@ -31,7 +31,7 @@ describe('Tab (Lit)', () => {
       expect(el.getAttribute('data-variant')).toBe('filled');
     });
 
-    it('TC-L102: size prop이 core 결과와 일치한다', async () => {
+    it('TC-L102: size prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = TabDef.mapPropsToAttrs({ size: 'lg' });
 
       const el = await fixture<InstanceType<typeof Tab>>(html`
@@ -42,7 +42,7 @@ describe('Tab (Lit)', () => {
       expect(el.getAttribute('data-size')).toBe('lg');
     });
 
-    it('TC-L103: selected prop이 core 결과와 일치한다', async () => {
+    it('TC-L103: selected prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = TabDef.mapPropsToAttrs({ selected: true });
 
       const el = await fixture<InstanceType<typeof Tab>>(html`
@@ -53,7 +53,7 @@ describe('Tab (Lit)', () => {
       expect(el.getAttribute('data-state')).toBe('selected');
     });
 
-    it('TC-L104: disabled prop이 core 결과와 일치한다', async () => {
+    it('TC-L104: disabled prop??core 결과?� ?�치?�다', async () => {
       const coreAttrs = TabDef.mapPropsToAttrs({ disabled: true });
 
       const el = await fixture<InstanceType<typeof Tab>>(html`
@@ -66,8 +66,8 @@ describe('Tab (Lit)', () => {
     });
   });
 
-  describe('Web Component 전용', () => {
-    it('TC-L300: slot 컨텐츠가 렌더링된다', async () => {
+  describe('Web Component ?�용', () => {
+    it('TC-L300: slot 컨텐츠�? ?�더링된??, async () => {
       const el = await fixture<InstanceType<typeof Tab>>(html`
         <wg-tab>Tab Title</wg-tab>
       `);
@@ -75,7 +75,7 @@ describe('Tab (Lit)', () => {
       expect(el.textContent?.trim()).toBe('Tab Title');
     });
 
-    it('TC-L301: 프로퍼티 변경 시 속성이 업데이트된다', async () => {
+    it('TC-L301: ?�로?�티 변�????�성???�데?�트?�다', async () => {
       const el = await fixture<InstanceType<typeof Tab>>(html`
         <wg-tab></wg-tab>
       `);
