@@ -1,11 +1,11 @@
 import { describe, it, expect, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
-import { Switch } from '@woosgem/ds-vue';
+import { Switch } from '@woosgem-dev/vue';
 import { Switch as SwitchDef } from '@woosgem-dev/core';
 
 describe('Switch (Vue)', () => {
-  describe('Core ?�치 검�?, () => {
-    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
+  describe('Core 일치 검증', () => {
+    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
       const coreAttrs = SwitchDef.mapPropsToAttrs({});
       const wrapper = mount(Switch);
 
@@ -16,7 +16,7 @@ describe('Switch (Vue)', () => {
       expect(wrapper.classes()).toContain(coreAttrs.class);
     });
 
-    it('TC-V101: size prop??core 결과?� ?�치?�다', () => {
+    it('TC-V101: size prop이 core 결과와 일치한다', () => {
       const coreAttrs = SwitchDef.mapPropsToAttrs({ size: 'lg' });
       const wrapper = mount(Switch, { props: { size: 'lg' } });
 
@@ -24,7 +24,7 @@ describe('Switch (Vue)', () => {
       expect(wrapper.attributes('data-size')).toBe('lg');
     });
 
-    it('TC-V102: color prop??core 결과?� ?�치?�다', () => {
+    it('TC-V102: color prop이 core 결과와 일치한다', () => {
       const coreAttrs = SwitchDef.mapPropsToAttrs({ color: 'success' });
       const wrapper = mount(Switch, { props: { color: 'success' } });
 
@@ -32,7 +32,7 @@ describe('Switch (Vue)', () => {
       expect(wrapper.attributes('data-color')).toBe('success');
     });
 
-    it('TC-V103: checked prop??core 결과?� ?�치?�다', () => {
+    it('TC-V103: checked prop이 core 결과와 일치한다', () => {
       const coreAttrs = SwitchDef.mapPropsToAttrs({ checked: true });
       const wrapper = mount(Switch, { props: { checked: true } });
 
@@ -40,7 +40,7 @@ describe('Switch (Vue)', () => {
       expect(wrapper.attributes('data-state')).toBe(coreAttrs['data-state']);
     });
 
-    it('TC-V104: disabled prop??core 결과?� ?�치?�다', () => {
+    it('TC-V104: disabled prop이 core 결과와 일치한다', () => {
       const coreAttrs = SwitchDef.mapPropsToAttrs({ disabled: true });
       const wrapper = mount(Switch, { props: { disabled: true } });
 
@@ -49,56 +49,56 @@ describe('Switch (Vue)', () => {
     });
   });
 
-  describe('Size 변??, () => {
-    it('TC-C110: size: sm???�용?�다', () => {
+  describe('Size 변형', () => {
+    it('TC-C110: size: sm가 적용된다', () => {
       const wrapper = mount(Switch, { props: { size: 'sm' } });
       expect(wrapper.attributes('data-size')).toBe('sm');
     });
 
-    it('TC-C111: size: md가 ?�용?�다', () => {
+    it('TC-C111: size: md가 적용된다', () => {
       const wrapper = mount(Switch, { props: { size: 'md' } });
       expect(wrapper.attributes('data-size')).toBe('md');
     });
 
-    it('TC-C112: size: lg가 ?�용?�다', () => {
+    it('TC-C112: size: lg가 적용된다', () => {
       const wrapper = mount(Switch, { props: { size: 'lg' } });
       expect(wrapper.attributes('data-size')).toBe('lg');
     });
   });
 
-  describe('Color 변??, () => {
-    it('TC-C120: color: primary가 ?�용?�다', () => {
+  describe('Color 변형', () => {
+    it('TC-C120: color: primary가 적용된다', () => {
       const wrapper = mount(Switch, { props: { color: 'primary' } });
       expect(wrapper.attributes('data-color')).toBe('primary');
     });
 
-    it('TC-C121: color: secondary가 ?�용?�다', () => {
+    it('TC-C121: color: secondary가 적용된다', () => {
       const wrapper = mount(Switch, { props: { color: 'secondary' } });
       expect(wrapper.attributes('data-color')).toBe('secondary');
     });
 
-    it('TC-C122: color: success가 ?�용?�다', () => {
+    it('TC-C122: color: success가 적용된다', () => {
       const wrapper = mount(Switch, { props: { color: 'success' } });
       expect(wrapper.attributes('data-color')).toBe('success');
     });
   });
 
-  describe('?�태 변??, () => {
-    it('TC-S100: checked ?�태가 ?�용?�다', () => {
+  describe('상태 변경', () => {
+    it('TC-S100: checked 태가 적용된다', () => {
       const wrapper = mount(Switch, { props: { checked: true } });
 
       expect(wrapper.attributes('data-state')).toBe('checked');
       expect(wrapper.attributes('aria-checked')).toBe('true');
     });
 
-    it('TC-S101: disabled ?�태가 ?�용?�다', () => {
+    it('TC-S101: disabled 태가 적용된다', () => {
       const wrapper = mount(Switch, { props: { disabled: true } });
 
       expect(wrapper.attributes('data-state')).toBe('disabled');
       expect(wrapper.attributes('disabled')).toBeDefined();
     });
 
-    it('TC-S102: checked + disabled ?�태가 ?�용?�다', () => {
+    it('TC-S102: checked + disabled 태가 적용된다', () => {
       const wrapper = mount(Switch, { props: { checked: true, disabled: true } });
 
       expect(wrapper.attributes('data-state')).toBe('checked-disabled');
@@ -107,47 +107,47 @@ describe('Switch (Vue)', () => {
     });
   });
 
-  describe('?�근??, () => {
-    it('TC-A100: role="switch"가 ??�� ?�용?�다', () => {
+  describe('접근성', () => {
+    it('TC-A100: role="switch"가 적용된다', () => {
       const wrapper = mount(Switch);
       expect(wrapper.attributes('role')).toBe('switch');
     });
 
-    it('TC-A101: aria-checked가 checked ?�태�?반영?�다', () => {
+    it('TC-A101: aria-checked가 checked 태반영다', () => {
       const wrapper = mount(Switch, { props: { checked: false } });
       expect(wrapper.attributes('aria-checked')).toBe('false');
     });
 
-    it('TC-A102: aria-checked가 true????반영?�다', () => {
+    it('TC-A102: aria-checked가 true반영다', () => {
       const wrapper = mount(Switch, { props: { checked: true } });
       expect(wrapper.attributes('aria-checked')).toBe('true');
     });
   });
 
-  describe('기본�?, () => {
-    it('TC-C010: size 기본값�? md?�다', () => {
+  describe('기본값', () => {
+    it('TC-C010: size 기본값 md다', () => {
       const wrapper = mount(Switch);
       expect(wrapper.attributes('data-size')).toBe('md');
     });
 
-    it('TC-C011: color 기본값�? primary?�다', () => {
+    it('TC-C011: color 기본값 primary다', () => {
       const wrapper = mount(Switch);
       expect(wrapper.attributes('data-color')).toBe('primary');
     });
 
-    it('TC-C012: checked 기본값�? false?�다', () => {
+    it('TC-C012: checked 기본값 false다', () => {
       const wrapper = mount(Switch);
       expect(wrapper.attributes('aria-checked')).toBe('false');
     });
 
-    it('TC-C013: disabled 기본값�? false?�다', () => {
+    it('TC-C013: disabled 기본값 false다', () => {
       const wrapper = mount(Switch);
       expect(wrapper.attributes('disabled')).toBeUndefined();
     });
   });
 
-  describe('?�벤???�들??, () => {
-    it('TC-O150: click ?�벤?��? 발생?�다', async () => {
+  describe('이벤트 핸들러', () => {
+    it('TC-O150: click 벤 발생다', async () => {
       const handleClick = vi.fn();
       const wrapper = mount(Switch, {
         attrs: { onClick: handleClick },
@@ -159,15 +159,15 @@ describe('Switch (Vue)', () => {
     });
   });
 
-  describe('커스?�마?�즈 ?�버?�이??, () => {
-    it('TC-O100: class 추�? ??병합?�다', () => {
+  describe('커스터마이즈 오버라이드', () => {
+    it('TC-O100: class 추가 시 병합된다', () => {
       const wrapper = mount(Switch, { props: { class: 'custom-switch' } });
 
       expect(wrapper.classes()).toContain('switch');
       expect(wrapper.classes()).toContain('custom-switch');
     });
 
-    it('TC-O130: 보호 ?�성 data-size ?�버?�이??차단', () => {
+    it('TC-O130: 보호 속성 $1 오버라이드 차단', () => {
       const wrapper = mount(Switch, {
         props: { size: 'lg' },
         attrs: { 'data-size': 'custom' },
@@ -176,7 +176,7 @@ describe('Switch (Vue)', () => {
       expect(wrapper.attributes('data-size')).toBe('lg');
     });
 
-    it('TC-O131: 보호 ?�성 role ?�버?�이??차단', () => {
+    it('TC-O131: 보호 성 role 버이차단', () => {
       const wrapper = mount(Switch, {
         attrs: { role: 'checkbox' },
       });

@@ -1,12 +1,12 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ListItem } from '@woosgem/ds-react';
+import { ListItem } from '@woosgem-dev/react';
 import { ListItem as ListItemDef } from '@woosgem-dev/core';
 
 describe('ListItem', () => {
-  describe('core ?�치 검�?, () => {
-    it('TC-R100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
+  describe('Core 일치 검증', () => {
+    it('TC-R100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({});
 
       render(<ListItem>Item</ListItem>);
@@ -16,7 +16,7 @@ describe('ListItem', () => {
       expect(item).toHaveClass(coreAttrs.class);
     });
 
-    it('TC-R101: variant prop??core 결과?� ?�치?�다', () => {
+    it('TC-R101: variant prop이 core 결과와 일치한다', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ variant: 'interactive' });
 
       render(<ListItem variant="interactive">Interactive</ListItem>);
@@ -26,7 +26,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('data-variant', 'interactive');
     });
 
-    it('TC-R102: selected prop??core 결과?� ?�치?�다', () => {
+    it('TC-R102: selected prop이 core 결과와 일치한다', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ selected: true });
 
       render(<ListItem selected>Selected</ListItem>);
@@ -37,7 +37,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('aria-selected', 'true');
     });
 
-    it('TC-R103: disabled prop??core 결과?� ?�치?�다', () => {
+    it('TC-R103: disabled prop이 core 결과와 일치한다', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ disabled: true });
 
       render(<ListItem disabled>Disabled</ListItem>);
@@ -48,7 +48,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('aria-disabled', 'true');
     });
 
-    it('TC-R104: divider prop??core 결과?� ?�치?�다', () => {
+    it('TC-R104: divider prop이 core 결과와 일치한다', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ divider: true });
 
       render(<ListItem divider>With Divider</ListItem>);
@@ -57,7 +57,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('data-divider', String(coreAttrs['data-divider']));
     });
 
-    it('TC-R105: 복합 props가 core 결과?� ?�치?�다', () => {
+    it('TC-R105: 복합 props가 core 결과와 일치한다', () => {
       const props = {
         variant: 'interactive' as const,
         selected: true,
@@ -78,7 +78,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('aria-selected', 'true');
     });
 
-    it('TC-R106: selected + disabled ?�시 true????selected ?�선', () => {
+    it('TC-R106: selected + disabled 시 trueselected 선', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ selected: true, disabled: true });
 
       render(
@@ -95,8 +95,8 @@ describe('ListItem', () => {
     });
   });
 
-  describe('?�벤???�들??, () => {
-    it('TC-R200: onClick ?�들?��? ?�출?�다', async () => {
+  describe('이벤트 핸들러', () => {
+    it('TC-R200: onClick 핸들러가 호출된다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -108,7 +108,7 @@ describe('ListItem', () => {
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-R201: disabled ?�태?�서??onClick???�출?�다 (li??disabled 미�???', async () => {
+    it('TC-R201: disabled 태서onClick출다 (lidisabled 미', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -121,11 +121,11 @@ describe('ListItem', () => {
 
       await user.click(item!);
 
-      // li ?�소???�이?�브 disabled�?지?�하지 ?�으므�??�릭??발생
+      // li ?소???이?브 disabled?지?하지 ?으므??릭??발생
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-R202: ?�러 �??�릭 ??매번 ?�출?�다', async () => {
+    it('TC-R202: 여러 번 클릭 시 매번 호출된다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -140,15 +140,15 @@ describe('ListItem', () => {
     });
   });
 
-  describe('React ?�용 props', () => {
-    it('TC-R300: children???�더링된??, () => {
+  describe('React 전용 props', () => {
+    it('TC-R300: children이 렌더링된다', () => {
       render(<ListItem>Hello</ListItem>);
       const item = document.querySelector('.list-item');
 
       expect(item).toHaveTextContent('Hello');
     });
 
-    it('TC-R301: JSX children???�더링된??, () => {
+    it('TC-R301: children이 렌더링된다', () => {
       render(
         <ListItem>
           <span data-testid="icon">Icon</span>
@@ -159,7 +159,7 @@ describe('ListItem', () => {
       expect(screen.getByTestId('icon')).toHaveTextContent('Icon');
     });
 
-    it('TC-R302: className??병합?�다', () => {
+    it('TC-R302: className이 병합된다', () => {
       render(<ListItem className="custom-class">Item</ListItem>);
       const item = document.querySelector('.list-item');
 
@@ -167,14 +167,14 @@ describe('ListItem', () => {
       expect(item).toHaveClass('custom-class');
     });
 
-    it('TC-R303: role prop???�용?�다', () => {
+    it('TC-R303: role prop 적용된다', () => {
       render(<ListItem role="option">Option</ListItem>);
       const item = screen.getByRole('option');
 
       expect(item).toBeInTheDocument();
     });
 
-    it('TC-R304: aria-label???�용?�다', () => {
+    it('TC-R304: aria-label이 적용된다', () => {
       render(<ListItem aria-label="Menu item">Item</ListItem>);
       const item = document.querySelector('.list-item');
 
@@ -182,8 +182,8 @@ describe('ListItem', () => {
     });
   });
 
-  describe('커스?�마?�즈 ?�버?�이??, () => {
-    it('TC-O100: className 추�? ??병합?�다', () => {
+  describe('커스터마이즈 오버라이드', () => {
+    it('TC-O100: className이 병합된다', () => {
       render(<ListItem className="custom">Item</ListItem>);
       const item = document.querySelector('.list-item');
 
@@ -191,7 +191,7 @@ describe('ListItem', () => {
       expect(item).toHaveClass('custom');
     });
 
-    it('TC-O101: className ?�러 �?추�?', () => {
+    it('TC-O101: className 여러 개 추가', () => {
       render(<ListItem className="a b c">Item</ListItem>);
       const item = document.querySelector('.list-item');
 
@@ -201,87 +201,87 @@ describe('ListItem', () => {
       expect(item).toHaveClass('c');
     });
 
-    it('TC-O110: style ?�라???�용', () => {
+    it('TC-O110: style 라용', () => {
       render(<ListItem style={{ padding: 8 }}>Item</ListItem>);
       const item = document.querySelector('.list-item');
 
       expect(item).toHaveStyle({ padding: '8px' });
     });
 
-    it('TC-O120: data-testid 추�? ?�용', () => {
+    it('TC-O120: data-testid 추가 적용', () => {
       render(<ListItem data-testid="item-1">Item</ListItem>);
       expect(screen.getByTestId('item-1')).toBeInTheDocument();
     });
 
-    it('TC-O140: aria-label ?�용', () => {
+    it('TC-O140: aria-label 적용', () => {
       render(<ListItem aria-label="Menu item">Item</ListItem>);
       const item = document.querySelector('.list-item');
 
       expect(item).toHaveAttribute('aria-label', 'Menu item');
     });
 
-    it('TC-O141: aria-labelledby ?�용', () => {
+    it('TC-O141: aria-label 적용', () => {
       render(<ListItem aria-labelledby="label-id">Item</ListItem>);
       const item = document.querySelector('.list-item');
 
       expect(item).toHaveAttribute('aria-labelledby', 'label-id');
     });
 
-    it('TC-O143: aria-current ?�용', () => {
+    it('TC-O143: aria-current 용', () => {
       render(<ListItem aria-current="page">Current</ListItem>);
       const item = document.querySelector('.list-item');
 
       expect(item).toHaveAttribute('aria-current', 'page');
     });
 
-    it('TC-O160: id ?�성 ?�달 ?�용', () => {
+    it('TC-O160: id 속성 전달 적용', () => {
       render(<ListItem id="my-item">Item</ListItem>);
       const item = document.querySelector('.list-item');
 
       expect(item).toHaveAttribute('id', 'my-item');
     });
 
-    it('TC-O161: role ?�성 ?�용', () => {
+    it('TC-O161: role 성 용', () => {
       render(<ListItem role="option">Option</ListItem>);
       const item = screen.getByRole('option');
 
       expect(item).toBeInTheDocument();
     });
 
-    it('TC-O130: 보호 ?�성 data-variant ?�버?�이??차단', () => {
-      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
+    it('TC-O130: 보호 속성 $1 오버라이드 차단', () => {
+      // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<ListItem data-variant="custom" variant="interactive">Item</ListItem>);
       const item = document.querySelector('.list-item');
 
       expect(item).toHaveAttribute('data-variant', 'interactive');
     });
 
-    it('TC-O131: 보호 ?�성 data-state ?�버?�이??차단', () => {
-      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
+    it('TC-O131: 보호 속성 $1 오버라이드 차단', () => {
+      // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<ListItem data-state="custom" selected>Item</ListItem>);
       const item = document.querySelector('.list-item');
 
       expect(item).toHaveAttribute('data-state', 'selected');
     });
 
-    it('TC-O132: 보호 ?�성 data-divider ?�버?�이??차단', () => {
-      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
+    it('TC-O132: 보호 속성 $1 오버라이드 차단', () => {
+      // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<ListItem data-divider="custom" divider>Item</ListItem>);
       const item = document.querySelector('.list-item');
 
       expect(item).toHaveAttribute('data-divider', 'true');
     });
 
-    it('TC-O133: 보호 ?�성 aria-selected ?�버?�이??차단', () => {
-      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
+    it('TC-O133: 보호 속성 $1 오버라이드 차단', () => {
+      // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<ListItem aria-selected="false" selected>Item</ListItem>);
       const item = document.querySelector('.list-item');
 
       expect(item).toHaveAttribute('aria-selected', 'true');
     });
 
-    it('TC-O134: 보호 ?�성 aria-disabled ?�버?�이??차단', () => {
-      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
+    it('TC-O134: 보호 속성 $1 오버라이드 차단', () => {
+      // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<ListItem aria-disabled="false" disabled>Item</ListItem>);
       const item = document.querySelector('.list-item');
 
@@ -289,15 +289,15 @@ describe('ListItem', () => {
     });
   });
 
-  describe('기본�?, () => {
-    it('TC-C010: variant 기본값�? default?�다', () => {
+  describe('기본값', () => {
+    it('TC-C010: variant 기본값 default다', () => {
       render(<ListItem>Item</ListItem>);
       const item = document.querySelector('.list-item');
 
       expect(item).toHaveAttribute('data-variant', 'default');
     });
 
-    it('TC-C011: selected 기본값�? false?�다', () => {
+    it('TC-C011: selected 기본값 false다', () => {
       render(<ListItem>Item</ListItem>);
       const item = document.querySelector('.list-item');
 
@@ -305,14 +305,14 @@ describe('ListItem', () => {
       expect(item).not.toHaveAttribute('aria-selected');
     });
 
-    it('TC-C012: disabled 기본값�? false?�다', () => {
+    it('TC-C012: disabled 기본값 false다', () => {
       render(<ListItem>Item</ListItem>);
       const item = document.querySelector('.list-item');
 
       expect(item).not.toHaveAttribute('aria-disabled');
     });
 
-    it('TC-C013: divider 기본값�? false?�다', () => {
+    it('TC-C013: divider 기본값 false다', () => {
       render(<ListItem>Item</ListItem>);
       const item = document.querySelector('.list-item');
 

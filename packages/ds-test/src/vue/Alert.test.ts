@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { mount } from '@vue/test-utils';
-import { Alert } from '@woosgem/ds-vue';
+import { Alert } from '@woosgem-dev/vue';
 import { Alert as AlertDef } from '@woosgem-dev/core';
 
 describe('Alert (Vue)', () => {
-  describe('Core ?�치 검�?, () => {
-    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
+  describe('Core 일치 검증', () => {
+    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
       const coreAttrs = AlertDef.mapPropsToAttrs({});
       const wrapper = mount(Alert, { slots: { default: 'Message' } });
 
@@ -15,7 +15,7 @@ describe('Alert (Vue)', () => {
       expect(wrapper.classes()).toContain(coreAttrs.class);
     });
 
-    it('TC-V101: variant prop??core 결과?� ?�치?�다', () => {
+    it('TC-V101: variant prop이 core 결과와 일치한다', () => {
       const coreAttrs = AlertDef.mapPropsToAttrs({ variant: 'filled' });
       const wrapper = mount(Alert, { props: { variant: 'filled' } });
 
@@ -23,7 +23,7 @@ describe('Alert (Vue)', () => {
       expect(wrapper.attributes('data-variant')).toBe('filled');
     });
 
-    it('TC-V102: status prop??core 결과?� ?�치?�다', () => {
+    it('TC-V102: status prop이 core 결과와 일치한다', () => {
       const coreAttrs = AlertDef.mapPropsToAttrs({ status: 'error' });
       const wrapper = mount(Alert, { props: { status: 'error' } });
 
@@ -31,14 +31,14 @@ describe('Alert (Vue)', () => {
       expect(wrapper.attributes('data-status')).toBe('error');
     });
 
-    it('TC-V103: closable prop??core 결과?� ?�치?�다', () => {
+    it('TC-V103: closable prop이 core 결과와 일치한다', () => {
       const coreAttrs = AlertDef.mapPropsToAttrs({ closable: true });
       const wrapper = mount(Alert, { props: { closable: true } });
 
       expect(wrapper.attributes('data-closable')).toBe(String(coreAttrs['data-closable']));
     });
 
-    it('TC-V104: 복합 props가 core 결과?� ?�치?�다', () => {
+    it('TC-V104: 복합 props가 core 결과와 일치한다', () => {
       const props = {
         variant: 'filled' as const,
         status: 'success' as const,
@@ -53,78 +53,78 @@ describe('Alert (Vue)', () => {
     });
   });
 
-  describe('Variant 변??, () => {
-    it('TC-C110: variant: filled가 ?�용?�다', () => {
+  describe('Variant 변형', () => {
+    it('TC-C110: variant: filled가 적용된다', () => {
       const wrapper = mount(Alert, { props: { variant: 'filled' } });
       expect(wrapper.attributes('data-variant')).toBe('filled');
     });
 
-    it('TC-C111: variant: outline???�용?�다', () => {
+    it('TC-C111: variant: outline 적용된다', () => {
       const wrapper = mount(Alert, { props: { variant: 'outline' } });
       expect(wrapper.attributes('data-variant')).toBe('outline');
     });
 
-    it('TC-C112: variant: subtle???�용?�다', () => {
+    it('TC-C112: variant: subtle 적용된다', () => {
       const wrapper = mount(Alert, { props: { variant: 'subtle' } });
       expect(wrapper.attributes('data-variant')).toBe('subtle');
     });
   });
 
-  describe('Status 변??, () => {
-    it('TC-C120: status: info가 ?�용?�다', () => {
+  describe('Status 변형', () => {
+    it('TC-C120: status: info가 적용된다', () => {
       const wrapper = mount(Alert, { props: { status: 'info' } });
       expect(wrapper.attributes('data-status')).toBe('info');
     });
 
-    it('TC-C121: status: success가 ?�용?�다', () => {
+    it('TC-C121: status: success가 적용된다', () => {
       const wrapper = mount(Alert, { props: { status: 'success' } });
       expect(wrapper.attributes('data-status')).toBe('success');
     });
 
-    it('TC-C122: status: warning???�용?�다', () => {
+    it('TC-C122: status: warning 적용된다', () => {
       const wrapper = mount(Alert, { props: { status: 'warning' } });
       expect(wrapper.attributes('data-status')).toBe('warning');
     });
 
-    it('TC-C123: status: error가 ?�용?�다', () => {
+    it('TC-C123: status: error가 적용된다', () => {
       const wrapper = mount(Alert, { props: { status: 'error' } });
       expect(wrapper.attributes('data-status')).toBe('error');
     });
   });
 
-  describe('?�근??, () => {
-    it('TC-A100: role="alert"가 ??�� ?�용?�다', () => {
+  describe('접근성', () => {
+    it('TC-A100: role="alert"가 적용된다', () => {
       const wrapper = mount(Alert);
       expect(wrapper.attributes('role')).toBe('alert');
     });
   });
 
-  describe('기본�?, () => {
-    it('TC-C010: variant 기본값�? subtle?�다', () => {
+  describe('기본값', () => {
+    it('TC-C010: variant 기본값 subtle다', () => {
       const wrapper = mount(Alert);
       expect(wrapper.attributes('data-variant')).toBe('subtle');
     });
 
-    it('TC-C011: status 기본값�? info?�다', () => {
+    it('TC-C011: status 기본값 info다', () => {
       const wrapper = mount(Alert);
       expect(wrapper.attributes('data-status')).toBe('info');
     });
 
-    it('TC-C012: closable 기본값�? false?�다 (?�성 ?�음)', () => {
+    it('TC-C012: closable 기본값 false다 (성 음)', () => {
       const wrapper = mount(Alert);
       expect(wrapper.attributes('data-closable')).toBeUndefined();
     });
   });
 
-  describe('커스?�마?�즈 ?�버?�이??, () => {
-    it('TC-O100: class 추�? ??병합?�다', () => {
+  describe('커스터마이즈 오버라이드', () => {
+    it('TC-O100: class 추가 시 병합된다', () => {
       const wrapper = mount(Alert, { props: { class: 'custom-alert' } });
 
       expect(wrapper.classes()).toContain('alert');
       expect(wrapper.classes()).toContain('custom-alert');
     });
 
-    it('TC-O130: 보호 ?�성 data-variant ?�버?�이??차단', () => {
+    it('TC-O130: 보호 속성 $1 오버라이드 차단', () => {
       const wrapper = mount(Alert, {
         props: { variant: 'filled' },
         attrs: { 'data-variant': 'custom' },
@@ -133,7 +133,7 @@ describe('Alert (Vue)', () => {
       expect(wrapper.attributes('data-variant')).toBe('filled');
     });
 
-    it('TC-O131: 보호 ?�성 data-status ?�버?�이??차단', () => {
+    it('TC-O131: 보호 속성 $1 오버라이드 차단', () => {
       const wrapper = mount(Alert, {
         props: { status: 'error' },
         attrs: { 'data-status': 'custom' },
@@ -142,7 +142,7 @@ describe('Alert (Vue)', () => {
       expect(wrapper.attributes('data-status')).toBe('error');
     });
 
-    it('TC-O132: 보호 ?�성 role ?�버?�이??차단', () => {
+    it('TC-O132: 보호 성 role 버이차단', () => {
       const wrapper = mount(Alert, {
         attrs: { role: 'status' },
       });

@@ -1,12 +1,12 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
-import { ListItem } from '@woosgem/ds-vue';
+import { ListItem } from '@woosgem-dev/vue';
 import { ListItem as ListItemDef } from '@woosgem-dev/core';
 
 describe('ListItem', () => {
-  describe('core ?�치 검�?, () => {
-    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
+  describe('Core 일치 검증', () => {
+    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({});
 
       render(ListItem, { slots: { default: 'Item' } });
@@ -16,7 +16,7 @@ describe('ListItem', () => {
       expect(item).toHaveClass(coreAttrs.class);
     });
 
-    it('TC-V101: variant prop??core 결과?� ?�치?�다', () => {
+    it('TC-V101: variant prop이 core 결과와 일치한다', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ variant: 'interactive' });
 
       render(ListItem, {
@@ -29,7 +29,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('data-variant', 'interactive');
     });
 
-    it('TC-V102: selected prop??core 결과?� ?�치?�다', () => {
+    it('TC-V102: selected prop이 core 결과와 일치한다', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ selected: true });
 
       render(ListItem, {
@@ -43,7 +43,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('aria-selected', 'true');
     });
 
-    it('TC-V103: disabled prop??core 결과?� ?�치?�다', () => {
+    it('TC-V103: disabled prop이 core 결과와 일치한다', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ disabled: true });
 
       render(ListItem, {
@@ -57,7 +57,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('aria-disabled', 'true');
     });
 
-    it('TC-V104: divider prop??core 결과?� ?�치?�다', () => {
+    it('TC-V104: divider prop이 core 결과와 일치한다', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ divider: true });
 
       render(ListItem, {
@@ -69,7 +69,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('data-divider', String(coreAttrs['data-divider']));
     });
 
-    it('TC-V105: selected + disabled ?�시 true ??selected ?�선', () => {
+    it('TC-V105: selected + disabled 시 true selected 선', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ selected: true, disabled: true });
 
       render(ListItem, {
@@ -84,7 +84,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('aria-disabled', 'true');
     });
 
-    it('TC-V106: 복합 props가 core 결과?� ?�치?�다', () => {
+    it('TC-V106: 복합 props가 core 결과와 일치한다', () => {
       const props = {
         variant: 'interactive' as const,
         selected: true,
@@ -103,7 +103,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('data-divider', 'true');
     });
 
-    it('TC-V107: variant: default가 core 결과?� ?�치?�다', () => {
+    it('TC-V107: variant: default가 core 결과 치다', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ variant: 'default' });
 
       render(ListItem, {
@@ -115,7 +115,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('data-variant', coreAttrs['data-variant']);
     });
 
-    it('TC-V108: divider: false????data-divider가 ?�다', () => {
+    it('TC-V108: divider: falsedata-divider가 다', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ divider: false });
 
       render(ListItem, {
@@ -129,8 +129,8 @@ describe('ListItem', () => {
     });
   });
 
-  describe('?�벤???�들??, () => {
-    it('TC-V200: onClick ?�들?��? ?�출?�다', async () => {
+  describe('이벤트 핸들러', () => {
+    it('TC-V200: onClick 핸들러가 호출된다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -145,7 +145,7 @@ describe('ListItem', () => {
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-V201: disabled ?�태?�서??onClick???�출?�다 (li??disabled 미�???', async () => {
+    it('TC-V201: disabled 태서onClick출다 (lidisabled 미', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -157,18 +157,18 @@ describe('ListItem', () => {
 
       await user.click(item);
 
-      // li ?�소???�이?�브 disabled�?지?�하지 ?�으므�??�릭 ?�벤?��? 발생??
+      // li ?소???이?브 disabled?지?하지 ?으므??릭 ?벤?? 발생??
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
   });
 
-  describe('Vue ?�용 props', () => {
-    it('TC-V300: slot???�더링된??, () => {
+  describe('Vue 전용 props', () => {
+    it('TC-V300: slot이 렌더링된다', () => {
       render(ListItem, { slots: { default: 'Hello World' } });
       expect(screen.getByRole('listitem')).toHaveTextContent('Hello World');
     });
 
-    it('TC-V301: class가 병합?�다', () => {
+    it('TC-V301: class가 병합된다', () => {
       render(ListItem, {
         attrs: { class: 'custom-class' },
         slots: { default: 'Item' },
@@ -179,16 +179,16 @@ describe('ListItem', () => {
       expect(item).toHaveClass('custom-class');
     });
 
-    // Note: role?� PROTECTED_ATTRS???�함?�어 ?�어 ?�터링됨
-    // ListItem?� 기본?�으�?li ?�소?��?�?listitem role??가�?
-    it('TC-V302: listitem role??기본 ?�용?�다', () => {
+    // Note: role? PROTECTED_ATTRS???함?어 ?어 ?터링됨
+    // ListItem? 기본?으?li ?소???listitem role??가?
+    it('TC-V302: listitem role기본 적용된다', () => {
       render(ListItem, {
         slots: { default: 'Option' },
       });
       expect(screen.getByRole('listitem')).toBeInTheDocument();
     });
 
-    it('TC-V303: aria-label???�용?�다', () => {
+    it('TC-V303: aria-label이 적용된다', () => {
       render(ListItem, {
         attrs: { 'aria-label': 'Menu item' },
         slots: { default: 'Item' },
@@ -197,8 +197,8 @@ describe('ListItem', () => {
     });
   });
 
-  describe('커스?�마?�즈 ?�버?�이??, () => {
-    it('TC-O100: class 추�? ??병합?�다', () => {
+  describe('커스터마이즈 오버라이드', () => {
+    it('TC-O100: class 추가 시 병합된다', () => {
       render(ListItem, {
         attrs: { class: 'custom' },
         slots: { default: 'Item' },
@@ -209,7 +209,7 @@ describe('ListItem', () => {
       expect(item).toHaveClass('custom');
     });
 
-    it('TC-O120: data-testid 추�? ?�용', () => {
+    it('TC-O120: data-testid 추가 적용', () => {
       render(ListItem, {
         attrs: { 'data-testid': 'list-item-1' },
         slots: { default: 'Item' },
@@ -217,7 +217,7 @@ describe('ListItem', () => {
       expect(screen.getByTestId('list-item-1')).toBeInTheDocument();
     });
 
-    it('TC-O200: 보호 ?�성 data-variant ?�버?�이??차단', () => {
+    it('TC-O200: 보호 속성 $1 오버라이드 차단', () => {
       render(ListItem, {
         props: { variant: 'interactive' },
         attrs: { 'data-variant': 'custom' },
@@ -228,7 +228,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('data-variant', 'interactive');
     });
 
-    it('TC-O201: 보호 ?�성 data-state ?�버?�이??차단', () => {
+    it('TC-O201: 보호 속성 $1 오버라이드 차단', () => {
       render(ListItem, {
         props: { selected: true },
         attrs: { 'data-state': 'custom' },
@@ -239,7 +239,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('data-state', 'selected');
     });
 
-    it('TC-O202: 보호 ?�성 data-divider ?�버?�이??차단', () => {
+    it('TC-O202: 보호 속성 $1 오버라이드 차단', () => {
       render(ListItem, {
         props: { divider: true },
         attrs: { 'data-divider': 'false' },
@@ -250,7 +250,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('data-divider', 'true');
     });
 
-    it('TC-O203: 보호 ?�성 aria-selected ?�버?�이??차단', () => {
+    it('TC-O203: 보호 속성 $1 오버라이드 차단', () => {
       render(ListItem, {
         props: { selected: true },
         attrs: { 'aria-selected': 'false' },
@@ -261,7 +261,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('aria-selected', 'true');
     });
 
-    it('TC-O204: 보호 ?�성 aria-disabled ?�버?�이??차단', () => {
+    it('TC-O204: 보호 속성 $1 오버라이드 차단', () => {
       render(ListItem, {
         props: { disabled: true },
         attrs: { 'aria-disabled': 'false' },
@@ -272,7 +272,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('aria-disabled', 'true');
     });
 
-    it('TC-O180: style ?�성 ?�달 ?�용', () => {
+    it('TC-O180: style 속성 전달 적용', () => {
       render(ListItem, {
         attrs: { style: 'margin-top: 8px;' },
         slots: { default: 'Item' },
@@ -282,7 +282,7 @@ describe('ListItem', () => {
       expect(item).toHaveStyle({ marginTop: '8px' });
     });
 
-    it('TC-O170: id ?�성 ?�달 ?�용', () => {
+    it('TC-O170: id 속성 전달 적용', () => {
       render(ListItem, {
         attrs: { id: 'my-item' },
         slots: { default: 'Item' },

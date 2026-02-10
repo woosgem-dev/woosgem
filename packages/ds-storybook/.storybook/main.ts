@@ -16,6 +16,7 @@ const config: StorybookConfig = {
     config.resolve = config.resolve || {};
     config.resolve.alias = {
       ...config.resolve.alias,
+      '@woosgem/ds-react': resolve(__dirname, '../../../packages/ds-react/src/index.ts'),
       '@woosgem/ds-styles': resolve(__dirname, '../../../packages/ds-styles/dist/index.css'),
     };
     return config;

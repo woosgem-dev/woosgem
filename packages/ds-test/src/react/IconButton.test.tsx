@@ -1,12 +1,12 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { IconButton } from '@woosgem/ds-react';
+import { IconButton } from '@woosgem-dev/react';
 import { IconButton as IconButtonDef } from '@woosgem-dev/core';
 
 describe('IconButton', () => {
-  describe('core ?�치 검�?, () => {
-    it('TC-R100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
+  describe('Core 일치 검증', () => {
+    it('TC-R100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
       const coreAttrs = IconButtonDef.mapPropsToAttrs({});
 
       render(<IconButton aria-label="Icon">X</IconButton>);
@@ -19,7 +19,7 @@ describe('IconButton', () => {
       expect(btn).toHaveClass(coreAttrs.class);
     });
 
-    it('TC-R101: variant prop??core 결과?� ?�치?�다', () => {
+    it('TC-R101: variant prop이 core 결과와 일치한다', () => {
       const coreAttrs = IconButtonDef.mapPropsToAttrs({ variant: 'outline' });
 
       render(<IconButton variant="outline" aria-label="Icon">X</IconButton>);
@@ -29,7 +29,7 @@ describe('IconButton', () => {
       expect(btn).toHaveAttribute('data-variant', 'outline');
     });
 
-    it('TC-R102: color prop??core 결과?� ?�치?�다', () => {
+    it('TC-R102: color prop이 core 결과와 일치한다', () => {
       const coreAttrs = IconButtonDef.mapPropsToAttrs({ color: 'danger' });
 
       render(<IconButton color="danger" aria-label="Icon">X</IconButton>);
@@ -39,7 +39,7 @@ describe('IconButton', () => {
       expect(btn).toHaveAttribute('data-color', 'danger');
     });
 
-    it('TC-R103: size prop??core 결과?� ?�치?�다', () => {
+    it('TC-R103: size prop이 core 결과와 일치한다', () => {
       const coreAttrs = IconButtonDef.mapPropsToAttrs({ size: 'lg' });
 
       render(<IconButton size="lg" aria-label="Icon">X</IconButton>);
@@ -49,7 +49,7 @@ describe('IconButton', () => {
       expect(btn).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-R104: shape prop??core 결과?� ?�치?�다', () => {
+    it('TC-R104: shape prop이 core 결과와 일치한다', () => {
       const coreAttrs = IconButtonDef.mapPropsToAttrs({ shape: 'circle' });
 
       render(<IconButton shape="circle" aria-label="Icon">X</IconButton>);
@@ -59,7 +59,7 @@ describe('IconButton', () => {
       expect(btn).toHaveAttribute('data-shape', 'circle');
     });
 
-    it('TC-R105: 복합 props가 core 결과?� ?�치?�다', () => {
+    it('TC-R105: 복합 props가 core 결과와 일치한다', () => {
       const props = {
         variant: 'ghost' as const,
         color: 'secondary' as const,
@@ -81,42 +81,42 @@ describe('IconButton', () => {
       expect(btn).toHaveAttribute('data-shape', coreAttrs['data-shape']);
     });
 
-    it('TC-C110: variant: filled가 ?�용?�다', () => {
+    it('TC-C110: variant: filled가 적용된다', () => {
       render(<IconButton variant="filled" aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveAttribute('data-variant', 'filled');
     });
 
-    it('TC-C111: variant: outline???�용?�다', () => {
+    it('TC-C111: variant: outline 적용된다', () => {
       render(<IconButton variant="outline" aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveAttribute('data-variant', 'outline');
     });
 
-    it('TC-C112: variant: ghost가 ?�용?�다', () => {
+    it('TC-C112: variant: ghost가 적용된다', () => {
       render(<IconButton variant="ghost" aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveAttribute('data-variant', 'ghost');
     });
 
-    it('TC-C130: size: xs가 ?�용?�다', () => {
+    it('TC-C130: size: xs가 적용된다', () => {
       render(<IconButton size="xs" aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveAttribute('data-size', 'xs');
     });
 
-    it('TC-C140: shape: square가 ?�용?�다', () => {
+    it('TC-C140: shape: square가 적용된다', () => {
       render(<IconButton shape="square" aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveAttribute('data-shape', 'square');
     });
 
-    it('TC-C141: shape: circle???�용?�다', () => {
+    it('TC-C141: shape: circle 적용된다', () => {
       render(<IconButton shape="circle" aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
@@ -124,8 +124,8 @@ describe('IconButton', () => {
     });
   });
 
-  describe('?�벤???�들??, () => {
-    it('TC-R200: onClick ?�들?��? ?�출?�다', async () => {
+  describe('이벤트 핸들러', () => {
+    it('TC-R200: onClick 핸들러가 호출된다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -137,7 +137,7 @@ describe('IconButton', () => {
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-R201: disabled ?�태?�서 onClick???�출?��? ?�는??, async () => {
+    it('TC-R201: disabled 태서 onClick출 는', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -153,7 +153,7 @@ describe('IconButton', () => {
       expect(handleClick).not.toHaveBeenCalled();
     });
 
-    it('TC-R202: ?�러 �??�릭 ??매번 ?�출?�다', async () => {
+    it('TC-R202: 여러 번 클릭 시 매번 호출된다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -168,13 +168,13 @@ describe('IconButton', () => {
     });
   });
 
-  describe('React ?�용 props', () => {
-    it('TC-R300: children???�더링된??, () => {
+  describe('React 전용 props', () => {
+    it('TC-R300: children이 렌더링된다', () => {
       render(<IconButton aria-label="Icon">X</IconButton>);
       expect(screen.getByRole('button')).toHaveTextContent('X');
     });
 
-    it('TC-R301: JSX children???�더링된??, () => {
+    it('TC-R301: children이 렌더링된다', () => {
       render(
         <IconButton aria-label="Search">
           <svg data-testid="icon">icon</svg>
@@ -184,7 +184,7 @@ describe('IconButton', () => {
       expect(screen.getByTestId('icon')).toBeInTheDocument();
     });
 
-    it('TC-R302: className??병합?�다', () => {
+    it('TC-R302: className이 병합된다', () => {
       render(<IconButton className="custom-class" aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
@@ -192,30 +192,30 @@ describe('IconButton', () => {
       expect(btn).toHaveClass('custom-class');
     });
 
-    it('TC-R303: type prop???�용?�다', () => {
+    it('TC-R303: type prop이 적용된다', () => {
       render(<IconButton type="submit" aria-label="Submit">X</IconButton>);
       expect(screen.getByRole('button')).toHaveAttribute('type', 'submit');
     });
 
-    it('TC-R304: type??명시?��? ?�으�??�성???�다', () => {
-      // IconButton?� 기본 type???�정?��? ?�음 (Button�??�름)
+    it('TC-R304: type명시 으성다', () => {
+      // IconButton? 기본 type???정?? ?음 (Button??름)
       render(<IconButton aria-label="Icon">X</IconButton>);
       expect(screen.getByRole('button')).not.toHaveAttribute('type');
     });
 
-    it('TC-R306: aria-label???�용?�다', () => {
+    it('TC-R306: aria-label이 적용된다', () => {
       render(<IconButton aria-label="Close">X</IconButton>);
       expect(screen.getByRole('button')).toHaveAttribute('aria-label', 'Close');
     });
 
-    it('TC-R308: disabled prop???�용?�다', () => {
+    it('TC-R308: disabled prop 적용된다', () => {
       render(<IconButton disabled aria-label="Disabled">X</IconButton>);
       expect(screen.getByRole('button')).toBeDisabled();
     });
   });
 
-  describe('커스?�마?�즈 ?�버?�이??, () => {
-    it('TC-O100: className 추�? ??병합?�다', () => {
+  describe('커스터마이즈 오버라이드', () => {
+    it('TC-O100: className이 병합된다', () => {
       render(<IconButton className="custom" aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
@@ -223,7 +223,7 @@ describe('IconButton', () => {
       expect(btn).toHaveClass('custom');
     });
 
-    it('TC-O101: className ?�러 �?추�?', () => {
+    it('TC-O101: className 여러 개 추가', () => {
       render(<IconButton className="a b c" aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
@@ -233,50 +233,50 @@ describe('IconButton', () => {
       expect(btn).toHaveClass('c');
     });
 
-    it('TC-O110: style ?�라???�용', () => {
+    it('TC-O110: style 라용', () => {
       render(<IconButton style={{ marginTop: 8 }} aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveStyle({ marginTop: '8px' });
     });
 
-    it('TC-O120: data-testid 추�? ?�용', () => {
+    it('TC-O120: data-testid 추가 적용', () => {
       render(<IconButton data-testid="close-btn" aria-label="Close">X</IconButton>);
       expect(screen.getByTestId('close-btn')).toBeInTheDocument();
     });
 
-    it('TC-O140: aria-label ?�용', () => {
+    it('TC-O140: aria-label 적용', () => {
       render(<IconButton aria-label="Close">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveAttribute('aria-label', 'Close');
     });
 
-    it('TC-O141: aria-pressed ?�용', () => {
+    it('TC-O141: aria-pressed 용', () => {
       render(<IconButton aria-pressed="true" aria-label="Toggle">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveAttribute('aria-pressed', 'true');
     });
 
-    it('TC-O142: aria-expanded ?�용', () => {
+    it('TC-O142: aria-expanded 용', () => {
       render(<IconButton aria-expanded="false" aria-label="Expand">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveAttribute('aria-expanded', 'false');
     });
 
-    it('TC-O160: disabled=true 명시 ?�용', () => {
+    it('TC-O160: disabled=true 명시 적용', () => {
       render(<IconButton disabled aria-label="Disabled">X</IconButton>);
       expect(screen.getByRole('button')).toBeDisabled();
     });
 
-    it('TC-O170: id ?�성 ?�달 ?�용', () => {
+    it('TC-O170: id 속성 전달 적용', () => {
       render(<IconButton id="my-icon-btn" aria-label="Icon">X</IconButton>);
       expect(screen.getByRole('button')).toHaveAttribute('id', 'my-icon-btn');
     });
 
-    it('TC-O180: style prop ?�달 ?�용', () => {
+    it('TC-O180: style prop 전달 적용', () => {
       render(
         <IconButton style={{ marginTop: 8, backgroundColor: 'blue' }} aria-label="Icon">
           X
@@ -288,32 +288,32 @@ describe('IconButton', () => {
       expect(btn).toHaveStyle({ backgroundColor: 'rgb(0, 0, 255)' });
     });
 
-    it('TC-O130: 보호 ?�성 data-variant ?�버?�이??차단', () => {
-      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
+    it('TC-O130: 보호 속성 $1 오버라이드 차단', () => {
+      // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<IconButton data-variant="custom" variant="outline" aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveAttribute('data-variant', 'outline');
     });
 
-    it('TC-O131: 보호 ?�성 data-color ?�버?�이??차단', () => {
-      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
+    it('TC-O131: 보호 속성 $1 오버라이드 차단', () => {
+      // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<IconButton data-color="custom" color="danger" aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveAttribute('data-color', 'danger');
     });
 
-    it('TC-O132: 보호 ?�성 data-size ?�버?�이??차단', () => {
-      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
+    it('TC-O132: 보호 속성 $1 오버라이드 차단', () => {
+      // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<IconButton data-size="custom" size="lg" aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-O133: 보호 ?�성 data-shape ?�버?�이??차단', () => {
-      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
+    it('TC-O133: 보호 속성 $1 오버라이드 차단', () => {
+      // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<IconButton data-shape="custom" shape="circle" aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
@@ -321,44 +321,44 @@ describe('IconButton', () => {
     });
   });
 
-  describe('기본�?, () => {
-    it('TC-C010: variant 기본값�? filled?�다', () => {
+  describe('기본값', () => {
+    it('TC-C010: variant 기본값 filled다', () => {
       render(<IconButton aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveAttribute('data-variant', 'filled');
     });
 
-    it('TC-C011: color 기본값�? primary?�다', () => {
+    it('TC-C011: color 기본값 primary다', () => {
       render(<IconButton aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveAttribute('data-color', 'primary');
     });
 
-    it('TC-C012: size 기본값�? md?�다', () => {
+    it('TC-C012: size 기본값 md다', () => {
       render(<IconButton aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveAttribute('data-size', 'md');
     });
 
-    it('TC-C013: shape 기본값�? square?�다', () => {
+    it('TC-C013: shape 기본값 square다', () => {
       render(<IconButton aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveAttribute('data-shape', 'square');
     });
 
-    it('TC-D100: type??명시?��? ?�으�??�성???�다', () => {
-      // IconButton?� 기본 type???�정?��? ?�음
+    it('TC-D100: type명시 으성다', () => {
+      // IconButton? 기본 type???정?? ?음
       render(<IconButton aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).not.toHaveAttribute('type');
     });
 
-    it('TC-D101: type="button" 명시 ??button?�로 ?�더�?, () => {
+    it('TC-D101: type="button" 명시 button로 더', () => {
       render(<IconButton type="button" aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 

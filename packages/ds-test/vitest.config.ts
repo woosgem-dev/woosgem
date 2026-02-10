@@ -13,6 +13,9 @@ export default defineConfig({
   resolve: {
     alias: {
       '@woosgem-dev/core': path.resolve(root, 'packages/ds-core/src/index.ts'),
+      '@woosgem-dev/react': path.resolve(root, 'packages/ds-react/src/index.ts'),
+      '@woosgem-dev/vue': path.resolve(root, 'packages/ds-vue/src/index.ts'),
+      '@woosgem-dev/lit': path.resolve(root, 'packages/ds-lit/src/index.ts'),
       '@woosgem/ds-react': path.resolve(root, 'packages/ds-react/src/index.ts'),
       '@woosgem/ds-vue': path.resolve(root, 'packages/ds-vue/src/index.ts'),
       '@woosgem/ds-lit': path.resolve(root, 'packages/ds-lit/src/index.ts'),

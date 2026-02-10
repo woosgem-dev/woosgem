@@ -1,15 +1,15 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
-import { SegmentedControl, SegmentedControlItem } from '@woosgem/ds-vue';
+import { SegmentedControl, SegmentedControlItem } from '@woosgem-dev/vue';
 import {
   SegmentedControl as SegmentedControlDef,
   SegmentedControlItem as SegmentedControlItemDef,
 } from '@woosgem-dev/core';
 
 describe('SegmentedControl', () => {
-  describe('core ?�치 검�?, () => {
-    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
+  describe('Core 일치 검증', () => {
+    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
       const coreAttrs = SegmentedControlDef.mapPropsToAttrs({});
 
       render(SegmentedControl, {
@@ -23,7 +23,7 @@ describe('SegmentedControl', () => {
       expect(group).toHaveClass(coreAttrs.class);
     });
 
-    it('TC-V101: size prop??core 결과?� ?�치?�다', () => {
+    it('TC-V101: size prop이 core 결과와 일치한다', () => {
       const coreAttrs = SegmentedControlDef.mapPropsToAttrs({ size: 'lg' });
 
       render(SegmentedControl, {
@@ -37,7 +37,7 @@ describe('SegmentedControl', () => {
       expect(group).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-V102: fullWidth prop??core 결과?� ?�치?�다', () => {
+    it('TC-V102: fullWidth prop이 core 결과와 일치한다', () => {
       const coreAttrs = SegmentedControlDef.mapPropsToAttrs({ fullWidth: true });
 
       render(SegmentedControl, {
@@ -50,7 +50,7 @@ describe('SegmentedControl', () => {
       expect(group).toHaveAttribute('data-full-width', String(coreAttrs['data-full-width']));
     });
 
-    it('TC-V103: disabled prop??core 결과?� ?�치?�다', () => {
+    it('TC-V103: disabled prop이 core 결과와 일치한다', () => {
       const coreAttrs = SegmentedControlDef.mapPropsToAttrs({ disabled: true });
 
       render(SegmentedControl, {
@@ -63,7 +63,7 @@ describe('SegmentedControl', () => {
       expect(group).toHaveAttribute('data-disabled', String(coreAttrs['data-disabled']));
     });
 
-    it('TC-V104: role?� ??�� group?�다', () => {
+    it('TC-V104: role?  group다', () => {
       render(SegmentedControl, {
         attrs: { 'aria-label': 'View options' },
         slots: { default: 'Content' },
@@ -73,7 +73,7 @@ describe('SegmentedControl', () => {
       expect(group).toHaveAttribute('role', 'group');
     });
 
-    it('TC-V105: size: sm??core 결과?� ?�치?�다', () => {
+    it('TC-V105: size: smcore 결과 치다', () => {
       const coreAttrs = SegmentedControlDef.mapPropsToAttrs({ size: 'sm' });
 
       render(SegmentedControl, {
@@ -86,7 +86,7 @@ describe('SegmentedControl', () => {
       expect(group).toHaveAttribute('data-size', coreAttrs['data-size']);
     });
 
-    it('TC-V106: 복합 props가 core 결과?� ?�치?�다', () => {
+    it('TC-V106: 복합 props가 core 결과와 일치한다', () => {
       const props = {
         size: 'lg' as const,
         fullWidth: true,
@@ -107,8 +107,8 @@ describe('SegmentedControl', () => {
     });
   });
 
-  describe('Vue ?�용 props', () => {
-    it('TC-V300: slot???�더링된??, () => {
+  describe('Vue 전용 props', () => {
+    it('TC-V300: slot이 렌더링된다', () => {
       render(SegmentedControl, {
         attrs: { 'aria-label': 'View options' },
         slots: { default: 'Slot Content' },
@@ -118,7 +118,7 @@ describe('SegmentedControl', () => {
       expect(group).toHaveTextContent('Slot Content');
     });
 
-    it('TC-V301: class가 병합?�다', () => {
+    it('TC-V301: class가 병합된다', () => {
       render(SegmentedControl, {
         attrs: { class: 'custom-class', 'aria-label': 'View options' },
         slots: { default: 'Content' },
@@ -129,7 +129,7 @@ describe('SegmentedControl', () => {
       expect(group).toHaveClass('custom-class');
     });
 
-    it('TC-V302: aria-label???�용?�다', () => {
+    it('TC-V302: aria-label이 적용된다', () => {
       render(SegmentedControl, {
         attrs: { 'aria-label': 'Period selection' },
         slots: { default: 'Content' },
@@ -140,8 +140,8 @@ describe('SegmentedControl', () => {
     });
   });
 
-  describe('커스?�마?�즈 ?�버?�이??, () => {
-    it('TC-O100: class 추�? ??병합?�다', () => {
+  describe('커스터마이즈 오버라이드', () => {
+    it('TC-O100: class 추가 시 병합된다', () => {
       render(SegmentedControl, {
         attrs: { class: 'custom', 'aria-label': 'View options' },
         slots: { default: 'Content' },
@@ -152,7 +152,7 @@ describe('SegmentedControl', () => {
       expect(group).toHaveClass('custom');
     });
 
-    it('TC-O120: data-testid 추�? ?�용', () => {
+    it('TC-O120: data-testid 추가 적용', () => {
       render(SegmentedControl, {
         attrs: { 'data-testid': 'segmented-control', 'aria-label': 'View options' },
         slots: { default: 'Content' },
@@ -160,7 +160,7 @@ describe('SegmentedControl', () => {
       expect(screen.getByTestId('segmented-control')).toBeInTheDocument();
     });
 
-    it('TC-O200: 보호 ?�성 data-size ?�버?�이??차단', () => {
+    it('TC-O200: 보호 속성 $1 오버라이드 차단', () => {
       render(SegmentedControl, {
         props: { size: 'lg' },
         attrs: { 'data-size': 'custom', 'aria-label': 'View options' },
@@ -171,16 +171,16 @@ describe('SegmentedControl', () => {
       expect(group).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-O201: 보호 ?�성 role ?�버?�이??차단', () => {
+    it('TC-O201: 보호 성 role 버이차단', () => {
       render(SegmentedControl, {
         attrs: { role: 'tablist', 'aria-label': 'View options' },
         slots: { default: 'Content' },
       });
-      // group role???��???
+      // group role??????
       expect(screen.getByRole('group')).toBeInTheDocument();
     });
 
-    it('TC-O180: style ?�성 ?�달 ?�용', () => {
+    it('TC-O180: style 속성 전달 적용', () => {
       render(SegmentedControl, {
         attrs: { style: 'margin-top: 8px;', 'aria-label': 'View options' },
         slots: { default: 'Content' },
@@ -190,7 +190,7 @@ describe('SegmentedControl', () => {
       expect(group).toHaveStyle({ marginTop: '8px' });
     });
 
-    it('TC-O170: id ?�성 ?�달 ?�용', () => {
+    it('TC-O170: id 속성 전달 적용', () => {
       render(SegmentedControl, {
         attrs: { id: 'view-options', 'aria-label': 'View options' },
         slots: { default: 'Content' },
@@ -201,8 +201,8 @@ describe('SegmentedControl', () => {
 });
 
 describe('SegmentedControlItem', () => {
-  describe('core ?�치 검�?, () => {
-    it('TC-I100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
+  describe('Core 일치 검증', () => {
+    it('TC-I100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
       const coreAttrs = SegmentedControlItemDef.mapPropsToAttrs({});
 
       render(SegmentedControlItem, { slots: { default: 'Day' } });
@@ -211,7 +211,7 @@ describe('SegmentedControlItem', () => {
       expect(item).toHaveClass(coreAttrs.class);
     });
 
-    it('TC-I101: selected prop??core 결과?� ?�치?�다', () => {
+    it('TC-I101: selected prop이 core 결과와 일치한다', () => {
       const coreAttrs = SegmentedControlItemDef.mapPropsToAttrs({ selected: true });
 
       render(SegmentedControlItem, {
@@ -225,7 +225,7 @@ describe('SegmentedControlItem', () => {
       expect(item).toHaveAttribute('aria-selected', 'true');
     });
 
-    it('TC-I102: disabled prop??core 결과?� ?�치?�다', () => {
+    it('TC-I102: disabled prop이 core 결과와 일치한다', () => {
       const coreAttrs = SegmentedControlItemDef.mapPropsToAttrs({ disabled: true });
 
       render(SegmentedControlItem, {
@@ -239,7 +239,7 @@ describe('SegmentedControlItem', () => {
       expect(item).toBeDisabled();
     });
 
-    it('TC-I103: selected + disabled ?�시 true ??selected ?�선', () => {
+    it('TC-I103: selected + disabled 시 true selected 선', () => {
       const coreAttrs = SegmentedControlItemDef.mapPropsToAttrs({ selected: true, disabled: true });
 
       render(SegmentedControlItem, {
@@ -254,8 +254,8 @@ describe('SegmentedControlItem', () => {
     });
   });
 
-  describe('?�벤???�들??, () => {
-    it('TC-I200: onClick ?�들?��? ?�출?�다', async () => {
+  describe('이벤트 핸들러', () => {
+    it('TC-I200: onClick 핸들러가 호출된다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -270,7 +270,7 @@ describe('SegmentedControlItem', () => {
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-I201: disabled ?�태?�서 onClick???�출?��? ?�는??, async () => {
+    it('TC-I201: disabled 상태에서 onClick이 호출되지 않는다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -286,13 +286,13 @@ describe('SegmentedControlItem', () => {
     });
   });
 
-  describe('Vue ?�용 props', () => {
-    it('TC-I300: slot???�더링된??, () => {
+  describe('Vue 전용 props', () => {
+    it('TC-I300: slot이 렌더링된다', () => {
       render(SegmentedControlItem, { slots: { default: 'Week' } });
       expect(screen.getByRole('button')).toHaveTextContent('Week');
     });
 
-    it('TC-I301: class가 병합?�다', () => {
+    it('TC-I301: class가 병합된다', () => {
       render(SegmentedControlItem, {
         attrs: { class: 'custom-class' },
         slots: { default: 'Item' },
@@ -303,7 +303,7 @@ describe('SegmentedControlItem', () => {
       expect(item).toHaveClass('custom-class');
     });
 
-    it('TC-I302: type prop???�용?�다', () => {
+    it('TC-I302: type prop이 적용된다', () => {
       render(SegmentedControlItem, {
         attrs: { type: 'submit' },
         slots: { default: 'Submit' },
@@ -311,7 +311,7 @@ describe('SegmentedControlItem', () => {
       expect(screen.getByRole('button')).toHaveAttribute('type', 'submit');
     });
 
-    it('TC-I303: aria-label???�용?�다', () => {
+    it('TC-I303: aria-label이 적용된다', () => {
       render(SegmentedControlItem, {
         attrs: { 'aria-label': 'Select week view' },
         slots: { default: 'Week' },
@@ -320,8 +320,8 @@ describe('SegmentedControlItem', () => {
     });
   });
 
-  describe('커스?�마?�즈 ?�버?�이??, () => {
-    it('TC-IO100: class 추�? ??병합?�다', () => {
+  describe('커스터마이즈 오버라이드', () => {
+    it('class 추가 시 병합된다', () => {
       render(SegmentedControlItem, {
         attrs: { class: 'custom' },
         slots: { default: 'Item' },
@@ -332,7 +332,7 @@ describe('SegmentedControlItem', () => {
       expect(item).toHaveClass('custom');
     });
 
-    it('TC-IO120: data-testid 추�? ?�용', () => {
+    it('data-testid 추가 적용', () => {
       render(SegmentedControlItem, {
         attrs: { 'data-testid': 'day-option' },
         slots: { default: 'Day' },
@@ -340,7 +340,7 @@ describe('SegmentedControlItem', () => {
       expect(screen.getByTestId('day-option')).toBeInTheDocument();
     });
 
-    it('TC-IO200: 보호 ?�성 data-state ?�버?�이??차단', () => {
+    it('보호 속성 $1 오버라이드 차단', () => {
       render(SegmentedControlItem, {
         props: { selected: true },
         attrs: { 'data-state': 'custom' },
@@ -351,7 +351,7 @@ describe('SegmentedControlItem', () => {
       expect(item).toHaveAttribute('data-state', 'selected');
     });
 
-    it('TC-IO201: 보호 ?�성 aria-selected ?�버?�이??차단', () => {
+    it('보호 속성 $1 오버라이드 차단', () => {
       render(SegmentedControlItem, {
         props: { selected: true },
         attrs: { 'aria-selected': 'false' },
@@ -362,7 +362,7 @@ describe('SegmentedControlItem', () => {
       expect(item).toHaveAttribute('aria-selected', 'true');
     });
 
-    it('TC-IO180: style ?�성 ?�달 ?�용', () => {
+    it('style 속성 전달 적용', () => {
       render(SegmentedControlItem, {
         attrs: { style: 'margin-left: 4px;' },
         slots: { default: 'Item' },
@@ -372,7 +372,7 @@ describe('SegmentedControlItem', () => {
       expect(item).toHaveStyle({ marginLeft: '4px' });
     });
 
-    it('TC-IO170: id ?�성 ?�달 ?�용', () => {
+    it('id 속성 전달 적용', () => {
       render(SegmentedControlItem, {
         attrs: { id: 'day-btn' },
         slots: { default: 'Day' },

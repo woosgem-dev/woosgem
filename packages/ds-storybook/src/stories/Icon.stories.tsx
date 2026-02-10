@@ -93,23 +93,23 @@ export const SizesWithLabels: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
         <Icon size="xs"><BellIcon /></Icon>
-        <span>xs (12px) - ë±ƒì?, ?œê·¸ ???„ì´ì½?/span>
+        <span>xs (12px) - Badge, Tag icon</span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
         <Icon size="sm"><BellIcon /></Icon>
-        <span>sm (16px) - ?¸ë¼???ìŠ¤?? ?‘ì? ë²„íŠ¼</span>
+        <span>sm (16px) - Inline text, small button</span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
         <Icon size="md"><BellIcon /></Icon>
-        <span>md (20px) - ê¸°ë³¸ ë²„íŠ¼, ?…ë ¥ ?„ë“œ (ê¸°ë³¸ê°?</span>
+        <span>md (20px) - Default button, input field (default)</span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
         <Icon size="lg"><BellIcon /></Icon>
-        <span>lg (24px) - ?¤ë¹„ê²Œì´?? ê°•ì¡° ?„ì´ì½?/span>
+        <span>lg (24px) - Navigation, emphasis icon</span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
         <Icon size="xl"><BellIcon /></Icon>
-        <span>xl (32px) - ?ˆì–´ë¡? ë¹??íƒœ ?œì‹œ</span>
+        <span>xl (32px) - Hero, empty state</span>
       </div>
     </div>
   ),

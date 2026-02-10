@@ -3,12 +3,12 @@
  */
 import { describe, it, expect } from 'vitest';
 import { html, fixture } from './setup';
-import { Icon } from '@woosgem/ds-lit';
+import { Icon } from '@woosgem-dev/lit';
 import { Icon as IconDef } from '@woosgem-dev/core';
 
 describe('Icon (Lit)', () => {
-  describe('core ?�치 검�?, () => {
-    it('TC-L100: 기본 props가 core 결과?� ?�치?�다', async () => {
+  describe('Core 일치 검증', () => {
+    it('TC-L100: 기본 props가 core 결과와 일치한다', async () => {
       const coreAttrs = IconDef.mapPropsToAttrs({});
 
       const el = await fixture<InstanceType<typeof Icon>>(html`
@@ -19,7 +19,7 @@ describe('Icon (Lit)', () => {
       expect(el.classList.contains('icon')).toBe(true);
     });
 
-    it('TC-L101: size prop??core 결과?� ?�치?�다', async () => {
+    it('TC-L101: size prop이 core 결과와 일치한다', async () => {
       const coreAttrs = IconDef.mapPropsToAttrs({ size: 'lg' });
 
       const el = await fixture<InstanceType<typeof Icon>>(html`
@@ -31,8 +31,8 @@ describe('Icon (Lit)', () => {
     });
   });
 
-  describe('Web Component ?�용', () => {
-    it('TC-L300: slot 컨텐츠�? ?�더링된??, async () => {
+  describe('Web Component 전용', () => {
+    it('TC-L300: slot 컨텐츠가 렌더링된다', async () => {
       const el = await fixture<InstanceType<typeof Icon>>(html`
         <wg-icon>
           <svg width="16" height="16"><path d="M0 0h16v16H0z"/></svg>
@@ -43,7 +43,7 @@ describe('Icon (Lit)', () => {
       expect(svg).toBeTruthy();
     });
 
-    it('TC-L301: ?�로?�티 변�????�성???�데?�트?�다', async () => {
+    it('TC-L301: 프로퍼티 변경 시 속성이 업데이트된다', async () => {
       const el = await fixture<InstanceType<typeof Icon>>(html`
         <wg-icon size="md"></wg-icon>
       `);

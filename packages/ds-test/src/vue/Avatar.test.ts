@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/vue';
-import { Avatar } from '@woosgem/ds-vue';
+import { Avatar } from '@woosgem-dev/vue';
 import { Avatar as AvatarDef } from '@woosgem-dev/core';
 
 describe('Avatar', () => {
-  describe('core ?�치 검�?, () => {
-    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
+  describe('Core 일치 검증', () => {
+    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
       const coreAttrs = AvatarDef.mapPropsToAttrs({});
 
       render(Avatar, { attrs: { 'aria-label': 'User avatar' } });
@@ -16,7 +16,7 @@ describe('Avatar', () => {
       expect(avatar).toHaveClass(coreAttrs.class);
     });
 
-    it('TC-V101: size prop??core 결과?� ?�치?�다', () => {
+    it('TC-V101: size prop이 core 결과와 일치한다', () => {
       const coreAttrs = AvatarDef.mapPropsToAttrs({ size: 'lg' });
 
       render(Avatar, {
@@ -29,7 +29,7 @@ describe('Avatar', () => {
       expect(avatar).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-V102: shape prop??core 결과?� ?�치?�다', () => {
+    it('TC-V102: shape prop이 core 결과와 일치한다', () => {
       const coreAttrs = AvatarDef.mapPropsToAttrs({ shape: 'square' });
 
       render(Avatar, {
@@ -42,7 +42,7 @@ describe('Avatar', () => {
       expect(avatar).toHaveAttribute('data-shape', 'square');
     });
 
-    it('TC-V103: src가 ?�을 ??core 결과?� ?�치?�다', () => {
+    it('TC-V103: src가 을 core 결과 치다', () => {
       const coreAttrs = AvatarDef.mapPropsToAttrs({ src: '/avatar.jpg' });
 
       render(Avatar, {
@@ -54,7 +54,7 @@ describe('Avatar', () => {
       expect(avatar).toHaveAttribute('data-has-image', String(coreAttrs['data-has-image']));
     });
 
-    it('TC-V104: src가 ?�을 ??core 결과?� ?�치?�다', () => {
+    it('TC-V104: src가 을 core 결과 치다', () => {
       const coreAttrs = AvatarDef.mapPropsToAttrs({});
 
       render(Avatar, {
@@ -66,7 +66,7 @@ describe('Avatar', () => {
       expect(avatar).not.toHaveAttribute('data-has-image');
     });
 
-    it('TC-V105: 복합 props가 core 결과?� ?�치?�다', () => {
+    it('TC-V105: 복합 props가 core 결과와 일치한다', () => {
       const props = {
         size: 'xl' as const,
         shape: 'circle' as const,
@@ -85,7 +85,7 @@ describe('Avatar', () => {
       expect(avatar).toHaveAttribute('data-has-image', 'true');
     });
 
-    it('TC-V106: size: xs가 core 결과?� ?�치?�다', () => {
+    it('TC-V106: size: xs가 core 결과 치다', () => {
       const coreAttrs = AvatarDef.mapPropsToAttrs({ size: 'xs' });
 
       render(Avatar, {
@@ -97,7 +97,7 @@ describe('Avatar', () => {
       expect(avatar).toHaveAttribute('data-size', coreAttrs['data-size']);
     });
 
-    it('TC-V107: size: sm??core 결과?� ?�치?�다', () => {
+    it('TC-V107: size: smcore 결과 치다', () => {
       const coreAttrs = AvatarDef.mapPropsToAttrs({ size: 'sm' });
 
       render(Avatar, {
@@ -109,7 +109,7 @@ describe('Avatar', () => {
       expect(avatar).toHaveAttribute('data-size', coreAttrs['data-size']);
     });
 
-    it('TC-V108: size: xl??core 결과?� ?�치?�다', () => {
+    it('TC-V108: size: xlcore 결과 치다', () => {
       const coreAttrs = AvatarDef.mapPropsToAttrs({ size: 'xl' });
 
       render(Avatar, {
@@ -122,8 +122,8 @@ describe('Avatar', () => {
     });
   });
 
-  describe('Vue ?�용 props', () => {
-    it('TC-V300: slot???�더링된??(fallback)', () => {
+  describe('Vue 전용 props', () => {
+    it('TC-V300: slot이 렌더링된다', () => {
       render(Avatar, {
         slots: { default: 'AB' },
         attrs: { 'aria-label': 'User avatar' },
@@ -133,7 +133,7 @@ describe('Avatar', () => {
       expect(avatar).toHaveTextContent('AB');
     });
 
-    it('TC-V301: class가 병합?�다', () => {
+    it('TC-V301: class가 병합된다', () => {
       render(Avatar, {
         attrs: { class: 'custom-class', 'aria-label': 'User avatar' },
       });
@@ -143,7 +143,7 @@ describe('Avatar', () => {
       expect(avatar).toHaveClass('custom-class');
     });
 
-    it('TC-V302: aria-label???�용?�다', () => {
+    it('TC-V302: aria-label이 적용된다', () => {
       render(Avatar, {
         attrs: { 'aria-label': 'User profile' },
       });
@@ -151,8 +151,8 @@ describe('Avatar', () => {
     });
   });
 
-  describe('커스?�마?�즈 ?�버?�이??, () => {
-    it('TC-O100: class 추�? ??병합?�다', () => {
+  describe('커스터마이즈 오버라이드', () => {
+    it('TC-O100: class 추가 시 병합된다', () => {
       render(Avatar, {
         attrs: { class: 'custom', 'aria-label': 'User avatar' },
       });
@@ -162,14 +162,14 @@ describe('Avatar', () => {
       expect(avatar).toHaveClass('custom');
     });
 
-    it('TC-O120: data-testid 추�? ?�용', () => {
+    it('TC-O120: data-testid 추가 적용', () => {
       render(Avatar, {
         attrs: { 'data-testid': 'user-avatar', 'aria-label': 'User avatar' },
       });
       expect(screen.getByTestId('user-avatar')).toBeInTheDocument();
     });
 
-    it('TC-O200: 보호 ?�성 data-size ?�버?�이??차단', () => {
+    it('TC-O200: 보호 속성 $1 오버라이드 차단', () => {
       render(Avatar, {
         props: { size: 'lg' },
         attrs: { 'data-size': 'custom', 'aria-label': 'User avatar' },
@@ -179,7 +179,7 @@ describe('Avatar', () => {
       expect(avatar).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-O201: 보호 ?�성 data-shape ?�버?�이??차단', () => {
+    it('TC-O201: 보호 속성 $1 오버라이드 차단', () => {
       render(Avatar, {
         props: { shape: 'square' },
         attrs: { 'data-shape': 'custom', 'aria-label': 'User avatar' },
@@ -189,7 +189,7 @@ describe('Avatar', () => {
       expect(avatar).toHaveAttribute('data-shape', 'square');
     });
 
-    it('TC-O202: 보호 ?�성 data-has-image ?�버?�이??차단', () => {
+    it('TC-O202: 보호 속성 $1 오버라이드 차단', () => {
       render(Avatar, {
         props: { src: '/avatar.jpg' },
         attrs: { 'data-has-image': 'false', 'aria-label': 'User avatar' },
@@ -199,7 +199,7 @@ describe('Avatar', () => {
       expect(avatar).toHaveAttribute('data-has-image', 'true');
     });
 
-    it('TC-O180: style ?�성 ?�달 ?�용', () => {
+    it('TC-O180: style 속성 전달 적용', () => {
       render(Avatar, {
         attrs: { style: 'margin-top: 8px;', 'aria-label': 'User avatar' },
       });
@@ -208,14 +208,14 @@ describe('Avatar', () => {
       expect(avatar).toHaveStyle({ marginTop: '8px' });
     });
 
-    it('TC-O170: id ?�성 ?�달 ?�용', () => {
+    it('TC-O170: id 속성 전달 적용', () => {
       render(Avatar, {
         attrs: { id: 'user-avatar', 'aria-label': 'User avatar' },
       });
       expect(screen.getByLabelText('User avatar')).toHaveAttribute('id', 'user-avatar');
     });
 
-    it('TC-O140: aria-describedby ?�성 ?�달 ?�용', () => {
+    it('TC-O140: aria-describedby 성 달 용', () => {
       render(Avatar, {
         attrs: { 'aria-describedby': 'avatar-desc', 'aria-label': 'User avatar' },
       });

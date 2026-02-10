@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/vue';
-import { Divider } from '@woosgem/ds-vue';
+import { Divider } from '@woosgem-dev/vue';
 import { Divider as DividerDef } from '@woosgem-dev/core';
 
 describe('Divider', () => {
-  describe('core ?�치 검�?, () => {
-    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
+  describe('Core 일치 검증', () => {
+    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
       const coreAttrs = DividerDef.mapPropsToAttrs({});
 
       render(Divider);
@@ -18,7 +18,7 @@ describe('Divider', () => {
       expect(divider).toHaveClass(coreAttrs.class);
     });
 
-    it('TC-V101: orientation prop??core 결과?� ?�치?�다', () => {
+    it('TC-V101: orientation prop이 core 결과와 일치한다', () => {
       const coreAttrs = DividerDef.mapPropsToAttrs({ orientation: 'vertical' });
 
       render(Divider, {
@@ -31,7 +31,7 @@ describe('Divider', () => {
       expect(divider).toHaveAttribute('aria-orientation', 'vertical');
     });
 
-    it('TC-V102: variant prop??core 결과?� ?�치?�다', () => {
+    it('TC-V102: variant prop이 core 결과와 일치한다', () => {
       const coreAttrs = DividerDef.mapPropsToAttrs({ variant: 'dashed' });
 
       render(Divider, {
@@ -43,7 +43,7 @@ describe('Divider', () => {
       expect(divider).toHaveAttribute('data-variant', 'dashed');
     });
 
-    it('TC-V103: spacing prop??core 결과?� ?�치?�다', () => {
+    it('TC-V103: spacing prop이 core 결과와 일치한다', () => {
       const coreAttrs = DividerDef.mapPropsToAttrs({ spacing: 'lg' });
 
       render(Divider, {
@@ -55,14 +55,14 @@ describe('Divider', () => {
       expect(divider).toHaveAttribute('data-spacing', 'lg');
     });
 
-    it('TC-V104: role?� ??�� separator?�다', () => {
+    it('TC-V104: role?  separator다', () => {
       render(Divider);
       const divider = screen.getByRole('separator');
 
       expect(divider).toHaveAttribute('role', 'separator');
     });
 
-    it('TC-V105: spacing: none??core 결과?� ?�치?�다', () => {
+    it('TC-V105: spacing: nonecore 결과 치다', () => {
       const coreAttrs = DividerDef.mapPropsToAttrs({ spacing: 'none' });
 
       render(Divider, {
@@ -73,7 +73,7 @@ describe('Divider', () => {
       expect(divider).toHaveAttribute('data-spacing', coreAttrs['data-spacing']);
     });
 
-    it('TC-V106: spacing: sm??core 결과?� ?�치?�다', () => {
+    it('TC-V106: spacing: smcore 결과 치다', () => {
       const coreAttrs = DividerDef.mapPropsToAttrs({ spacing: 'sm' });
 
       render(Divider, {
@@ -84,7 +84,7 @@ describe('Divider', () => {
       expect(divider).toHaveAttribute('data-spacing', coreAttrs['data-spacing']);
     });
 
-    it('TC-V107: orientation: horizontal??core 결과?� ?�치?�다', () => {
+    it('TC-V107: orientation: horizontalcore 결과 치다', () => {
       const coreAttrs = DividerDef.mapPropsToAttrs({ orientation: 'horizontal' });
 
       render(Divider, {
@@ -96,7 +96,7 @@ describe('Divider', () => {
       expect(divider).toHaveAttribute('aria-orientation', 'horizontal');
     });
 
-    it('TC-V108: variant: solid가 core 결과?� ?�치?�다', () => {
+    it('TC-V108: variant: solid가 core 결과 치다', () => {
       const coreAttrs = DividerDef.mapPropsToAttrs({ variant: 'solid' });
 
       render(Divider, {
@@ -107,7 +107,7 @@ describe('Divider', () => {
       expect(divider).toHaveAttribute('data-variant', coreAttrs['data-variant']);
     });
 
-    it('TC-V109: 복합 props가 core 결과?� ?�치?�다', () => {
+    it('TC-V109: 복합 props가 core 결과와 일치한다', () => {
       const props = {
         orientation: 'vertical' as const,
         variant: 'dashed' as const,
@@ -125,8 +125,8 @@ describe('Divider', () => {
     });
   });
 
-  describe('Vue ?�용 props', () => {
-    it('TC-V300: class가 병합?�다', () => {
+  describe('Vue 전용 props', () => {
+    it('TC-V300: class가 병합된다', () => {
       render(Divider, {
         attrs: { class: 'custom-class' },
       });
@@ -136,7 +136,7 @@ describe('Divider', () => {
       expect(divider).toHaveClass('custom-class');
     });
 
-    it('TC-V301: aria-label???�용?�다', () => {
+    it('TC-V301: aria-label이 적용된다', () => {
       render(Divider, {
         attrs: { 'aria-label': 'Section divider' },
       });
@@ -146,8 +146,8 @@ describe('Divider', () => {
     });
   });
 
-  describe('커스?�마?�즈 ?�버?�이??, () => {
-    it('TC-O100: class 추�? ??병합?�다', () => {
+  describe('커스터마이즈 오버라이드', () => {
+    it('TC-O100: class 추가 시 병합된다', () => {
       render(Divider, {
         attrs: { class: 'custom' },
       });
@@ -157,14 +157,14 @@ describe('Divider', () => {
       expect(divider).toHaveClass('custom');
     });
 
-    it('TC-O120: data-testid 추�? ?�용', () => {
+    it('TC-O120: data-testid 추가 적용', () => {
       render(Divider, {
         attrs: { 'data-testid': 'main-divider' },
       });
       expect(screen.getByTestId('main-divider')).toBeInTheDocument();
     });
 
-    it('TC-O200: 보호 ?�성 data-orientation ?�버?�이??차단', () => {
+    it('TC-O200: 보호 속성 $1 오버라이드 차단', () => {
       render(Divider, {
         props: { orientation: 'vertical' },
         attrs: { 'data-orientation': 'custom' },
@@ -174,7 +174,7 @@ describe('Divider', () => {
       expect(divider).toHaveAttribute('data-orientation', 'vertical');
     });
 
-    it('TC-O201: 보호 ?�성 data-variant ?�버?�이??차단', () => {
+    it('TC-O201: 보호 속성 $1 오버라이드 차단', () => {
       render(Divider, {
         props: { variant: 'dashed' },
         attrs: { 'data-variant': 'custom' },
@@ -184,7 +184,7 @@ describe('Divider', () => {
       expect(divider).toHaveAttribute('data-variant', 'dashed');
     });
 
-    it('TC-O202: 보호 ?�성 data-spacing ?�버?�이??차단', () => {
+    it('TC-O202: 보호 속성 $1 오버라이드 차단', () => {
       render(Divider, {
         props: { spacing: 'lg' },
         attrs: { 'data-spacing': 'custom' },
@@ -194,15 +194,15 @@ describe('Divider', () => {
       expect(divider).toHaveAttribute('data-spacing', 'lg');
     });
 
-    it('TC-O203: 보호 ?�성 role ?�버?�이??차단', () => {
+    it('TC-O203: 보호 성 role 버이차단', () => {
       render(Divider, {
         attrs: { role: 'presentation' },
       });
-      // separator role???��???
+      // separator role??????
       expect(screen.getByRole('separator')).toBeInTheDocument();
     });
 
-    it('TC-O204: 보호 ?�성 aria-orientation ?�버?�이??차단', () => {
+    it('TC-O204: 보호 속성 $1 오버라이드 차단', () => {
       render(Divider, {
         props: { orientation: 'vertical' },
         attrs: { 'aria-orientation': 'horizontal' },
@@ -212,7 +212,7 @@ describe('Divider', () => {
       expect(divider).toHaveAttribute('aria-orientation', 'vertical');
     });
 
-    it('TC-O180: style ?�성 ?�달 ?�용', () => {
+    it('TC-O180: style 속성 전달 적용', () => {
       render(Divider, {
         attrs: { style: 'margin-top: 16px;' },
       });
@@ -221,7 +221,7 @@ describe('Divider', () => {
       expect(divider).toHaveStyle({ marginTop: '16px' });
     });
 
-    it('TC-O170: id ?�성 ?�달 ?�용', () => {
+    it('TC-O170: id 속성 전달 적용', () => {
       render(Divider, {
         attrs: { id: 'section-divider' },
       });

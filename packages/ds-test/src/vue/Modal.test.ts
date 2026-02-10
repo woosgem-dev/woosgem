@@ -1,10 +1,10 @@
 import { describe, it, expect, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from '@woosgem/ds-vue';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from '@woosgem-dev/vue';
 
 describe('Modal (Vue)', () => {
-  describe('기본 ?�더�?, () => {
-    it('TC-V100: open=false?????�더링되지 ?�는??, () => {
+  describe('기본 렌더링', () => {
+    it('TC-V100: open=false 시 렌더링되지 않는다', () => {
       const wrapper = mount(Modal, {
         props: { open: false },
         slots: { default: 'Content' },
@@ -12,7 +12,7 @@ describe('Modal (Vue)', () => {
       expect(wrapper.html()).toSatisfy((html: string) => html === '' || html === '<!---->');
     });
 
-    it('TC-V101: open=true?????�더링된??, () => {
+    it('TC-V101: open=true 시 렌더링된다', () => {
       const wrapper = mount(Modal, {
         props: { open: true, teleportTo: 'body' },
         slots: { default: 'Content' },
@@ -24,8 +24,8 @@ describe('Modal (Vue)', () => {
     });
   });
 
-  describe('Size 변??, () => {
-    it('TC-C110: size: sm???�용?�다', () => {
+  describe('Size 변형', () => {
+    it('TC-C110: size: sm가 적용된다', () => {
       const wrapper = mount(Modal, {
         props: { open: true, size: 'sm', teleportTo: 'body' },
         slots: { default: 'Content' },
@@ -35,7 +35,7 @@ describe('Modal (Vue)', () => {
       expect(modal.attributes('data-size')).toBe('sm');
     });
 
-    it('TC-C111: size: md가 ?�용?�다', () => {
+    it('TC-C111: size: md가 적용된다', () => {
       const wrapper = mount(Modal, {
         props: { open: true, size: 'md', teleportTo: 'body' },
         slots: { default: 'Content' },
@@ -45,7 +45,7 @@ describe('Modal (Vue)', () => {
       expect(modal.attributes('data-size')).toBe('md');
     });
 
-    it('TC-C112: size: lg가 ?�용?�다', () => {
+    it('TC-C112: size: lg가 적용된다', () => {
       const wrapper = mount(Modal, {
         props: { open: true, size: 'lg', teleportTo: 'body' },
         slots: { default: 'Content' },
@@ -55,7 +55,7 @@ describe('Modal (Vue)', () => {
       expect(modal.attributes('data-size')).toBe('lg');
     });
 
-    it('TC-C113: size: xl???�용?�다', () => {
+    it('TC-C113: size: xl가 적용된다', () => {
       const wrapper = mount(Modal, {
         props: { open: true, size: 'xl', teleportTo: 'body' },
         slots: { default: 'Content' },
@@ -65,7 +65,7 @@ describe('Modal (Vue)', () => {
       expect(modal.attributes('data-size')).toBe('xl');
     });
 
-    it('TC-C114: size: full???�용?�다', () => {
+    it('TC-C114: size: full가 적용된다', () => {
       const wrapper = mount(Modal, {
         props: { open: true, size: 'full', teleportTo: 'body' },
         slots: { default: 'Content' },
@@ -76,8 +76,8 @@ describe('Modal (Vue)', () => {
     });
   });
 
-  describe('?�근??, () => {
-    it('TC-A100: role="dialog"가 ?�용?�다', () => {
+  describe('접근성', () => {
+    it('TC-A100: role="dialog"가 적용된다', () => {
       const wrapper = mount(Modal, {
         props: { open: true, teleportTo: 'body' },
         slots: { default: 'Content' },
@@ -87,7 +87,7 @@ describe('Modal (Vue)', () => {
       expect(modal.attributes('role')).toBe('dialog');
     });
 
-    it('TC-A101: aria-modal=true가 ?�용?�다', () => {
+    it('TC-A101: aria-modal=true가 적용된다', () => {
       const wrapper = mount(Modal, {
         props: { open: true, teleportTo: 'body' },
         slots: { default: 'Content' },
@@ -98,8 +98,8 @@ describe('Modal (Vue)', () => {
     });
   });
 
-  describe('?�기 ?�작', () => {
-    it('TC-CL100: ?�버?�이 ?�릭 ??close ?�벤?��? 발생?�다', async () => {
+  describe('닫기 동작', () => {
+    it('TC-CL100: 버이 릭 close 벤 발생다', async () => {
       const wrapper = mount(Modal, {
         props: { open: true, teleportTo: 'body' },
         slots: { default: 'Content' },
@@ -112,7 +112,7 @@ describe('Modal (Vue)', () => {
       expect(wrapper.emitted('close')).toBeTruthy();
     });
 
-    it('TC-CL101: disableOverlayClick ???�버?�이 ?�릭?�로 ?�히지 ?�는??, async () => {
+    it('TC-CL101: disableOverlayClick 버이 릭로 히지 는', async () => {
       const wrapper = mount(Modal, {
         props: { open: true, disableOverlayClick: true, teleportTo: 'body' },
         slots: { default: 'Content' },
@@ -125,7 +125,7 @@ describe('Modal (Vue)', () => {
       expect(wrapper.emitted('close')).toBeFalsy();
     });
 
-    it('TC-CL102: closable=false ???�기 ?�작??비활?�화?�다', async () => {
+    it('TC-CL102: closable=false 기 작비활화다', async () => {
       const wrapper = mount(Modal, {
         props: { open: true, closable: false, teleportTo: 'body' },
         slots: { default: 'Content' },
@@ -139,8 +139,8 @@ describe('Modal (Vue)', () => {
     });
   });
 
-  describe('기본�?, () => {
-    it('TC-C010: size 기본값�? md?�다', () => {
+  describe('기본값', () => {
+    it('TC-C010: size 기본값 md다', () => {
       const wrapper = mount(Modal, {
         props: { open: true, teleportTo: 'body' },
         slots: { default: 'Content' },
@@ -151,8 +151,8 @@ describe('Modal (Vue)', () => {
     });
   });
 
-  describe('v-model:open 지??, () => {
-    it('TC-VM100: update:open ?�벤?��? 발생?�다', async () => {
+  describe('v-model:open 지원', () => {
+    it('TC-VM100: update:open 벤 발생다', async () => {
       const wrapper = mount(Modal, {
         props: { open: true, teleportTo: 'body' },
         slots: { default: 'Content' },

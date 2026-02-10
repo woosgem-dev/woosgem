@@ -3,12 +3,12 @@
  */
 import { describe, it, expect } from 'vitest';
 import { html, fixture } from './setup';
-import { Overlay } from '@woosgem/ds-lit';
+import { Overlay } from '@woosgem-dev/lit';
 import { Overlay as OverlayDef } from '@woosgem-dev/core';
 
 describe('Overlay (Lit)', () => {
-  describe('core ?�치 검�?, () => {
-    it('TC-L100: 기본 props가 core 결과?� ?�치?�다', async () => {
+  describe('Core 일치 검증', () => {
+    it('TC-L100: 기본 props가 core 결과 치다', async () => {
       const coreAttrs = OverlayDef.mapPropsToAttrs({});
 
       const el = await fixture<InstanceType<typeof Overlay>>(html`
@@ -20,7 +20,7 @@ describe('Overlay (Lit)', () => {
       expect(el.classList.contains('overlay')).toBe(true);
     });
 
-    it('TC-L101: opacity prop??core 결과?� ?�치?�다', async () => {
+    it('TC-L101: opacity prop이 core 결과와 일치한다', async () => {
       const coreAttrs = OverlayDef.mapPropsToAttrs({ opacity: 'dark' });
 
       const el = await fixture<InstanceType<typeof Overlay>>(html`
@@ -31,18 +31,18 @@ describe('Overlay (Lit)', () => {
       expect(el.getAttribute('data-opacity')).toBe('dark');
     });
 
-    it('TC-L102: blur prop??core 결과?� ?�치?�다', async () => {
+    it('TC-L102: blur prop이 core 결과와 일치한다', async () => {
       const coreAttrs = OverlayDef.mapPropsToAttrs({ blur: true });
 
       const el = await fixture<InstanceType<typeof Overlay>>(html`
         <wg-overlay blur></wg-overlay>
       `);
 
-      // Boolean attribute??�?문자?�로 ?�정??      expect(el.hasAttribute('data-blur')).toBe(true);
+      // Boolean attribute???문자?로 ?정??      expect(el.hasAttribute('data-blur')).toBe(true);
       expect(coreAttrs['data-blur']).toBe(true);
     });
 
-    it('TC-L103: level prop??core 결과?� ?�치?�다', async () => {
+    it('TC-L103: level prop이 core 결과와 일치한다', async () => {
       const coreAttrs = OverlayDef.mapPropsToAttrs({ level: 'popover' });
 
       const el = await fixture<InstanceType<typeof Overlay>>(html`
@@ -54,8 +54,8 @@ describe('Overlay (Lit)', () => {
     });
   });
 
-  describe('Web Component ?�용', () => {
-    it('TC-L300: slot 컨텐츠�? ?�더링된??, async () => {
+  describe('Web Component 전용', () => {
+    it('TC-L300: slot이 렌더링된다', async () => {
       const el = await fixture<InstanceType<typeof Overlay>>(html`
         <wg-overlay>
           <div>Overlay Content</div>
@@ -65,7 +65,7 @@ describe('Overlay (Lit)', () => {
       expect(el.textContent?.trim()).toContain('Overlay Content');
     });
 
-    it('TC-L301: ?�로?�티 변�????�성???�데?�트?�다', async () => {
+    it('TC-L301: 로티 변성데트다', async () => {
       const el = await fixture<InstanceType<typeof Overlay>>(html`
         <wg-overlay opacity="medium"></wg-overlay>
       `);

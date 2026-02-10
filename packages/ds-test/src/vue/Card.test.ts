@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { mount } from '@vue/test-utils';
-import { Card, CardHeader, CardBody, CardFooter } from '@woosgem/ds-vue';
+import { Card, CardHeader, CardBody, CardFooter } from '@woosgem-dev/vue';
 import { Card as CardDef } from '@woosgem-dev/core';
 
 describe('Card (Vue)', () => {
-  describe('Core ?�치 검�?, () => {
-    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
+  describe('Core 일치 검증', () => {
+    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
       const coreAttrs = CardDef.mapPropsToAttrs({});
       const wrapper = mount(Card, { slots: { default: 'Content' } });
 
@@ -14,7 +14,7 @@ describe('Card (Vue)', () => {
       expect(wrapper.classes()).toContain(coreAttrs.class);
     });
 
-    it('TC-V101: variant prop??core 결과?� ?�치?�다', () => {
+    it('TC-V101: variant prop이 core 결과와 일치한다', () => {
       const coreAttrs = CardDef.mapPropsToAttrs({ variant: 'elevated' });
       const wrapper = mount(Card, { props: { variant: 'elevated' } });
 
@@ -22,14 +22,14 @@ describe('Card (Vue)', () => {
       expect(wrapper.attributes('data-variant')).toBe('elevated');
     });
 
-    it('TC-V102: padding prop??core 결과?� ?�치?�다', () => {
+    it('TC-V102: padding prop이 core 결과와 일치한다', () => {
       const coreAttrs = CardDef.mapPropsToAttrs({ padding: 'lg' });
       const wrapper = mount(Card, { props: { padding: 'lg' } });
 
       expect(wrapper.attributes('data-padding')).toBe(coreAttrs['data-padding']);
     });
 
-    it('TC-V103: clickable prop??core 결과?� ?�치?�다', () => {
+    it('TC-V103: clickable prop이 core 결과와 일치한다', () => {
       const coreAttrs = CardDef.mapPropsToAttrs({ clickable: true });
       const wrapper = mount(Card, { props: { clickable: true } });
 
@@ -37,72 +37,72 @@ describe('Card (Vue)', () => {
     });
   });
 
-  describe('Variant 변??, () => {
-    it('TC-C110: variant: outlined가 ?�용?�다', () => {
+  describe('Variant 변형', () => {
+    it('TC-C110: variant: outlined가 적용된다', () => {
       const wrapper = mount(Card, { props: { variant: 'outlined' } });
       expect(wrapper.attributes('data-variant')).toBe('outlined');
     });
 
-    it('TC-C111: variant: elevated가 ?�용?�다', () => {
+    it('TC-C111: variant: elevated가 적용된다', () => {
       const wrapper = mount(Card, { props: { variant: 'elevated' } });
       expect(wrapper.attributes('data-variant')).toBe('elevated');
     });
 
-    it('TC-C112: variant: filled가 ?�용?�다', () => {
+    it('TC-C112: variant: filled가 적용된다', () => {
       const wrapper = mount(Card, { props: { variant: 'filled' } });
       expect(wrapper.attributes('data-variant')).toBe('filled');
     });
   });
 
-  describe('Padding 변??, () => {
-    it('TC-C120: padding: none???�용?�다', () => {
+  describe('Padding 변형', () => {
+    it('TC-C120: padding: none 적용된다', () => {
       const wrapper = mount(Card, { props: { padding: 'none' } });
       expect(wrapper.attributes('data-padding')).toBe('none');
     });
 
-    it('TC-C121: padding: sm???�용?�다', () => {
+    it('TC-C121: padding: sm 적용된다', () => {
       const wrapper = mount(Card, { props: { padding: 'sm' } });
       expect(wrapper.attributes('data-padding')).toBe('sm');
     });
 
-    it('TC-C122: padding: md가 ?�용?�다', () => {
+    it('TC-C122: padding: md가 적용된다', () => {
       const wrapper = mount(Card, { props: { padding: 'md' } });
       expect(wrapper.attributes('data-padding')).toBe('md');
     });
 
-    it('TC-C123: padding: lg가 ?�용?�다', () => {
+    it('TC-C123: padding: lg가 적용된다', () => {
       const wrapper = mount(Card, { props: { padding: 'lg' } });
       expect(wrapper.attributes('data-padding')).toBe('lg');
     });
   });
 
-  describe('기본�?, () => {
-    it('TC-C010: variant 기본값�? outlined?�다', () => {
+  describe('기본값', () => {
+    it('TC-C010: variant 기본값 outlined다', () => {
       const wrapper = mount(Card);
       expect(wrapper.attributes('data-variant')).toBe('outlined');
     });
 
-    it('TC-C011: padding 기본값�? md?�다', () => {
+    it('TC-C011: padding 기본값 md다', () => {
       const wrapper = mount(Card);
       expect(wrapper.attributes('data-padding')).toBe('md');
     });
   });
 
-  describe('?�롯', () => {
-    it('TC-S100: default ?�롯???�더링된??, () => {
+  describe('슬롯', () => {
+    it('TC-S100: default 슬롯이 렌더링된다', () => {
       const wrapper = mount(Card, { slots: { default: 'Card content' } });
       expect(wrapper.text()).toContain('Card content');
     });
   });
 
-  describe('커스?�마?�즈 ?�버?�이??, () => {
-    it('TC-O100: class 추�? ??병합?�다', () => {
+  describe('커스터마이즈 오버라이드', () => {
+    it('TC-O100: class 추가 시 병합된다', () => {
       const wrapper = mount(Card, { props: { class: 'custom-card' } });
       expect(wrapper.classes()).toContain('card');
       expect(wrapper.classes()).toContain('custom-card');
     });
 
-    it('TC-O130: 보호 ?�성 data-variant ?�버?�이??차단', () => {
+    it('TC-O130: 보호 속성 $1 오버라이드 차단', () => {
       const wrapper = mount(Card, {
         props: { variant: 'elevated' },
         attrs: { 'data-variant': 'custom' },

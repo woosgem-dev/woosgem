@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { mount } from '@vue/test-utils';
-import { Toast } from '@woosgem/ds-vue';
+import { Toast } from '@woosgem-dev/vue';
 import { Toast as ToastDef } from '@woosgem-dev/core';
 
 describe('Toast (Vue)', () => {
@@ -12,8 +12,8 @@ describe('Toast (Vue)', () => {
     vi.useRealTimers();
   });
 
-  describe('Core ?�치 검�?, () => {
-    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
+  describe('Core 일치 검증', () => {
+    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
       const coreAttrs = ToastDef.mapPropsToAttrs({});
       const wrapper = mount(Toast, { slots: { default: 'Message' } });
 
@@ -22,7 +22,7 @@ describe('Toast (Vue)', () => {
       expect(wrapper.attributes('role')).toBe(coreAttrs.role);
     });
 
-    it('TC-V101: variant prop??core 결과?� ?�치?�다', () => {
+    it('TC-V101: variant prop이 core 결과와 일치한다', () => {
       const coreAttrs = ToastDef.mapPropsToAttrs({ variant: 'success' });
       const wrapper = mount(Toast, { props: { variant: 'success' } });
 
@@ -30,65 +30,65 @@ describe('Toast (Vue)', () => {
     });
   });
 
-  describe('Variant 변??, () => {
-    it('TC-C110: variant: info가 ?�용?�다', () => {
+  describe('Variant 변형', () => {
+    it('TC-C110: variant: info가 적용된다', () => {
       const wrapper = mount(Toast, { props: { variant: 'info' } });
       expect(wrapper.attributes('data-variant')).toBe('info');
     });
 
-    it('TC-C111: variant: success가 ?�용?�다', () => {
+    it('TC-C111: variant: success가 적용된다', () => {
       const wrapper = mount(Toast, { props: { variant: 'success' } });
       expect(wrapper.attributes('data-variant')).toBe('success');
     });
 
-    it('TC-C112: variant: warning???�용?�다', () => {
+    it('TC-C112: variant: warning 적용된다', () => {
       const wrapper = mount(Toast, { props: { variant: 'warning' } });
       expect(wrapper.attributes('data-variant')).toBe('warning');
     });
 
-    it('TC-C113: variant: error가 ?�용?�다', () => {
+    it('TC-C113: variant: error가 적용된다', () => {
       const wrapper = mount(Toast, { props: { variant: 'error' } });
       expect(wrapper.attributes('data-variant')).toBe('error');
     });
   });
 
-  describe('?�근??, () => {
-    it('TC-A100: role="alert"가 ??�� ?�용?�다', () => {
+  describe('접근성', () => {
+    it('TC-A100: role="alert"가 적용된다', () => {
       const wrapper = mount(Toast);
       expect(wrapper.attributes('role')).toBe('alert');
     });
 
-    it('TC-A101: aria-live="polite"가 ?�용?�다', () => {
+    it('TC-A101: aria-live="polite"가 적용된다', () => {
       const wrapper = mount(Toast);
       expect(wrapper.attributes('aria-live')).toBe('polite');
     });
 
-    it('TC-A102: aria-atomic="true"가 ?�용?�다', () => {
+    it('TC-A102: aria-atomic="true"가 적용된다', () => {
       const wrapper = mount(Toast);
       expect(wrapper.attributes('aria-atomic')).toBe('true');
     });
   });
 
-  describe('기본�?, () => {
-    it('TC-C010: variant 기본값�? info?�다', () => {
+  describe('기본값', () => {
+    it('TC-C010: variant 기본값 info다', () => {
       const wrapper = mount(Toast);
       expect(wrapper.attributes('data-variant')).toBe('info');
     });
 
-    it('TC-C011: position 기본값�? top-right?�다', () => {
+    it('TC-C011: position 기본값 top-right다', () => {
       const wrapper = mount(Toast);
       expect(wrapper.attributes('data-position')).toBe('top-right');
     });
   });
 
-  describe('visible/?��?', () => {
-    it('TC-V100: visible=false?�면 ?�더링되지 ?�는??, () => {
+  describe('visible/숨김', () => {
+    it('TC-V100: visible=false면 렌더링되지 않는다', () => {
       const wrapper = mount(Toast, { props: { visible: false } });
       // Should render nothing (null)
       expect(wrapper.html()).toSatisfy((html: string) => html === '' || html === '<!---->');
     });
 
-    it('TC-V101: visible=true?�면 ?�더링된??, () => {
+    it('TC-V101: visible=true면 더링된', () => {
       const wrapper = mount(Toast, {
         props: { visible: true },
         slots: { default: 'Visible' },
@@ -98,7 +98,7 @@ describe('Toast (Vue)', () => {
   });
 
   describe('Auto-dismiss', () => {
-    it('TC-AD100: duration ??close ?�벤?��? 발생?�다', async () => {
+    it('TC-AD100: duration close 벤 발생다', async () => {
       const wrapper = mount(Toast, {
         props: { duration: 3000, visible: true },
       });
@@ -109,7 +109,7 @@ describe('Toast (Vue)', () => {
       expect(wrapper.emitted('close')).toBeTruthy();
     });
 
-    it('TC-AD101: duration=0?�면 ?�동 ?�힘??비활?�화?�다', async () => {
+    it('TC-AD101: duration=0면 동 힘비활화다', async () => {
       const wrapper = mount(Toast, {
         props: { duration: 0, visible: true },
       });
@@ -121,8 +121,8 @@ describe('Toast (Vue)', () => {
     });
   });
 
-  describe('?�롯', () => {
-    it('TC-S100: default ?�롯???�더링된??, () => {
+  describe('슬롯', () => {
+    it('TC-S100: default 슬롯이 렌더링된다', () => {
       const wrapper = mount(Toast, {
         slots: { default: 'Toast message' },
       });
@@ -130,16 +130,16 @@ describe('Toast (Vue)', () => {
     });
   });
 
-  describe('커스?�마?�즈 ?�버?�이??, () => {
-    it('TC-O100: class 추�? ??병합?�다', () => {
+  describe('커스터마이즈 오버라이드', () => {
+    it('TC-O100: class 추가 시 병합된다', () => {
       const wrapper = mount(Toast, { props: { class: 'custom-toast' } });
       expect(wrapper.classes()).toContain('toast');
       expect(wrapper.classes()).toContain('custom-toast');
     });
   });
 
-  describe('v-model:visible 지??, () => {
-    it('TC-VM100: update:visible ?�벤?��? 발생?�다', async () => {
+  describe('visible/숨김', () => {
+    it('TC-VM100: update:visible 벤 발생다', async () => {
       const wrapper = mount(Toast, {
         props: { visible: true, duration: 1000 },
       });

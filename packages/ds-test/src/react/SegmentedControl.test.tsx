@@ -1,15 +1,15 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { SegmentedControl, SegmentedControlItem } from '@woosgem/ds-react';
+import { SegmentedControl, SegmentedControlItem } from '@woosgem-dev/react';
 import {
   SegmentedControl as SegmentedControlDef,
   SegmentedControlItem as SegmentedControlItemDef,
 } from '@woosgem-dev/core';
 
 describe('SegmentedControl', () => {
-  describe('core ?�치 검�?, () => {
-    it('TC-R100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
+  describe('Core 일치 검증', () => {
+    it('TC-R100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
       const coreAttrs = SegmentedControlDef.mapPropsToAttrs({});
 
       render(
@@ -23,7 +23,7 @@ describe('SegmentedControl', () => {
       expect(container).toHaveClass(coreAttrs.class);
     });
 
-    it('TC-R101: size prop??core 결과?� ?�치?�다', () => {
+    it('TC-R101: size prop이 core 결과와 일치한다', () => {
       const coreAttrs = SegmentedControlDef.mapPropsToAttrs({ size: 'lg' });
 
       render(
@@ -37,7 +37,7 @@ describe('SegmentedControl', () => {
       expect(container).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-R102: fullWidth prop??core 결과?� ?�치?�다', () => {
+    it('TC-R102: fullWidth prop이 core 결과와 일치한다', () => {
       const coreAttrs = SegmentedControlDef.mapPropsToAttrs({ fullWidth: true });
 
       render(
@@ -50,7 +50,7 @@ describe('SegmentedControl', () => {
       expect(container).toHaveAttribute('data-full-width', String(coreAttrs['data-full-width']));
     });
 
-    it('TC-R103: disabled prop??core 결과?� ?�치?�다', () => {
+    it('TC-R103: disabled prop이 core 결과와 일치한다', () => {
       const coreAttrs = SegmentedControlDef.mapPropsToAttrs({ disabled: true });
 
       render(
@@ -63,7 +63,7 @@ describe('SegmentedControl', () => {
       expect(container).toHaveAttribute('data-disabled', String(coreAttrs['data-disabled']));
     });
 
-    it('TC-R104: role????�� group?�다', () => {
+    it('TC-R104: role group다', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -74,7 +74,7 @@ describe('SegmentedControl', () => {
       expect(container).toHaveAttribute('role', 'group');
     });
 
-    it('TC-R105: 복합 props가 core 결과?� ?�치?�다', () => {
+    it('TC-R105: 복합 props가 core 결과와 일치한다', () => {
       const props = {
         size: 'sm' as const,
         fullWidth: true,
@@ -95,8 +95,8 @@ describe('SegmentedControl', () => {
     });
   });
 
-  describe('React ?�용 props', () => {
-    it('TC-R200: children???�더링된??, () => {
+  describe('React 전용 props', () => {
+    it('TC-R200: children이 렌더링된다', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item>Option 1</SegmentedControl.Item>
@@ -108,7 +108,7 @@ describe('SegmentedControl', () => {
       expect(screen.getByText('Option 2')).toBeInTheDocument();
     });
 
-    it('TC-R201: className??병합?�다', () => {
+    it('TC-R201: className이 병합된다', () => {
       render(
         <SegmentedControl className="custom">
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -120,7 +120,7 @@ describe('SegmentedControl', () => {
       expect(container).toHaveClass('custom');
     });
 
-    it('TC-R202: aria-label???�용?�다', () => {
+    it('TC-R202: aria-label이 적용된다', () => {
       render(
         <SegmentedControl aria-label="Options">
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -132,8 +132,8 @@ describe('SegmentedControl', () => {
     });
   });
 
-  describe('커스?�마?�즈 ?�버?�이??, () => {
-    it('TC-O100: className 추�? ??병합?�다', () => {
+  describe('커스터마이즈 오버라이드', () => {
+    it('TC-O100: className이 병합된다', () => {
       render(
         <SegmentedControl className="custom">
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -145,7 +145,7 @@ describe('SegmentedControl', () => {
       expect(container).toHaveClass('custom');
     });
 
-    it('TC-O110: style ?�라???�용', () => {
+    it('TC-O110: style 라용', () => {
       render(
         <SegmentedControl style={{ gap: 8 }}>
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -156,7 +156,7 @@ describe('SegmentedControl', () => {
       expect(container).toHaveStyle({ gap: '8px' });
     });
 
-    it('TC-O120: data-testid 추�? ?�용', () => {
+    it('TC-O120: data-testid 추가 적용', () => {
       render(
         <SegmentedControl data-testid="tabs">
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -165,7 +165,7 @@ describe('SegmentedControl', () => {
       expect(screen.getByTestId('tabs')).toBeInTheDocument();
     });
 
-    it('TC-O140: aria-label ?�용', () => {
+    it('TC-O140: aria-label 적용', () => {
       render(
         <SegmentedControl aria-label="Tabs">
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -176,7 +176,7 @@ describe('SegmentedControl', () => {
       expect(container).toHaveAttribute('aria-label', 'Tabs');
     });
 
-    it('TC-O160: id ?�성 ?�달 ?�용', () => {
+    it('TC-O160: id 속성 전달 적용', () => {
       render(
         <SegmentedControl id="my-tabs">
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -187,32 +187,32 @@ describe('SegmentedControl', () => {
       expect(container).toHaveAttribute('id', 'my-tabs');
     });
 
-    it('TC-O130: 보호 ?�성 data-size ?�버?�이??차단', () => {
-      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
+    it('TC-O130: 보호 속성 $1 오버라이드 차단', () => {
+      // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<SegmentedControl data-size="custom" size="lg"><SegmentedControl.Item>Item</SegmentedControl.Item></SegmentedControl>);
       const container = screen.getByRole('group');
 
       expect(container).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-O131: 보호 ?�성 data-full-width ?�버?�이??차단', () => {
-      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
+    it('TC-O131: 보호 속성 $1 오버라이드 차단', () => {
+      // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<SegmentedControl data-full-width="false" fullWidth><SegmentedControl.Item>Item</SegmentedControl.Item></SegmentedControl>);
       const container = screen.getByRole('group');
 
       expect(container).toHaveAttribute('data-full-width', 'true');
     });
 
-    it('TC-O132: 보호 ?�성 data-disabled ?�버?�이??차단', () => {
-      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
+    it('TC-O132: 보호 속성 $1 오버라이드 차단', () => {
+      // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<SegmentedControl data-disabled="false" disabled><SegmentedControl.Item>Item</SegmentedControl.Item></SegmentedControl>);
       const container = screen.getByRole('group');
 
       expect(container).toHaveAttribute('data-disabled', 'true');
     });
 
-    it('TC-O133: 보호 ?�성 role ?�버?�이??차단', () => {
-      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
+    it('TC-O133: 보호 성 role 버이차단', () => {
+      // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<SegmentedControl role="tablist"><SegmentedControl.Item>Item</SegmentedControl.Item></SegmentedControl>);
       const container = screen.getByRole('group');
 
@@ -220,8 +220,8 @@ describe('SegmentedControl', () => {
     });
   });
 
-  describe('기본�?, () => {
-    it('TC-C010: size 기본값�? md?�다', () => {
+  describe('기본값', () => {
+    it('TC-C010: size 기본값 md다', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -232,7 +232,7 @@ describe('SegmentedControl', () => {
       expect(container).toHaveAttribute('data-size', 'md');
     });
 
-    it('TC-C011: fullWidth 기본값�? false?�다', () => {
+    it('TC-C011: fullWidth 기본값 false다', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -243,7 +243,7 @@ describe('SegmentedControl', () => {
       expect(container).not.toHaveAttribute('data-full-width');
     });
 
-    it('TC-C012: disabled 기본값�? false?�다', () => {
+    it('TC-C012: disabled 기본값 false다', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -257,8 +257,8 @@ describe('SegmentedControl', () => {
 });
 
 describe('SegmentedControlItem', () => {
-  describe('core ?�치 검�?, () => {
-    it('TC-RI100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
+  describe('Core 일치 검증', () => {
+    it('기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
       const coreAttrs = SegmentedControlItemDef.mapPropsToAttrs({});
 
       render(
@@ -271,7 +271,7 @@ describe('SegmentedControlItem', () => {
       expect(item).toHaveClass(coreAttrs.class);
     });
 
-    it('TC-RI101: selected prop??core 결과?� ?�치?�다', () => {
+    it('TC-RI101: selected propcore 결과 치다', () => {
       const coreAttrs = SegmentedControlItemDef.mapPropsToAttrs({ selected: true });
 
       render(
@@ -286,7 +286,7 @@ describe('SegmentedControlItem', () => {
       expect(item).toHaveAttribute('aria-selected', 'true');
     });
 
-    it('TC-RI102: disabled prop??core 결과?� ?�치?�다', () => {
+    it('disabled prop이 core 결과와 일치한다', () => {
       const coreAttrs = SegmentedControlItemDef.mapPropsToAttrs({ disabled: true });
 
       render(
@@ -301,7 +301,7 @@ describe('SegmentedControlItem', () => {
       expect(item).toBeDisabled();
     });
 
-    it('TC-RI103: selected + disabled ??selected ?�선', () => {
+    it('TC-RI103: selected + disabled selected 선', () => {
       const coreAttrs = SegmentedControlItemDef.mapPropsToAttrs({ selected: true, disabled: true });
 
       render(
@@ -318,8 +318,8 @@ describe('SegmentedControlItem', () => {
     });
   });
 
-  describe('?�벤???�들??, () => {
-    it('TC-RI200: onClick ?�들?��? ?�출?�다', async () => {
+  describe('이벤트 핸들러', () => {
+    it('onClick 핸들러가 호출된다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -335,7 +335,7 @@ describe('SegmentedControlItem', () => {
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-RI201: disabled ?�태?�서 onClick???�출?��? ?�는??, async () => {
+    it('TC-RI201: disabled 태서 onClick출 는', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -353,7 +353,7 @@ describe('SegmentedControlItem', () => {
       expect(handleClick).not.toHaveBeenCalled();
     });
 
-    it('TC-RI202: selected ?�태?�서 onClick???�출?�다', async () => {
+    it('TC-RI202: selected 태서 onClick출다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -372,8 +372,8 @@ describe('SegmentedControlItem', () => {
     });
   });
 
-  describe('React ?�용 props', () => {
-    it('TC-RI300: children???�더링된??, () => {
+  describe('React 전용 props', () => {
+    it('children이 렌더링된다', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item>Text</SegmentedControl.Item>
@@ -383,7 +383,7 @@ describe('SegmentedControlItem', () => {
       expect(screen.getByRole('button')).toHaveTextContent('Text');
     });
 
-    it('TC-RI301: className??병합?�다', () => {
+    it('className이 병합된다', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item className="custom">Item</SegmentedControl.Item>
@@ -395,7 +395,7 @@ describe('SegmentedControlItem', () => {
       expect(item).toHaveClass('custom');
     });
 
-    it('TC-RI302: type prop???�용?�다', () => {
+    it('type prop이 적용된다', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item type="submit">Submit</SegmentedControl.Item>
@@ -406,8 +406,8 @@ describe('SegmentedControlItem', () => {
       expect(item).toHaveAttribute('type', 'submit');
     });
 
-    it('TC-RI303: type??명시?��? ?�으�??�성???�다', () => {
-      // SegmentedControlItem?� 기본 type???�정?��? ?�음
+    it('TC-RI303: type명시 으성다', () => {
+      // SegmentedControlItem? 기본 type???정?? ?음
       render(
         <SegmentedControl>
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -418,7 +418,7 @@ describe('SegmentedControlItem', () => {
       expect(item).not.toHaveAttribute('type');
     });
 
-    it('TC-RI303b: type="button" 명시 ??button?�로 ?�더�?, () => {
+    it('TC-RI303b: type="button" 명시 button로 더', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item type="button">Item</SegmentedControl.Item>
@@ -429,7 +429,7 @@ describe('SegmentedControlItem', () => {
       expect(item).toHaveAttribute('type', 'button');
     });
 
-    it('TC-RI304: aria-label???�용?�다', () => {
+    it('aria-label이 적용된다', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item aria-label="Select">Item</SegmentedControl.Item>
@@ -441,8 +441,8 @@ describe('SegmentedControlItem', () => {
     });
   });
 
-  describe('커스?�마?�즈 ?�버?�이??, () => {
-    it('TC-O101: SegmentedControlItem className 추�? ??병합?�다', () => {
+  describe('커스터마이즈 오버라이드', () => {
+    it('TC-O101: className이 병합된다', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item className="custom">Item</SegmentedControl.Item>
@@ -454,7 +454,7 @@ describe('SegmentedControlItem', () => {
       expect(item).toHaveClass('custom');
     });
 
-    it('TC-O121: data-analytics 추�? ?�용', () => {
+    it('TC-O121: data-analytics 추 용', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item data-analytics="click">Item</SegmentedControl.Item>
@@ -465,7 +465,7 @@ describe('SegmentedControlItem', () => {
       expect(item).toHaveAttribute('data-analytics', 'click');
     });
 
-    it('TC-O141: aria-label ?�용 (Item)', () => {
+    it('TC-O141: aria-label 적용', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item aria-label="Option">Item</SegmentedControl.Item>
@@ -476,16 +476,16 @@ describe('SegmentedControlItem', () => {
       expect(item).toHaveAttribute('aria-label', 'Option');
     });
 
-    it('TC-O134: 보호 ?�성 data-state ?�버?�이??차단 (Item)', () => {
-      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
+    it('TC-O134: 보호 속성 $1 오버라이드 차단', () => {
+      // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<SegmentedControl><SegmentedControl.Item data-state="custom" selected>Item</SegmentedControl.Item></SegmentedControl>);
       const item = screen.getByRole('button');
 
       expect(item).toHaveAttribute('data-state', 'selected');
     });
 
-    it('TC-O135: 보호 ?�성 aria-selected ?�버?�이??차단 (Item)', () => {
-      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
+    it('TC-O135: 보호 속성 $1 오버라이드 차단', () => {
+      // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<SegmentedControl><SegmentedControl.Item aria-selected="false" selected>Item</SegmentedControl.Item></SegmentedControl>);
       const item = screen.getByRole('button');
 
@@ -493,8 +493,8 @@ describe('SegmentedControlItem', () => {
     });
   });
 
-  describe('기본�?, () => {
-    it('TC-I010: selected 기본값�? false?�다', () => {
+  describe('기본값', () => {
+    it('TC-I010: selected 기본값 false다', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -506,7 +506,7 @@ describe('SegmentedControlItem', () => {
       expect(item).not.toHaveAttribute('aria-selected');
     });
 
-    it('TC-I011: disabled 기본값�? false?�다', () => {
+    it('TC-I011: disabled 기본값 false다', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -519,8 +519,8 @@ describe('SegmentedControlItem', () => {
   });
 });
 
-describe('SegmentedControl + Item ?�합', () => {
-  it('?�일 ?�택 ?�턴: ?�나???�이?�만 selected', () => {
+describe('SegmentedControl + Item 조합', () => {
+  it('일 택 턴: 나이만 selected', () => {
     render(
       <SegmentedControl>
         <SegmentedControl.Item>Option 1</SegmentedControl.Item>
@@ -550,7 +550,7 @@ describe('SegmentedControl + Item ?�합', () => {
     expect(items[2]).not.toBeDisabled();
   });
 
-  it('SegmentedControlItem??직접 import?�서 ?�용?????�다', () => {
+  it('SegmentedControlItem직접 import서 적용된다', () => {
     render(
       <SegmentedControl>
         <SegmentedControlItem>Direct Import</SegmentedControlItem>

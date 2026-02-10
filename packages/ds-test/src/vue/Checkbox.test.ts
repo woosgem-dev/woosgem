@@ -1,12 +1,12 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
-import { Checkbox } from '@woosgem/ds-vue';
+import { Checkbox } from '@woosgem-dev/vue';
 import { Checkbox as CheckboxDef } from '@woosgem-dev/core';
 
 describe('Checkbox', () => {
-  describe('core ?�치 검�?, () => {
-    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
+  describe('Core 일치 검증', () => {
+    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({});
 
       render(Checkbox, { attrs: { 'aria-label': 'Accept terms' } });
@@ -17,7 +17,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveClass(coreAttrs.class);
     });
 
-    it('TC-V101: size prop??core 결과?� ?�치?�다', () => {
+    it('TC-V101: size prop이 core 결과와 일치한다', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ size: 'lg' });
 
       render(Checkbox, {
@@ -30,7 +30,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-V102: checked prop??core 결과?� ?�치?�다', () => {
+    it('TC-V102: checked prop이 core 결과와 일치한다', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ checked: true });
 
       render(Checkbox, {
@@ -43,7 +43,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-state', 'checked');
     });
 
-    it('TC-V103: indeterminate prop??core 결과?� ?�치?�다', () => {
+    it('TC-V103: indeterminate prop이 core 결과와 일치한다', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ indeterminate: true });
 
       render(Checkbox, {
@@ -56,7 +56,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-state', 'indeterminate');
     });
 
-    it('TC-V104: disabled prop??core 결과?� ?�치?�다', () => {
+    it('TC-V104: disabled prop이 core 결과와 일치한다', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ disabled: true });
 
       render(Checkbox, {
@@ -69,7 +69,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-state', 'disabled');
     });
 
-    it('TC-V105: ?�태 ?�선?�위 - disabled > indeterminate', () => {
+    it('TC-V105: 태 선위 - disabled > indeterminate', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ disabled: true, indeterminate: true });
 
       render(Checkbox, {
@@ -82,7 +82,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-state', 'disabled');
     });
 
-    it('TC-V106: ?�태 ?�선?�위 - disabled > checked', () => {
+    it('TC-V106: 태 선위 - disabled > checked', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ disabled: true, checked: true });
 
       render(Checkbox, {
@@ -95,7 +95,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-state', 'disabled');
     });
 
-    it('TC-V107: ?�태 ?�선?�위 - indeterminate > checked', () => {
+    it('TC-V107: 태 선위 - indeterminate > checked', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ indeterminate: true, checked: true });
 
       render(Checkbox, {
@@ -108,7 +108,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-state', 'indeterminate');
     });
 
-    it('TC-V108: size: sm??core 결과?� ?�치?�다', () => {
+    it('TC-V108: size: smcore 결과 치다', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ size: 'sm' });
 
       render(Checkbox, {
@@ -120,7 +120,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-size', coreAttrs['data-size']);
     });
 
-    it('TC-V109: 복합 props가 core 결과?� ?�치?�다', () => {
+    it('TC-V109: 복합 props가 core 결과와 일치한다', () => {
       const props = {
         size: 'lg' as const,
         checked: true,
@@ -137,7 +137,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-state', coreAttrs['data-state']);
     });
 
-    it('TC-V110: unchecked ?�태가 core 결과?� ?�치?�다', () => {
+    it('TC-V110: unchecked 태가 core 결과 치다', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ checked: false });
 
       render(Checkbox, {
@@ -151,8 +151,8 @@ describe('Checkbox', () => {
     });
   });
 
-  describe('?�벤???�들??, () => {
-    it('TC-V200: onClick ?�들?��? ?�출?�다', async () => {
+  describe('이벤트 핸들러', () => {
+    it('TC-V200: onClick 핸들러가 호출된다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -166,8 +166,8 @@ describe('Checkbox', () => {
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    // Note: Checkbox??div�??�더링되므�?disabled ?�작??button�??�름
-    it('TC-V201: disabled ?�태?�서???�릭 ?�벤?��? 발생?�다 (div??disabled 미�???', async () => {
+    // Note: Checkbox??div??더링되므?disabled ?작??button??름
+    it('TC-V201: disabled 태서릭 벤 발생다 (divdisabled 미', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -179,13 +179,13 @@ describe('Checkbox', () => {
 
       await user.click(checkbox);
 
-      // div ?�소???�이?�브 disabled�?지?�하지 ?�음
+      // div ?소???이?브 disabled?지?하지 ?음
       expect(handleClick).toHaveBeenCalled();
     });
   });
 
-  describe('Vue ?�용 props', () => {
-    it('TC-V300: slot???�더링된??, () => {
+  describe('Vue 전용 props', () => {
+    it('TC-V300: slot이 렌더링된다', () => {
       render(Checkbox, {
         slots: { default: 'I agree' },
         attrs: { 'aria-label': 'Agreement' },
@@ -195,7 +195,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveTextContent('I agree');
     });
 
-    it('TC-V301: class가 병합?�다', () => {
+    it('TC-V301: class가 병합된다', () => {
       render(Checkbox, {
         attrs: { class: 'custom-class', 'aria-label': 'Checkbox' },
       });
@@ -205,21 +205,21 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveClass('custom-class');
     });
 
-    it('TC-V302: aria-label???�용?�다', () => {
+    it('TC-V302: aria-label이 적용된다', () => {
       render(Checkbox, {
         attrs: { 'aria-label': 'Accept terms and conditions' },
       });
       expect(screen.getByLabelText('Accept terms and conditions')).toBeInTheDocument();
     });
 
-    it('TC-V303: name ?�성???�용?�다', () => {
+    it('TC-V303: name 성 적용된다', () => {
       render(Checkbox, {
         attrs: { name: 'terms', 'aria-label': 'Terms' },
       });
       expect(screen.getByLabelText('Terms')).toHaveAttribute('name', 'terms');
     });
 
-    it('TC-V304: id ?�성???�용?�다', () => {
+    it('TC-V304: id 성 적용된다', () => {
       render(Checkbox, {
         attrs: { id: 'terms-checkbox', 'aria-label': 'Terms' },
       });
@@ -227,8 +227,8 @@ describe('Checkbox', () => {
     });
   });
 
-  describe('커스?�마?�즈 ?�버?�이??, () => {
-    it('TC-O100: class 추�? ??병합?�다', () => {
+  describe('커스터마이즈 오버라이드', () => {
+    it('TC-O100: class 추가 시 병합된다', () => {
       render(Checkbox, {
         attrs: { class: 'custom', 'aria-label': 'Checkbox' },
       });
@@ -238,14 +238,14 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveClass('custom');
     });
 
-    it('TC-O120: data-testid 추�? ?�용', () => {
+    it('TC-O120: data-testid 추가 적용', () => {
       render(Checkbox, {
         attrs: { 'data-testid': 'terms-checkbox', 'aria-label': 'Terms' },
       });
       expect(screen.getByTestId('terms-checkbox')).toBeInTheDocument();
     });
 
-    it('TC-O200: 보호 ?�성 data-size ?�버?�이??차단', () => {
+    it('TC-O200: 보호 속성 $1 오버라이드 차단', () => {
       render(Checkbox, {
         props: { size: 'lg' },
         attrs: { 'data-size': 'custom', 'aria-label': 'Checkbox' },
@@ -255,7 +255,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-O201: 보호 ?�성 data-state ?�버?�이??차단', () => {
+    it('TC-O201: 보호 속성 $1 오버라이드 차단', () => {
       render(Checkbox, {
         props: { checked: true },
         attrs: { 'data-state': 'custom', 'aria-label': 'Checkbox' },
@@ -265,7 +265,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-state', 'checked');
     });
 
-    it('TC-O180: style ?�성 ?�달 ?�용', () => {
+    it('TC-O180: style 속성 전달 적용', () => {
       render(Checkbox, {
         attrs: { style: 'margin-top: 8px;', 'aria-label': 'Checkbox' },
       });
@@ -274,14 +274,14 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveStyle({ marginTop: '8px' });
     });
 
-    it('TC-O170: id ?�성 ?�달 ?�용', () => {
+    it('TC-O170: id 속성 전달 적용', () => {
       render(Checkbox, {
         attrs: { id: 'my-checkbox', 'aria-label': 'Checkbox' },
       });
       expect(screen.getByLabelText('Checkbox')).toHaveAttribute('id', 'my-checkbox');
     });
 
-    it('TC-O140: aria-describedby ?�성 ?�달 ?�용', () => {
+    it('TC-O140: aria-describedby 성 달 용', () => {
       render(Checkbox, {
         attrs: { 'aria-describedby': 'terms-desc', 'aria-label': 'Checkbox' },
       });

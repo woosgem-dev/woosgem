@@ -1,12 +1,12 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
-import { Button } from '@woosgem/ds-vue';
+import { Button } from '@woosgem-dev/vue';
 import { Button as ButtonDef } from '@woosgem-dev/core';
 
 describe('Button', () => {
-  describe('core ?�치 검�?, () => {
-    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
+  describe('Core 일치 검증', () => {
+    it('TC-V100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
       const coreAttrs = ButtonDef.mapPropsToAttrs({});
 
       render(Button, { slots: { default: 'Click me' } });
@@ -18,7 +18,7 @@ describe('Button', () => {
       expect(btn).toHaveClass(coreAttrs.class);
     });
 
-    it('TC-V101: variant prop??core 결과?� ?�치?�다', () => {
+    it('TC-V101: variant prop이 core 결과와 일치한다', () => {
       const coreAttrs = ButtonDef.mapPropsToAttrs({ variant: 'outline' });
 
       render(Button, {
@@ -31,7 +31,7 @@ describe('Button', () => {
       expect(btn).toHaveAttribute('data-variant', 'outline');
     });
 
-    it('TC-V102: color prop??core 결과?� ?�치?�다', () => {
+    it('TC-V102: color prop이 core 결과와 일치한다', () => {
       const coreAttrs = ButtonDef.mapPropsToAttrs({ color: 'danger' });
 
       render(Button, {
@@ -44,7 +44,7 @@ describe('Button', () => {
       expect(btn).toHaveAttribute('data-color', 'danger');
     });
 
-    it('TC-V103: size prop??core 결과?� ?�치?�다', () => {
+    it('TC-V103: size prop이 core 결과와 일치한다', () => {
       const coreAttrs = ButtonDef.mapPropsToAttrs({ size: 'lg' });
 
       render(Button, {
@@ -57,7 +57,7 @@ describe('Button', () => {
       expect(btn).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-V104: disabled prop??core 결과?� ?�치?�다', () => {
+    it('TC-V104: disabled prop이 core 결과와 일치한다', () => {
       const coreAttrs = ButtonDef.mapPropsToAttrs({ disabled: true });
 
       render(Button, {
@@ -71,7 +71,7 @@ describe('Button', () => {
       expect(btn).toBeDisabled();
     });
 
-    it('TC-V105: loading prop??core 결과?� ?�치?�다', () => {
+    it('TC-V105: loading prop이 core 결과와 일치한다', () => {
       const coreAttrs = ButtonDef.mapPropsToAttrs({ loading: true });
 
       render(Button, {
@@ -85,7 +85,7 @@ describe('Button', () => {
       expect(btn).toBeDisabled();
     });
 
-    it('TC-V106: fullWidth prop??core 결과?� ?�치?�다', () => {
+    it('TC-V106: fullWidth prop이 core 결과와 일치한다', () => {
       const coreAttrs = ButtonDef.mapPropsToAttrs({ fullWidth: true });
 
       render(Button, {
@@ -97,7 +97,7 @@ describe('Button', () => {
       expect(btn).toHaveAttribute('data-full-width', String(coreAttrs['data-full-width']));
     });
 
-    it('TC-V107: 복합 props가 core 결과?� ?�치?�다', () => {
+    it('TC-V107: 복합 props가 core 결과와 일치한다', () => {
       const props = {
         variant: 'ghost' as const,
         color: 'secondary' as const,
@@ -118,7 +118,7 @@ describe('Button', () => {
       expect(btn).toHaveAttribute('data-state', coreAttrs['data-state']);
     });
 
-    it('TC-V108: loading + disabled ?�시 true ??loading ?�선', () => {
+    it('TC-V108: loading + disabled 동시 true 시 loading 우선', () => {
       const coreAttrs = ButtonDef.mapPropsToAttrs({ loading: true, disabled: true });
 
       render(Button, {
@@ -132,8 +132,8 @@ describe('Button', () => {
     });
   });
 
-  describe('?�벤???�들??, () => {
-    it('TC-V200: onClick ?�들?��? ?�출?�다', async () => {
+  describe('이벤트 핸들러', () => {
+    it('TC-V200: onClick 핸들러가 호출된다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -148,7 +148,7 @@ describe('Button', () => {
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-V201: disabled ?�태?�서 onClick???�출?��? ?�는??, async () => {
+    it('TC-V201: disabled 상태에서 onClick이 호출되지 않는다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -163,7 +163,7 @@ describe('Button', () => {
       expect(handleClick).not.toHaveBeenCalled();
     });
 
-    it('TC-V202: loading ?�태?�서 onClick???�출?��? ?�는??, async () => {
+    it('TC-V202: loading 상태에서 onClick이 호출되지 않는다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -179,13 +179,13 @@ describe('Button', () => {
     });
   });
 
-  describe('Vue ?�용 props', () => {
-    it('TC-V300: slot???�더링된??, () => {
+  describe('Vue 전용 props', () => {
+    it('TC-V300: slot이 렌더링된다', () => {
       render(Button, { slots: { default: 'Hello World' } });
       expect(screen.getByRole('button')).toHaveTextContent('Hello World');
     });
 
-    it('TC-V301: class가 병합?�다', () => {
+    it('TC-V301: class가 병합된다', () => {
       render(Button, {
         attrs: { class: 'custom-class' },
         slots: { default: 'Button' },
@@ -196,7 +196,7 @@ describe('Button', () => {
       expect(btn).toHaveClass('custom-class');
     });
 
-    it('TC-V302: type prop???�용?�다', () => {
+    it('TC-V302: type prop이 적용된다', () => {
       render(Button, {
         attrs: { type: 'submit' },
         slots: { default: 'Submit' },
@@ -204,7 +204,7 @@ describe('Button', () => {
       expect(screen.getByRole('button')).toHaveAttribute('type', 'submit');
     });
 
-    it('TC-V303: aria-label???�용?�다', () => {
+    it('TC-V303: aria-label이 적용된다', () => {
       render(Button, {
         attrs: { 'aria-label': 'Close dialog' },
         slots: { default: 'X' },
@@ -213,8 +213,8 @@ describe('Button', () => {
     });
   });
 
-  describe('커스?�마?�즈 ?�버?�이??, () => {
-    it('TC-O100: class 추�? ??병합?�다', () => {
+  describe('커스터마이즈 오버라이드', () => {
+    it('TC-O100: class 추가 시 병합된다', () => {
       render(Button, {
         attrs: { class: 'custom' },
         slots: { default: 'Button' },
@@ -225,7 +225,7 @@ describe('Button', () => {
       expect(btn).toHaveClass('custom');
     });
 
-    it('TC-O120: data-testid 추�? ?�용', () => {
+    it('TC-O120: data-testid 추가 적용', () => {
       render(Button, {
         attrs: { 'data-testid': 'submit-btn' },
         slots: { default: 'Submit' },
@@ -233,7 +233,7 @@ describe('Button', () => {
       expect(screen.getByTestId('submit-btn')).toBeInTheDocument();
     });
 
-    it('TC-O200: 보호 ?�성 data-variant ?�버?�이??차단', () => {
+    it('TC-O200: 보호 속성 $1 오버라이드 차단', () => {
       render(Button, {
         props: { variant: 'outline' },
         attrs: { 'data-variant': 'custom' },
@@ -241,11 +241,11 @@ describe('Button', () => {
       });
       const btn = screen.getByRole('button');
 
-      // ?�용?�의 data-variant="custom"??무시?�고 variant="outline"???�용??
+      // 사용자의 data-variant="custom"은 무시하고 variant="outline"이 적용됨
       expect(btn).toHaveAttribute('data-variant', 'outline');
     });
 
-    it('TC-O201: 보호 ?�성 data-color ?�버?�이??차단', () => {
+    it('TC-O201: 보호 속성 $1 오버라이드 차단', () => {
       render(Button, {
         props: { color: 'danger' },
         attrs: { 'data-color': 'custom' },
@@ -256,7 +256,7 @@ describe('Button', () => {
       expect(btn).toHaveAttribute('data-color', 'danger');
     });
 
-    it('TC-O202: 보호 ?�성 data-size ?�버?�이??차단', () => {
+    it('TC-O202: 보호 속성 $1 오버라이드 차단', () => {
       render(Button, {
         props: { size: 'lg' },
         attrs: { 'data-size': 'custom' },
@@ -267,7 +267,7 @@ describe('Button', () => {
       expect(btn).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-O203: 보호 ?�성 data-state ?�버?�이??차단', () => {
+    it('TC-O203: 보호 속성 $1 오버라이드 차단', () => {
       render(Button, {
         props: { disabled: true },
         attrs: { 'data-state': 'custom' },
@@ -278,7 +278,7 @@ describe('Button', () => {
       expect(btn).toHaveAttribute('data-state', 'disabled');
     });
 
-    it('TC-O180: style ?�성 ?�달 ?�용', () => {
+    it('TC-O180: style 속성 전달 적용', () => {
       render(Button, {
         attrs: { style: 'margin-top: 8px; background-color: blue;' },
         slots: { default: 'Button' },
@@ -288,7 +288,7 @@ describe('Button', () => {
       expect(btn).toHaveStyle({ marginTop: '8px' });
     });
 
-    it('TC-O170: id ?�성 ?�달 ?�용', () => {
+    it('TC-O170: id 속성 전달 적용', () => {
       render(Button, {
         attrs: { id: 'my-btn' },
         slots: { default: 'Button' },

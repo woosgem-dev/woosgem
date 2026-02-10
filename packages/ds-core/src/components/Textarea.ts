@@ -30,7 +30,7 @@ export interface TextareaAttrs {
   'data-resize': TextareaResize;
   'data-state'?: 'disabled' | 'error' | undefined;
   disabled?: boolean | undefined;
-  'aria-invalid'?: 'true' | undefined;
+  'aria-invalid'?: boolean | undefined;
 }
 
 /** Textarea component definition */
@@ -64,7 +64,7 @@ export const Textarea = {
       'data-resize': merged.resize,
       'data-state': state,
       disabled: merged.disabled || undefined,
-      'aria-invalid': merged.error ? 'true' : undefined,
+      'aria-invalid': merged.error ? true : undefined,
     };
   },
 

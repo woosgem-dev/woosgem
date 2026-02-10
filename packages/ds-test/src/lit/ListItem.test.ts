@@ -3,12 +3,12 @@
  */
 import { describe, it, expect, vi } from 'vitest';
 import { html, fixture } from './setup';
-import { ListItem } from '@woosgem/ds-lit';
+import { ListItem } from '@woosgem-dev/lit';
 import { ListItem as ListItemDef } from '@woosgem-dev/core';
 
 describe('ListItem (Lit)', () => {
-  describe('core ?�치 검�?, () => {
-    it('TC-L100: 기본 props가 core 결과?� ?�치?�다', async () => {
+  describe('Core 일치 검증', () => {
+    it('TC-L100: 기본 props가 core 결과 치다', async () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({});
 
       const el = await fixture<InstanceType<typeof ListItem>>(html`
@@ -19,7 +19,7 @@ describe('ListItem (Lit)', () => {
       expect(el.classList.contains('list-item')).toBe(true);
     });
 
-    it('TC-L101: variant prop??core 결과?� ?�치?�다', async () => {
+    it('TC-L101: variant prop이 core 결과와 일치한다', async () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ variant: 'interactive' });
 
       const el = await fixture<InstanceType<typeof ListItem>>(html`
@@ -30,7 +30,7 @@ describe('ListItem (Lit)', () => {
       expect(el.getAttribute('data-variant')).toBe('interactive');
     });
 
-    it('TC-L102: selected prop??core 결과?� ?�치?�다', async () => {
+    it('TC-L102: selected prop이 core 결과와 일치한다', async () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ selected: true });
 
       const el = await fixture<InstanceType<typeof ListItem>>(html`
@@ -41,7 +41,7 @@ describe('ListItem (Lit)', () => {
       expect(el.getAttribute('data-state')).toBe('selected');
     });
 
-    it('TC-L103: disabled prop??core 결과?� ?�치?�다', async () => {
+    it('TC-L103: disabled prop이 core 결과와 일치한다', async () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ disabled: true });
 
       const el = await fixture<InstanceType<typeof ListItem>>(html`
@@ -53,7 +53,7 @@ describe('ListItem (Lit)', () => {
       expect(el.hasAttribute('disabled')).toBe(true);
     });
 
-    it('TC-L104: divider prop??core 결과?� ?�치?�다', async () => {
+    it('TC-L104: divider prop이 core 결과와 일치한다', async () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ divider: true });
 
       const el = await fixture<InstanceType<typeof ListItem>>(html`
@@ -65,8 +65,8 @@ describe('ListItem (Lit)', () => {
     });
   });
 
-  describe('?�벤???�들??, () => {
-    it('TC-L200: click ?�벤?��? 발생?�다', async () => {
+  describe('이벤트 핸들러', () => {
+    it('TC-L200: click 이벤트가 발생한다', async () => {
       const handleClick = vi.fn();
 
       const el = await fixture<InstanceType<typeof ListItem>>(html`
@@ -80,8 +80,8 @@ describe('ListItem (Lit)', () => {
     });
   });
 
-  describe('Web Component ?�용', () => {
-    it('TC-L300: slot 컨텐츠�? ?�더링된??, async () => {
+  describe('Web Component 전용', () => {
+    it('TC-L300: slot이 렌더링된다', async () => {
       const el = await fixture<InstanceType<typeof ListItem>>(html`
         <wg-list-item>List Item Content</wg-list-item>
       `);

@@ -215,7 +215,7 @@ export const CustomIndicator: Story = {
       <Checkbox.Root checked>
         <Checkbox.Indicator>
           {/* Custom checkmark using emoji */}
-          <span style={{ fontSize: '12px' }}>??/span>
+          <span style={{ fontSize: '12px' }}>&#10003;</span>
         </Checkbox.Indicator>
         <Checkbox.Label>Custom checkmark</Checkbox.Label>
       </Checkbox.Root>

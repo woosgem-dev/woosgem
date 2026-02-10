@@ -1,10 +1,10 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent, act } from '@testing-library/react';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from '@woosgem/ds-react';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from '@woosgem-dev/react';
 
 describe('Modal (React)', () => {
-  describe('기본 ?�더�?, () => {
-    it('TC-R100: open=false?????�더링되지 ?�는??, () => {
+  describe('기본 렌더링', () => {
+    it('TC-R100: open=false 시 렌더링되지 않는다', () => {
       render(
         <Modal open={false}>
           <ModalBody>Content</ModalBody>
@@ -13,7 +13,7 @@ describe('Modal (React)', () => {
       expect(screen.queryByText('Content')).not.toBeInTheDocument();
     });
 
-    it('TC-R101: open=true?????�더링된??, () => {
+    it('TC-R101: open=true 시 렌더링된다', () => {
       render(
         <Modal open={true}>
           <ModalBody>Content</ModalBody>
@@ -22,7 +22,7 @@ describe('Modal (React)', () => {
       expect(screen.getByText('Content')).toBeInTheDocument();
     });
 
-    it('TC-R102: modal???�탈�??�더링된??, () => {
+    it('TC-R102: modal이 포탈로 렌더링된다', () => {
       render(
         <Modal open={true}>
           <ModalBody>Portal content</ModalBody>
@@ -33,8 +33,8 @@ describe('Modal (React)', () => {
     });
   });
 
-  describe('Size 변??, () => {
-    it('TC-C110: size: sm???�용?�다', () => {
+  describe('Size 변형', () => {
+    it('TC-C110: size: sm가 적용된다', () => {
       render(
         <Modal open size="sm">
           <ModalBody>Content</ModalBody>
@@ -44,7 +44,7 @@ describe('Modal (React)', () => {
       expect(modal).toHaveAttribute('data-size', 'sm');
     });
 
-    it('TC-C111: size: md가 ?�용?�다', () => {
+    it('TC-C111: size: md가 적용된다', () => {
       render(
         <Modal open size="md">
           <ModalBody>Content</ModalBody>
@@ -54,7 +54,7 @@ describe('Modal (React)', () => {
       expect(modal).toHaveAttribute('data-size', 'md');
     });
 
-    it('TC-C112: size: lg가 ?�용?�다', () => {
+    it('TC-C112: size: lg가 적용된다', () => {
       render(
         <Modal open size="lg">
           <ModalBody>Content</ModalBody>
@@ -64,7 +64,7 @@ describe('Modal (React)', () => {
       expect(modal).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-C113: size: xl???�용?�다', () => {
+    it('TC-C113: size: xl가 적용된다', () => {
       render(
         <Modal open size="xl">
           <ModalBody>Content</ModalBody>
@@ -74,7 +74,7 @@ describe('Modal (React)', () => {
       expect(modal).toHaveAttribute('data-size', 'xl');
     });
 
-    it('TC-C114: size: full???�용?�다', () => {
+    it('TC-C114: size: full가 적용된다', () => {
       render(
         <Modal open size="full">
           <ModalBody>Content</ModalBody>
@@ -85,8 +85,8 @@ describe('Modal (React)', () => {
     });
   });
 
-  describe('?�근??, () => {
-    it('TC-A100: role="dialog"가 ?�용?�다', () => {
+  describe('접근성', () => {
+    it('TC-A100: role="dialog"가 적용된다', () => {
       render(
         <Modal open>
           <ModalBody>Content</ModalBody>
@@ -95,7 +95,7 @@ describe('Modal (React)', () => {
       expect(screen.getByRole('dialog')).toBeInTheDocument();
     });
 
-    it('TC-A101: aria-modal=true가 ?�용?�다', () => {
+    it('TC-A101: aria-modal=true가 적용된다', () => {
       render(
         <Modal open>
           <ModalBody>Content</ModalBody>
@@ -105,8 +105,8 @@ describe('Modal (React)', () => {
     });
   });
 
-  describe('?�기 ?�작', () => {
-    it('TC-CL100: ESC ???�르�?onClose가 ?�출?�다', () => {
+  describe('닫기 동작', () => {
+    it('TC-CL100: ESC 르onClose가 출다', () => {
       const onClose = vi.fn();
 
       render(
@@ -122,7 +122,7 @@ describe('Modal (React)', () => {
       expect(onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-CL101: disableEscapeKey ??ESC�??�히지 ?�는??, () => {
+    it('TC-CL101: disableEscapeKey ESC히지 는', () => {
       const onClose = vi.fn();
 
       render(
@@ -138,7 +138,7 @@ describe('Modal (React)', () => {
       expect(onClose).not.toHaveBeenCalled();
     });
 
-    it('TC-CL102: ?�버?�이 ?�릭 ??onClose가 ?�출?�다', () => {
+    it('TC-CL102: 버이 릭 onClose가 출다', () => {
       const onClose = vi.fn();
 
       render(
@@ -157,7 +157,7 @@ describe('Modal (React)', () => {
       expect(onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-CL103: disableOverlayClick ???�버?�이 ?�릭?�로 ?�히지 ?�는??, () => {
+    it('TC-CL103: disableOverlayClick 버이 릭로 히지 는', () => {
       const onClose = vi.fn();
 
       render(
@@ -174,7 +174,7 @@ describe('Modal (React)', () => {
       expect(onClose).not.toHaveBeenCalled();
     });
 
-    it('TC-CL104: closable=false ??ESC?� ?�버?�이 ?�릭 모두 비활?�화?�다', () => {
+    it('TC-CL104: closable=false ESC? 버이 릭 모두 비활화다', () => {
       const onClose = vi.fn();
 
       render(
@@ -196,8 +196,8 @@ describe('Modal (React)', () => {
     });
   });
 
-  describe('기본�?, () => {
-    it('TC-C010: size 기본값�? md?�다', () => {
+  describe('기본값', () => {
+    it('TC-C010: size 기본값 md다', () => {
       render(
         <Modal open>
           <ModalBody>Content</ModalBody>
@@ -207,8 +207,8 @@ describe('Modal (React)', () => {
     });
   });
 
-  describe('Body scroll 방�?', () => {
-    it('TC-BS100: open ??body overflow가 hidden?�로 ?�정?�다', () => {
+  describe('ModalBody', () => {
+    it('TC-BS100: open body overflow가 hidden로 정다', () => {
       render(
         <Modal open>
           <ModalBody>Content</ModalBody>

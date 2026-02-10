@@ -1,12 +1,12 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Input } from '@woosgem/ds-react';
+import { Input } from '@woosgem-dev/react';
 import { Input as InputDef } from '@woosgem-dev/core';
 
 describe('Input', () => {
-  describe('core ?�치 검�?, () => {
-    it('TC-R100: 기본 props가 core mapPropsToAttrs 결과?� ?�치?�다', () => {
+  describe('Core 일치 검증', () => {
+    it('TC-R100: 기본 props가 core mapPropsToAttrs 결과와 일치한다', () => {
       const coreAttrs = InputDef.mapPropsToAttrs({});
 
       render(<Input aria-label="test input" />);
@@ -17,7 +17,7 @@ describe('Input', () => {
       expect(input).toHaveClass(coreAttrs.class);
     });
 
-    it('TC-R101: variant prop??core 결과?� ?�치?�다', () => {
+    it('TC-R101: variant prop이 core 결과와 일치한다', () => {
       const coreAttrs = InputDef.mapPropsToAttrs({ variant: 'filled' });
 
       render(<Input variant="filled" aria-label="filled input" />);
@@ -27,7 +27,7 @@ describe('Input', () => {
       expect(input).toHaveAttribute('data-variant', 'filled');
     });
 
-    it('TC-R102: size prop??core 결과?� ?�치?�다', () => {
+    it('TC-R102: size prop이 core 결과와 일치한다', () => {
       const coreAttrs = InputDef.mapPropsToAttrs({ size: 'lg' });
 
       render(<Input size="lg" aria-label="large input" />);
@@ -37,52 +37,52 @@ describe('Input', () => {
       expect(input).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-R103: disabled prop??core 결과?� ?�치?�다', () => {
+    it('TC-R103: disabled prop이 core 결과와 일치한다', () => {
       const coreAttrs = InputDef.mapPropsToAttrs({ disabled: true });
 
       render(<Input disabled aria-label="disabled input" />);
       const input = screen.getByRole('textbox');
 
-      // Core??data-state='disabled' ?�용
+      // Core는 data-state='disabled' 적용
       expect(input).toHaveAttribute('data-state', coreAttrs['data-state']);
       expect(input).toHaveAttribute('data-state', 'disabled');
       expect(input).toBeDisabled();
     });
 
-    it('TC-R104: error prop??core 결과?� ?�치?�다', () => {
+    it('TC-R104: error prop이 core 결과와 일치한다', () => {
       const coreAttrs = InputDef.mapPropsToAttrs({ error: true });
 
       render(<Input error aria-label="error input" />);
       const input = screen.getByRole('textbox');
 
-      // Core??data-state='error' ?�용
+      // Core??data-state='error' ?용
       expect(input).toHaveAttribute('data-state', coreAttrs['data-state']);
       expect(input).toHaveAttribute('data-state', 'error');
     });
 
-    it('TC-R105: success prop??core 결과?� ?�치?�다', () => {
+    it('TC-R105: success prop이 core 결과와 일치한다', () => {
       const coreAttrs = InputDef.mapPropsToAttrs({ success: true });
 
       render(<Input success aria-label="success input" />);
       const input = screen.getByRole('textbox');
 
-      // Core??data-state='success' ?�용
+      // Core??data-state='success' ?용
       expect(input).toHaveAttribute('data-state', coreAttrs['data-state']);
       expect(input).toHaveAttribute('data-state', 'success');
     });
 
-    it('TC-R106: error가 success보다 ?�선?�위가 ?�다', () => {
+    it('TC-R106: error가 success보다 선위가 다', () => {
       const coreAttrs = InputDef.mapPropsToAttrs({ error: true, success: true });
 
       render(<Input error success aria-label="error+success input" />);
       const input = screen.getByRole('textbox');
 
-      // error > success > disabled ?�선?�위
+      // error > success > disabled ?선?위
       expect(coreAttrs['data-state']).toBe('error');
       expect(input).toHaveAttribute('data-state', 'error');
     });
 
-    it('TC-R107: 복합 props가 core 결과?� ?�치?�다', () => {
+    it('TC-R107: 복합 props가 core 결과와 일치한다', () => {
       const props = {
         variant: 'filled' as const,
         size: 'sm' as const,
@@ -101,8 +101,8 @@ describe('Input', () => {
     });
   });
 
-  describe('?�벤???�들??, () => {
-    it('TC-R200: onChange ?�들?��? ?�출?�다', async () => {
+  describe('이벤트 핸들러', () => {
+    it('TC-R200: onChange 핸들러가 호출된다', async () => {
       const user = userEvent.setup();
       const handleChange = vi.fn();
 
@@ -115,7 +115,7 @@ describe('Input', () => {
       expect(input).toHaveValue('hello');
     });
 
-    it('TC-R201: onFocus ?�들?��? ?�출?�다', async () => {
+    it('TC-R201: onFocus 핸들러가 호출된다', async () => {
       const user = userEvent.setup();
       const handleFocus = vi.fn();
 
@@ -127,7 +127,7 @@ describe('Input', () => {
       expect(handleFocus).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-R202: onBlur ?�들?��? ?�출?�다', async () => {
+    it('TC-R202: onBlur 핸들러가 호출된다', async () => {
       const user = userEvent.setup();
       const handleBlur = vi.fn();
 
@@ -140,7 +140,7 @@ describe('Input', () => {
       expect(handleBlur).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-R203: disabled ?�태?�서 ?�력???��? ?�는??, async () => {
+    it('TC-R203: disabled 태서 력 는', async () => {
       const user = userEvent.setup();
       const handleChange = vi.fn();
 
@@ -154,23 +154,23 @@ describe('Input', () => {
     });
   });
 
-  describe('React ?�용 props', () => {
-    it('TC-R300: placeholder가 ?�더링된??, () => {
+  describe('React 전용 props', () => {
+    it('TC-R300: placeholder가 더링된', () => {
       render(<Input placeholder="Enter text" aria-label="test input" />);
       expect(screen.getByPlaceholderText('Enter text')).toBeInTheDocument();
     });
 
-    it('TC-R301: value가 ?�용?�다', () => {
+    it('TC-R301: value가 적용된다', () => {
       render(<Input value="initial" onChange={() => {}} aria-label="test input" />);
       expect(screen.getByRole('textbox')).toHaveValue('initial');
     });
 
-    it('TC-R302: defaultValue가 ?�용?�다', () => {
+    it('TC-R302: defaultValue가 적용된다', () => {
       render(<Input defaultValue="default" aria-label="test input" />);
       expect(screen.getByRole('textbox')).toHaveValue('default');
     });
 
-    it('TC-R303: className??병합?�다', () => {
+    it('TC-R303: className이 병합된다', () => {
       render(<Input className="custom-class" aria-label="test input" />);
       const input = screen.getByRole('textbox');
 
@@ -178,24 +178,24 @@ describe('Input', () => {
       expect(input).toHaveClass('custom-class');
     });
 
-    it('TC-R304: type prop???�용?�다', () => {
+    it('TC-R304: type prop이 적용된다', () => {
       render(<Input type="email" aria-label="email input" />);
       expect(screen.getByRole('textbox')).toHaveAttribute('type', 'email');
     });
 
-    it('TC-R305: name prop???�용?�다', () => {
+    it('TC-R305: name prop 적용된다', () => {
       render(<Input name="email" aria-label="email input" />);
       expect(screen.getByRole('textbox')).toHaveAttribute('name', 'email');
     });
 
-    it('TC-R306: aria-describedby가 ?�용?�다', () => {
+    it('TC-R306: aria-describedby가 적용된다', () => {
       render(<Input aria-label="test input" aria-describedby="helper-text" />);
       expect(screen.getByRole('textbox')).toHaveAttribute('aria-describedby', 'helper-text');
     });
   });
 
-  describe('커스?�마?�즈 ?�버?�이??, () => {
-    it('TC-O100: className 추�? ??병합?�다', () => {
+  describe('커스터마이즈 오버라이드', () => {
+    it('TC-O100: className이 병합된다', () => {
       render(<Input className="custom" aria-label="test" />);
       const input = screen.getByRole('textbox');
 
@@ -203,17 +203,17 @@ describe('Input', () => {
       expect(input).toHaveClass('custom');
     });
 
-    it('TC-O120: data-testid 추�? ?�용', () => {
+    it('TC-O120: data-testid 추가 적용', () => {
       render(<Input data-testid="email-input" aria-label="test" />);
       expect(screen.getByTestId('email-input')).toBeInTheDocument();
     });
 
-    it('TC-O170: id ?�성 ?�달 ?�용', () => {
+    it('TC-O170: id 속성 전달 적용', () => {
       render(<Input id="my-input" aria-label="test" />);
       expect(screen.getByRole('textbox')).toHaveAttribute('id', 'my-input');
     });
 
-    it('TC-O180: style prop ?�달 ?�용', () => {
+    it('TC-O180: style prop 전달 적용', () => {
       render(<Input style={{ marginTop: 8, width: 200 }} aria-label="test" />);
       const input = screen.getByRole('textbox');
 
@@ -221,24 +221,24 @@ describe('Input', () => {
       expect(input).toHaveStyle({ width: '200px' });
     });
 
-    it('TC-O200: 보호 ?�성 data-variant ?�버?�이??차단', () => {
-      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
+    it('TC-O200: 보호 속성 $1 오버라이드 차단', () => {
+      // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<Input data-variant="custom" variant="filled" aria-label="test" />);
       const input = screen.getByRole('textbox');
 
       expect(input).toHaveAttribute('data-variant', 'filled');
     });
 
-    it('TC-O201: 보호 ?�성 data-size ?�버?�이??차단', () => {
-      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
+    it('TC-O201: 보호 속성 $1 오버라이드 차단', () => {
+      // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<Input data-size="custom" size="lg" aria-label="test" />);
       const input = screen.getByRole('textbox');
 
       expect(input).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-O202: 보호 ?�성 data-state ?�버?�이??차단', () => {
-      // @ts-expect-error - 보호 ?�성 ?�버?�이???�도
+    it('TC-O202: 보호 속성 $1 오버라이드 차단', () => {
+      // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<Input data-state="custom" error aria-label="test" />);
       const input = screen.getByRole('textbox');
 

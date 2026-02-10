@@ -55,8 +55,8 @@ describe('Spinner Core', () => {
     });
 
     it('should apply custom label', () => {
-      const attrs = Spinner.mapPropsToAttrs({ label: '?�이??불러?�는 �?..' });
-      expect(attrs['aria-label']).toBe('?�이??불러?�는 �?..');
+      const attrs = Spinner.mapPropsToAttrs({ label: '데이터를 불러오는 중...' });
+      expect(attrs['aria-label']).toBe('데이터를 불러오는 중...');
     });
 
     it('should always have role="status"', () => {

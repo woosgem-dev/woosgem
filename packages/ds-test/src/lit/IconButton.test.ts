@@ -3,12 +3,12 @@
  */
 import { describe, it, expect, vi } from 'vitest';
 import { html, fixture } from './setup';
-import { IconButton } from '@woosgem/ds-lit';
+import { IconButton } from '@woosgem-dev/lit';
 import { IconButton as IconButtonDef } from '@woosgem-dev/core';
 
 describe('IconButton (Lit)', () => {
-  describe('core ?�치 검�?, () => {
-    it('TC-L100: 기본 props가 core 결과?� ?�치?�다', async () => {
+  describe('Core 일치 검증', () => {
+    it('TC-L100: 기본 props가 core 결과와 일치한다', async () => {
       const coreAttrs = IconButtonDef.mapPropsToAttrs({});
 
       const el = await fixture<InstanceType<typeof IconButton>>(html`
@@ -21,7 +21,7 @@ describe('IconButton (Lit)', () => {
       expect(el.classList.contains('icon-btn')).toBe(true);
     });
 
-    it('TC-L101: variant prop??core 결과?� ?�치?�다', async () => {
+    it('TC-L101: variant prop이 core 결과와 일치한다', async () => {
       const coreAttrs = IconButtonDef.mapPropsToAttrs({ variant: 'filled' });
 
       const el = await fixture<InstanceType<typeof IconButton>>(html`
@@ -32,7 +32,7 @@ describe('IconButton (Lit)', () => {
       expect(el.getAttribute('data-variant')).toBe('filled');
     });
 
-    it('TC-L102: disabled prop??core 결과?� ?�치?�다', async () => {
+    it('TC-L102: disabled prop이 core 결과와 일치한다', async () => {
       const coreAttrs = IconButtonDef.mapPropsToAttrs({ disabled: true });
 
       const el = await fixture<InstanceType<typeof IconButton>>(html`
@@ -45,8 +45,8 @@ describe('IconButton (Lit)', () => {
     });
   });
 
-  describe('?�벤???�들??, () => {
-    it('TC-L200: click ?�벤?��? 발생?�다', async () => {
+  describe('이벤트 핸들러', () => {
+    it('TC-L200: click 이벤트가 발생한다', async () => {
       const handleClick = vi.fn();
 
       const el = await fixture<InstanceType<typeof IconButton>>(html`
@@ -60,8 +60,8 @@ describe('IconButton (Lit)', () => {
     });
   });
 
-  describe('Web Component ?�용', () => {
-    it('TC-L300: slot 컨텐츠�? ?�더링된??, async () => {
+  describe('Web Component 전용', () => {
+    it('TC-L300: slot 컨텐츠가 렌더링된다', async () => {
       const el = await fixture<InstanceType<typeof IconButton>>(html`
         <wg-icon-button>X</wg-icon-button>
       `);
