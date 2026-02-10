@@ -83,7 +83,7 @@ describe('Input', () => {
       expect(input).toHaveAttribute('data-state', 'success');
     });
 
-    it('TC-V106: error가 success보다 선위가 다', () => {
+    it('TC-V106: error가 success보다 우선순위가 높다', () => {
       const coreAttrs = InputDef.mapPropsToAttrs({ error: true, success: true });
 
       render(Input, {

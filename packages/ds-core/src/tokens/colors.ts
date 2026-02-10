@@ -1,9 +1,9 @@
 /**
  * Color Token Types
  *
- * ?�제 값�? ds-styles?�서 CSS 변?�로 ?�의??
- * --wg-global-color-* : Theme/CSP로만 변�?
- * --wg-{component}-*  : ?�라???�버?�이??가??
+ * 실제 값은 ds-styles에서 CSS 변수로 정의됨
+ * --wg-global-color-* : Theme/CSP로만 변함
+ * --wg-{component}-*  : 프레임워크별 오버라이딩이 가능함
  */
 
 // ===================

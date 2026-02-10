@@ -42,7 +42,7 @@ describe('Avatar', () => {
       expect(avatar).toHaveAttribute('data-shape', 'square');
     });
 
-    it('TC-V103: src가 을 core 결과 치다', () => {
+    it('TC-V103: src가 있을 때 core 결과와 일치한다', () => {
       const coreAttrs = AvatarDef.mapPropsToAttrs({ src: '/avatar.jpg' });
 
       render(Avatar, {
@@ -54,7 +54,7 @@ describe('Avatar', () => {
       expect(avatar).toHaveAttribute('data-has-image', String(coreAttrs['data-has-image']));
     });
 
-    it('TC-V104: src가 을 core 결과 치다', () => {
+    it('TC-V104: src가 없을 때 core 결과와 일치한다', () => {
       const coreAttrs = AvatarDef.mapPropsToAttrs({});
 
       render(Avatar, {
@@ -85,7 +85,7 @@ describe('Avatar', () => {
       expect(avatar).toHaveAttribute('data-has-image', 'true');
     });
 
-    it('TC-V106: size: xs가 core 결과 치다', () => {
+    it('TC-V106: size: xs가 core 결과와 일치한다', () => {
       const coreAttrs = AvatarDef.mapPropsToAttrs({ size: 'xs' });
 
       render(Avatar, {
@@ -97,7 +97,7 @@ describe('Avatar', () => {
       expect(avatar).toHaveAttribute('data-size', coreAttrs['data-size']);
     });
 
-    it('TC-V107: size: smcore 결과 치다', () => {
+    it('TC-V107: size: sm이 core 결과와 일치한다', () => {
       const coreAttrs = AvatarDef.mapPropsToAttrs({ size: 'sm' });
 
       render(Avatar, {
@@ -109,7 +109,7 @@ describe('Avatar', () => {
       expect(avatar).toHaveAttribute('data-size', coreAttrs['data-size']);
     });
 
-    it('TC-V108: size: xlcore 결과 치다', () => {
+    it('TC-V108: size: xl이 core 결과와 일치한다', () => {
       const coreAttrs = AvatarDef.mapPropsToAttrs({ size: 'xl' });
 
       render(Avatar, {

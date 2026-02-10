@@ -27,7 +27,7 @@ const BaseKbd = createComponent(KbdDef, {});
  *
  * @example
  * ```tsx
- * <Kbd>?˜K</Kbd>
+ * <Kbd>âŒ˜K</Kbd>
  * <Kbd size="md" variant="flat">Ctrl</Kbd>
  * <Kbd>Enter</Kbd>
  * ```

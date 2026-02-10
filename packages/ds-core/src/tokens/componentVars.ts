@@ -1,8 +1,8 @@
 /**
  * Component CSS Variables
  *
- * 컴포?�트�??�버?�이??가?�한 CSS 변??참조
- * ?�용: <Button style={{ [buttonVars.bg]: '#custom' }} />
+ * 컴포넌트별 오버라이딩이 가능한 CSS 변수 참조
+ * 용법: <Button style={{ [buttonVars.bg]: '#custom' }} />
  */
 
 // ===================

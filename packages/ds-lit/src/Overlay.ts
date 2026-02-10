@@ -4,7 +4,7 @@ import { createComponent } from './_internal/createComponent';
 /**
  * Overlay - Lit Web Component
  *
- * Modal, BottomSheet, Drawer ?�의 배경 ?�버?�이
+ * Modal, BottomSheet, Drawer 등의 배경 오버레이
  *
  * @element wg-overlay
  *

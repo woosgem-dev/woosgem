@@ -22,7 +22,7 @@ export type SpinnerProps = Prettify<
  *
  * <Spinner size="lg" color="secondary" />
  *
- * <Spinner label="?�이??불러?�는 �?.." />
+ * <Spinner label="데이터를 불러오는 중..." />
  * ```
  */
 export const Spinner = createComponent(SpinnerDef) as DefineComponent<SpinnerProps>;

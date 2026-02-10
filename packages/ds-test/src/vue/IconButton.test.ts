@@ -78,7 +78,7 @@ describe('IconButton', () => {
       expect(btn).toHaveAttribute('data-shape', 'circle');
     });
 
-    it('TC-V105: variant: ghost가 core 결과 치다', () => {
+    it('TC-V105: variant: ghost가 core 결과와 일치한다', () => {
       const coreAttrs = IconButtonDef.mapPropsToAttrs({ variant: 'ghost' });
 
       render(IconButton, {
@@ -91,7 +91,7 @@ describe('IconButton', () => {
       expect(btn).toHaveAttribute('data-variant', coreAttrs['data-variant']);
     });
 
-    it('TC-V106: color: secondary가 core 결과 치다', () => {
+    it('TC-V106: color: secondary가 core 결과와 일치한다', () => {
       const coreAttrs = IconButtonDef.mapPropsToAttrs({ color: 'secondary' });
 
       render(IconButton, {
@@ -104,7 +104,7 @@ describe('IconButton', () => {
       expect(btn).toHaveAttribute('data-color', coreAttrs['data-color']);
     });
 
-    it('TC-V107: size: xs가 core 결과 치다', () => {
+    it('TC-V107: size: xs가 core 결과와 일치한다', () => {
       const coreAttrs = IconButtonDef.mapPropsToAttrs({ size: 'xs' });
 
       render(IconButton, {
@@ -117,7 +117,7 @@ describe('IconButton', () => {
       expect(btn).toHaveAttribute('data-size', coreAttrs['data-size']);
     });
 
-    it('TC-V108: size: smcore 결과 치다', () => {
+    it('TC-V108: size: sm이 core 결과와 일치한다', () => {
       const coreAttrs = IconButtonDef.mapPropsToAttrs({ size: 'sm' });
 
       render(IconButton, {

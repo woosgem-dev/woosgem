@@ -56,7 +56,7 @@ describe('Badge', () => {
       expect(badge).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-V104: variant: subtlecore 결과 치다', () => {
+    it('TC-V104: variant: subtle이 core 결과와 일치한다', () => {
       const coreAttrs = BadgeDef.mapPropsToAttrs({ variant: 'subtle' });
 
       render(Badge, {
@@ -68,7 +68,7 @@ describe('Badge', () => {
       expect(badge).toHaveAttribute('data-variant', coreAttrs['data-variant']);
     });
 
-    it('TC-V105: color: success가 core 결과 치다', () => {
+    it('TC-V105: color: success가 core 결과와 일치한다', () => {
       const coreAttrs = BadgeDef.mapPropsToAttrs({ color: 'success' });
 
       render(Badge, {
@@ -80,7 +80,7 @@ describe('Badge', () => {
       expect(badge).toHaveAttribute('data-color', coreAttrs['data-color']);
     });
 
-    it('TC-V106: color: warningcore 결과 치다', () => {
+    it('TC-V106: color: warning이 core 결과와 일치한다', () => {
       const coreAttrs = BadgeDef.mapPropsToAttrs({ color: 'warning' });
 
       render(Badge, {
@@ -92,7 +92,7 @@ describe('Badge', () => {
       expect(badge).toHaveAttribute('data-color', coreAttrs['data-color']);
     });
 
-    it('TC-V107: color: info가 core 결과 치다', () => {
+    it('TC-V107: color: info가 core 결과와 일치한다', () => {
       const coreAttrs = BadgeDef.mapPropsToAttrs({ color: 'info' });
 
       render(Badge, {
@@ -104,7 +104,7 @@ describe('Badge', () => {
       expect(badge).toHaveAttribute('data-color', coreAttrs['data-color']);
     });
 
-    it('TC-V108: color: secondary가 core 결과 치다', () => {
+    it('TC-V108: color: secondary가 core 결과와 일치한다', () => {
       const coreAttrs = BadgeDef.mapPropsToAttrs({ color: 'secondary' });
 
       render(Badge, {
@@ -116,7 +116,7 @@ describe('Badge', () => {
       expect(badge).toHaveAttribute('data-color', coreAttrs['data-color']);
     });
 
-    it('TC-V109: size: smcore 결과 치다', () => {
+    it('TC-V109: size: sm이 core 결과와 일치한다', () => {
       const coreAttrs = BadgeDef.mapPropsToAttrs({ size: 'sm' });
 
       render(Badge, {

@@ -5,7 +5,7 @@ import { createComponent } from './_internal/createComponent';
  * Button - Lit Web Component
  *
  * @element wg-button
- * @slot - 버튼 ?�용
+ * @slot - 버튼 내용
  *
  * @example
  * ```html

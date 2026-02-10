@@ -1,7 +1,7 @@
 /**
  * Motion Token Types
  *
- * ?�제 값�? ds-styles?�서 CSS 변?�로 ?�의?? */
+ * 실제 값은 ds-styles에서 CSS 변수로 정의됨 */
 
 // ===================
 // Duration Keys
