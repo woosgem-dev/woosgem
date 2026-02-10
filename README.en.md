@@ -5,11 +5,11 @@
 ### Build & Quality
 [![CI](https://github.com/woosgem-dev/woosgem/actions/workflows/test.yml/badge.svg)](https://github.com/woosgem-dev/woosgem/actions/workflows/test.yml)
 [![Tests](https://img.shields.io/badge/tests-1136%20passed-brightgreen)](./docs/test-report.md)
-[![Coverage](https://img.shields.io/badge/coverage-62%25-brightgreen)](./docs/test-report.md)
+[![Coverage](https://img.shields.io/badge/coverage-68%25-brightgreen)](./docs/test-report.md)
 
 ### Project Status
-[![Components](https://img.shields.io/badge/components-15-blue)](./docs/roadmap.md)
-[![Storybook](https://img.shields.io/badge/stories-106-blueviolet)](./packages/ds-storybook)
+[![Components](https://img.shields.io/badge/components-25-blue)](./docs/roadmap.md)
+[![Storybook](https://img.shields.io/badge/stories-191-blueviolet)](./packages/ds-storybook)
 [![Vibe Coding](https://img.shields.io/badge/Vibe%20Coding-Claude%20Code-orange)](https://claude.ai/code)
 [![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org)
 [![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
@@ -28,9 +28,10 @@ This project is built with **Vibe Coding** powered by **Claude Code**.
 
 ## Features
 
-- **Multi-Framework Support**: Provides both React and Vue components
+- **Multi-Framework Support**: React, Vue, and Lit (Web Components)
 - **Theme System**: Runtime theme switching and build-time theme splitting
 - **Color Set Protocol**: Generates 81 tokens from minimal input
+- **Accessibility (a11y)**: WAI-ARIA compliant, keyboard navigation support
 - **Icon System**: Multi-size (sm, md, lg) SVG assets with theme support (`currentColor`)
 - **Type Safety**: Written in TypeScript with full type support
 - **Monorepo Architecture**: Efficient build system powered by Turborepo
@@ -62,6 +63,19 @@ pnpm add @woosgem-dev/vue @woosgem-dev/styles
 
 # yarn
 yarn add @woosgem-dev/vue @woosgem-dev/styles
+```
+
+### Lit (Web Components)
+
+```bash
+# npm
+npm install @woosgem-dev/lit @woosgem-dev/styles
+
+# pnpm
+pnpm add @woosgem-dev/lit @woosgem-dev/styles
+
+# yarn
+yarn add @woosgem-dev/lit @woosgem-dev/styles
 ```
 
 ## Quick Start
@@ -97,34 +111,54 @@ export default App;
 
 ## Components
 
-Currently **15 components** are available, all with both React and Vue implementations.
+Currently **25 components** are available.
+
+| Framework | Components |
+|-----------|-----------|
+| React | 25 |
+| Lit | 22 |
+| Vue | 21 |
 
 ### Action (2)
 - **Button** - filled/outline/ghost/link variants, 6 colors (primary/secondary/danger/success/warning/info)
 - **IconButton** - Icon-only button, 3 shapes (circle/square/none)
 
-### Form (5)
+### Form (6)
 - **Input** - outline/filled/underline variants, error/success states
 - **Textarea** - outline/filled variants, resize options (none/vertical/horizontal/both)
 - **Checkbox** - Headless compound pattern
 - **Radio** - Includes RadioGroup, horizontal/vertical layouts
 - **Switch** - Toggle switch, 3 colors (primary/secondary/success)
+- **Select** - Dropdown selection, keyboard navigation support
 
-### Feedback (2)
+### Feedback (4)
 - **Alert** - info/success/warning/error states, filled/outline/subtle variants, closable option
 - **Spinner** - Loading indicator, 4 sizes (xs/sm/md/lg)
+- **Toast** - Notification messages, auto-dismiss support
+- **Progress** - Progress bar, multiple sizes and colors
 
-### Data Display (3)
+### Data Display (5)
 - **Badge** - filled/outline/subtle variants, 6 colors
 - **Avatar** - circle/square shapes, xs~xl sizes
 - **ListItem** - List item component
+- **Card** - Content container, header/body/footer structure
+- **Skeleton** - Loading placeholder, multiple shape variants
 
 ### Navigation (2)
 - **Tab** - underline/filled variants, primary/secondary colors
 - **SegmentedControl** - Segmented control component
 
-### Layout (1)
+### Overlay (3)
+- **Modal** - Dialog with focus trap support
+- **Tooltip** - Tooltip with multiple placement options
+- **Overlay** - Overlay backdrop
+
+### Layout (2)
 - **Divider** - 6 color variations (default/muted/primary/secondary/danger/success)
+- **Kbd** - Keyboard shortcut display
+
+### Utility (1)
+- **Icon** - SVG icon wrapper, multi-size support
 
 > See [Roadmap](./docs/roadmap.md) for the complete component roadmap.
 
@@ -230,12 +264,13 @@ pnpm test:all
 woosgem/
 ├── packages/
 │   ├── ds-core/      # Component definitions + CSP + token system
-│   ├── ds-react/     # React components (15)
-│   ├── ds-vue/       # Vue components (15)
+│   ├── ds-react/     # React components (25)
+│   ├── ds-vue/       # Vue components (21)
+│   ├── ds-lit/       # Lit Web Components (22)
 │   ├── ds-styles/    # SCSS styles and themes (default/dark)
 │   ├── ds-icons/     # SVG icon assets (sm/md/lg)
 │   ├── ds-test/      # Consolidated test suite (1,136 tests)
-│   ├── ds-storybook/ # Storybook (106 stories)
+│   ├── ds-storybook/ # Storybook (191 stories)
 │   └── utils/        # Utility functions
 ├── turbo.json         # Turborepo configuration
 └── pnpm-workspace.yaml
@@ -247,7 +282,7 @@ woosgem/
 
 1. Add component definition in `packages/ds-core/src/components`
 2. Add styles in `packages/ds-styles/src/components`
-3. Add framework implementations in `packages/ds-react/src` and `packages/ds-vue/src`
+3. Add framework implementations in `packages/ds-react/src`, `packages/ds-vue/src`, and `packages/ds-lit/src`
 4. Add stories in `packages/ds-storybook/src/stories`
 5. Add tests in `packages/ds-test/src`
 

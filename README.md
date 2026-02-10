@@ -5,11 +5,11 @@
 ### Build & Quality
 [![CI](https://github.com/woosgem-dev/woosgem/actions/workflows/test.yml/badge.svg)](https://github.com/woosgem-dev/woosgem/actions/workflows/test.yml)
 [![Tests](https://img.shields.io/badge/tests-1136%20passed-brightgreen)](./docs/test-report.md)
-[![Coverage](https://img.shields.io/badge/coverage-62%25-brightgreen)](./docs/test-report.md)
+[![Coverage](https://img.shields.io/badge/coverage-68%25-brightgreen)](./docs/test-report.md)
 
 ### Project Status
-[![Components](https://img.shields.io/badge/components-15-blue)](./docs/roadmap.md)
-[![Storybook](https://img.shields.io/badge/stories-106-blueviolet)](./packages/ds-storybook)
+[![Components](https://img.shields.io/badge/components-25-blue)](./docs/roadmap.md)
+[![Storybook](https://img.shields.io/badge/stories-191-blueviolet)](./packages/ds-storybook)
 [![Vibe Coding](https://img.shields.io/badge/Vibe%20Coding-Claude%20Code-orange)](https://claude.ai/code)
 [![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org)
 [![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
@@ -28,9 +28,10 @@
 
 ## 특징
 
-- **다중 프레임워크 지원**: React와 Vue 컴포넌트 제공
+- **다중 프레임워크 지원**: React, Vue, Lit(Web Components) 컴포넌트 제공
 - **테마 시스템**: 런타임 테마 전환 및 빌드타임 테마 분리 지원
 - **Color Set Protocol**: 최소 입력으로 81개 토큰 자동 생성
+- **접근성(a11y)**: WAI-ARIA 패턴 준수, 키보드 내비게이션 지원
 - **아이콘 시스템**: 멀티 사이즈(sm, md, lg) 및 테마(`currentColor`) 대응 SVG 에셋
 - **타입 안전성**: TypeScript로 작성되어 완벽한 타입 지원
 - **모노레포 구조**: Turborepo를 활용한 효율적인 빌드 시스템
@@ -62,6 +63,19 @@ pnpm add @woosgem-dev/vue @woosgem-dev/styles
 
 # yarn
 yarn add @woosgem-dev/vue @woosgem-dev/styles
+```
+
+### Lit (Web Components)
+
+```bash
+# npm
+npm install @woosgem-dev/lit @woosgem-dev/styles
+
+# pnpm
+pnpm add @woosgem-dev/lit @woosgem-dev/styles
+
+# yarn
+yarn add @woosgem-dev/lit @woosgem-dev/styles
 ```
 
 ## 빠른 시작
@@ -97,34 +111,54 @@ export default App;
 
 ## 컴포넌트
 
-현재 **15개 컴포넌트**가 제공되며, 모두 React와 Vue 버전을 지원합니다.
+현재 **25개 컴포넌트**가 제공됩니다.
+
+| 프레임워크 | 컴포넌트 수 |
+|-----------|------------|
+| React | 25 |
+| Lit | 22 |
+| Vue | 21 |
 
 ### Action (2)
 - **Button** - filled/outline/ghost/link 변형, 6가지 색상 (primary/secondary/danger/success/warning/info)
 - **IconButton** - 아이콘 전용 버튼, 3가지 형태 (circle/square/none)
 
-### Form (5)
+### Form (6)
 - **Input** - outline/filled/underline 변형, error/success 상태
 - **Textarea** - outline/filled 변형, resize 옵션 (none/vertical/horizontal/both)
 - **Checkbox** - headless compound 패턴
 - **Radio** - RadioGroup 포함, horizontal/vertical 레이아웃
 - **Switch** - 토글 스위치, 3가지 색상 (primary/secondary/success)
+- **Select** - 드롭다운 선택, 키보드 내비게이션 지원
 
-### Feedback (2)
+### Feedback (4)
 - **Alert** - info/success/warning/error 상태, filled/outline/subtle 변형, closable 옵션
 - **Spinner** - 로딩 인디케이터, 4가지 크기 (xs/sm/md/lg)
+- **Toast** - 알림 메시지, 자동 닫힘 지원
+- **Progress** - 진행률 표시, 다양한 크기 및 색상
 
-### Data Display (3)
+### Data Display (5)
 - **Badge** - filled/outline/subtle 변형, 6가지 색상
 - **Avatar** - circle/square 형태, xs~xl 크기
 - **ListItem** - 리스트 아이템
+- **Card** - 콘텐츠 컨테이너, header/body/footer 구조
+- **Skeleton** - 로딩 플레이스홀더, 다양한 형태 지원
 
 ### Navigation (2)
 - **Tab** - underline/filled 변형, primary/secondary 색상
 - **SegmentedControl** - 세그먼트 컨트롤
 
-### Layout (1)
+### Overlay (3)
+- **Modal** - 다이얼로그, 포커스 트랩 지원
+- **Tooltip** - 툴팁, 다양한 위치 옵션
+- **Overlay** - 오버레이 백드롭
+
+### Layout (2)
 - **Divider** - 6가지 색상 지원 (default/muted/primary/secondary/danger/success)
+- **Kbd** - 키보드 단축키 표시
+
+### Utility (1)
+- **Icon** - SVG 아이콘 래퍼, 멀티 사이즈 지원
 
 > 전체 컴포넌트 로드맵은 [Roadmap](./docs/roadmap.md)을 참고하세요.
 
@@ -230,12 +264,13 @@ pnpm test:all
 woosgem/
 ├── packages/
 │   ├── ds-core/      # 컴포넌트 정의 + CSP + 토큰 시스템
-│   ├── ds-react/     # React 컴포넌트 (15개)
-│   ├── ds-vue/       # Vue 컴포넌트 (15개)
+│   ├── ds-react/     # React 컴포넌트 (25개)
+│   ├── ds-vue/       # Vue 컴포넌트 (21개)
+│   ├── ds-lit/       # Lit Web Components (22개)
 │   ├── ds-styles/    # SCSS 스타일 및 테마 (default/dark)
 │   ├── ds-icons/     # SVG 아이콘 에셋 (sm/md/lg)
 │   ├── ds-test/      # 통합 테스트 스위트 (1,136개 테스트)
-│   ├── ds-storybook/ # Storybook (106개 스토리)
+│   ├── ds-storybook/ # Storybook (191개 스토리)
 │   └── utils/        # 유틸리티 함수
 ├── turbo.json         # Turborepo 설정
 └── pnpm-workspace.yaml
@@ -247,7 +282,7 @@ woosgem/
 
 1. `packages/ds-core/src/components`에 컴포넌트 정의 추가
 2. `packages/ds-styles/src/components`에 스타일 추가
-3. `packages/ds-react/src` 및 `packages/ds-vue/src`에 프레임워크별 구현 추가
+3. `packages/ds-react/src`, `packages/ds-vue/src`, `packages/ds-lit/src`에 프레임워크별 구현 추가
 4. `packages/ds-storybook/src/stories`에 스토리 추가
 5. `packages/ds-test/src`에 테스트 추가
 
