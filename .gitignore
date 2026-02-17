@@ -4,6 +4,9 @@ node_modules/
 # Build outputs
 dist/
 *.tsbuildinfo
+packages/*/src/**/*.js
+packages/*/src/**/*.d.ts
+packages/*/src/**/*.d.ts.map
 
 # IDE
 .idea/
