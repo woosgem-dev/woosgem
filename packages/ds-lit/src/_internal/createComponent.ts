@@ -1,24 +1,11 @@
 import { LitElement, html } from 'lit';
 import type { TemplateResult, PropertyDeclaration } from 'lit';
+import type { ComponentDefinition } from '@woosgem-dev/core';
+
+type AnyComponentDef = ComponentDefinition<any, any, any>;
 
 /**
- * Core 컴포넌트 정의 인터페이스
- */
-export interface CoreComponentDefinition<
-  StyleProps,
-  Attrs,
-> {
-  displayName: string;
-  defaultProps: Partial<StyleProps>;
-  mapPropsToAttrs: (props: StyleProps) => Attrs;
-  template: {
-    tag: string;
-    slots: readonly string[];
-  };
-}
-
-/**
- * Property 정의 인터페이스
+ * Property definition interface
  */
 export interface PropDefinition {
   type: typeof String | typeof Number | typeof Boolean;
@@ -28,14 +15,14 @@ export interface PropDefinition {
 }
 
 /**
- * createComponent 옵션
+ * createComponent options
  */
 export interface CreateComponentOptions<StyleProps> {
-  /** 컴포넌트 프로퍼티 정의 */
+  /** Component property definitions */
   props: {
     [K in keyof StyleProps]?: PropDefinition;
   };
-  /** 추가 이벤트 핸들러 */
+  /** Additional event handlers */
   events?: {
     click?: (e: MouseEvent, component: LitElement) => void;
     keydown?: (e: KeyboardEvent, component: LitElement) => void;
@@ -43,7 +30,7 @@ export interface CreateComponentOptions<StyleProps> {
 }
 
 /**
- * 속성을 DOM에 적용하는 헬퍼
+ * Helper to apply attributes to a DOM element
  */
 export function applyAttrsToElement(
   element: HTMLElement,
@@ -56,7 +43,7 @@ export function applyAttrsToElement(
     } else if (value === undefined || value === null || value === false) {
       element.removeAttribute(key);
     } else if (value === true) {
-      // data-* 속성은 'true' 문자열로, 일반 boolean 속성은 빈 문자열로
+      // data-* attributes use 'true' string, standard boolean attributes use empty string
       element.setAttribute(key, key.startsWith('data-') ? 'true' : '');
     } else {
       element.setAttribute(key, String(value));
@@ -65,7 +52,7 @@ export function applyAttrsToElement(
 }
 
 /**
- * Core 컴포넌트를 Lit Web Component로 변환하는 팩토리 함수
+ * Factory function to create a Lit Web Component from a core ComponentDefinition
  *
  * @example
  * ```ts
@@ -86,17 +73,16 @@ export function applyAttrsToElement(
  * ```
  */
 export function createComponent<
-  StyleProps,
-  Attrs,
+  Def extends AnyComponentDef,
 >(
-  coreDefinition: CoreComponentDefinition<StyleProps, Attrs>,
+  coreDefinition: Def,
   tagName: string,
-  options: CreateComponentOptions<StyleProps>
+  options: CreateComponentOptions<Def['defaultProps']>
 ): typeof LitElement {
   const { defaultProps, mapPropsToAttrs } = coreDefinition;
   const { props, events } = options;
 
-  // Lit properties 정의 생성
+  // Generate Lit property declarations
   const properties: Record<string, PropertyDeclaration> = {};
 
   for (const [key, def] of Object.entries(props)) {
@@ -110,15 +96,15 @@ export function createComponent<
     }
   }
 
-  // 동적 클래스 생성
+  // Create dynamic component class
   class GeneratedComponent extends LitElement {
     static properties = properties;
 
-    // 프로퍼티 기본값 설정
+    // Set property defaults
     constructor() {
       super();
 
-      // props에서 기본값 설정
+      // Set defaults from props
       for (const [key, def] of Object.entries(props)) {
         if (def) {
           const propDef = def as PropDefinition;
@@ -130,12 +116,12 @@ export function createComponent<
       }
     }
 
-    // Light DOM 사용
+    // Use Light DOM
     createRenderRoot(): HTMLElement {
       return this;
     }
 
-    // Core에서 생성된 attrs를 적용
+    // Apply core-generated attributes
     private applyAttrs(): void {
       const styleProps: Record<string, unknown> = {};
 
@@ -143,7 +129,7 @@ export function createComponent<
         styleProps[key] = (this as Record<string, unknown>)[key];
       }
 
-      const attrs = mapPropsToAttrs(styleProps as StyleProps);
+      const attrs = mapPropsToAttrs(styleProps as Def['defaultProps']);
       applyAttrsToElement(this, attrs as Record<string, unknown>);
     }
 
@@ -156,7 +142,7 @@ export function createComponent<
       this.applyAttrs();
     }
 
-    // 클릭 핸들러
+    // Click handler
     private handleClick(e: MouseEvent): void {
       if (events?.click) {
         events.click(e, this);
@@ -168,14 +154,14 @@ export function createComponent<
     }
   }
 
-  // 태그 이름 설정 (디버깅용)
+  // Set tag name for debugging
   Object.defineProperty(GeneratedComponent, 'name', { value: tagName });
 
   return GeneratedComponent as typeof LitElement;
 }
 
 /**
- * 이벤트를 발생시키는 헬퍼
+ * Helper to dispatch a custom event
  */
 export function emitEvent(
   element: HTMLElement,

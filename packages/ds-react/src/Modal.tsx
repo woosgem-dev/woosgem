@@ -21,6 +21,11 @@ import {
   type ModalFooterStyleProps,
   type Prettify,
 } from '@woosgem-dev/core';
+import {
+  useScrollLock,
+  useEscapeKey,
+  useFocusTrap,
+} from '@woosgem-dev/headless/react';
 import { createComponent } from './_internal/createComponent';
 
 /**
@@ -66,22 +71,6 @@ export type ModalRef = HTMLDivElement;
 const BaseModal = createComponent(ModalDef, {});
 
 /**
- * Get all focusable elements within a container
- */
-function getFocusableElements(container: HTMLElement): HTMLElement[] {
-  const focusableSelectors = [
-    'button:not([disabled])',
-    'input:not([disabled])',
-    'select:not([disabled])',
-    'textarea:not([disabled])',
-    'a[href]',
-    '[tabindex]:not([tabindex="-1"])',
-  ].join(', ');
-
-  return Array.from(container.querySelectorAll<HTMLElement>(focusableSelectors));
-}
-
-/**
  * Modal component for displaying content in a dialog overlay.
  *
  * @example
@@ -115,16 +104,14 @@ const ModalComponent = forwardRef<ModalRef, ModalProps>(function Modal(
   const modalRef = useRef<HTMLDivElement>(null);
   const previousActiveElement = useRef<HTMLElement | null>(null);
 
-  // Handle ESC key
-  const handleKeyDown = useCallback(
-    (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && closable && !disableEscapeKey && onClose) {
-        event.preventDefault();
-        onClose();
-      }
-    },
-    [closable, disableEscapeKey, onClose]
-  );
+  const escapeCallback = useCallback(() => {
+    onClose?.();
+  }, [onClose]);
+
+  // Headless primitives
+  useScrollLock(open);
+  useEscapeKey(open && closable && !disableEscapeKey, escapeCallback);
+  useFocusTrap(modalRef, open && !disableFocusTrap);
 
   // Handle overlay click
   const handleOverlayClick = useCallback(() => {
@@ -133,78 +120,19 @@ const ModalComponent = forwardRef<ModalRef, ModalProps>(function Modal(
     }
   }, [closable, disableOverlayClick, onClose]);
 
-  // Focus trap
-  const handleFocusTrap = useCallback(
-    (event: KeyboardEvent) => {
-      if (disableFocusTrap || !modalRef.current || event.key !== 'Tab') {
-        return;
-      }
-
-      const focusableElements = getFocusableElements(modalRef.current);
-      if (focusableElements.length === 0) return;
-
-      const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
-
-      if (!firstElement || !lastElement) return;
-
-      if (event.shiftKey) {
-        // Shift + Tab: wrap to last element
-        if (document.activeElement === firstElement) {
-          event.preventDefault();
-          lastElement.focus();
-        }
-      } else {
-        // Tab: wrap to first element
-        if (document.activeElement === lastElement) {
-          event.preventDefault();
-          firstElement.focus();
-        }
-      }
-    },
-    [disableFocusTrap]
-  );
-
-  // Setup/cleanup effects
+  // Focus restoration
   useEffect(() => {
     if (open) {
-      // Store currently focused element
       previousActiveElement.current = document.activeElement as HTMLElement;
 
-      // Prevent body scroll
-      const originalOverflow = document.body.style.overflow;
-      document.body.style.overflow = 'hidden';
-
-      // Add event listeners
-      document.addEventListener('keydown', handleKeyDown);
-      document.addEventListener('keydown', handleFocusTrap);
-
-      // Focus first focusable element or modal itself
-      requestAnimationFrame(() => {
-        if (modalRef.current) {
-          const focusableElements = getFocusableElements(modalRef.current);
-          const firstElement = focusableElements[0];
-          if (firstElement) {
-            firstElement.focus();
-          } else {
-            modalRef.current.focus();
-          }
-        }
-      });
-
       return () => {
-        document.body.style.overflow = originalOverflow;
-        document.removeEventListener('keydown', handleKeyDown);
-        document.removeEventListener('keydown', handleFocusTrap);
-
-        // Restore focus
         if (previousActiveElement.current) {
           previousActiveElement.current.focus();
         }
       };
     }
     return undefined;
-  }, [open, handleKeyDown, handleFocusTrap]);
+  }, [open]);
 
   // Don't render if not open
   if (!open) {

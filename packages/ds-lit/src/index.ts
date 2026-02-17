@@ -46,10 +46,12 @@ export {
 } from './_internal/createComponent';
 
 export type {
-  CoreComponentDefinition,
   PropDefinition,
   CreateComponentOptions,
 } from './_internal/createComponent';
+
+// Re-export core type (replaces removed CoreComponentDefinition)
+export type { ComponentDefinition } from '@woosgem-dev/core';
 
 // Re-export core types
 export type {

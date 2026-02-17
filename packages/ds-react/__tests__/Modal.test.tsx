@@ -1,5 +1,5 @@
-import { describe, it, expect, vi } from 'vitest';
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { describe, it, expect, vi, afterEach } from 'vitest';
+import { render, screen, fireEvent, act, cleanup } from '@testing-library/react';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from '@woosgem-dev/react';
 
 describe('Modal (React)', () => {
@@ -215,6 +215,165 @@ describe('Modal (React)', () => {
         </Modal>
       );
       expect(document.body.style.overflow).toBe('hidden');
+    });
+  });
+});
+
+describe('Modal Focus & Scroll Management (React)', () => {
+  afterEach(() => {
+    cleanup();
+    document.body.style.overflow = '';
+  });
+
+  describe('Focus Trap', () => {
+    it('TC-FT100: Tab cycles through focusable elements inside modal', async () => {
+      render(
+        <Modal open>
+          <ModalBody>
+            <button data-testid="btn1">First</button>
+            <button data-testid="btn2">Last</button>
+          </ModalBody>
+        </Modal>
+      );
+
+      const btn1 = screen.getByTestId('btn1');
+      const btn2 = screen.getByTestId('btn2');
+
+      // Wait for initial focus via requestAnimationFrame
+      await act(async () => {
+        await new Promise((r) => setTimeout(r, 50));
+      });
+
+      // Focus should be on first focusable element
+      expect(document.activeElement).toBe(btn1);
+
+      // Tab from last should wrap to first
+      act(() => { btn2.focus(); });
+      act(() => {
+        fireEvent.keyDown(document, { key: 'Tab' });
+      });
+      expect(document.activeElement).toBe(btn1);
+    });
+
+    it('TC-FT101: Shift+Tab wraps from first to last focusable element', async () => {
+      render(
+        <Modal open>
+          <ModalBody>
+            <button data-testid="btn1">First</button>
+            <button data-testid="btn2">Last</button>
+          </ModalBody>
+        </Modal>
+      );
+
+      const btn1 = screen.getByTestId('btn1');
+      const btn2 = screen.getByTestId('btn2');
+
+      await act(async () => {
+        await new Promise((r) => setTimeout(r, 50));
+      });
+
+      act(() => { btn1.focus(); });
+      act(() => {
+        fireEvent.keyDown(document, { key: 'Tab', shiftKey: true });
+      });
+      expect(document.activeElement).toBe(btn2);
+    });
+
+    it('TC-FT102: disableFocusTrap disables Tab cycling', async () => {
+      render(
+        <Modal open disableFocusTrap>
+          <ModalBody>
+            <button data-testid="btn1">First</button>
+            <button data-testid="btn2">Last</button>
+          </ModalBody>
+        </Modal>
+      );
+
+      const btn2 = screen.getByTestId('btn2');
+
+      act(() => { btn2.focus(); });
+      act(() => {
+        fireEvent.keyDown(document, { key: 'Tab' });
+      });
+      // Focus should NOT wrap since trap is disabled
+      expect(document.activeElement).toBe(btn2);
+    });
+  });
+
+  describe('Scroll Lock', () => {
+    it('TC-SL100: body overflow is hidden when modal is open', () => {
+      render(
+        <Modal open>
+          <ModalBody>Content</ModalBody>
+        </Modal>
+      );
+      expect(document.body.style.overflow).toBe('hidden');
+    });
+
+    it('TC-SL101: body overflow is restored to original value on close', () => {
+      document.body.style.overflow = 'auto';
+
+      const { rerender } = render(
+        <Modal open>
+          <ModalBody>Content</ModalBody>
+        </Modal>
+      );
+
+      expect(document.body.style.overflow).toBe('hidden');
+
+      rerender(
+        <Modal open={false}>
+          <ModalBody>Content</ModalBody>
+        </Modal>
+      );
+
+      expect(document.body.style.overflow).toBe('auto');
+    });
+
+    it('TC-SL102: body overflow is restored on unmount', () => {
+      document.body.style.overflow = 'scroll';
+
+      const { unmount } = render(
+        <Modal open>
+          <ModalBody>Content</ModalBody>
+        </Modal>
+      );
+
+      expect(document.body.style.overflow).toBe('hidden');
+      unmount();
+      expect(document.body.style.overflow).toBe('scroll');
+    });
+  });
+
+  describe('Focus Restoration', () => {
+    it('TC-FR100: previously focused element receives focus on close', async () => {
+      const trigger = document.createElement('button');
+      trigger.textContent = 'Trigger';
+      document.body.appendChild(trigger);
+      trigger.focus();
+      expect(document.activeElement).toBe(trigger);
+
+      const { rerender } = render(
+        <Modal open>
+          <ModalBody>Content</ModalBody>
+        </Modal>
+      );
+
+      await act(async () => {
+        await new Promise((r) => setTimeout(r, 50));
+      });
+
+      // Focus moved into modal
+      expect(document.activeElement).not.toBe(trigger);
+
+      rerender(
+        <Modal open={false}>
+          <ModalBody>Content</ModalBody>
+        </Modal>
+      );
+
+      expect(document.activeElement).toBe(trigger);
+      document.body.removeChild(trigger);
     });
   });
 });

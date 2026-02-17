@@ -14,8 +14,6 @@
     "directory": "packages/ds-test"
   },
   "scripts": {
-    "test": "vitest run",
-    "test:watch": "vitest",
     "test:log": "tsx scripts/test-with-log.ts"
   },
   "dependencies": {

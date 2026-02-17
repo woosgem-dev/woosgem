@@ -1,28 +1,8 @@
 import { defineComponent, h, computed, type PropType, type SetupContext } from 'vue';
+import { PROTECTED_ATTRS_SET } from '@woosgem-dev/core';
 import type { ComponentDefinition } from '@woosgem-dev/core';
 
 type AnyComponentDefinition = ComponentDefinition<any, any, any>;
-
-/**
- * Protected attributes that cannot be overridden by user attrs.
- * These are managed by the Core definition and ensure design consistency.
- */
-const PROTECTED_ATTRS = new Set([
-  'data-variant',
-  'data-color',
-  'data-size',
-  'data-state',
-  'data-full-width',
-  'data-shape',
-  'data-divider',
-  'data-has-image',
-  'data-orientation',
-  'data-spacing',
-  'role',
-  'aria-selected',
-  'aria-disabled',
-  'aria-orientation',
-]);
 
 // Vue prop definition type
 interface VuePropDefinition {
@@ -90,7 +70,7 @@ export function createComponent<Def extends AnyComponentDefinition>(definition: 
         // Filter out protected attributes from user attrs
         const safeAttrs: Record<string, unknown> = {};
         for (const key in attrs) {
-          if (!PROTECTED_ATTRS.has(key) && key !== 'class') {
+          if (!PROTECTED_ATTRS_SET.has(key) && key !== 'class') {
             safeAttrs[key] = attrs[key];
           }
         }

@@ -1,8 +1,13 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
-    "build": {
+    "generate": {
       "dependsOn": ["^build"],
+      "inputs": ["scripts/generate-themes.ts"],
+      "outputs": ["src/tokens/_color-sets.scss", "src/tokens/_colors.scss"]
+    },
+    "build": {
+      "dependsOn": ["^build", "generate"],
       "inputs": ["src/**"],
       "outputs": ["dist/**", "storybook-static/**"]
     },
@@ -14,8 +19,8 @@
       "dependsOn": ["^build"]
     },
     "test": {
-      "dependsOn": ["build"],
-      "outputs": []
+      "outputs": [],
+      "cache": false
     }
   }
 }

@@ -14,15 +14,13 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "test": "pnpm --filter @woosgem-dev/test test:log",
-    "test:watch": "pnpm --filter @woosgem-dev/test test:watch",
-    "test:coverage": "pnpm --filter @woosgem-dev/test test --coverage",
-    "test:react": "pnpm --filter @woosgem-dev/test test --project react",
-    "test:vue": "pnpm --filter @woosgem-dev/test test --project vue",
-    "test:all": "pnpm --filter @woosgem-dev/test test",
-    "test:dashboard": "pnpm --filter @woosgem-dev/test test --coverage && tsx scripts/generate-dashboard.ts"
+    "test": "turbo test",
+    "test:watch": "vitest",
+    "test:coverage": "turbo test -- --coverage",
+    "test:dashboard": "turbo test -- --coverage && tsx scripts/generate-dashboard.ts"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
     "@vitejs/plugin-react": "^5.1.2",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vitest/coverage-v8": "^4.0.18",

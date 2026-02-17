@@ -22,10 +22,13 @@
   ],
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@woosgem-dev/core": "workspace:*",
+    "@woosgem-dev/headless": "workspace:*",
     "lit": "^3.2.0"
   },
   "devDependencies": {

@@ -1,5 +1,6 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 import { mount } from '@vue/test-utils';
+import { nextTick } from 'vue';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from '@woosgem-dev/vue';
 
 describe('Modal (Vue)', () => {
@@ -149,6 +150,166 @@ describe('Modal (Vue)', () => {
 
       expect(wrapper.emitted('update:open')).toBeTruthy();
       expect(wrapper.emitted('update:open')![0]).toEqual([false]);
+    });
+  });
+});
+
+describe('Modal Focus & Scroll Management (Vue)', () => {
+  afterEach(() => {
+    document.body.style.overflow = '';
+  });
+
+  describe('ESC Key', () => {
+    it('TC-CL103: ESC key emits close event', async () => {
+      const wrapper = mount(Modal, {
+        props: { open: true, teleportTo: false },
+        slots: { default: 'Content' },
+      });
+
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+      await nextTick();
+
+      expect(wrapper.emitted('close')).toBeTruthy();
+    });
+
+    it('TC-CL104: disableEscapeKey prevents ESC close', async () => {
+      const wrapper = mount(Modal, {
+        props: { open: true, disableEscapeKey: true, teleportTo: false },
+        slots: { default: 'Content' },
+      });
+
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+      await nextTick();
+
+      expect(wrapper.emitted('close')).toBeFalsy();
+    });
+  });
+
+  describe('Focus Trap', () => {
+    it('TC-FT100: Tab wraps from last to first focusable element', async () => {
+      const wrapper = mount(Modal, {
+        props: { open: true, teleportTo: false },
+        slots: {
+          default: '<button id="ft-btn1">First</button><button id="ft-btn2">Last</button>',
+        },
+        attachTo: document.body,
+      });
+
+      await new Promise((r) => setTimeout(r, 50));
+
+      const btn1 = document.getElementById('ft-btn1')!;
+      const btn2 = document.getElementById('ft-btn2')!;
+
+      btn2.focus();
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', cancelable: true }));
+
+      expect(document.activeElement).toBe(btn1);
+      wrapper.unmount();
+    });
+
+    it('TC-FT101: Shift+Tab wraps from first to last focusable element', async () => {
+      const wrapper = mount(Modal, {
+        props: { open: true, teleportTo: false },
+        slots: {
+          default: '<button id="ft2-btn1">First</button><button id="ft2-btn2">Last</button>',
+        },
+        attachTo: document.body,
+      });
+
+      await new Promise((r) => setTimeout(r, 50));
+
+      const btn1 = document.getElementById('ft2-btn1')!;
+      const btn2 = document.getElementById('ft2-btn2')!;
+
+      btn1.focus();
+      document.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Tab', shiftKey: true, cancelable: true }),
+      );
+
+      expect(document.activeElement).toBe(btn2);
+      wrapper.unmount();
+    });
+
+    it('TC-FT102: disableFocusTrap disables Tab cycling', async () => {
+      const wrapper = mount(Modal, {
+        props: { open: true, disableFocusTrap: true, teleportTo: false },
+        slots: {
+          default: '<button id="ft3-btn1">First</button><button id="ft3-btn2">Last</button>',
+        },
+        attachTo: document.body,
+      });
+
+      await new Promise((r) => setTimeout(r, 50));
+
+      const btn2 = document.getElementById('ft3-btn2')!;
+      btn2.focus();
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', cancelable: true }));
+
+      expect(document.activeElement).toBe(btn2);
+      wrapper.unmount();
+    });
+  });
+
+  describe('Scroll Lock', () => {
+    it('TC-SL100: body overflow is hidden when modal is open', () => {
+      const wrapper = mount(Modal, {
+        props: { open: true, teleportTo: false },
+        slots: { default: 'Content' },
+      });
+      expect(document.body.style.overflow).toBe('hidden');
+      wrapper.unmount();
+    });
+
+    it('TC-SL101: body overflow is restored to original value on close', async () => {
+      document.body.style.overflow = 'auto';
+
+      const wrapper = mount(Modal, {
+        props: { open: true, teleportTo: false },
+        slots: { default: 'Content' },
+      });
+
+      expect(document.body.style.overflow).toBe('hidden');
+
+      await wrapper.setProps({ open: false });
+      expect(document.body.style.overflow).toBe('auto');
+      wrapper.unmount();
+    });
+
+    it('TC-SL102: body overflow is restored on unmount', () => {
+      document.body.style.overflow = 'scroll';
+
+      const wrapper = mount(Modal, {
+        props: { open: true, teleportTo: false },
+        slots: { default: 'Content' },
+      });
+
+      expect(document.body.style.overflow).toBe('hidden');
+      wrapper.unmount();
+      expect(document.body.style.overflow).toBe('scroll');
+    });
+  });
+
+  describe('Focus Restoration', () => {
+    it('TC-FR100: previously focused element receives focus on close', async () => {
+      const trigger = document.createElement('button');
+      trigger.textContent = 'Trigger';
+      document.body.appendChild(trigger);
+      trigger.focus();
+
+      const wrapper = mount(Modal, {
+        props: { open: true, teleportTo: false },
+        slots: { default: '<button>Modal Btn</button>' },
+        attachTo: document.body,
+      });
+
+      await new Promise((r) => setTimeout(r, 50));
+      expect(document.activeElement).not.toBe(trigger);
+
+      await wrapper.setProps({ open: false });
+      expect(document.activeElement).toBe(trigger);
+
+      wrapper.unmount();
+      document.body.removeChild(trigger);
     });
   });
 });

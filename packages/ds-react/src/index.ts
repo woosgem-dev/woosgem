@@ -98,7 +98,7 @@ export { createComponent } from './_internal/createComponent';
 export {
   PrefixProvider,
   usePrefix,
-  useId,
   DEFAULT_PREFIX,
   type PrefixProviderProps,
-} from './internal/index';
+} from './_internal/PrefixContext';
+export { useId } from './_internal/useId';

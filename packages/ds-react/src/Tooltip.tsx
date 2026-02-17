@@ -14,7 +14,7 @@ import {
   type TooltipStyleProps,
   type Prettify,
 } from '@woosgem-dev/core';
-import { useId } from './internal/useId';
+import { useId } from './_internal/useId';
 
 /**
  * Tooltip component props.

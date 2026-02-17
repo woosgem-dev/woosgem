@@ -1,5 +1,8 @@
 import { expect, afterEach } from 'vitest';
 
+// Pre-load all Lit components to ensure customElements.define runs in jsdom context
+import '@woosgem-dev/lit';
+
 /**
  * Simple fixture utility for Lit testing in jsdom
  * Creates an element from a template literal and waits for it to be ready

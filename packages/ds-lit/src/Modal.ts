@@ -6,23 +6,13 @@ import {
   ModalBody as ModalBodyCore,
   ModalFooter as ModalFooterCore,
 } from '@woosgem-dev/core';
+import {
+  createScrollLock,
+  onEscapeKey,
+  createFocusTrap,
+  setInitialFocus,
+} from '@woosgem-dev/headless';
 import { applyAttrsToElement, emitEvent } from './_internal/createComponent';
-
-/**
- * Get all focusable elements within a container
- */
-function getFocusableElements(container: HTMLElement): HTMLElement[] {
-  const focusableSelectors = [
-    'button:not([disabled])',
-    'input:not([disabled])',
-    'select:not([disabled])',
-    'textarea:not([disabled])',
-    'a[href]',
-    '[tabindex]:not([tabindex="-1"])',
-  ].join(', ');
-
-  return Array.from(container.querySelectorAll<HTMLElement>(focusableSelectors));
-}
 
 /**
  * Modal - Lit Web Component
@@ -61,44 +51,15 @@ export class Modal extends LitElement {
   @property({ type: Boolean, attribute: 'disable-overlay-click' }) disableOverlayClick = false;
 
   private previousActiveElement: HTMLElement | null = null;
-  private originalOverflow = '';
-  private boundHandleKeyDown: ((e: KeyboardEvent) => void) | null = null;
+  private cleanupScrollLock: (() => void) | null = null;
+  private cleanupEscapeKey: (() => void) | null = null;
+  private cleanupFocusTrap: (() => void) | null = null;
+  private cleanupInitialFocus: (() => void) | null = null;
 
   // Light DOM
   override createRenderRoot(): HTMLElement {
     return this;
   }
-
-  private handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Escape' && this.closable && !this.disableEscapeKey) {
-      event.preventDefault();
-      emitEvent(this, 'close');
-    }
-
-    // Focus trap
-    if (!this.disableFocusTrap && event.key === 'Tab') {
-      const modalContent = this.querySelector('.modal');
-      if (!modalContent) return;
-
-      const focusableElements = getFocusableElements(modalContent as HTMLElement);
-      if (focusableElements.length === 0) return;
-
-      const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
-
-      if (event.shiftKey) {
-        if (document.activeElement === firstElement) {
-          event.preventDefault();
-          lastElement.focus();
-        }
-      } else {
-        if (document.activeElement === lastElement) {
-          event.preventDefault();
-          firstElement.focus();
-        }
-      }
-    }
-  };
 
   private handleOverlayClick = () => {
     if (this.closable && !this.disableOverlayClick) {
@@ -131,33 +92,31 @@ export class Modal extends LitElement {
 
   private openModal(): void {
     this.previousActiveElement = document.activeElement as HTMLElement;
-    this.originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
 
-    this.boundHandleKeyDown = this.handleKeyDown;
-    document.addEventListener('keydown', this.boundHandleKeyDown);
+    this.cleanupScrollLock = createScrollLock();
 
-    // Focus first focusable element
-    requestAnimationFrame(() => {
-      const modalEl = this.querySelector('.modal');
-      if (modalEl) {
-        const focusableElements = getFocusableElements(modalEl as HTMLElement);
-        if (focusableElements.length > 0) {
-          focusableElements[0].focus();
-        } else {
-          (modalEl as HTMLElement).focus();
-        }
+    if (this.closable && !this.disableEscapeKey) {
+      this.cleanupEscapeKey = onEscapeKey(() => emitEvent(this, 'close'));
+    }
+
+    const modalEl = this.querySelector('.modal') as HTMLElement | null;
+    if (modalEl) {
+      if (!this.disableFocusTrap) {
+        this.cleanupFocusTrap = createFocusTrap(modalEl);
       }
-    });
+      this.cleanupInitialFocus = setInitialFocus(modalEl);
+    }
   }
 
   private closeModal(): void {
-    document.body.style.overflow = this.originalOverflow;
-
-    if (this.boundHandleKeyDown) {
-      document.removeEventListener('keydown', this.boundHandleKeyDown);
-      this.boundHandleKeyDown = null;
-    }
+    this.cleanupScrollLock?.();
+    this.cleanupEscapeKey?.();
+    this.cleanupFocusTrap?.();
+    this.cleanupInitialFocus?.();
+    this.cleanupScrollLock = null;
+    this.cleanupEscapeKey = null;
+    this.cleanupFocusTrap = null;
+    this.cleanupInitialFocus = null;
 
     if (this.previousActiveElement) {
       this.previousActiveElement.focus();

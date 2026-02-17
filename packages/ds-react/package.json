@@ -36,7 +36,8 @@
     "react-dom": "^18.0.0 || ^19.0.0"
   },
   "dependencies": {
-    "@woosgem-dev/core": "workspace:*"
+    "@woosgem-dev/core": "workspace:*",
+    "@woosgem-dev/headless": "workspace:*"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",

@@ -28,10 +28,12 @@
     "src"
   ],
   "scripts": {
+    "generate": "tsx scripts/generate-themes.ts",
     "build": "tsx scripts/build.ts",
     "dev": "sass src/index.scss:dist/index.css --source-map --watch"
   },
   "devDependencies": {
+    "@woosgem-dev/core": "workspace:*",
     "sass": "^1.83.0"
   }
 }

@@ -479,12 +479,11 @@ describe('Presets', () => {
     expect(darkTheme.mode).toBe('dark');
   });
 
-  it('should be minimal (only required fields)', () => {
-    // Presets should only have required fields
-    expect(defaultTheme.primary.base).toBeDefined();
-    expect(defaultTheme.secondary).toBeUndefined();
-    expect(defaultTheme.semantic).toBeUndefined();
-    expect(defaultTheme.text).toBeUndefined();
+  it('should specify design-accurate values', () => {
+    expect(defaultTheme.primary.base).toBe('#000000');
+    expect(defaultTheme.secondary).toBeDefined();
+    expect(defaultTheme.semantic).toBeDefined();
+    expect(defaultTheme.text).toBeDefined();
   });
 
   it('should be accessible via presets object', () => {

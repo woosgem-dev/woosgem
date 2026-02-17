@@ -4,7 +4,6 @@ import {
   ref,
   computed,
   watch,
-  onUnmounted,
   Teleport,
   type PropType,
   type DefineComponent,
@@ -20,8 +19,11 @@ import {
   type ModalFooterStyleProps,
   type Prettify,
 } from '@woosgem-dev/core';
-import { createComponent } from './_internal/createComponent';
-
+import {
+  useScrollLock,
+  useEscapeKey,
+  useFocusTrap,
+} from '@woosgem-dev/headless/vue';
 /**
  * Modal component props.
  */
@@ -42,24 +44,6 @@ export type ModalProps = Prettify<
   }
 >;
 
-/**
- * Get all focusable elements within a container
- */
-function getFocusableElements(container: HTMLElement): HTMLElement[] {
-  const focusableSelectors = [
-    'button:not([disabled])',
-    'input:not([disabled])',
-    'select:not([disabled])',
-    'textarea:not([disabled])',
-    'a[href]',
-    '[tabindex]:not([tabindex="-1"])',
-  ].join(', ');
-
-  return Array.from(container.querySelectorAll<HTMLElement>(focusableSelectors));
-}
-
-// Mark as used (for tree-shaking prevention in some bundlers)
-void createComponent;
 
 /**
  * Modal component for displaying content in a dialog overlay.
@@ -119,39 +103,18 @@ export const Modal = defineComponent({
   setup(props, { emit, slots }) {
     const modalRef = ref<HTMLElement | null>(null);
     const previousActiveElement = ref<HTMLElement | null>(null);
-    let originalOverflow = '';
 
-    // Handle ESC key
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && props.closable && !props.disableEscapeKey) {
-        event.preventDefault();
-        emit('close');
-        emit('update:open', false);
-      }
+    const openRef = computed(() => !!props.open);
+    const escapeActive = computed(() => !!props.open && !!props.closable && !props.disableEscapeKey);
+    const focusTrapActive = computed(() => !!props.open && !props.disableFocusTrap);
 
-      // Focus trap
-      if (!props.disableFocusTrap && modalRef.value && event.key === 'Tab') {
-        const focusableElements = getFocusableElements(modalRef.value);
-        if (focusableElements.length === 0) return;
-
-        const firstElement = focusableElements[0];
-        const lastElement = focusableElements[focusableElements.length - 1];
-
-        if (!firstElement || !lastElement) return;
-
-        if (event.shiftKey) {
-          if (document.activeElement === firstElement) {
-            event.preventDefault();
-            lastElement.focus();
-          }
-        } else {
-          if (document.activeElement === lastElement) {
-            event.preventDefault();
-            firstElement.focus();
-          }
-        }
-      }
-    };
+    // Headless primitives
+    useScrollLock(openRef);
+    useEscapeKey(escapeActive, () => {
+      emit('close');
+      emit('update:open', false);
+    });
+    useFocusTrap(modalRef, focusTrapActive);
 
     // Handle overlay click
     const handleOverlayClick = () => {
@@ -161,45 +124,20 @@ export const Modal = defineComponent({
       }
     };
 
-    // Watch open state
+    // Focus restoration
     watch(
       () => props.open,
       (isOpen) => {
         if (isOpen) {
           previousActiveElement.value = document.activeElement as HTMLElement;
-          originalOverflow = document.body.style.overflow;
-          document.body.style.overflow = 'hidden';
-          document.addEventListener('keydown', handleKeyDown);
-
-          // Focus first focusable element
-          requestAnimationFrame(() => {
-            if (modalRef.value) {
-              const focusableElements = getFocusableElements(modalRef.value);
-              const firstElement = focusableElements[0];
-              if (firstElement) {
-                firstElement.focus();
-              } else {
-                modalRef.value.focus();
-              }
-            }
-          });
         } else {
-          document.body.style.overflow = originalOverflow;
-          document.removeEventListener('keydown', handleKeyDown);
-
-          // Restore focus
           if (previousActiveElement.value) {
             previousActiveElement.value.focus();
           }
         }
       },
-      { immediate: true }
+      { immediate: true },
     );
-
-    onUnmounted(() => {
-      document.body.style.overflow = originalOverflow;
-      document.removeEventListener('keydown', handleKeyDown);
-    });
 
     // Computed attrs from core
     const modalAttrs = computed(() => ModalDef.mapPropsToAttrs({
