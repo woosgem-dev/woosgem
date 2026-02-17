@@ -90,6 +90,95 @@ export {
 export { Skeleton, type SkeletonProps, type SkeletonRef } from './Skeleton';
 export { Progress, type ProgressProps, type ProgressRef } from './Progress';
 export { Kbd, type KbdProps, type KbdRef } from './Kbd';
+export { Tag, type TagProps, type TagRef } from './Tag';
+export { AvatarGroup, type AvatarGroupProps, type AvatarGroupRef } from './AvatarGroup';
+export {
+  Breadcrumb,
+  BreadcrumbItem,
+  type BreadcrumbProps,
+  type BreadcrumbRef,
+  type BreadcrumbItemProps,
+  type BreadcrumbItemRef,
+} from './Breadcrumb';
+export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+  type AccordionProps,
+  type AccordionRef,
+  type AccordionItemProps,
+  type AccordionItemRef,
+  type AccordionTriggerProps,
+  type AccordionTriggerRef,
+  type AccordionContentProps,
+  type AccordionContentRef,
+} from './Accordion';
+export { Drawer, type DrawerProps, type DrawerRef } from './Drawer';
+export {
+  Pagination,
+  PaginationItem,
+  type PaginationProps,
+  type PaginationRef,
+  type PaginationItemProps,
+  type PaginationItemRef,
+} from './Pagination';
+export {
+  Menu,
+  MenuItem,
+  MenuDivider,
+  MenuGroup,
+  type MenuProps,
+  type MenuRef,
+  type MenuItemProps,
+  type MenuItemRef,
+  type MenuDividerProps,
+  type MenuDividerRef,
+  type MenuGroupProps,
+  type MenuGroupRef,
+} from './Menu';
+export {
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableHeaderCell,
+  type TableProps,
+  type TableRef,
+  type TableHeadProps,
+  type TableHeadRef,
+  type TableBodyProps,
+  type TableBodyRef,
+  type TableRowProps,
+  type TableRowRef,
+  type TableCellProps,
+  type TableCellRef,
+  type TableHeaderCellProps,
+  type TableHeaderCellRef,
+} from './Table';
+export {
+  Slider,
+  SliderTrack,
+  SliderFill,
+  SliderThumb,
+  type SliderProps,
+  type SliderRef,
+  type SliderTrackProps,
+  type SliderTrackRef,
+  type SliderFillProps,
+  type SliderFillRef,
+  type SliderThumbProps,
+  type SliderThumbRef,
+} from './Slider';
+export {
+  Popover,
+  PopoverArrow,
+  type PopoverProps,
+  type PopoverRef,
+  type PopoverArrowProps,
+  type PopoverArrowRef,
+} from './Popover';
 
 // Factory (for advanced usage)
 export { createComponent } from './_internal/createComponent';

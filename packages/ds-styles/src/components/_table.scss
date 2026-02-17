@@ -1,0 +1,162 @@
+@use '../tokens' as tokens;
+
+// ============================================
+// Table Component
+// ============================================
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: var(--wg-table-color, #{tokens.$text});
+  background-color: var(--wg-table-bg, #{tokens.$background});
+
+  // ===================
+  // Variants
+  // ===================
+  &[data-variant='default'] {
+    .table-row {
+      border-bottom: 1px solid tokens.$border;
+    }
+  }
+
+  &[data-variant='striped'] {
+    .table-row {
+      border-bottom: 1px solid tokens.$border;
+    }
+
+    .table-body .table-row:nth-child(even) {
+      background-color: var(--wg-table-stripe-bg, #{tokens.$background-subtle});
+    }
+  }
+
+  &[data-variant='bordered'] {
+    border: 1px solid tokens.$border;
+
+    .table-cell,
+    .table-header-cell {
+      border: 1px solid tokens.$border;
+    }
+  }
+
+  // ===================
+  // Sizes
+  // ===================
+  &[data-size='sm'] {
+    font-size: tokens.$font-size-12;
+
+    .table-cell,
+    .table-header-cell {
+      padding: tokens.$spacing-1 tokens.$spacing-2;
+    }
+  }
+
+  &[data-size='md'] {
+    font-size: tokens.$font-size-14;
+
+    .table-cell,
+    .table-header-cell {
+      padding: tokens.$spacing-2 tokens.$spacing-3;
+    }
+  }
+
+  &[data-size='lg'] {
+    font-size: tokens.$font-size-16;
+
+    .table-cell,
+    .table-header-cell {
+      padding: tokens.$spacing-3 tokens.$spacing-4;
+    }
+  }
+
+  // ===================
+  // Hoverable
+  // ===================
+  &[data-hoverable] {
+    .table-body .table-row:hover {
+      background-color: var(--wg-table-hover-bg, #{tokens.$background-muted});
+    }
+  }
+}
+
+// ============================================
+// TableHead
+// ============================================
+.table-head {
+  background-color: var(--wg-table-head-bg, #{tokens.$background-muted});
+
+  .table-header-cell {
+    font-weight: tokens.$font-weight-semibold;
+  }
+}
+
+// ============================================
+// TableBody
+// ============================================
+.table-body {
+  // Base styles handled by parent .table
+}
+
+// ============================================
+// TableRow
+// ============================================
+.table-row {
+  transition: background-color tokens.$transition-fast;
+
+  // Selected state
+  &[data-state='selected'] {
+    background-color: var(--wg-table-selected-bg, #{tokens.$primary-alpha-10});
+  }
+}
+
+// ============================================
+// TableCell
+// ============================================
+.table-cell {
+  line-height: tokens.$line-height-normal;
+  vertical-align: middle;
+
+  // Alignment
+  &[data-align='left'] {
+    text-align: left;
+  }
+
+  &[data-align='center'] {
+    text-align: center;
+  }
+
+  &[data-align='right'] {
+    text-align: right;
+  }
+}
+
+// ============================================
+// TableHeaderCell
+// ============================================
+.table-header-cell {
+  line-height: tokens.$line-height-normal;
+  vertical-align: middle;
+  text-align: left;
+
+  // Alignment
+  &[data-align='left'] {
+    text-align: left;
+  }
+
+  &[data-align='center'] {
+    text-align: center;
+  }
+
+  &[data-align='right'] {
+    text-align: right;
+  }
+
+  // Sortable
+  &[data-sortable] {
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      background-color: var(--wg-table-sort-hover-bg, #{tokens.$background-muted-darken-3});
+    }
+  }
+}

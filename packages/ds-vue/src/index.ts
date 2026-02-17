@@ -63,6 +63,71 @@ export { Kbd, type KbdProps } from './Kbd';
 export { Overlay, type OverlayProps } from './Overlay';
 export { Progress, type ProgressProps } from './Progress';
 export { Skeleton, type SkeletonProps } from './Skeleton';
+export { Tag, type TagProps } from './Tag';
+export { AvatarGroup, type AvatarGroupProps } from './AvatarGroup';
+export {
+  Breadcrumb,
+  BreadcrumbItem,
+  type BreadcrumbProps,
+  type BreadcrumbItemProps,
+} from './Breadcrumb';
+export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+  type AccordionProps,
+  type AccordionItemProps,
+  type AccordionTriggerProps,
+  type AccordionContentProps,
+} from './Accordion';
+export { Drawer, type DrawerProps } from './Drawer';
+export {
+  Pagination,
+  PaginationItem,
+  type PaginationProps,
+  type PaginationItemProps,
+} from './Pagination';
+export {
+  Menu,
+  MenuItem,
+  MenuDivider,
+  MenuGroup,
+  type MenuProps,
+  type MenuItemProps,
+  type MenuDividerProps,
+  type MenuGroupProps,
+} from './Menu';
+export {
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableHeaderCell,
+  type TableProps,
+  type TableHeadProps,
+  type TableBodyProps,
+  type TableRowProps,
+  type TableCellProps,
+  type TableHeaderCellProps,
+} from './Table';
+export {
+  Slider,
+  SliderTrack,
+  SliderFill,
+  SliderThumb,
+  type SliderProps,
+  type SliderTrackProps,
+  type SliderFillProps,
+  type SliderThumbProps,
+} from './Slider';
+export {
+  Popover,
+  PopoverArrow,
+  type PopoverProps,
+  type PopoverArrowProps,
+} from './Popover';
 
 // Factory (for advanced usage)
 export { createComponent } from './_internal/createComponent';

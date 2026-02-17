@@ -1,0 +1,120 @@
+@use '../tokens' as tokens;
+
+.tag {
+  // Reset
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+
+  // Base styles
+  display: inline-flex;
+  align-items: center;
+  gap: tokens.$spacing-1;
+  border-radius: tokens.$radius-6;
+  font-family: tokens.$font-family-default;
+  font-weight: tokens.$font-weight-medium;
+  line-height: tokens.$line-height-tight;
+  white-space: nowrap;
+  user-select: none;
+
+  // CSS custom properties for colors
+  background-color: var(--wg-tag-bg, #{tokens.$background});
+  color: var(--wg-tag-color, #{tokens.$text});
+  border: 1px solid var(--wg-tag-border, transparent);
+  transition: background-color tokens.$transition-fast, border-color tokens.$transition-fast;
+
+  // ===================
+  // Sizes
+  // ===================
+  &[data-size='sm'] {
+    height: 24px;
+    padding: tokens.$spacing-0 tokens.$spacing-2;
+    font-size: tokens.$font-size-12;
+  }
+
+  &[data-size='md'] {
+    height: 28px;
+    padding: tokens.$spacing-1 tokens.$spacing-3;
+    font-size: tokens.$font-size-13;
+  }
+
+  &[data-size='lg'] {
+    height: 32px;
+    padding: tokens.$spacing-1 tokens.$spacing-4;
+    font-size: tokens.$font-size-14;
+  }
+
+  // ===================
+  // Variants
+  // ===================
+
+  // Solid variant
+  &[data-variant='solid'] {
+    &[data-color='primary'] { --wg-tag-bg: #{tokens.$primary}; --wg-tag-color: #{tokens.$text-inverse}; }
+    &[data-color='secondary'] { --wg-tag-bg: #{tokens.$secondary}; --wg-tag-color: #{tokens.$text-inverse}; }
+    &[data-color='danger'] { --wg-tag-bg: #{tokens.$danger}; --wg-tag-color: #{tokens.$text-inverse}; }
+    &[data-color='success'] { --wg-tag-bg: #{tokens.$success}; --wg-tag-color: #{tokens.$text-inverse}; }
+    &[data-color='warning'] { --wg-tag-bg: #{tokens.$warning}; --wg-tag-color: #{tokens.$text}; }
+    &[data-color='info'] { --wg-tag-bg: #{tokens.$info}; --wg-tag-color: #{tokens.$text-inverse}; }
+  }
+
+  // Outline variant
+  &[data-variant='outline'] {
+    --wg-tag-bg: transparent;
+    &[data-color='primary'] { --wg-tag-border: #{tokens.$primary}; --wg-tag-color: #{tokens.$primary}; }
+    &[data-color='secondary'] { --wg-tag-border: #{tokens.$secondary}; --wg-tag-color: #{tokens.$secondary}; }
+    &[data-color='danger'] { --wg-tag-border: #{tokens.$danger}; --wg-tag-color: #{tokens.$danger}; }
+    &[data-color='success'] { --wg-tag-border: #{tokens.$success}; --wg-tag-color: #{tokens.$success}; }
+    &[data-color='warning'] { --wg-tag-border: #{tokens.$warning}; --wg-tag-color: #{tokens.$warning}; }
+    &[data-color='info'] { --wg-tag-border: #{tokens.$info}; --wg-tag-color: #{tokens.$info}; }
+  }
+
+  // Subtle variant (light background)
+  &[data-variant='subtle'] {
+    &[data-color='primary'] { --wg-tag-bg: #{tokens.$primary-alpha-10}; --wg-tag-color: #{tokens.$primary}; }
+    &[data-color='secondary'] { --wg-tag-bg: #{tokens.$secondary-alpha-10}; --wg-tag-color: #{tokens.$secondary}; }
+    &[data-color='danger'] { --wg-tag-bg: #{tokens.$red-light}; --wg-tag-color: #{tokens.$danger}; }
+    &[data-color='success'] { --wg-tag-bg: #{tokens.$green-light}; --wg-tag-color: #{tokens.$success}; }
+    &[data-color='warning'] { --wg-tag-bg: #{tokens.$yellow-light}; --wg-tag-color: #{tokens.$warning}; }
+    &[data-color='info'] { --wg-tag-bg: #{tokens.$blue-light}; --wg-tag-color: #{tokens.$info}; }
+  }
+
+  // ===================
+  // States
+  // ===================
+
+  // Closable — reduce right padding to accommodate close button
+  &[data-closable] {
+    padding-right: tokens.$spacing-1;
+  }
+
+  // Disabled
+  &[data-state='disabled'] {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+}
+
+.tag-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border: none;
+  background: none;
+  padding: 0;
+  margin-left: tokens.$spacing-1;
+  border-radius: tokens.$radius-4;
+  color: currentColor;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity tokens.$transition-fast;
+
+  &:hover {
+    opacity: 1;
+  }
+}

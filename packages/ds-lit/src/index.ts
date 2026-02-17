@@ -40,6 +40,16 @@ export { Modal, ModalHeaderElement, ModalBodyElement, ModalFooterElement } from 
 export { Card, CardHeader, CardBody, CardFooter } from './Card';
 export { Toast, ToastElement } from './Toast';
 export { Tooltip } from './Tooltip';
+export { Tag } from './Tag';
+export { AvatarGroup } from './AvatarGroup';
+export { Breadcrumb, BreadcrumbItem } from './Breadcrumb';
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './Accordion';
+export { Drawer } from './Drawer';
+export { Pagination, PaginationItem } from './Pagination';
+export { Menu, MenuItem, MenuDivider, MenuGroup } from './Menu';
+export { Table, TableHead, TableBody, TableRow, TableCell, TableHeaderCell } from './Table';
+export { Slider, SliderTrack, SliderFill, SliderThumb } from './Slider';
+export { Popover, PopoverArrow } from './Popover';
 
 // Utilities
 export {
@@ -174,4 +184,65 @@ export type {
   TooltipStyleProps,
   TooltipPosition,
   TooltipTrigger,
+  // Tag
+  TagStyleProps,
+  TagVariant,
+  TagColor,
+  TagSize,
+  // AvatarGroup
+  AvatarGroupStyleProps,
+  AvatarGroupSize,
+  AvatarGroupSpacing,
+  // Breadcrumb
+  BreadcrumbStyleProps,
+  BreadcrumbSize,
+  BreadcrumbItemStyleProps,
+  // Accordion
+  AccordionStyleProps,
+  AccordionType,
+  AccordionSize,
+  AccordionVariant,
+  AccordionItemStyleProps,
+  AccordionTriggerStyleProps,
+  AccordionContentStyleProps,
+  // Drawer
+  DrawerStyleProps,
+  DrawerPosition,
+  DrawerSize,
+  // Pagination
+  PaginationStyleProps,
+  PaginationVariant,
+  PaginationSize,
+  PaginationShape,
+  PaginationItemStyleProps,
+  // Menu
+  MenuStyleProps,
+  MenuSize,
+  MenuItemStyleProps,
+  MenuDividerStyleProps,
+  MenuGroupStyleProps,
+  // Table
+  TableStyleProps,
+  TableVariant,
+  TableSize,
+  TableAlign,
+  TableHeadStyleProps,
+  TableBodyStyleProps,
+  TableRowStyleProps,
+  TableCellStyleProps,
+  TableHeaderCellStyleProps,
+  // Slider
+  SliderStyleProps,
+  SliderSize,
+  SliderColor,
+  SliderOrientation,
+  SliderTrackStyleProps,
+  SliderFillStyleProps,
+  SliderThumbStyleProps,
+  // Popover
+  PopoverStyleProps,
+  PopoverPosition,
+  PopoverSize,
+  PopoverVariant,
+  PopoverArrowStyleProps,
 } from '@woosgem-dev/core';

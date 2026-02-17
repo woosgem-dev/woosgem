@@ -1,0 +1,150 @@
+@use '../tokens' as tokens;
+
+// ============================================
+// Accordion Component
+// ============================================
+.accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  // ===================
+  // Variants
+  // ===================
+
+  // Outline variant (default)
+  &[data-variant='outline'] {
+    border: 1px solid tokens.$border;
+    border-radius: tokens.$radius-8;
+    overflow: hidden;
+
+    > .accordion-item + .accordion-item {
+      border-top: 1px solid tokens.$border;
+    }
+  }
+
+  // Filled variant
+  &[data-variant='filled'] {
+    gap: tokens.$spacing-1;
+
+    > .accordion-item {
+      background-color: tokens.$background-muted;
+      border-radius: tokens.$radius-8;
+    }
+  }
+
+  // Ghost variant
+  &[data-variant='ghost'] {
+    > .accordion-item + .accordion-item {
+      border-top: 1px solid tokens.$border;
+    }
+  }
+
+  // ===================
+  // Sizes
+  // ===================
+
+  // Size: sm
+  &[data-size='sm'] {
+    .accordion-trigger {
+      padding: tokens.$spacing-2 tokens.$spacing-3;
+      font-size: tokens.$font-size-13;
+    }
+
+    .accordion-content {
+      padding: 0 tokens.$spacing-3 tokens.$spacing-2;
+      font-size: tokens.$font-size-13;
+    }
+  }
+
+  // Size: md
+  &[data-size='md'] {
+    .accordion-trigger {
+      padding: tokens.$spacing-3 tokens.$spacing-4;
+      font-size: tokens.$font-size-14;
+    }
+
+    .accordion-content {
+      padding: 0 tokens.$spacing-4 tokens.$spacing-3;
+      font-size: tokens.$font-size-14;
+    }
+  }
+
+  // Size: lg
+  &[data-size='lg'] {
+    .accordion-trigger {
+      padding: tokens.$spacing-4 tokens.$spacing-5;
+      font-size: tokens.$font-size-16;
+    }
+
+    .accordion-content {
+      padding: 0 tokens.$spacing-5 tokens.$spacing-4;
+      font-size: tokens.$font-size-16;
+    }
+  }
+}
+
+// ============================================
+// AccordionItem
+// ============================================
+.accordion-item {
+  &[data-state='disabled'] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+// ============================================
+// AccordionTrigger
+// ============================================
+.accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: tokens.$font-family-default;
+  font-weight: tokens.$font-weight-medium;
+  color: tokens.$text;
+  text-align: left;
+  transition: background-color tokens.$transition-fast;
+
+  &:hover {
+    background-color: tokens.$background-muted;
+  }
+
+  &::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-left: tokens.$spacing-2;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform tokens.$transition-fast;
+  }
+
+  // Rotate chevron when parent item is open
+  [data-state='open'] > & {
+    &::after {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+// ============================================
+// AccordionContent
+// ============================================
+.accordion-content {
+  overflow: hidden;
+  color: tokens.$text-muted;
+  line-height: tokens.$line-height-normal;
+
+  // Hidden when parent item is not open
+  .accordion-item:not([data-state='open']) > & {
+    display: none;
+  }
+}

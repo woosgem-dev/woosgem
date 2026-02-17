@@ -1,0 +1,71 @@
+@use '../tokens' as tokens;
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: tokens.$font-family-default;
+  color: var(--wg-breadcrumb-color, #{tokens.$text-muted});
+
+  &[data-size='sm'] {
+    font-size: tokens.$font-size-12;
+    gap: tokens.$spacing-1;
+  }
+
+  &[data-size='md'] {
+    font-size: tokens.$font-size-14;
+    gap: tokens.$spacing-2;
+  }
+
+  &[data-size='lg'] {
+    font-size: tokens.$font-size-16;
+    gap: tokens.$spacing-2;
+  }
+}
+
+.breadcrumb-item {
+  display: inline-flex;
+  align-items: center;
+
+  // Separator via CSS
+  &:not(:last-child)::after {
+    content: var(--wg-breadcrumb-separator, '/');
+    margin-left: tokens.$spacing-2;
+    color: tokens.$text-subtle;
+    pointer-events: none;
+  }
+
+  a,
+  button {
+    color: var(--wg-breadcrumb-link-color, #{tokens.$text-muted});
+    text-decoration: none;
+    transition: color tokens.$transition-fast;
+
+    &:hover {
+      color: var(--wg-breadcrumb-link-hover, #{tokens.$primary});
+      text-decoration: underline;
+    }
+  }
+
+  // Active (current page)
+  &[data-state='active'] {
+    color: var(--wg-breadcrumb-active-color, #{tokens.$text});
+    font-weight: tokens.$font-weight-medium;
+    pointer-events: none;
+
+    a,
+    button {
+      color: inherit;
+      pointer-events: none;
+    }
+  }
+
+  // Disabled
+  &[data-state='disabled'] {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+}

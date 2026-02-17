@@ -1,0 +1,119 @@
+@use '../tokens' as tokens;
+
+// ============================================
+// Menu Component
+// ============================================
+.menu {
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  background-color: var(--wg-menu-bg, #{tokens.$background});
+  border: 1px solid tokens.$border;
+  border-radius: tokens.$radius-8;
+  box-shadow: tokens.$shadow-lg;
+  padding: tokens.$spacing-1;
+  overflow: hidden;
+
+  // ===================
+  // Sizes
+  // ===================
+
+  &[data-size='sm'] {
+    min-width: 140px;
+
+    .menu-item {
+      padding: tokens.$spacing-1 tokens.$spacing-2;
+      font-size: tokens.$font-size-12;
+    }
+  }
+
+  &[data-size='md'] {
+    min-width: 180px;
+
+    .menu-item {
+      padding: tokens.$spacing-2 tokens.$spacing-3;
+      font-size: tokens.$font-size-14;
+    }
+  }
+
+  &[data-size='lg'] {
+    min-width: 220px;
+
+    .menu-item {
+      padding: tokens.$spacing-3 tokens.$spacing-4;
+      font-size: tokens.$font-size-16;
+    }
+  }
+}
+
+// ============================================
+// MenuItem
+// ============================================
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: tokens.$spacing-2;
+  width: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: tokens.$font-family-default;
+  color: var(--wg-menu-item-color, #{tokens.$text});
+  border-radius: tokens.$radius-4;
+  text-align: left;
+  transition: background-color tokens.$transition-fast, color tokens.$transition-fast;
+
+  &:hover:not([data-state='disabled']) {
+    background-color: var(--wg-menu-item-hover-bg, #{tokens.$background-muted});
+  }
+
+  &[data-state='active'] {
+    background-color: tokens.$primary-alpha-10;
+    color: tokens.$primary;
+  }
+
+  &[data-state='disabled'] {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  &[data-destructive] {
+    color: tokens.$danger;
+
+    &:hover:not([data-state='disabled']) {
+      background-color: tokens.$red-light;
+    }
+  }
+
+  &:focus-visible {
+    outline: tokens.$focus-ring-width solid tokens.$focus-ring-color;
+    outline-offset: -1px;
+  }
+}
+
+// ============================================
+// MenuDivider
+// ============================================
+.menu-divider {
+  height: 1px;
+  background-color: tokens.$border;
+  margin: tokens.$spacing-1 0;
+}
+
+// ============================================
+// MenuGroup
+// ============================================
+.menu-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-group-label {
+  padding: tokens.$spacing-1 tokens.$spacing-3;
+  font-size: tokens.$font-size-12;
+  font-weight: tokens.$font-weight-medium;
+  color: tokens.$text-subtle;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

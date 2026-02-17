@@ -1,0 +1,128 @@
+@use '../tokens' as tokens;
+
+.pagination {
+  display: inline-flex;
+  align-items: center;
+  gap: tokens.$spacing-1;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: tokens.$font-family-default;
+
+  // Sizes
+  &[data-size='sm'] {
+    .pagination-item {
+      min-width: 28px;
+      height: 28px;
+      font-size: tokens.$font-size-12;
+      padding: 0 tokens.$spacing-1;
+    }
+  }
+
+  &[data-size='md'] {
+    .pagination-item {
+      min-width: 36px;
+      height: 36px;
+      font-size: tokens.$font-size-14;
+      padding: 0 tokens.$spacing-2;
+    }
+  }
+
+  &[data-size='lg'] {
+    .pagination-item {
+      min-width: 44px;
+      height: 44px;
+      font-size: tokens.$font-size-16;
+      padding: 0 tokens.$spacing-3;
+    }
+  }
+}
+
+.pagination-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: tokens.$font-weight-medium;
+  color: var(--wg-pagination-color, #{tokens.$text-muted});
+  transition:
+    background-color tokens.$transition-fast,
+    color tokens.$transition-fast,
+    border-color tokens.$transition-fast;
+
+  // Shapes
+  .pagination[data-shape='rounded'] & {
+    border-radius: tokens.$radius-md;
+  }
+
+  .pagination[data-shape='circle'] & {
+    border-radius: 50%;
+  }
+
+  // Outline variant
+  .pagination[data-variant='outline'] & {
+    border: 1px solid tokens.$border;
+
+    &:hover:not([data-state='disabled']):not([data-state='active']) {
+      border-color: tokens.$primary;
+      color: tokens.$primary;
+    }
+
+    &[data-state='active'] {
+      border-color: tokens.$primary;
+      background-color: tokens.$primary;
+      color: tokens.$text-inverse;
+    }
+  }
+
+  // Filled variant
+  .pagination[data-variant='filled'] & {
+    background-color: tokens.$background-muted;
+
+    &:hover:not([data-state='disabled']):not([data-state='active']) {
+      background-color: tokens.$background-muted-darken-3;
+    }
+
+    &[data-state='active'] {
+      background-color: tokens.$primary;
+      color: tokens.$text-inverse;
+    }
+  }
+
+  // Ghost variant
+  .pagination[data-variant='ghost'] & {
+    &:hover:not([data-state='disabled']):not([data-state='active']) {
+      background-color: tokens.$background-muted;
+    }
+
+    &[data-state='active'] {
+      background-color: tokens.$primary;
+      color: tokens.$text-inverse;
+    }
+  }
+
+  // Disabled
+  &[data-state='disabled'] {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  // Focus
+  &:focus-visible {
+    outline: tokens.$focus-ring-width solid tokens.$focus-ring-color;
+    outline-offset: tokens.$focus-ring-offset;
+  }
+}
+
+.pagination-ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: tokens.$text-subtle;
+  pointer-events: none;
+  user-select: none;
+}

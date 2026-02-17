@@ -1,0 +1,102 @@
+@use '../tokens' as tokens;
+
+.drawer {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--wg-drawer-bg, #{tokens.$background});
+  color: var(--wg-drawer-color, #{tokens.$text});
+  box-shadow: tokens.$shadow-xl;
+  z-index: tokens.$z-index-modal;
+  overflow: auto;
+  transition: transform tokens.$transition-normal;
+
+  // Positions
+  &[data-position='left'] {
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  &[data-position='right'] {
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &[data-position='top'] {
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &[data-position='bottom'] {
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  // Sizes for left/right
+  &[data-position='left'],
+  &[data-position='right'] {
+    &[data-size='sm'] { width: 280px; }
+    &[data-size='md'] { width: 380px; }
+    &[data-size='lg'] { width: 520px; }
+    &[data-size='full'] { width: 100vw; }
+  }
+
+  // Sizes for top/bottom
+  &[data-position='top'],
+  &[data-position='bottom'] {
+    &[data-size='sm'] { height: 200px; }
+    &[data-size='md'] { height: 320px; }
+    &[data-size='lg'] { height: 480px; }
+    &[data-size='full'] { height: 100vh; }
+  }
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: tokens.$spacing-4;
+  border-bottom: 1px solid tokens.$border;
+  font-weight: tokens.$font-weight-semibold;
+  font-size: tokens.$font-size-16;
+  flex-shrink: 0;
+}
+
+.drawer-body {
+  flex: 1;
+  padding: tokens.$spacing-4;
+  overflow-y: auto;
+}
+
+.drawer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: tokens.$spacing-2;
+  padding: tokens.$spacing-4;
+  border-top: 1px solid tokens.$border;
+  flex-shrink: 0;
+}
+
+.drawer-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  border-radius: tokens.$radius-6;
+  color: tokens.$text-muted;
+  cursor: pointer;
+  transition: background-color tokens.$transition-fast, color tokens.$transition-fast;
+
+  &:hover {
+    background-color: tokens.$background-muted;
+    color: tokens.$text;
+  }
+}
