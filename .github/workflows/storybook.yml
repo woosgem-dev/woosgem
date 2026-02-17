@@ -5,6 +5,7 @@ on:
     branches: [main]
 
 permissions:
+  actions: write
   pages: write
   id-token: write
 
@@ -60,6 +61,25 @@ jobs:
           cp -r packages/ds-storybook/storybook-static deploy/react
           cp -r packages/ds-storybook-vue/storybook-static deploy/vue
           cp -r packages/ds-storybook-lit/storybook-static deploy/lit
+
+      - name: Remove stale artifacts
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data } = await github.rest.actions.listWorkflowRunArtifacts({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: context.runId,
+            });
+            for (const artifact of data.artifacts) {
+              if (artifact.name === 'github-pages') {
+                await github.rest.actions.deleteArtifact({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  artifact_id: artifact.id,
+                });
+              }
+            }
 
       - uses: actions/upload-pages-artifact@v3
         with:
