@@ -17,6 +17,11 @@ const preview: Preview = {
         { name: 'gray', value: '#f5f5f5' },
       ],
     },
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
   },
 };
 
