@@ -17,6 +17,15 @@ const preview: Preview = {
         { name: 'gray', value: '#f5f5f5' },
       ],
     },
+    docs: {
+      source: {
+        type: 'code',
+        transform: (src: string) => {
+          const match = src.match(/template:\s*`([\s\S]*?)`/);
+          return match ? match[1].trim() : src;
+        },
+      },
+    },
   },
 };
 
