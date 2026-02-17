@@ -59,6 +59,10 @@ export {
   type UseToastOptions,
   type UseToastReturn,
 } from './Toast';
+export { Kbd, type KbdProps } from './Kbd';
+export { Overlay, type OverlayProps } from './Overlay';
+export { Progress, type ProgressProps } from './Progress';
+export { Skeleton, type SkeletonProps } from './Skeleton';
 
 // Factory (for advanced usage)
 export { createComponent } from './_internal/createComponent';
