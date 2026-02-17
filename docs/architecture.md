@@ -3,16 +3,38 @@
 ## Package Structure
 
 **Design System Packages (ds-* prefix):**
-- **@woosgem/ds-core** - Framework-agnostic component definitions + Color Set Protocol
-- **@woosgem/ds-icons** - Pure SVG icon assets (sm, md, lg) with theme support
-- **@woosgem/ds-test** - Shared test utilities and helpers
-- **@woosgem/ds-react** - React component wrappers using `forwardRef` and `memo`
-- **@woosgem/ds-vue** - Vue component wrappers using `defineComponent`
-- **@woosgem/ds-styles** - SCSS styles and theming (custom dart-sass build script)
-- **@woosgem/ds-storybook** - Component documentation (internal)
+- **@woosgem-dev/core** - Framework-agnostic component definitions + Color Set Protocol
+- **@woosgem-dev/headless** - Vanilla DOM utilities + React hooks + Vue composables
+- **@woosgem-dev/styles** - SCSS styles and theming (CSP-generated tokens)
+- **@woosgem-dev/react** - React component wrappers using `forwardRef` and `memo`
+- **@woosgem-dev/vue** - Vue component wrappers using `defineComponent`
+- **@woosgem-dev/lit** - Lit Web Component wrappers
+- **@woosgem-dev/icons** - Pure SVG icon assets (sm, md, lg) with theme support
+- **@woosgem-dev/storybook** - Component documentation (internal)
 
 **Utility Packages:**
-- **@woosgem/utils** - General utility functions
+- **@woosgem-dev/utils** - General utility functions
+
+## Layer Architecture
+
+```
+┌─────────────────────────────────────────────────┐
+│  Framework Wrappers (Styled Components)          │
+│  @woosgem-dev/react, vue, lit                    │
+│  Modal, Tooltip, Select, Toast, ...              │
+├─────────────────────────────────────────────────┤
+│  @woosgem-dev/headless (Logic/Primitives)        │
+│  Vanilla: focus-trap, scroll-lock, escape-key    │
+│  React: useScrollLock, useFocusTrap, Portal      │
+│  Vue: useScrollLock, useFocusTrap, ...           │
+├─────────────────────────────────────────────────┤
+│  @woosgem-dev/core (Definitions + CSP)           │
+│  mapPropsToAttrs, types, tokens, constants       │
+├─────────────────────────────────────────────────┤
+│  @woosgem-dev/styles (SCSS/CSS)                  │
+│  CSP-generated tokens → component styles         │
+└─────────────────────────────────────────────────┘
+```
 
 ## Core Pattern: Framework-Agnostic Components
 
@@ -27,13 +49,12 @@ export const Button = {
     class: 'btn',
     'data-variant': props.variant,
     'data-color': props.color,
-    // ...
   }),
   template: { tag: 'button', slots: ['default'] },
 } as const satisfies ComponentDefinition<ButtonStyleProps, ButtonAttrs, 'button'>;
 ```
 
-Framework adapters (`createComponent` in react/vue packages) consume these definitions to generate framework-specific components. SCSS targets the data attributes set by `mapPropsToAttrs`.
+Framework adapters (`createComponent` in react/vue/lit packages) consume these definitions to generate framework-specific components. SCSS targets the data attributes set by `mapPropsToAttrs`.
 
 ## Component File Locations
 
@@ -43,24 +64,51 @@ Framework adapters (`createComponent` in react/vue packages) consume these defin
 | Icon assets | `packages/ds-icons/svg/{sm,md,lg}/*.svg` |
 | React wrapper | `packages/ds-react/src/Button.tsx` |
 | Vue wrapper | `packages/ds-vue/src/Button.ts` |
+| Lit wrapper | `packages/ds-lit/src/Button.ts` |
 | SCSS styles | `packages/ds-styles/src/components/_button.scss` |
 | Stories | `packages/ds-storybook/src/stories/Button.stories.tsx` |
-| Tests (Consolidated) | `packages/ds-test/src/{core,react,vue}/*.test.{ts,tsx}` |
+| Tests | `packages/ds-{core,react,vue,lit}/__tests__/` |
+
+## Headless Primitives
+
+`@woosgem-dev/headless` provides framework-agnostic DOM utilities with framework-specific adapters:
+
+```
+packages/ds-headless/src/
+├── vanilla/          # Framework-agnostic (no dependencies)
+│   ├── focus.ts          # getFocusableElements, setInitialFocus
+│   ├── focus-trap.ts     # createFocusTrap
+│   ├── scroll-lock.ts    # createScrollLock
+│   ├── escape-key.ts     # onEscapeKey
+│   └── click-outside.ts  # onClickOutside
+├── react/            # React hooks wrapping vanilla
+│   ├── useFocusTrap.ts, useScrollLock.ts, useEscapeKey.ts, useClickOutside.ts
+│   └── Portal.tsx
+└── vue/              # Vue composables wrapping vanilla
+    └── useFocusTrap.ts, useScrollLock.ts, useEscapeKey.ts, useClickOutside.ts
+```
+
+Lit uses the vanilla layer directly.
 
 ## Color Set Protocol (CSP)
 
-Located in `packages/ds-core/src/protocol/`. Generates 81 tokens from minimal input:
+Located in `packages/ds-core/src/protocol/`. Generates 81+ tokens from preset definitions:
 
 ```typescript
 const theme: ColorSetDefinition = {
-  id: 'brand',
-  name: 'Brand Theme',
+  id: 'default',
+  name: 'Default Light Theme',
   mode: 'light',
-  primary: { base: '#2563EB' },  // Generates hover, active, alpha variants, etc.
+  primary: { base: '#000000', hover: '#1A1A1A', active: '#1A1A1A' },
+  // ... semantic, text, background, border overrides
 };
 ```
 
-Key files: `schema.ts` (types), `generator.ts` (token generation), `validation/` (WCAG contrast).
+**Pipeline**: `core:build` → `styles:generate` → `styles:build`
+
+The `generate-themes.ts` script in ds-styles imports CSP presets, runs `generateColorSets()` and `generateSCSSFile()`, and writes `_color-sets.scss` + `_colors.scss`.
+
+Key files: `schema.ts` (types), `generator.ts` (token generation), `validation/` (WCAG contrast), `output/` (CSS/SCSS/TS generators).
 
 > Full CSP specification: [docs/api/csp.md](./api/csp.md)
 
@@ -74,78 +122,26 @@ document.documentElement.setAttribute('data-theme', 'dark');
 
 Available themes: `default`, `dark`.
 
+## Test Architecture
+
+Tests are colocated with each package, not centralized:
+
+```
+packages/ds-core/__tests__/       # Pure data tests (jsdom)
+packages/ds-react/__tests__/      # @testing-library/react
+packages/ds-vue/__tests__/        # @testing-library/vue
+packages/ds-lit/__tests__/        # Custom Lit fixture util
+packages/ds-headless/__tests__/   # Vanilla + React + Vue
+```
+
+Vitest workspace config at root runs all packages with `pnpm test`.
+
 ## Key Technologies
 
-- **pnpm 10.x** - Package manager with workspaces (Strict mode)
-- **Turborepo** - Build orchestration
+- **pnpm 10.x** - Package manager with workspaces (strict mode)
+- **Turborepo** - Build orchestration with `generate` → `build` pipeline
 - **TypeScript 5.7** - `target: ES2022`, `moduleResolution: bundler`
-- **Vitest** - Testing framework
+- **Vitest** - Testing framework with workspace mode
 - **Storybook 8** - Component documentation
-- **SVGO** - SVG optimization tool for `@woosgem/ds-icons`
-- **dart-sass** - SCSS compilation (custom script in `packages/ds-styles/scripts/build.js`)
-
----
-
-## Headless Layer (Planned)
-
-> 새로운 레이어: UI 로직/렌더링 담당, 스타일 없음
-
-### 동기
-
-현재 `ds-react`의 Modal, Tooltip 등에 로직(Portal, FocusTrap, 위치 계산)이 하드코딩됨.
-→ 재사용 어려움, 테스트 어려움, 스타일 강제
-
-### 구조 (계획)
-
-```
-@woosgem-dev/headless (또는 primitives)
-├── components/
-│   ├── Portal.tsx       # DOM 트리 밖 렌더링
-│   ├── FocusTrap.tsx    # 포커스 가두기
-│   ├── Popover.tsx      # 앵커 기준 위치 계산
-│   └── Label.tsx        # 폼 필드 구조 (wrapping 패턴)
-├── hooks/
-│   ├── useScrollLock.ts # body 스크롤 방지/복원
-│   ├── useClickOutside.ts
-│   └── useEscapeKey.ts
-└── index.ts
-```
-
-### 레이어 관계
-
-```
-┌─────────────────────────────────────────────┐
-│  @woosgem-dev/react (Styled Components)     │
-│  Modal, Tooltip, Select, Toast, ...         │
-├─────────────────────────────────────────────┤
-│  @woosgem-dev/headless (Logic/Primitives)   │
-│  Portal, FocusTrap, Popover, Label, ...     │
-├─────────────────────────────────────────────┤
-│  @woosgem-dev/core (Definitions + CSP)      │
-│  mapPropsToAttrs, types, tokens             │
-└─────────────────────────────────────────────┘
-```
-
-### 사용 예시
-
-```tsx
-// Headless 직접 사용
-import { Portal, FocusTrap, useScrollLock } from '@woosgem-dev/headless';
-
-function CustomModal({ open, children }) {
-  useScrollLock(open);
-  return (
-    <Portal>
-      <FocusTrap active={open}>
-        {children}
-      </FocusTrap>
-    </Portal>
-  );
-}
-
-// 또는 조합된 Styled 버전 사용
-import { Modal } from '@woosgem-dev/react';
-<Modal open={isOpen}>...</Modal>
-```
-
-> 상세: [docs/roadmap.md](./roadmap.md) "Headless Layer" 섹션 참조
+- **SVGO** - SVG optimization for `@woosgem-dev/icons`
+- **dart-sass** - SCSS compilation (custom script in `packages/ds-styles/scripts/build.ts`)

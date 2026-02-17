@@ -1,22 +1,43 @@
 # Test & Coverage Dashboard
 
-이 문서는 프로젝트의 실시간 테스트 결과 및 코드 커버리지 현황을 제공합니다.
-상세한 데이터는 CI 파이프라인(`test.yml`)을 통해 자동으로 업데이트됩니다.
+## Summary
 
-## 실시간 현황
-
-| Metric | Value | Target |
-|--------|-------|--------|
-| Tests | 1136 passed | - |
-| Coverage | 68% | 60% |
-| Components | 10 | 25 |
+| Metric | Value |
+|--------|-------|
+| Total Tests | 1,665 passed |
+| Packages | 5 (core, react, vue, lit, headless) |
+| Architecture | Per-package tests (`__tests__/`) + Vitest workspace |
 
 ---
 
-## 통합 테스트 현황
+## Per-Package Results
 
-| 패키지 | 테스트 결과 | 커버리지 |
-|--------|------------|----------|
-| @woosgem/ds-test | 1136 passed | 68% |
+| Package | Tests | Description |
+|---------|------:|-------------|
+| @woosgem-dev/core | 415 | Component definitions, CSP protocol, tokens |
+| @woosgem-dev/react | 617 | React component wrappers + Modal focus/scroll tests |
+| @woosgem-dev/vue | 487 | Vue component wrappers + Modal focus/scroll tests |
+| @woosgem-dev/lit | 97 | Lit Web Component wrappers |
+| @woosgem-dev/headless | 49 | Vanilla utilities, React hooks, Vue composables |
+| **Total** | **1,665** | |
 
-> [GitHub Actions 상세 로그 보기](https://github.com/woosgem-dev/woosgem/actions/workflows/test.yml)
+## Test Architecture
+
+Tests are colocated with each package:
+
+```
+packages/ds-core/__tests__/       # Core tests (jsdom, no framework)
+packages/ds-react/__tests__/      # React tests (@testing-library/react)
+packages/ds-vue/__tests__/        # Vue tests (@testing-library/vue)
+packages/ds-lit/__tests__/        # Lit tests (custom fixture util)
+packages/ds-headless/__tests__/   # Headless tests (vanilla + react + vue)
+```
+
+Each package has its own `vitest.config.ts`. Root Vitest workspace runs all packages with `pnpm test`.
+
+## Running Tests
+
+```bash
+pnpm test                        # All packages
+pnpm test --filter ds-react      # Single package
+```
