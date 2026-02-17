@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/vue3';
+import { themes } from '@storybook/theming';
 import '@woosgem/ds-styles';
 
 const preview: Preview = {
@@ -18,6 +19,7 @@ const preview: Preview = {
       ],
     },
     docs: {
+      theme: themes.light,
       source: {
         type: 'code',
         transform: (src: string) => {

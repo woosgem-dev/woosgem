@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/web-components';
+import { themes } from '@storybook/theming';
 import '@woosgem/ds-styles';
 import '@woosgem/ds-lit';
 
@@ -19,6 +20,7 @@ const preview: Preview = {
       ],
     },
     docs: {
+      theme: themes.light,
       source: {
         type: 'code',
       },
