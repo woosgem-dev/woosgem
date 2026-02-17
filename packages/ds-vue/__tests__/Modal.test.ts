@@ -87,6 +87,15 @@ describe('Modal (Vue)', () => {
       const modal = wrapper.find('.modal');
       expect(modal.attributes('aria-modal')).toBe('true');
     });
+
+    it('TC-A102: open 시 aria-hidden="false"가 적용된다', () => {
+      const wrapper = mount(Modal, {
+        props: { open: true, teleportTo: false },
+        slots: { default: 'Content' },
+      });
+      const modal = wrapper.find('.modal');
+      expect(modal.attributes('aria-hidden')).toBe('false');
+    });
   });
 
   describe('닫기 동작', () => {

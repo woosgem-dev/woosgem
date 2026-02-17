@@ -74,6 +74,16 @@ describe('Select (Vue)', () => {
       const wrapper = mount(Select, { props: { open: true } });
       expect(wrapper.attributes('aria-expanded')).toBe('true');
     });
+
+    it('TC-A103: aria-expanded="false"가 기본값으로 적용된다', () => {
+      const wrapper = mount(Select);
+      expect(wrapper.attributes('aria-expanded')).toBe('false');
+    });
+
+    it('TC-A104: disabled 시 aria-disabled가 적용된다', () => {
+      const wrapper = mount(Select, { props: { disabled: true } });
+      expect(wrapper.attributes('aria-disabled')).toBe('true');
+    });
   });
 
   describe('기본값', () => {
@@ -137,6 +147,16 @@ describe('SelectMenu (Vue)', () => {
     const wrapper = mount(SelectMenu, { props: { open: true } });
     expect(wrapper.attributes('data-state')).toBe('open');
   });
+
+  it('TC-A200: multiple 시 aria-multiselectable가 적용된다', () => {
+    const wrapper = mount(SelectMenu, { props: { open: true, multiple: true } });
+    expect(wrapper.attributes('aria-multiselectable')).toBe('true');
+  });
+
+  it('TC-A201: multiple이 아닐 때 aria-multiselectable가 적용되지 않는다', () => {
+    const wrapper = mount(SelectMenu, { props: { open: true } });
+    expect(wrapper.attributes('aria-multiselectable')).toBeUndefined();
+  });
 });
 
 describe('SelectOption (Vue)', () => {
@@ -164,5 +184,15 @@ describe('SelectOption (Vue)', () => {
   it('should render slot content', () => {
     const wrapper = mount(SelectOption, { slots: { default: 'Option text' } });
     expect(wrapper.text()).toContain('Option text');
+  });
+
+  it('TC-A300: aria-selected="false"가 기본값으로 적용된다', () => {
+    const wrapper = mount(SelectOption);
+    expect(wrapper.attributes('aria-selected')).toBe('false');
+  });
+
+  it('TC-A301: disabled 시 aria-disabled가 적용된다', () => {
+    const wrapper = mount(SelectOption, { props: { disabled: true } });
+    expect(wrapper.attributes('aria-disabled')).toBe('true');
   });
 });

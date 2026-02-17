@@ -5,4 +5,10 @@ export {
   onEscapeKey,
   onClickOutside,
   createFocusTrap,
+  calculateTooltipPosition,
+  createTooltipHandlers,
+  type TooltipPosition,
+  type TooltipCoords,
+  type TooltipTriggerType,
+  type TooltipOptions,
 } from './vanilla/index';

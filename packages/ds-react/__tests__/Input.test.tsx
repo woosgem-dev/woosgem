@@ -194,6 +194,43 @@ describe('Input', () => {
     });
   });
 
+  describe('접근성', () => {
+    it('TC-A100: error 시 aria-invalid="true"가 적용된다', () => {
+      render(<Input error aria-label="error input" />);
+      const input = screen.getByRole('textbox');
+
+      expect(input).toHaveAttribute('aria-invalid', 'true');
+    });
+
+    it('TC-A101: error가 없으면 aria-invalid가 적용되지 않는다', () => {
+      render(<Input aria-label="normal input" />);
+      const input = screen.getByRole('textbox');
+
+      expect(input).not.toHaveAttribute('aria-invalid');
+    });
+
+    it('TC-A102: disabled 시 disabled 속성이 적용된다', () => {
+      render(<Input disabled aria-label="disabled input" />);
+      const input = screen.getByRole('textbox');
+
+      expect(input).toBeDisabled();
+    });
+
+    it('TC-A103: aria-describedby가 전달된다', () => {
+      render(<Input aria-label="input" aria-describedby="help-text" />);
+      const input = screen.getByRole('textbox');
+
+      expect(input).toHaveAttribute('aria-describedby', 'help-text');
+    });
+
+    it('TC-A104: aria-required가 전달된다', () => {
+      render(<Input aria-label="input" aria-required="true" />);
+      const input = screen.getByRole('textbox');
+
+      expect(input).toHaveAttribute('aria-required', 'true');
+    });
+  });
+
   describe('커스터마이즈 오버라이드', () => {
     it('TC-O100: className이 병합된다', () => {
       render(<Input className="custom" aria-label="test" />);

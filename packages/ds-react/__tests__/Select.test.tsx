@@ -92,6 +92,16 @@ describe('Select (React)', () => {
       render(<Select aria-label="test">Choose</Select>);
       expect(screen.getByRole('combobox')).toHaveAttribute('aria-haspopup', 'listbox');
     });
+
+    it('TC-A103: aria-expanded="false"가 기본값으로 적용된다', () => {
+      render(<Select aria-label="test">Choose</Select>);
+      expect(screen.getByRole('combobox')).toHaveAttribute('aria-expanded', 'false');
+    });
+
+    it('TC-A104: disabled 시 aria-disabled가 적용된다', () => {
+      render(<Select disabled aria-label="test">Choose</Select>);
+      expect(screen.getByRole('combobox')).toHaveAttribute('aria-disabled', 'true');
+    });
   });
 
   describe('기본값', () => {
@@ -138,6 +148,16 @@ describe('SelectMenu (React)', () => {
     render(<SelectMenu open><li>opt</li></SelectMenu>);
     expect(screen.getByRole('listbox')).toHaveAttribute('data-state', 'open');
   });
+
+  it('TC-A200: multiple 시 aria-multiselectable가 적용된다', () => {
+    render(<SelectMenu open multiple><li>opt</li></SelectMenu>);
+    expect(screen.getByRole('listbox')).toHaveAttribute('aria-multiselectable', 'true');
+  });
+
+  it('TC-A201: multiple이 아닐 때 aria-multiselectable가 적용되지 않는다', () => {
+    render(<SelectMenu open><li>opt</li></SelectMenu>);
+    expect(screen.getByRole('listbox')).not.toHaveAttribute('aria-multiselectable');
+  });
 });
 
 describe('SelectOption (React)', () => {
@@ -168,5 +188,15 @@ describe('SelectOption (React)', () => {
   it('should render children', () => {
     render(<SelectOption value="1">Option text</SelectOption>);
     expect(screen.getByText('Option text')).toBeInTheDocument();
+  });
+
+  it('TC-A300: aria-selected="false"가 기본값으로 적용된다', () => {
+    render(<SelectOption value="1">Option 1</SelectOption>);
+    expect(screen.getByRole('option')).toHaveAttribute('aria-selected', 'false');
+  });
+
+  it('TC-A301: disabled 시 aria-disabled가 적용된다', () => {
+    render(<SelectOption value="1" disabled>Option 1</SelectOption>);
+    expect(screen.getByRole('option')).toHaveAttribute('aria-disabled', 'true');
   });
 });

@@ -103,6 +103,15 @@ describe('Modal (React)', () => {
       );
       expect(screen.getByRole('dialog')).toHaveAttribute('aria-modal', 'true');
     });
+
+    it('TC-A102: open 시 aria-hidden="false"가 적용된다', () => {
+      render(
+        <Modal open>
+          <ModalBody>Content</ModalBody>
+        </Modal>
+      );
+      expect(screen.getByRole('dialog')).toHaveAttribute('aria-hidden', 'false');
+    });
   });
 
   describe('닫기 동작', () => {

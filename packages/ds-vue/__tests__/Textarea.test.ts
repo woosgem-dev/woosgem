@@ -128,6 +128,42 @@ describe('Textarea (Vue)', () => {
     });
   });
 
+  describe('접근성', () => {
+    it('TC-A100: error 시 aria-invalid="true"가 적용된다', () => {
+      const wrapper = mount(Textarea, { props: { error: true } });
+
+      expect(wrapper.attributes('aria-invalid')).toBe('true');
+    });
+
+    it('TC-A101: error가 없으면 aria-invalid가 적용되지 않는다', () => {
+      const wrapper = mount(Textarea);
+
+      expect(wrapper.attributes('aria-invalid')).toBeUndefined();
+    });
+
+    it('TC-A102: disabled 시 disabled 속성이 적용된다', () => {
+      const wrapper = mount(Textarea, { props: { disabled: true } });
+
+      expect(wrapper.attributes('disabled')).toBeDefined();
+    });
+
+    it('TC-A103: aria-describedby가 전달된다', () => {
+      const wrapper = mount(Textarea, {
+        attrs: { 'aria-describedby': 'help-text' },
+      });
+
+      expect(wrapper.attributes('aria-describedby')).toBe('help-text');
+    });
+
+    it('TC-A104: aria-required가 전달된다', () => {
+      const wrapper = mount(Textarea, {
+        attrs: { 'aria-required': 'true' },
+      });
+
+      expect(wrapper.attributes('aria-required')).toBe('true');
+    });
+  });
+
   describe('Vue 전용 props', () => {
     it('TC-V200: placeholder가 적용된다', () => {
       const wrapper = mount(Textarea, { props: { placeholder: 'Enter text...' } });

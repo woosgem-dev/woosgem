@@ -140,6 +140,43 @@ describe('Textarea', () => {
     });
   });
 
+  describe('접근성', () => {
+    it('TC-A100: error 시 aria-invalid="true"가 적용된다', () => {
+      render(<Textarea error data-testid="textarea" />);
+      const textarea = screen.getByTestId('textarea');
+
+      expect(textarea).toHaveAttribute('aria-invalid', 'true');
+    });
+
+    it('TC-A101: error가 없으면 aria-invalid가 적용되지 않는다', () => {
+      render(<Textarea data-testid="textarea" />);
+      const textarea = screen.getByTestId('textarea');
+
+      expect(textarea).not.toHaveAttribute('aria-invalid');
+    });
+
+    it('TC-A102: disabled 시 disabled 속성이 적용된다', () => {
+      render(<Textarea disabled data-testid="textarea" />);
+      const textarea = screen.getByTestId('textarea');
+
+      expect(textarea).toBeDisabled();
+    });
+
+    it('TC-A103: aria-describedby가 전달된다', () => {
+      render(<Textarea aria-describedby="help-text" data-testid="textarea" />);
+      const textarea = screen.getByTestId('textarea');
+
+      expect(textarea).toHaveAttribute('aria-describedby', 'help-text');
+    });
+
+    it('TC-A104: aria-required가 전달된다', () => {
+      render(<Textarea aria-required="true" data-testid="textarea" />);
+      const textarea = screen.getByTestId('textarea');
+
+      expect(textarea).toHaveAttribute('aria-required', 'true');
+    });
+  });
+
   describe('React 전용 props', () => {
     it('TC-R200: placeholder가 적용된다', () => {
       render(<Textarea placeholder="Enter text..." data-testid="textarea" />);
