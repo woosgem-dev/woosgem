@@ -1,4 +1,4 @@
-import type { StorybookConfig } from '@storybook/react-vite';
+import type { StorybookConfig } from '@storybook/web-components-vite';
 import { resolve } from 'path';
 
 const config: StorybookConfig = {
@@ -9,15 +9,15 @@ const config: StorybookConfig = {
     '@storybook/addon-interactions',
   ],
   framework: {
-    name: '@storybook/react-vite',
+    name: '@storybook/web-components-vite',
     options: {},
   },
   viteFinal: async (config) => {
-    config.base = '/woosgem/react/';
+    config.base = '/woosgem/lit/';
     config.resolve = config.resolve || {};
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@woosgem/ds-react': resolve(__dirname, '../../../packages/ds-react/src/index.ts'),
+      '@woosgem/ds-lit': resolve(__dirname, '../../../packages/ds-lit/src/index.ts'),
       '@woosgem/ds-styles': resolve(__dirname, '../../../packages/ds-styles/dist/index.css'),
     };
     return config;

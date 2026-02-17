@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@woosgem/ds-core": ["../ds-core/src/index.ts"],
+      "@woosgem/ds-lit": ["../ds-lit/src/index.ts"],
+      "@woosgem/ds-icons": ["../ds-icons/svg"],
+      "@woosgem/utils": ["../utils/src/index.ts"]
+    },
+    "exactOptionalPropertyTypes": false,
+    "types": ["node"],
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false
+  },
+  "include": ["src/**/*", ".storybook/**/*"]
+}

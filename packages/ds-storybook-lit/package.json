@@ -1,0 +1,32 @@
+{
+  "name": "@woosgem-dev/storybook-lit",
+  "version": "0.0.1",
+  "description": "Lit Web Components Storybook for WooSGem Design System",
+  "author": "woosgem",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "storybook dev -p 6008",
+    "build": "storybook build"
+  },
+  "dependencies": {
+    "@woosgem-dev/core": "workspace:*",
+    "@woosgem-dev/lit": "workspace:*",
+    "@woosgem-dev/styles": "workspace:*"
+  },
+  "devDependencies": {
+    "storybook": "^8.6.15",
+    "@storybook/web-components": "^8.6.15",
+    "@storybook/web-components-vite": "^8.6.15",
+    "@storybook/addon-essentials": "^8.6.15",
+    "@storybook/addon-interactions": "^8.6.15",
+    "@storybook/addon-links": "^8.6.15",
+    "@storybook/blocks": "^8.6.15",
+    "@storybook/test": "^8.6.15",
+    "lit": "^3.0.0",
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0",
+    "@types/node": "^25.1.0"
+  }
+}

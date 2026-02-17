@@ -1,0 +1,69 @@
+name: Deploy Storybook
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.28.2
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Cache Turbo
+        uses: actions/cache@v4
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+
+      - name: Build packages
+        run: pnpm build
+
+      - name: Build React Storybook
+        run: pnpm --filter @woosgem-dev/storybook build
+
+      - name: Build Vue Storybook
+        run: pnpm --filter @woosgem-dev/storybook-vue build
+
+      - name: Build Lit Storybook
+        run: pnpm --filter @woosgem-dev/storybook-lit build
+
+      - name: Assemble deploy directory
+        run: |
+          mkdir -p deploy
+          cp docs/storybook/index.html deploy/
+          cp -r packages/ds-storybook/storybook-static deploy/react
+          cp -r packages/ds-storybook-vue/storybook-static deploy/vue
+          cp -r packages/ds-storybook-lit/storybook-static deploy/lit
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: deploy
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

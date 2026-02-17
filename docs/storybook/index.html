@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WooSGem Design System</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-primary: #0d1117;
+      --bg-secondary: #161b22;
+      --bg-tertiary: #21262d;
+      --border: #30363d;
+      --text-primary: #e6edf3;
+      --text-secondary: #8b949e;
+      --text-muted: #6e7681;
+      --react-color: #58a6ff;
+      --react-bg: rgba(88, 166, 255, 0.1);
+      --react-border: rgba(88, 166, 255, 0.3);
+      --vue-color: #3fb950;
+      --vue-bg: rgba(63, 185, 80, 0.1);
+      --vue-border: rgba(63, 185, 80, 0.3);
+      --lit-color: #f0883e;
+      --lit-bg: rgba(240, 136, 62, 0.1);
+      --lit-border: rgba(240, 136, 62, 0.3);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 100px 0 80px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse at center, rgba(88, 166, 255, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 5px 14px;
+      margin-bottom: 24px;
+      animation: fadeInDown 0.6s ease-out;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .hero h1 .accent {
+      background: linear-gradient(135deg, var(--react-color), #bc8cff, var(--lit-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+      animation: fadeInUp 0.6s ease-out 0.1s both;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      animation: fadeInUp 0.6s ease-out 0.2s both;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 0 60px;
+    }
+
+    /* ── Section ── */
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* ── Framework Cards ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 60px;
+    }
+
+    .card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .card:hover::before { opacity: 1; }
+
+    .card.react { animation: fadeInUp 0.5s ease-out 0.3s both; }
+    .card.react:hover { border-color: var(--react-border); }
+    .card.react::before { background: var(--react-color); }
+
+    .card.vue { animation: fadeInUp 0.5s ease-out 0.4s both; }
+    .card.vue:hover { border-color: var(--vue-border); }
+    .card.vue::before { background: var(--vue-color); }
+
+    .card.lit { animation: fadeInUp 0.5s ease-out 0.5s both; }
+    .card.lit:hover { border-color: var(--lit-border); }
+    .card.lit::before { background: var(--lit-color); }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .card.react .card-icon { background: var(--react-bg); color: var(--react-color); }
+    .card.vue .card-icon { background: var(--vue-bg); color: var(--vue-color); }
+    .card.lit .card-icon { background: var(--lit-bg); color: var(--lit-color); }
+
+    .card-icon svg { width: 22px; height: 22px; }
+
+    .card h2 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .card .card-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .card.react .card-footer { color: var(--react-color); }
+    .card.vue .card-footer { color: var(--vue-color); }
+    .card.lit .card-footer { color: var(--lit-color); }
+
+    .card-footer svg { width: 14px; height: 14px; }
+
+    /* ── Features ── */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 80px;
+    }
+
+    .feature {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      animation: fadeInUp 0.5s ease-out 0.6s both;
+    }
+
+    .feature-icon {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+      display: block;
+      width: 36px;
+      height: 36px;
+      line-height: 36px;
+      text-align: center;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .feature h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .feature p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer a:hover { color: var(--text-primary); }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 12px;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .hero { padding: 60px 0 50px; }
+      .hero h1 { font-size: 36px; }
+      .hero-desc { font-size: 16px; }
+      .hero-stats { gap: 28px; }
+      .stat-value { font-size: 22px; }
+      .cards { grid-template-columns: 1fr; }
+      .features { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 28px; }
+      .hero-stats { flex-direction: column; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <span class="hero-badge">Design System</span>
+      <h1>Woo<span class="accent">SGem</span></h1>
+      <p class="hero-desc">Same components, same tokens, three frameworks. Write once in core, get React hooks, Vue composables, and Lit custom elements out.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-value">25</div>
+          <div class="stat-label">Components</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">3</div>
+          <div class="stat-label">Frameworks</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">81</div>
+          <div class="stat-label">Design Tokens</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <div class="section-label">Storybook Documentation</div>
+
+    <div class="cards">
+      <a class="card react" href="./react/">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="2"/>
+            <ellipse cx="12" cy="12" rx="10" ry="4.5"/>
+            <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(60 12 12)"/>
+            <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(120 12 12)"/>
+          </svg>
+        </div>
+        <h2>React</h2>
+        <p class="card-desc">React 18. Hooks, compound components, forwardRef, TypeScript generics.</p>
+        <div class="card-footer">
+          Open Storybook
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <a class="card vue" href="./vue/">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
+            <line x1="12" y1="22" x2="12" y2="15.5"/>
+            <polyline points="22 8.5 12 15.5 2 8.5"/>
+          </svg>
+        </div>
+        <h2>Vue</h2>
+        <p class="card-desc">Vue 3 Composition API. Composables, reactive props, template syntax.</p>
+        <div class="card-footer">
+          Open Storybook
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <a class="card lit" href="./lit/">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <h2>Lit</h2>
+        <p class="card-desc">Lit 3 Web Components. Custom elements, light DOM, works anywhere.</p>
+        <div class="card-footer">
+          Open Storybook
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
+      </a>
+    </div>
+
+    <div class="section-label">Architecture</div>
+
+    <div class="features">
+      <div class="feature">
+        <span class="feature-icon">C</span>
+        <h3>Color Set Protocol</h3>
+        <p>3 base colors in, 81 tokens out. Every framework gets the same palette.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">H</span>
+        <h3>Headless Primitives</h3>
+        <p>Behavior lives in vanilla JS. React and Vue just wrap it.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">M</span>
+        <h3>Monorepo</h3>
+        <p>Turborepo workspace. One place for definitions, styles, and per-framework wrappers.</p>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="https://github.com/woosgem-dev/woosgem">GitHub</a>
+        <a href="https://www.npmjs.com/org/woosgem-dev">npm</a>
+      </div>
+      <span>WooSGem Design System</span>
+    </footer>
+  </div>
+</body>
+</html>
