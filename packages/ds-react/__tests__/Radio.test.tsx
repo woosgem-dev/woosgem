@@ -173,7 +173,7 @@ describe('Radio', () => {
       render(<Radio className="custom-radio">Option</Radio>);
       const radio = screen.getByRole('radio');
 
-      expect(radio).toHaveClass('radio');
+      expect(radio).toHaveClass('wg-radio');
       expect(radio).toHaveClass('custom-radio');
     });
 

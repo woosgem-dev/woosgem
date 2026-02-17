@@ -45,7 +45,7 @@ describe('Slider Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = Slider.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'slider',
+        class: 'wg-slider',
         'data-size': 'md',
         'data-color': 'primary',
         'data-orientation': 'horizontal',
@@ -106,7 +106,7 @@ describe('Slider Core', () => {
         disabled: true,
       });
       expect(attrs).toEqual({
-        class: 'slider',
+        class: 'wg-slider',
         'data-size': 'lg',
         'data-color': 'danger',
         'data-orientation': 'vertical',
@@ -135,7 +135,7 @@ describe('SliderTrack Core', () => {
   it('should return correct attrs', () => {
     const attrs = SliderTrack.mapPropsToAttrs();
     expect(attrs).toEqual({
-      class: 'slider-track',
+      class: 'wg-slider__track',
     });
   });
 
@@ -156,7 +156,7 @@ describe('SliderFill Core', () => {
   it('should return correct attrs', () => {
     const attrs = SliderFill.mapPropsToAttrs();
     expect(attrs).toEqual({
-      class: 'slider-fill',
+      class: 'wg-slider__fill',
     });
   });
 
@@ -177,7 +177,7 @@ describe('SliderThumb Core', () => {
   it('should return correct attrs', () => {
     const attrs = SliderThumb.mapPropsToAttrs();
     expect(attrs).toEqual({
-      class: 'slider-thumb',
+      class: 'wg-slider__thumb',
       role: 'slider',
       tabindex: '0',
     });

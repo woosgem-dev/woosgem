@@ -140,9 +140,9 @@ const ModalComponent = forwardRef<ModalRef, ModalProps>(function Modal(
   }
 
   const modalContent = (
-    <div className="modal-container" data-open={open || undefined}>
+    <div className="wg-modal-container" data-open={open || undefined}>
       <div
-        className="overlay"
+        className="wg-overlay"
         data-opacity="medium"
         data-level="modal"
         data-visible
@@ -162,7 +162,7 @@ const ModalComponent = forwardRef<ModalRef, ModalProps>(function Modal(
         size={size}
         closable={closable}
         tabIndex={-1}
-        aria-labelledby={title ? 'modal-title' : undefined}
+        aria-labelledby={title ? 'wg-modal__title' : undefined}
         {...restProps}
       >
         {children}
@@ -203,13 +203,13 @@ const ModalHeaderComponent = forwardRef<ModalHeaderRef, ModalHeaderProps>(functi
 ) {
   return (
     <BaseModalHeader ref={ref} showClose={showClose} {...restProps}>
-      <div className="modal-title" id="modal-title">
+      <div className="wg-modal__title" id="wg-modal__title">
         {children}
       </div>
       {showClose && (
         <button
           type="button"
-          className="modal-close"
+          className="wg-modal__close"
           onClick={onClose}
           aria-label="Close modal"
         >

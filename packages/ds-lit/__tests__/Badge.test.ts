@@ -17,7 +17,7 @@ describe('Badge (Lit)', () => {
 
       expect(el.getAttribute('data-variant')).toBe(coreAttrs['data-variant']);
       expect(el.getAttribute('data-color')).toBe(coreAttrs['data-color']);
-      expect(el.classList.contains('badge')).toBe(true);
+      expect(el.classList.contains('wg-badge')).toBe(true);
     });
 
     it('TC-L101: variant prop이 core 결과와 일치한다', async () => {

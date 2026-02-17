@@ -1,13 +1,13 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
-.avatar-group {
+.#{tokens.$prefix}-avatar-group {
   display: inline-flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
   align-items: center;
 
   // Overlap spacing
-  > .avatar {
+  > .#{tokens.$prefix}-avatar {
     border: 2px solid var(--wg-avatar-group-border, #{tokens.$background});
     box-sizing: content-box;
 
@@ -17,41 +17,41 @@
   }
 
   // Spacing variants
-  &[data-spacing='tight'] {
+  &[data-spacing="tight"] {
     --wg-avatar-group-overlap: -8px;
   }
 
-  &[data-spacing='normal'] {
+  &[data-spacing="normal"] {
     --wg-avatar-group-overlap: -4px;
   }
 
-  &[data-spacing='loose'] {
+  &[data-spacing="loose"] {
     --wg-avatar-group-overlap: 0px;
   }
 
   // Size-based overlap adjustments
-  &[data-size='xs'] {
-    &[data-spacing='tight'] { --wg-avatar-group-overlap: -6px; }
-    &[data-spacing='normal'] { --wg-avatar-group-overlap: -3px; }
+  &[data-size="xs"] {
+    &[data-spacing="tight"] { --wg-avatar-group-overlap: -6px; }
+    &[data-spacing="normal"] { --wg-avatar-group-overlap: -3px; }
   }
 
-  &[data-size='sm'] {
-    &[data-spacing='tight'] { --wg-avatar-group-overlap: -7px; }
-    &[data-spacing='normal'] { --wg-avatar-group-overlap: -3px; }
+  &[data-size="sm"] {
+    &[data-spacing="tight"] { --wg-avatar-group-overlap: -7px; }
+    &[data-spacing="normal"] { --wg-avatar-group-overlap: -3px; }
   }
 
-  &[data-size='lg'] {
-    &[data-spacing='tight'] { --wg-avatar-group-overlap: -10px; }
-    &[data-spacing='normal'] { --wg-avatar-group-overlap: -5px; }
+  &[data-size="lg"] {
+    &[data-spacing="tight"] { --wg-avatar-group-overlap: -10px; }
+    &[data-spacing="normal"] { --wg-avatar-group-overlap: -5px; }
   }
 
-  &[data-size='xl'] {
-    &[data-spacing='tight'] { --wg-avatar-group-overlap: -12px; }
-    &[data-spacing='normal'] { --wg-avatar-group-overlap: -6px; }
+  &[data-size="xl"] {
+    &[data-spacing="tight"] { --wg-avatar-group-overlap: -12px; }
+    &[data-spacing="normal"] { --wg-avatar-group-overlap: -6px; }
   }
 }
 
-.avatar-group-overflow {
+.#{tokens.$prefix}-avatar-group__overflow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -63,9 +63,9 @@
   border: 2px solid var(--wg-avatar-group-border, #{tokens.$background});
   box-sizing: content-box;
 
-  &[data-size='xs'] { width: 24px; height: 24px; font-size: tokens.$font-size-12; }
-  &[data-size='sm'] { width: 32px; height: 32px; font-size: tokens.$font-size-12; }
-  &[data-size='md'] { width: 40px; height: 40px; font-size: tokens.$font-size-13; }
-  &[data-size='lg'] { width: 48px; height: 48px; font-size: tokens.$font-size-14; }
-  &[data-size='xl'] { width: 56px; height: 56px; font-size: tokens.$font-size-16; }
+  &[data-size="xs"] { width: 24px; height: 24px; font-size: tokens.$font-size-12; }
+  &[data-size="sm"] { width: 32px; height: 32px; font-size: tokens.$font-size-12; }
+  &[data-size="md"] { width: 40px; height: 40px; font-size: tokens.$font-size-13; }
+  &[data-size="lg"] { width: 48px; height: 48px; font-size: tokens.$font-size-14; }
+  &[data-size="xl"] { width: 56px; height: 56px; font-size: tokens.$font-size-16; }
 }

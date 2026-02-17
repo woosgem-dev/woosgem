@@ -1,6 +1,6 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
-.btn {
+.#{tokens.$prefix}-btn {
   // Reset
   appearance: none;
   border: none;
@@ -9,28 +9,32 @@
   margin: 0;
   cursor: pointer;
 
-  // Base styles
+  // Layout
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: tokens.$spacing-2;
-  border-radius: tokens.$radius-8;
+
+  // Typography
   font-family: tokens.$font-family-default;
   font-weight: tokens.$font-weight-medium;
   line-height: tokens.$line-height-tight;
+  color: var(--wg-btn-color, inherit);
   text-decoration: none;
   white-space: nowrap;
-  user-select: none;
+
+  // Visual
+  background-color: var(--wg-btn-bg, transparent);
+  border: 1px solid var(--wg-btn-border, transparent);
+  border-radius: tokens.$radius-8;
+
+  // Misc
   transition:
     background-color tokens.$transition-fast,
     color tokens.$transition-fast,
     border-color tokens.$transition-fast,
     box-shadow tokens.$transition-fast;
-
-  // CSS custom properties for variant colors
-  background-color: var(--wg-btn-bg, transparent);
-  color: var(--wg-btn-color, inherit);
-  border: 1px solid var(--wg-btn-border, transparent);
+  user-select: none;
 
   // Focus state
   &:focus-visible {
@@ -40,19 +44,19 @@
 
   // Disabled state
   &:disabled,
-  &[data-state='disabled'],
-  &[data-state='loading'] {
-    cursor: not-allowed;
+  &[data-state="disabled"],
+  &[data-state="loading"] {
     opacity: 0.5;
+    cursor: not-allowed;
   }
 
   // Loading state
-  &[data-state='loading'] {
+  &[data-state="loading"] {
     position: relative;
     color: transparent;
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       width: 1em;
       height: 1em;
@@ -72,25 +76,25 @@
   // ===================
   // Sizes
   // ===================
-  &[data-size='xs'] {
+  &[data-size="xs"] {
     height: 24px;
     padding: tokens.$spacing-0 tokens.$spacing-2;
     font-size: tokens.$font-size-12;
   }
 
-  &[data-size='sm'] {
+  &[data-size="sm"] {
     height: 32px;
     padding: tokens.$spacing-1 tokens.$spacing-3;
     font-size: tokens.$font-size-13;
   }
 
-  &[data-size='md'] {
+  &[data-size="md"] {
     height: 40px;
     padding: tokens.$spacing-2 tokens.$spacing-4;
     font-size: tokens.$font-size-14;
   }
 
-  &[data-size='lg'] {
+  &[data-size="lg"] {
     height: 48px;
     padding: tokens.$spacing-3 tokens.$spacing-6;
     font-size: tokens.$font-size-16;
@@ -101,250 +105,250 @@
   // ===================
 
   // Filled variant
-  &[data-variant='filled'] {
-    &[data-color='primary'] {
+  &[data-variant="filled"] {
+    &[data-color="primary"] {
       --wg-btn-bg: #{tokens.$primary};
       --wg-btn-color: #{tokens.$text-inverse};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$primary-hover};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$primary-active};
       }
     }
 
-    &[data-color='secondary'] {
+    &[data-color="secondary"] {
       --wg-btn-bg: #{tokens.$secondary};
       --wg-btn-color: #{tokens.$text-inverse};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$secondary-hover};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$secondary-active};
       }
     }
 
-    &[data-color='danger'] {
+    &[data-color="danger"] {
       --wg-btn-bg: #{tokens.$danger};
       --wg-btn-color: #{tokens.$text-inverse};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$danger-hover};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$danger-active};
       }
     }
 
-    &[data-color='success'] {
+    &[data-color="success"] {
       --wg-btn-bg: #{tokens.$success};
       --wg-btn-color: #{tokens.$text-inverse};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$success-hover};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$success-active};
       }
     }
 
-    &[data-color='warning'] {
+    &[data-color="warning"] {
       --wg-btn-bg: #{tokens.$warning};
       --wg-btn-color: #{tokens.$text};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$warning-hover};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$warning-active};
       }
     }
 
-    &[data-color='info'] {
+    &[data-color="info"] {
       --wg-btn-bg: #{tokens.$info};
       --wg-btn-color: #{tokens.$text-inverse};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$info-hover};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$info-active};
       }
     }
   }
 
   // Outline variant
-  &[data-variant='outline'] {
+  &[data-variant="outline"] {
     --wg-btn-bg: transparent;
 
-    &[data-color='primary'] {
+    &[data-color="primary"] {
       --wg-btn-border: #{tokens.$primary};
       --wg-btn-color: #{tokens.$primary};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$primary-alpha-10};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$primary-alpha-20};
       }
     }
 
-    &[data-color='secondary'] {
+    &[data-color="secondary"] {
       --wg-btn-border: #{tokens.$border};
       --wg-btn-color: #{tokens.$text};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$background-muted};
         --wg-btn-border: #{tokens.$border-hover};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$background-muted-darken-3};
       }
     }
 
-    &[data-color='danger'] {
+    &[data-color="danger"] {
       --wg-btn-border: #{tokens.$danger};
       --wg-btn-color: #{tokens.$danger};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$red-light};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$red-light-darken-5};
       }
     }
 
-    &[data-color='success'] {
+    &[data-color="success"] {
       --wg-btn-border: #{tokens.$success};
       --wg-btn-color: #{tokens.$success};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$green-light};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$green-light-darken-5};
       }
     }
 
-    &[data-color='warning'] {
+    &[data-color="warning"] {
       --wg-btn-border: #{tokens.$warning};
       --wg-btn-color: #{tokens.$warning};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$yellow-light};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$yellow-light-darken-5};
       }
     }
 
-    &[data-color='info'] {
+    &[data-color="info"] {
       --wg-btn-border: #{tokens.$info};
       --wg-btn-color: #{tokens.$info};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$blue-light};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$blue-light-darken-5};
       }
     }
   }
 
   // Ghost variant
-  &[data-variant='ghost'] {
+  &[data-variant="ghost"] {
     --wg-btn-bg: transparent;
     --wg-btn-border: transparent;
 
-    &[data-color='primary'] {
+    &[data-color="primary"] {
       --wg-btn-color: #{tokens.$primary};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$primary-alpha-10};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$primary-alpha-20};
       }
     }
 
-    &[data-color='secondary'] {
+    &[data-color="secondary"] {
       --wg-btn-color: #{tokens.$text};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$background-muted};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$background-muted-darken-3};
       }
     }
 
-    &[data-color='danger'] {
+    &[data-color="danger"] {
       --wg-btn-color: #{tokens.$danger};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$red-light};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$red-light-darken-5};
       }
     }
 
-    &[data-color='success'] {
+    &[data-color="success"] {
       --wg-btn-color: #{tokens.$success};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$green-light};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$green-light-darken-5};
       }
     }
 
-    &[data-color='warning'] {
+    &[data-color="warning"] {
       --wg-btn-color: #{tokens.$warning};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$yellow-light};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$yellow-light-darken-5};
       }
     }
 
-    &[data-color='info'] {
+    &[data-color="info"] {
       --wg-btn-color: #{tokens.$info};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$blue-light};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-bg: #{tokens.$blue-light-darken-5};
       }
     }
   }
 
   // Link variant
-  &[data-variant='link'] {
+  &[data-variant="link"] {
     --wg-btn-bg: transparent;
     --wg-btn-border: transparent;
     --wg-btn-color: #{tokens.$primary};
@@ -352,70 +356,70 @@
     height: auto;
     text-decoration: underline;
 
-    &:hover:not(:disabled):not([data-state='loading']) {
+    &:hover:not(:disabled):not([data-state="loading"]) {
       --wg-btn-color: #{tokens.$primary-hover};
     }
 
-    &:active:not(:disabled):not([data-state='loading']) {
+    &:active:not(:disabled):not([data-state="loading"]) {
       --wg-btn-color: #{tokens.$primary-active};
     }
 
-    &[data-color='danger'] {
+    &[data-color="danger"] {
       --wg-btn-color: #{tokens.$danger};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-color: #{tokens.$danger-hover};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-color: #{tokens.$danger-active};
       }
     }
 
-    &[data-color='secondary'] {
+    &[data-color="secondary"] {
       --wg-btn-color: #{tokens.$text-muted};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-color: #{tokens.$text};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-color: #{tokens.$text};
       }
     }
 
-    &[data-color='success'] {
+    &[data-color="success"] {
       --wg-btn-color: #{tokens.$success};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-color: #{tokens.$success-hover};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-color: #{tokens.$success-active};
       }
     }
 
-    &[data-color='warning'] {
+    &[data-color="warning"] {
       --wg-btn-color: #{tokens.$warning};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-color: #{tokens.$warning-hover};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-color: #{tokens.$warning-active};
       }
     }
 
-    &[data-color='info'] {
+    &[data-color="info"] {
       --wg-btn-color: #{tokens.$info};
 
-      &:hover:not(:disabled):not([data-state='loading']) {
+      &:hover:not(:disabled):not([data-state="loading"]) {
         --wg-btn-color: #{tokens.$info-hover};
       }
 
-      &:active:not(:disabled):not([data-state='loading']) {
+      &:active:not(:disabled):not([data-state="loading"]) {
         --wg-btn-color: #{tokens.$info-active};
       }
     }

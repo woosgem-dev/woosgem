@@ -190,7 +190,7 @@ describe('Switch', () => {
       render(<Switch className="custom-switch" />);
       const switchEl = screen.getByRole('switch');
 
-      expect(switchEl).toHaveClass('switch');
+      expect(switchEl).toHaveClass('wg-switch');
       expect(switchEl).toHaveClass('custom-switch');
     });
 

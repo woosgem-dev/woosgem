@@ -114,7 +114,7 @@ export class Tooltip extends LitElement {
   }
 
   private _applyWrapperAttrs(): void {
-    this.classList.add('tooltip-wrapper');
+    this.classList.add('wg-tooltip-wrapper');
     this.setAttribute('data-position', this.position);
   }
 
@@ -149,7 +149,7 @@ export class Tooltip extends LitElement {
 
     return html`
       <span
-        class="tooltip-trigger"
+        class="wg-tooltip__trigger"
         aria-describedby=${this._isVisible ? this._tooltipId : ''}
         @mouseenter=${this.trigger === 'hover' ? this._showTooltip : undefined}
         @mouseleave=${this.trigger === 'hover' ? this._hideTooltip : undefined}
@@ -171,8 +171,8 @@ export class Tooltip extends LitElement {
         role=${attrs.role}
         aria-hidden=${!this._isVisible}
       >
-        ${this.arrow ? html`<span class="tooltip-arrow"></span>` : ''}
-        <span class="tooltip-content">${this.content}</span>
+        ${this.arrow ? html`<span class="wg-tooltip__arrow"></span>` : ''}
+        <span class="wg-tooltip__content">${this.content}</span>
       </div>
     `;
   }

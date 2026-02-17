@@ -41,7 +41,7 @@ describe('Select Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = Select.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'select',
+        class: 'wg-select',
         'data-variant': 'outline',
         'data-size': 'md',
         'data-state': undefined,
@@ -141,7 +141,7 @@ describe('SelectMenu Core', () => {
   it('should return default attrs', () => {
     const attrs = SelectMenu.mapPropsToAttrs({});
     expect(attrs).toEqual({
-      class: 'select-menu',
+      class: 'wg-select__menu',
       'data-size': 'md',
       'data-state': undefined,
       role: 'listbox',
@@ -181,7 +181,7 @@ describe('SelectOption Core', () => {
   it('should return default attrs', () => {
     const attrs = SelectOption.mapPropsToAttrs({});
     expect(attrs).toEqual({
-      class: 'select-option',
+      class: 'wg-select__option',
       'data-size': 'md',
       'data-state': undefined,
       role: 'option',

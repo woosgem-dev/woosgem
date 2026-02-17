@@ -47,7 +47,7 @@ describe('Menu (Vue)', () => {
   describe('커스터마이즈 오버라이드', () => {
     it('TC-O100: class 추가 시 병합된다', () => {
       const wrapper = mount(Menu, { props: { class: 'custom' } });
-      expect(wrapper.classes()).toContain('menu');
+      expect(wrapper.classes()).toContain('wg-menu');
       expect(wrapper.classes()).toContain('custom');
     });
 
@@ -112,7 +112,7 @@ describe('MenuItem (Vue)', () => {
   describe('커스터마이즈 오버라이드', () => {
     it('TC-O200: class 추가 시 병합된다', () => {
       const wrapper = mount(MenuItem, { props: { class: 'custom' } });
-      expect(wrapper.classes()).toContain('menu-item');
+      expect(wrapper.classes()).toContain('wg-menu__item');
       expect(wrapper.classes()).toContain('custom');
     });
   });
@@ -158,7 +158,7 @@ describe('MenuGroup (Vue)', () => {
   describe('커스터마이즈 오버라이드', () => {
     it('TC-O400: class 추가 시 병합된다', () => {
       const wrapper = mount(MenuGroup, { props: { class: 'custom' } });
-      expect(wrapper.classes()).toContain('menu-group');
+      expect(wrapper.classes()).toContain('wg-menu__group');
       expect(wrapper.classes()).toContain('custom');
     });
   });

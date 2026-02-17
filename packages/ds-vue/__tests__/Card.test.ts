@@ -98,7 +98,7 @@ describe('Card (Vue)', () => {
   describe('커스터마이즈 오버라이드', () => {
     it('TC-O100: class 추가 시 병합된다', () => {
       const wrapper = mount(Card, { props: { class: 'custom-card' } });
-      expect(wrapper.classes()).toContain('card');
+      expect(wrapper.classes()).toContain('wg-card');
       expect(wrapper.classes()).toContain('custom-card');
     });
 
@@ -115,7 +115,7 @@ describe('Card (Vue)', () => {
 describe('CardHeader (Vue)', () => {
   it('should render with card-header class', () => {
     const wrapper = mount(CardHeader, { slots: { default: 'Header' } });
-    expect(wrapper.classes()).toContain('card-header');
+    expect(wrapper.classes()).toContain('wg-card__header');
   });
 
   it('should render slot content', () => {
@@ -132,7 +132,7 @@ describe('CardHeader (Vue)', () => {
 describe('CardBody (Vue)', () => {
   it('should render with card-body class', () => {
     const wrapper = mount(CardBody, { slots: { default: 'Body' } });
-    expect(wrapper.classes()).toContain('card-body');
+    expect(wrapper.classes()).toContain('wg-card__body');
   });
 
   it('should render slot content', () => {
@@ -144,7 +144,7 @@ describe('CardBody (Vue)', () => {
 describe('CardFooter (Vue)', () => {
   it('should render with card-footer class', () => {
     const wrapper = mount(CardFooter, { slots: { default: 'Footer' } });
-    expect(wrapper.classes()).toContain('card-footer');
+    expect(wrapper.classes()).toContain('wg-card__footer');
   });
 
   it('should render slot content', () => {

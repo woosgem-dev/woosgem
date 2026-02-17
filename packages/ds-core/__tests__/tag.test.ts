@@ -24,7 +24,7 @@ describe('Tag Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = Tag.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'tag',
+        class: 'wg-tag',
         'data-variant': 'subtle',
         'data-color': 'primary',
         'data-size': 'md',

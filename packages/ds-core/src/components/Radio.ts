@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls } from '../constants';
 
 /** Radio size options */
 export const RadioSizes = ['sm', 'md', 'lg'] as const;
@@ -57,7 +58,7 @@ export const Radio = {
     }
 
     return {
-      class: 'radio',
+      class: cls('radio'),
       'data-size': merged.size,
       'data-color': merged.color,
       'data-state': state,
@@ -101,7 +102,7 @@ export const RadioGroup = {
   mapPropsToAttrs: (props: RadioGroupStyleProps): RadioGroupAttrs => {
     const merged = { ...RadioGroup.defaultProps, ...filterNullish(props) };
     return {
-      class: 'radio-group',
+      class: cls('radio-group'),
       'data-orientation': merged.orientation,
       role: 'radiogroup',
       'aria-disabled': merged.disabled || undefined,

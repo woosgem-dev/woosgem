@@ -143,7 +143,7 @@ describe('Radio (Vue)', () => {
     it('TC-O100: class 추가 시 병합된다', () => {
       const wrapper = mount(Radio, { props: { class: 'custom-radio' } });
 
-      expect(wrapper.classes()).toContain('radio');
+      expect(wrapper.classes()).toContain('wg-radio');
       expect(wrapper.classes()).toContain('custom-radio');
     });
 

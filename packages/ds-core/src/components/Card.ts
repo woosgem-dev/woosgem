@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls, clsEl } from '../constants';
 
 /** Card variant options */
 export const CardVariants = ['outlined', 'elevated', 'filled'] as const;
@@ -55,7 +56,7 @@ export const Card = {
   mapPropsToAttrs: (props: CardStyleProps): CardAttrs => {
     const merged = { ...Card.defaultProps, ...filterNullish(props) };
     return {
-      class: 'card',
+      class: cls('card'),
       'data-variant': merged.variant,
       'data-padding': merged.padding,
       'data-hoverable': merged.hoverable || merged.clickable || undefined,
@@ -100,7 +101,7 @@ export const CardHeader = {
   mapPropsToAttrs: (props: CardHeaderStyleProps): CardHeaderAttrs => {
     const merged = { ...CardHeader.defaultProps, ...filterNullish(props) };
     return {
-      class: 'card-header',
+      class: clsEl('card', 'header'),
       'data-divider': merged.divider || undefined,
     };
   },
@@ -126,7 +127,7 @@ export const CardBody = {
 
   mapPropsToAttrs: (): CardBodyAttrs => {
     return {
-      class: 'card-body',
+      class: clsEl('card', 'body'),
     };
   },
 
@@ -170,7 +171,7 @@ export const CardFooter = {
   mapPropsToAttrs: (props: CardFooterStyleProps): CardFooterAttrs => {
     const merged = { ...CardFooter.defaultProps, ...filterNullish(props) };
     return {
-      class: 'card-footer',
+      class: clsEl('card', 'footer'),
       'data-divider': merged.divider || undefined,
       'data-align': merged.align,
     };

@@ -3,7 +3,7 @@
 // ===================
 // Outputs only default (light) theme CSS Custom Properties
 
-@use 'theme-generator' as generator;
+@use "theme-generator" as generator;
 
 // Output default theme CSS Custom Properties on :root
-@include generator.single-theme('default');
+@include generator.single-theme("default");

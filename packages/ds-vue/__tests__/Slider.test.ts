@@ -127,7 +127,7 @@ describe('Slider (Vue)', () => {
   describe('커스터마이즈 오버라이드', () => {
     it('TC-O100: class 추가 시 병합된다', () => {
       const wrapper = mount(Slider, { props: { class: 'custom-slider' } });
-      expect(wrapper.classes()).toContain('slider');
+      expect(wrapper.classes()).toContain('wg-slider');
       expect(wrapper.classes()).toContain('custom-slider');
     });
 
@@ -144,7 +144,7 @@ describe('Slider (Vue)', () => {
 describe('SliderTrack (Vue)', () => {
   it('should render with slider-track class', () => {
     const wrapper = mount(SliderTrack, { slots: { default: 'Track' } });
-    expect(wrapper.classes()).toContain('slider-track');
+    expect(wrapper.classes()).toContain('wg-slider__track');
   });
 
   it('should render slot content', () => {
@@ -161,7 +161,7 @@ describe('SliderTrack (Vue)', () => {
 describe('SliderFill (Vue)', () => {
   it('should render with slider-fill class', () => {
     const wrapper = mount(SliderFill);
-    expect(wrapper.classes()).toContain('slider-fill');
+    expect(wrapper.classes()).toContain('wg-slider__fill');
   });
 
   it('should be a div element', () => {
@@ -173,7 +173,7 @@ describe('SliderFill (Vue)', () => {
 describe('SliderThumb (Vue)', () => {
   it('should render with slider-thumb class', () => {
     const wrapper = mount(SliderThumb);
-    expect(wrapper.classes()).toContain('slider-thumb');
+    expect(wrapper.classes()).toContain('wg-slider__thumb');
   });
 
   it('should have role="slider"', () => {

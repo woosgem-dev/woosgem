@@ -17,7 +17,7 @@ describe('Spinner (Lit)', () => {
 
       expect(el.getAttribute('data-size')).toBe(coreAttrs['data-size']);
       expect(el.getAttribute('data-color')).toBe(coreAttrs['data-color']);
-      expect(el.classList.contains('spinner')).toBe(true);
+      expect(el.classList.contains('wg-spinner')).toBe(true);
     });
 
     it('TC-L101: size prop이 core 결과와 일치한다', async () => {

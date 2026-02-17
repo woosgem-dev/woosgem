@@ -193,7 +193,7 @@ describe('Input', () => {
       });
       const input = screen.getByRole('textbox');
 
-      expect(input).toHaveClass('input');
+      expect(input).toHaveClass('wg-input');
       expect(input).toHaveClass('custom-class');
     });
 
@@ -268,7 +268,7 @@ describe('Input', () => {
       });
       const input = screen.getByRole('textbox');
 
-      expect(input).toHaveClass('input');
+      expect(input).toHaveClass('wg-input');
       expect(input).toHaveClass('custom');
     });
 

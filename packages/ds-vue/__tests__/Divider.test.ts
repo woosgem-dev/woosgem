@@ -132,7 +132,7 @@ describe('Divider', () => {
       });
       const divider = screen.getByRole('separator');
 
-      expect(divider).toHaveClass('divider');
+      expect(divider).toHaveClass('wg-divider');
       expect(divider).toHaveClass('custom-class');
     });
 
@@ -153,7 +153,7 @@ describe('Divider', () => {
       });
       const divider = screen.getByRole('separator');
 
-      expect(divider).toHaveClass('divider');
+      expect(divider).toHaveClass('wg-divider');
       expect(divider).toHaveClass('custom');
     });
 

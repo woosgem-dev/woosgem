@@ -16,7 +16,7 @@ describe('Checkbox', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({});
 
       render(<Checkbox />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('data-size', coreAttrs['data-size']);
       expect(checkbox).toHaveAttribute('data-state', coreAttrs['data-state']);
@@ -27,7 +27,7 @@ describe('Checkbox', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ size: 'lg' });
 
       render(<Checkbox size="lg" />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('data-size', coreAttrs['data-size']);
       expect(checkbox).toHaveAttribute('data-size', 'lg');
@@ -37,7 +37,7 @@ describe('Checkbox', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ checked: true });
 
       render(<Checkbox checked />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('data-state', coreAttrs['data-state']);
       expect(checkbox).toHaveAttribute('data-state', 'checked');
@@ -47,7 +47,7 @@ describe('Checkbox', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ indeterminate: true });
 
       render(<Checkbox indeterminate />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('data-state', coreAttrs['data-state']);
       expect(checkbox).toHaveAttribute('data-state', 'indeterminate');
@@ -57,7 +57,7 @@ describe('Checkbox', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ disabled: true });
 
       render(<Checkbox disabled />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('data-state', coreAttrs['data-state']);
       expect(checkbox).toHaveAttribute('data-state', 'disabled');
@@ -72,7 +72,7 @@ describe('Checkbox', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs(props);
 
       render(<Checkbox size="sm" checked disabled />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('data-size', coreAttrs['data-size']);
       expect(checkbox).toHaveAttribute('data-state', coreAttrs['data-state']);
@@ -82,7 +82,7 @@ describe('Checkbox', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ disabled: true, indeterminate: true });
 
       render(<Checkbox disabled indeterminate />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(coreAttrs['data-state']).toBe('disabled');
       expect(checkbox).toHaveAttribute('data-state', 'disabled');
@@ -92,7 +92,7 @@ describe('Checkbox', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ disabled: true, checked: true });
 
       render(<Checkbox disabled checked />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(coreAttrs['data-state']).toBe('disabled');
       expect(checkbox).toHaveAttribute('data-state', 'disabled');
@@ -102,7 +102,7 @@ describe('Checkbox', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ indeterminate: true, checked: true });
 
       render(<Checkbox indeterminate checked />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(coreAttrs['data-state']).toBe('indeterminate');
       expect(checkbox).toHaveAttribute('data-state', 'indeterminate');
@@ -116,7 +116,7 @@ describe('Checkbox', () => {
       });
 
       render(<Checkbox disabled indeterminate checked />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(coreAttrs['data-state']).toBe('disabled');
       expect(checkbox).toHaveAttribute('data-state', 'disabled');
@@ -124,21 +124,21 @@ describe('Checkbox', () => {
 
     it('TC-C110: size: sm가 적용된다', () => {
       render(<Checkbox size="sm" />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('data-size', 'sm');
     });
 
     it('TC-C111: size: md가 적용된다', () => {
       render(<Checkbox size="md" />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('data-size', 'md');
     });
 
     it('TC-C112: size: lg가 적용된다', () => {
       render(<Checkbox size="lg" />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('data-size', 'lg');
     });
@@ -150,7 +150,7 @@ describe('Checkbox', () => {
       const handleClick = vi.fn();
 
       render(<Checkbox onClick={handleClick} />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       await user.click(checkbox!);
 
@@ -162,7 +162,7 @@ describe('Checkbox', () => {
       const handleClick = vi.fn();
 
       render(<Checkbox onClick={handleClick} disabled />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       await user.click(checkbox!);
 
@@ -175,7 +175,7 @@ describe('Checkbox', () => {
       const handleClick = vi.fn();
 
       render(<Checkbox onClick={handleClick} />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       await user.click(checkbox!);
       await user.click(checkbox!);
@@ -188,7 +188,7 @@ describe('Checkbox', () => {
   describe('React 전용 props', () => {
     it('TC-R300: children이 렌더링된다', () => {
       render(<Checkbox>Label</Checkbox>);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveTextContent('Label');
     });
@@ -205,15 +205,15 @@ describe('Checkbox', () => {
 
     it('TC-R302: className이 병합된다', () => {
       render(<Checkbox className="custom-class" />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
-      expect(checkbox).toHaveClass('checkbox');
+      expect(checkbox).toHaveClass('wg-checkbox');
       expect(checkbox).toHaveClass('custom-class');
     });
 
     it('TC-R303: aria-label이 적용된다', () => {
       render(<Checkbox aria-label="Accept terms" />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('aria-label', 'Accept terms');
     });
@@ -222,17 +222,17 @@ describe('Checkbox', () => {
   describe('커스터마이즈 오버라이드', () => {
     it('TC-O100: className이 병합된다', () => {
       render(<Checkbox className="custom" />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
-      expect(checkbox).toHaveClass('checkbox');
+      expect(checkbox).toHaveClass('wg-checkbox');
       expect(checkbox).toHaveClass('custom');
     });
 
     it('TC-O101: className 여러 개 추가', () => {
       render(<Checkbox className="a b c" />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
-      expect(checkbox).toHaveClass('checkbox');
+      expect(checkbox).toHaveClass('wg-checkbox');
       expect(checkbox).toHaveClass('a');
       expect(checkbox).toHaveClass('b');
       expect(checkbox).toHaveClass('c');
@@ -240,7 +240,7 @@ describe('Checkbox', () => {
 
     it('TC-O110: style 인라인 적용', () => {
       render(<Checkbox style={{ marginTop: 8 }} />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveStyle({ marginTop: '8px' });
     });
@@ -252,21 +252,21 @@ describe('Checkbox', () => {
 
     it('TC-O140: aria-label 적용', () => {
       render(<Checkbox aria-label="Accept terms" />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('aria-label', 'Accept terms');
     });
 
     it('TC-O141: aria-describedby 적용', () => {
       render(<Checkbox aria-describedby="desc" />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('aria-describedby', 'desc');
     });
 
     it('TC-O170: id 속성 전달 적용', () => {
       render(<Checkbox id="my-checkbox" />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('id', 'my-checkbox');
     });
@@ -274,7 +274,7 @@ describe('Checkbox', () => {
     it('TC-O130: 보호 속성 $1 오버라이드 차단', () => {
       // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<Checkbox data-size="custom" size="lg" />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('data-size', 'lg');
     });
@@ -282,7 +282,7 @@ describe('Checkbox', () => {
     it('TC-O131: 보호 속성 $1 오버라이드 차단', () => {
       // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<Checkbox data-state="custom" checked />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('data-state', 'checked');
     });
@@ -291,28 +291,28 @@ describe('Checkbox', () => {
   describe('기본값', () => {
     it('TC-C010: size 기본값 md이다', () => {
       render(<Checkbox />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('data-size', 'md');
     });
 
     it('TC-C011: checked 기본값 false (unchecked)이다', () => {
       render(<Checkbox />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('data-state', 'unchecked');
     });
 
     it('TC-C012: indeterminate 기본값 false이다', () => {
       render(<Checkbox />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('data-state', 'unchecked');
     });
 
     it('TC-C013: disabled 기본값 false이다', () => {
       render(<Checkbox />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).not.toHaveAttribute('data-state', 'disabled');
     });
@@ -321,28 +321,28 @@ describe('Checkbox', () => {
   describe('상태 조합', () => {
     it('checked: true이면 data-state가 checked이다', () => {
       render(<Checkbox checked />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('data-state', 'checked');
     });
 
     it('checked: false이면 data-state가 unchecked이다', () => {
       render(<Checkbox checked={false} />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('data-state', 'unchecked');
     });
 
     it('indeterminate: true이면 data-state가 indeterminate이다', () => {
       render(<Checkbox indeterminate />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('data-state', 'indeterminate');
     });
 
     it('disabled: true이면 data-state가 disabled이다', () => {
       render(<Checkbox disabled />);
-      const checkbox = document.querySelector('.checkbox');
+      const checkbox = document.querySelector('.wg-checkbox');
 
       expect(checkbox).toHaveAttribute('data-state', 'disabled');
     });
@@ -363,7 +363,7 @@ describe('CheckboxRoot', () => {
           <CheckboxIndicator />
         </CheckboxRoot>
       );
-      const root = document.querySelector('.checkbox-root');
+      const root = document.querySelector('.wg-checkbox__root');
 
       expect(root).toHaveAttribute('data-size', coreAttrs['data-size']);
       expect(root).toHaveClass(coreAttrs.class);
@@ -379,7 +379,7 @@ describe('CheckboxRoot', () => {
             <CheckboxIndicator />
           </CheckboxRoot>
         );
-        const root = document.querySelector('.checkbox-root');
+        const root = document.querySelector('.wg-checkbox__root');
 
         expect(root).toHaveAttribute('data-size', coreAttrs['data-size']);
         expect(root).toHaveAttribute('data-size', size);
@@ -395,7 +395,7 @@ describe('CheckboxRoot', () => {
           <CheckboxIndicator />
         </CheckboxRoot>
       );
-      const root = document.querySelector('.checkbox-root');
+      const root = document.querySelector('.wg-checkbox__root');
 
       expect(root).toHaveAttribute('data-disabled', String(coreAttrs['data-disabled']));
     });
@@ -406,7 +406,7 @@ describe('CheckboxRoot', () => {
           <CheckboxIndicator />
         </CheckboxRoot>
       );
-      const root = document.querySelector('.checkbox-root');
+      const root = document.querySelector('.wg-checkbox__root');
 
       expect(root).not.toHaveAttribute('data-disabled');
     });
@@ -432,7 +432,7 @@ describe('CheckboxRoot', () => {
         </CheckboxRoot>
       );
 
-      expect(document.querySelector('.checkbox-label')).toHaveTextContent('동의합니다');
+      expect(document.querySelector('.wg-checkbox__label')).toHaveTextContent('동의합니다');
     });
   });
 
@@ -443,9 +443,9 @@ describe('CheckboxRoot', () => {
           <CheckboxIndicator />
         </CheckboxRoot>
       );
-      const root = document.querySelector('.checkbox-root');
+      const root = document.querySelector('.wg-checkbox__root');
 
-      expect(root).toHaveClass('checkbox-root');
+      expect(root).toHaveClass('wg-checkbox__root');
       expect(root).toHaveClass('custom-root');
     });
 
@@ -455,9 +455,9 @@ describe('CheckboxRoot', () => {
           <CheckboxIndicator />
         </CheckboxRoot>
       );
-      const root = document.querySelector('.checkbox-root');
+      const root = document.querySelector('.wg-checkbox__root');
 
-      expect(root).toHaveClass('checkbox-root');
+      expect(root).toHaveClass('wg-checkbox__root');
       expect(root).toHaveClass('a');
       expect(root).toHaveClass('b');
     });
@@ -474,7 +474,7 @@ describe('CheckboxRoot', () => {
       );
 
       expect(ref.current).toBeInstanceOf(HTMLLabelElement);
-      expect(ref.current).toHaveClass('checkbox-root');
+      expect(ref.current).toHaveClass('wg-checkbox__root');
     });
   });
 
@@ -485,7 +485,7 @@ describe('CheckboxRoot', () => {
           <CheckboxIndicator />
         </CheckboxRoot>
       );
-      const root = document.querySelector('.checkbox-root');
+      const root = document.querySelector('.wg-checkbox__root');
 
       expect(root).toHaveAttribute('data-size', 'md');
     });
@@ -496,7 +496,7 @@ describe('CheckboxRoot', () => {
           <CheckboxIndicator />
         </CheckboxRoot>
       );
-      const root = document.querySelector('.checkbox-root');
+      const root = document.querySelector('.wg-checkbox__root');
 
       expect(root).not.toHaveAttribute('data-disabled');
     });
@@ -513,7 +513,7 @@ describe('CheckboxIndicator', () => {
           <CheckboxIndicator />
         </CheckboxRoot>
       );
-      const indicator = document.querySelector('.checkbox-indicator');
+      const indicator = document.querySelector('.wg-checkbox__indicator');
 
       expect(indicator).toHaveAttribute('data-size', coreAttrs['data-size']);
       expect(indicator).toHaveAttribute('data-state', coreAttrs['data-state']);
@@ -529,7 +529,7 @@ describe('CheckboxIndicator', () => {
           <CheckboxIndicator />
         </CheckboxRoot>
       );
-      const indicator = document.querySelector('.checkbox-indicator');
+      const indicator = document.querySelector('.wg-checkbox__indicator');
 
       expect(indicator).toHaveAttribute('data-size', coreAttrs['data-size']);
       expect(indicator).toHaveAttribute('data-size', 'lg');
@@ -545,7 +545,7 @@ describe('CheckboxIndicator', () => {
           <CheckboxIndicator />
         </CheckboxRoot>
       );
-      const indicator = document.querySelector('.checkbox-indicator');
+      const indicator = document.querySelector('.wg-checkbox__indicator');
 
       expect(indicator).toHaveAttribute('data-state', coreAttrs['data-state']);
       expect(indicator).toHaveAttribute('data-state', 'checked');
@@ -557,7 +557,7 @@ describe('CheckboxIndicator', () => {
           <CheckboxIndicator />
         </CheckboxRoot>
       );
-      const indicator = document.querySelector('.checkbox-indicator');
+      const indicator = document.querySelector('.wg-checkbox__indicator');
 
       expect(indicator).toHaveAttribute('data-state', 'unchecked');
     });
@@ -570,7 +570,7 @@ describe('CheckboxIndicator', () => {
           <CheckboxIndicator />
         </CheckboxRoot>
       );
-      const indicator = document.querySelector('.checkbox-indicator');
+      const indicator = document.querySelector('.wg-checkbox__indicator');
 
       expect(indicator).toHaveAttribute('data-state', coreAttrs['data-state']);
       expect(indicator).toHaveAttribute('data-state', 'indeterminate');
@@ -584,7 +584,7 @@ describe('CheckboxIndicator', () => {
           <CheckboxIndicator />
         </CheckboxRoot>
       );
-      const indicator = document.querySelector('.checkbox-indicator');
+      const indicator = document.querySelector('.wg-checkbox__indicator');
 
       expect(indicator).toHaveAttribute('data-state', coreAttrs['data-state']);
       expect(indicator).toHaveAttribute('data-state', 'disabled');
@@ -598,7 +598,7 @@ describe('CheckboxIndicator', () => {
           <CheckboxIndicator />
         </CheckboxRoot>
       );
-      const indicator = document.querySelector('.checkbox-indicator');
+      const indicator = document.querySelector('.wg-checkbox__indicator');
 
       expect(coreAttrs['data-state']).toBe('disabled');
       expect(indicator).toHaveAttribute('data-state', 'disabled');
@@ -612,7 +612,7 @@ describe('CheckboxIndicator', () => {
           <CheckboxIndicator />
         </CheckboxRoot>
       );
-      const indicator = document.querySelector('.checkbox-indicator');
+      const indicator = document.querySelector('.wg-checkbox__indicator');
 
       expect(coreAttrs['data-state']).toBe('disabled');
       expect(indicator).toHaveAttribute('data-state', 'disabled');
@@ -626,7 +626,7 @@ describe('CheckboxIndicator', () => {
           <CheckboxIndicator />
         </CheckboxRoot>
       );
-      const indicator = document.querySelector('.checkbox-indicator');
+      const indicator = document.querySelector('.wg-checkbox__indicator');
 
       expect(coreAttrs['data-state']).toBe('indeterminate');
       expect(indicator).toHaveAttribute('data-state', 'indeterminate');
@@ -644,7 +644,7 @@ describe('CheckboxIndicator', () => {
           <CheckboxIndicator />
         </CheckboxRoot>
       );
-      const indicator = document.querySelector('.checkbox-indicator');
+      const indicator = document.querySelector('.wg-checkbox__indicator');
 
       expect(coreAttrs['data-state']).toBe('disabled');
       expect(indicator).toHaveAttribute('data-state', 'disabled');
@@ -658,7 +658,7 @@ describe('CheckboxIndicator', () => {
           <CheckboxIndicator />
         </CheckboxRoot>
       );
-      const indicator = document.querySelector('.checkbox-indicator');
+      const indicator = document.querySelector('.wg-checkbox__indicator');
 
       expect(indicator).toHaveAttribute('aria-hidden', 'true');
     });
@@ -696,9 +696,9 @@ describe('CheckboxIndicator', () => {
           <CheckboxIndicator className="custom-indicator" />
         </CheckboxRoot>
       );
-      const indicator = document.querySelector('.checkbox-indicator');
+      const indicator = document.querySelector('.wg-checkbox__indicator');
 
-      expect(indicator).toHaveClass('checkbox-indicator');
+      expect(indicator).toHaveClass('wg-checkbox__indicator');
       expect(indicator).toHaveClass('custom-indicator');
     });
   });
@@ -714,7 +714,7 @@ describe('CheckboxIndicator', () => {
       );
 
       expect(ref.current).toBeInstanceOf(HTMLSpanElement);
-      expect(ref.current).toHaveClass('checkbox-indicator');
+      expect(ref.current).toHaveClass('wg-checkbox__indicator');
     });
   });
 });
@@ -729,7 +729,7 @@ describe('CheckboxLabel', () => {
           <CheckboxLabel>라벨</CheckboxLabel>
         </CheckboxRoot>
       );
-      const label = document.querySelector('.checkbox-label');
+      const label = document.querySelector('.wg-checkbox__label');
 
       expect(label).toHaveClass(coreAttrs.class);
     });
@@ -742,7 +742,7 @@ describe('CheckboxLabel', () => {
           <CheckboxLabel>라벨</CheckboxLabel>
         </CheckboxRoot>
       );
-      const label = document.querySelector('.checkbox-label');
+      const label = document.querySelector('.wg-checkbox__label');
 
       expect(label).toHaveAttribute('data-disabled', String(coreAttrs['data-disabled']));
     });
@@ -755,7 +755,7 @@ describe('CheckboxLabel', () => {
           <CheckboxLabel>라벨</CheckboxLabel>
         </CheckboxRoot>
       );
-      const label = document.querySelector('.checkbox-label');
+      const label = document.querySelector('.wg-checkbox__label');
 
       expect(label).toHaveAttribute('data-disabled');
     });
@@ -766,7 +766,7 @@ describe('CheckboxLabel', () => {
           <CheckboxLabel>라벨</CheckboxLabel>
         </CheckboxRoot>
       );
-      const label = document.querySelector('.checkbox-label');
+      const label = document.querySelector('.wg-checkbox__label');
 
       expect(label).not.toHaveAttribute('data-disabled');
     });
@@ -790,7 +790,7 @@ describe('CheckboxLabel', () => {
           <CheckboxLabel>이용약관 동의</CheckboxLabel>
         </CheckboxRoot>
       );
-      const label = document.querySelector('.checkbox-label');
+      const label = document.querySelector('.wg-checkbox__label');
 
       expect(label).toHaveTextContent('이용약관 동의');
     });
@@ -803,9 +803,9 @@ describe('CheckboxLabel', () => {
           <CheckboxLabel className="custom-label">라벨</CheckboxLabel>
         </CheckboxRoot>
       );
-      const label = document.querySelector('.checkbox-label');
+      const label = document.querySelector('.wg-checkbox__label');
 
-      expect(label).toHaveClass('checkbox-label');
+      expect(label).toHaveClass('wg-checkbox__label');
       expect(label).toHaveClass('custom-label');
     });
   });
@@ -821,7 +821,7 @@ describe('CheckboxLabel', () => {
       );
 
       expect(ref.current).toBeInstanceOf(HTMLSpanElement);
-      expect(ref.current).toHaveClass('checkbox-label');
+      expect(ref.current).toHaveClass('wg-checkbox__label');
     });
   });
 });
@@ -857,9 +857,9 @@ describe('Checkbox Compound 통합', () => {
       </CheckboxRoot>
     );
 
-    const root = document.querySelector('.checkbox-root');
-    const indicator = document.querySelector('.checkbox-indicator');
-    const label = document.querySelector('.checkbox-label');
+    const root = document.querySelector('.wg-checkbox__root');
+    const indicator = document.querySelector('.wg-checkbox__indicator');
+    const label = document.querySelector('.wg-checkbox__label');
 
     // CheckboxRoot
     expect(root).toHaveAttribute('data-size', 'lg');
@@ -884,9 +884,9 @@ describe('Checkbox Compound 통합', () => {
       </CheckboxRoot>
     );
 
-    const root = document.querySelector('.checkbox-root');
-    const indicator = document.querySelector('.checkbox-indicator');
-    const label = document.querySelector('.checkbox-label');
+    const root = document.querySelector('.wg-checkbox__root');
+    const indicator = document.querySelector('.wg-checkbox__indicator');
+    const label = document.querySelector('.wg-checkbox__label');
 
     expect(root).toHaveAttribute('data-size', 'sm');
     expect(root).not.toHaveAttribute('data-disabled');
@@ -905,9 +905,9 @@ describe('Checkbox Compound 통합', () => {
       </CheckboxRoot>
     );
 
-    const root = document.querySelector('.checkbox-root');
-    const indicator = document.querySelector('.checkbox-indicator');
-    const label = document.querySelector('.checkbox-label');
+    const root = document.querySelector('.wg-checkbox__root');
+    const indicator = document.querySelector('.wg-checkbox__indicator');
+    const label = document.querySelector('.wg-checkbox__label');
 
     expect(root).toHaveAttribute('data-size', 'md');
     expect(root).not.toHaveAttribute('data-disabled');

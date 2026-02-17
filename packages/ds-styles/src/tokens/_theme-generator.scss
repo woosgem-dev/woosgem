@@ -3,11 +3,11 @@
 // ===================
 // Mixins for generating CSS Custom Properties from color sets
 
-@use 'sass:map';
-@use 'color-sets' as sets;
+@use "sass:map";
+@use "color-sets" as sets;
 
 // CSS Custom Property prefix
-$prefix: 'wg-color' !default;
+$prefix: "wg-color" !default;
 
 // ===================
 // Mixin: generate-color-vars
@@ -30,17 +30,17 @@ $prefix: 'wg-color' !default;
 // ===================
 // Applies a specific theme to a selector
 //
-// @param $theme-name - Name of the theme ('default', 'dark')
-// @param $selector - CSS selector to apply theme to (default: ':root')
+// @param $theme-name - Name of the theme ("default", "dark")
+// @param $selector - CSS selector to apply theme to (default: ":root")
 // @example
-//   @include theme('dark', '[data-theme="dark"]');
+//   @include theme("dark", "[data-theme="dark"]");
 
-@mixin theme($theme-name, $selector: ':root') {
+@mixin theme($theme-name, $selector: ":root") {
   $color-set: null;
 
-  @if $theme-name == 'default' {
+  @if $theme-name == "default" {
     $color-set: sets.$color-set-default;
-  } @else if $theme-name == 'dark' {
+  } @else if $theme-name == "dark" {
     $color-set: sets.$color-set-dark;
   } @else {
     @error "Unknown theme: #{$theme-name}. Valid themes are: default, dark";
@@ -68,7 +68,7 @@ $prefix: 'wg-color' !default;
   }
 
   // Dark theme
-  [data-theme='dark'] {
+  [data-theme="dark"] {
     @include generate-color-vars(sets.$color-set-dark);
   }
 }
@@ -81,10 +81,10 @@ $prefix: 'wg-color' !default;
 //
 // @param $theme-name - Name of the theme
 // @example
-//   @include single-theme('dark');
+//   @include single-theme("dark");
 
 @mixin single-theme($theme-name) {
-  @include theme($theme-name, ':root');
+  @include theme($theme-name, ":root");
 }
 
 // ===================
@@ -95,7 +95,7 @@ $prefix: 'wg-color' !default;
 // @param $name - Color token name
 // @return - CSS var() reference
 // @example
-//   color: get-color-var('primary');
+//   color: get-color-var("primary");
 //   // Returns: var(--wg-color-primary)
 
 @function get-color-var($name) {

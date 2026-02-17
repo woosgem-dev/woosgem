@@ -32,7 +32,7 @@ describe('Alert Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = Alert.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'alert',
+        class: 'wg-alert',
         'data-variant': 'subtle',
         'data-status': 'info',
         'data-closable': undefined,
@@ -87,7 +87,7 @@ describe('Alert Core', () => {
         closable: true,
       });
       expect(attrs).toEqual({
-        class: 'alert',
+        class: 'wg-alert',
         'data-variant': 'filled',
         'data-status': 'error',
         'data-closable': true,

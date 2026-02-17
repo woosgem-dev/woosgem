@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls } from '../constants';
 
 /** IconButton variant options */
 export const IconButtonVariants = ['filled', 'outline', 'ghost'] as const;
@@ -59,7 +60,7 @@ export const IconButton = {
   mapPropsToAttrs: (props: IconButtonStyleProps): IconButtonAttrs => {
     const merged = { ...IconButton.defaultProps, ...filterNullish(props) };
     return {
-      class: 'icon-btn',
+      class: cls('icon-btn'),
       'data-variant': merged.variant,
       'data-color': merged.color,
       'data-size': merged.size,

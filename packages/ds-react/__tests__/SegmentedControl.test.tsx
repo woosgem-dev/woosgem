@@ -116,7 +116,7 @@ describe('SegmentedControl', () => {
       );
       const container = screen.getByRole('group');
 
-      expect(container).toHaveClass('segmented-control');
+      expect(container).toHaveClass('wg-segmented-control');
       expect(container).toHaveClass('custom');
     });
 
@@ -141,7 +141,7 @@ describe('SegmentedControl', () => {
       );
       const container = screen.getByRole('group');
 
-      expect(container).toHaveClass('segmented-control');
+      expect(container).toHaveClass('wg-segmented-control');
       expect(container).toHaveClass('custom');
     });
 
@@ -391,7 +391,7 @@ describe('SegmentedControlItem', () => {
       );
       const item = screen.getByRole('button');
 
-      expect(item).toHaveClass('segmented-control-item');
+      expect(item).toHaveClass('wg-segmented-control__item');
       expect(item).toHaveClass('custom');
     });
 
@@ -450,7 +450,7 @@ describe('SegmentedControlItem', () => {
       );
       const item = screen.getByRole('button');
 
-      expect(item).toHaveClass('segmented-control-item');
+      expect(item).toHaveClass('wg-segmented-control__item');
       expect(item).toHaveClass('custom');
     });
 

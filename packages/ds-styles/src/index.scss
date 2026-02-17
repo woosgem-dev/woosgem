@@ -3,10 +3,10 @@
 
 // Theme CSS Custom Properties (outputs :root, [data-theme="dark"], etc.)
 // Must be loaded first so CSS Custom Properties are defined before use
-@use 'tokens/theme-output';
+@use "tokens/theme-output";
 
 // Data attribute utilities
-@use 'utilities';
+@use "utilities";
 
 // Component styles (reference CSS Custom Properties from theme)
-@use 'components';
+@use "components";

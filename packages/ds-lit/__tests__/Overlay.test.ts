@@ -17,7 +17,7 @@ describe('Overlay (Lit)', () => {
 
       expect(el.getAttribute('data-opacity')).toBe(coreAttrs['data-opacity']);
       expect(el.getAttribute('data-level')).toBe(coreAttrs['data-level']);
-      expect(el.classList.contains('overlay')).toBe(true);
+      expect(el.classList.contains('wg-overlay')).toBe(true);
     });
 
     it('TC-L101: opacity prop이 core 결과와 일치한다', async () => {

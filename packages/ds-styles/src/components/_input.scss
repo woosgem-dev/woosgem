@@ -1,27 +1,33 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
-.input {
+.#{tokens.$prefix}-input {
   // Reset
   appearance: none;
   margin: 0;
   padding: 0;
 
-  // Base styles
+  // Layout
   display: block;
+
+  // Box Model
   width: 100%;
+
+  // Typography
   font-family: tokens.$font-family-default;
   font-size: tokens.$font-size-14;
   line-height: tokens.$line-height-normal;
-  background-color: var(--wg-input-bg, #{tokens.$background});
   color: tokens.$text;
+
+  // Visual
+  background-color: var(--wg-input-bg, #{tokens.$background});
+  border: 1px solid var(--wg-input-border, #{tokens.$border});
   border-radius: tokens.$radius-8;
+
+  // Misc
   transition:
     background-color tokens.$transition-fast,
     border-color tokens.$transition-fast,
     box-shadow tokens.$transition-fast;
-
-  // Default state
-  border: 1px solid var(--wg-input-border, #{tokens.$border});
 
   &::placeholder {
     color: tokens.$text-subtle;
@@ -32,7 +38,7 @@
   // ===================
 
   // Outline variant (default)
-  &[data-variant='outline'] {
+  &[data-variant="outline"] {
     --wg-input-bg: #{tokens.$background};
     --wg-input-border: #{tokens.$border};
 
@@ -47,7 +53,7 @@
       box-shadow: 0 0 0 2px #{tokens.$primary-alpha-20};
     }
 
-    &[data-state='error'] {
+    &[data-state="error"] {
       --wg-input-border: #{tokens.$danger};
 
       &:focus,
@@ -56,7 +62,7 @@
       }
     }
 
-    &[data-state='success'] {
+    &[data-state="success"] {
       --wg-input-border: #{tokens.$success};
 
       &:focus,
@@ -67,7 +73,7 @@
   }
 
   // Filled variant
-  &[data-variant='filled'] {
+  &[data-variant="filled"] {
     --wg-input-bg: #{tokens.$background-subtle};
     --wg-input-border: transparent;
 
@@ -83,7 +89,7 @@
       box-shadow: 0 0 0 2px #{tokens.$primary-alpha-20};
     }
 
-    &[data-state='error'] {
+    &[data-state="error"] {
       --wg-input-border: #{tokens.$danger};
 
       &:focus,
@@ -92,7 +98,7 @@
       }
     }
 
-    &[data-state='success'] {
+    &[data-state="success"] {
       --wg-input-border: #{tokens.$success};
 
       &:focus,
@@ -103,7 +109,7 @@
   }
 
   // Underline variant
-  &[data-variant='underline'] {
+  &[data-variant="underline"] {
     --wg-input-bg: transparent;
     background: transparent;
     border: none;
@@ -122,7 +128,7 @@
       box-shadow: 0 1px 0 0 var(--wg-input-border, #{tokens.$primary});
     }
 
-    &[data-state='error'] {
+    &[data-state="error"] {
       --wg-input-border: #{tokens.$danger};
 
       &:focus,
@@ -131,7 +137,7 @@
       }
     }
 
-    &[data-state='success'] {
+    &[data-state="success"] {
       --wg-input-border: #{tokens.$success};
 
       &:focus,
@@ -144,19 +150,19 @@
   // ===================
   // Sizes
   // ===================
-  &[data-size='sm'] {
+  &[data-size="sm"] {
     height: 32px;
     padding: tokens.$spacing-1 tokens.$spacing-3;
     font-size: tokens.$font-size-13;
   }
 
-  &[data-size='md'] {
+  &[data-size="md"] {
     height: 40px;
     padding: tokens.$spacing-2 tokens.$spacing-4;
     font-size: tokens.$font-size-14;
   }
 
-  &[data-size='lg'] {
+  &[data-size="lg"] {
     height: 48px;
     padding: tokens.$spacing-3 tokens.$spacing-4;
     font-size: tokens.$font-size-16;
@@ -168,14 +174,14 @@
 
   // Disabled state
   &:disabled,
-  &[data-state='disabled'] {
+  &[data-state="disabled"] {
     cursor: not-allowed;
     opacity: 0.5;
     background-color: tokens.$background-muted;
   }
 
   // Error state
-  &[data-state='error'] {
+  &[data-state="error"] {
     --wg-input-border: #{tokens.$danger};
 
     &::placeholder {
@@ -184,7 +190,7 @@
   }
 
   // Success state
-  &[data-state='success'] {
+  &[data-state="success"] {
     --wg-input-border: #{tokens.$success};
 
     &::placeholder {

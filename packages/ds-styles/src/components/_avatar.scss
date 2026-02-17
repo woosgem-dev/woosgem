@@ -1,6 +1,6 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
-.avatar {
+.#{tokens.$prefix}-avatar {
   // Base styles
   display: inline-flex;
   align-items: center;
@@ -21,35 +21,35 @@
   // ===================
   // Sizes
   // ===================
-  &[data-size='xs'] {
+  &[data-size="xs"] {
     width: 20px;
     height: 20px;
     border-radius: tokens.$radius-4;
     font-size: tokens.$font-size-12;
   }
 
-  &[data-size='sm'] {
+  &[data-size="sm"] {
     width: 24px;
     height: 24px;
     border-radius: tokens.$radius-4;
     font-size: tokens.$font-size-13;
   }
 
-  &[data-size='md'] {
+  &[data-size="md"] {
     width: 32px;
     height: 32px;
     border-radius: tokens.$radius-6;
     font-size: tokens.$font-size-14;
   }
 
-  &[data-size='lg'] {
+  &[data-size="lg"] {
     width: 40px;
     height: 40px;
     border-radius: tokens.$radius-8;
     font-size: tokens.$font-size-16;
   }
 
-  &[data-size='xl'] {
+  &[data-size="xl"] {
     width: 48px;
     height: 48px;
     border-radius: tokens.$radius-8;
@@ -59,17 +59,15 @@
   // ===================
   // Shapes
   // ===================
-  &[data-shape='circle'] {
+  &[data-shape="circle"] {
     border-radius: tokens.$radius-full;
   }
 
-  &[data-shape='square'] {
+  &[data-shape="square"] {
     border-radius: tokens.$radius-4;
   }
 
-  // ===================
-  // Image
-  // ===================
+  // Direct child tag selector: component always wraps this element
   img {
     width: 100%;
     height: 100%;

@@ -131,7 +131,7 @@ describe('Kbd', () => {
       });
       const kbd = screen.getByText('K');
 
-      expect(kbd).toHaveClass('kbd');
+      expect(kbd).toHaveClass('wg-kbd');
       expect(kbd).toHaveClass('custom-class');
     });
 
@@ -152,7 +152,7 @@ describe('Kbd', () => {
       });
       const kbd = screen.getByText('K');
 
-      expect(kbd).toHaveClass('kbd');
+      expect(kbd).toHaveClass('wg-kbd');
       expect(kbd).toHaveClass('custom');
     });
 

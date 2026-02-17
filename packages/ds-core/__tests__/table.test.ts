@@ -9,7 +9,7 @@ import {
   TableVariants,
   TableSizes,
   TableAligns,
-} from '../src/components/Table';
+} from '@woosgem-dev/core';
 
 describe('Table Core', () => {
   describe('displayName', () => {
@@ -46,7 +46,7 @@ describe('Table Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = Table.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'table',
+        class: 'wg-table',
         'data-variant': 'default',
         'data-size': 'md',
         'data-hoverable': undefined,
@@ -90,7 +90,7 @@ describe('Table Core', () => {
         hoverable: true,
       });
       expect(attrs).toEqual({
-        class: 'table',
+        class: 'wg-table',
         'data-variant': 'striped',
         'data-size': 'lg',
         'data-hoverable': true,
@@ -115,7 +115,7 @@ describe('TableHead Core', () => {
   });
 
   it('should return correct attrs', () => {
-    expect(TableHead.mapPropsToAttrs()).toEqual({ class: 'table-head' });
+    expect(TableHead.mapPropsToAttrs()).toEqual({ class: 'wg-table__head' });
   });
 
   it('should use thead tag', () => {
@@ -129,7 +129,7 @@ describe('TableBody Core', () => {
   });
 
   it('should return correct attrs', () => {
-    expect(TableBody.mapPropsToAttrs()).toEqual({ class: 'table-body' });
+    expect(TableBody.mapPropsToAttrs()).toEqual({ class: 'wg-table__body' });
   });
 
   it('should use tbody tag', () => {
@@ -149,7 +149,7 @@ describe('TableRow Core', () => {
   it('should return default attrs', () => {
     const attrs = TableRow.mapPropsToAttrs({});
     expect(attrs).toEqual({
-      class: 'table-row',
+      class: 'wg-table__row',
       'data-state': undefined,
       'aria-selected': undefined,
     });
@@ -183,7 +183,7 @@ describe('TableCell Core', () => {
 
   it('should return default attrs', () => {
     const attrs = TableCell.mapPropsToAttrs({});
-    expect(attrs).toEqual({ class: 'table-cell', 'data-align': 'left' });
+    expect(attrs).toEqual({ class: 'wg-table__cell', 'data-align': 'left' });
   });
 
   it('should apply align prop', () => {
@@ -209,7 +209,7 @@ describe('TableHeaderCell Core', () => {
   it('should return default attrs', () => {
     const attrs = TableHeaderCell.mapPropsToAttrs({});
     expect(attrs).toEqual({
-      class: 'table-header-cell',
+      class: 'wg-table__header-cell',
       'data-align': 'left',
       'data-sortable': undefined,
       scope: 'col',

@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls } from '../constants';
 
 export const AvatarGroupSizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 export type AvatarGroupSize = (typeof AvatarGroupSizes)[number];
@@ -35,7 +36,7 @@ export const AvatarGroup = {
   mapPropsToAttrs: (props: AvatarGroupStyleProps): AvatarGroupAttrs => {
     const merged = { ...AvatarGroup.defaultProps, ...filterNullish(props) };
     return {
-      class: 'avatar-group',
+      class: cls('avatar-group'),
       'data-size': merged.size,
       'data-spacing': merged.spacing,
       role: 'group',

@@ -17,7 +17,7 @@ describe('Tooltip (Vue)', () => {
         props: { content: 'Tooltip text' },
         slots: { default: '<button>Trigger</button>' },
       });
-      expect(wrapper.classes()).toContain('tooltip-wrapper');
+      expect(wrapper.classes()).toContain('wg-tooltip-wrapper');
     });
 
     it('TC-V102: tooltip 내용이 숨겨진 상태로 렌더링된다', () => {
@@ -25,7 +25,7 @@ describe('Tooltip (Vue)', () => {
         props: { content: 'Hidden text' },
         slots: { default: '<button>Trigger</button>' },
       });
-      const tooltip = wrapper.find('.tooltip');
+      const tooltip = wrapper.find('.wg-tooltip');
       expect(tooltip.attributes('aria-hidden')).toBe('true');
     });
   });
@@ -36,7 +36,7 @@ describe('Tooltip (Vue)', () => {
         props: { content: 'Text', position: 'top' },
         slots: { default: '<button>Trigger</button>' },
       });
-      const tooltip = wrapper.find('.tooltip');
+      const tooltip = wrapper.find('.wg-tooltip');
       expect(tooltip.attributes('data-position')).toBe('top');
     });
 
@@ -45,7 +45,7 @@ describe('Tooltip (Vue)', () => {
         props: { content: 'Text', position: 'bottom' },
         slots: { default: '<button>Trigger</button>' },
       });
-      const tooltip = wrapper.find('.tooltip');
+      const tooltip = wrapper.find('.wg-tooltip');
       expect(tooltip.attributes('data-position')).toBe('bottom');
     });
 
@@ -54,7 +54,7 @@ describe('Tooltip (Vue)', () => {
         props: { content: 'Text', position: 'left' },
         slots: { default: '<button>Trigger</button>' },
       });
-      const tooltip = wrapper.find('.tooltip');
+      const tooltip = wrapper.find('.wg-tooltip');
       expect(tooltip.attributes('data-position')).toBe('left');
     });
 
@@ -63,7 +63,7 @@ describe('Tooltip (Vue)', () => {
         props: { content: 'Text', position: 'right' },
         slots: { default: '<button>Trigger</button>' },
       });
-      const tooltip = wrapper.find('.tooltip');
+      const tooltip = wrapper.find('.wg-tooltip');
       expect(tooltip.attributes('data-position')).toBe('right');
     });
   });
@@ -77,7 +77,7 @@ describe('Tooltip (Vue)', () => {
 
       await wrapper.trigger('mouseenter');
 
-      const tooltip = wrapper.find('.tooltip');
+      const tooltip = wrapper.find('.wg-tooltip');
       expect(tooltip.attributes('data-visible')).toBe('true');
     });
 
@@ -90,7 +90,7 @@ describe('Tooltip (Vue)', () => {
       await wrapper.trigger('mouseenter');
       await wrapper.trigger('mouseleave');
 
-      const tooltip = wrapper.find('.tooltip');
+      const tooltip = wrapper.find('.wg-tooltip');
       expect(tooltip.attributes('aria-hidden')).toBe('true');
     });
 
@@ -101,11 +101,11 @@ describe('Tooltip (Vue)', () => {
       });
 
       await wrapper.trigger('click');
-      let tooltip = wrapper.find('.tooltip');
+      let tooltip = wrapper.find('.wg-tooltip');
       expect(tooltip.attributes('data-visible')).toBe('true');
 
       await wrapper.trigger('click');
-      tooltip = wrapper.find('.tooltip');
+      tooltip = wrapper.find('.wg-tooltip');
       expect(tooltip.attributes('aria-hidden')).toBe('true');
     });
 
@@ -117,7 +117,7 @@ describe('Tooltip (Vue)', () => {
 
       await wrapper.trigger('focus');
 
-      const tooltip = wrapper.find('.tooltip');
+      const tooltip = wrapper.find('.wg-tooltip');
       expect(tooltip.attributes('data-visible')).toBe('true');
     });
   });
@@ -131,7 +131,7 @@ describe('Tooltip (Vue)', () => {
 
       await wrapper.trigger('mouseenter');
 
-      const tooltip = wrapper.find('.tooltip');
+      const tooltip = wrapper.find('.wg-tooltip');
       expect(tooltip.attributes('aria-hidden')).toBe('true');
     });
   });
@@ -142,7 +142,7 @@ describe('Tooltip (Vue)', () => {
         props: { content: 'Arrow', arrow: true },
         slots: { default: '<button>Trigger</button>' },
       });
-      expect(wrapper.find('.tooltip-arrow').exists()).toBe(true);
+      expect(wrapper.find('.wg-tooltip__arrow').exists()).toBe(true);
     });
 
     it('TC-A101: arrow=false이면 arrow 요소가 렌더링되지 않는다', () => {
@@ -150,7 +150,7 @@ describe('Tooltip (Vue)', () => {
         props: { content: 'No arrow', arrow: false },
         slots: { default: '<button>Trigger</button>' },
       });
-      expect(wrapper.find('.tooltip-arrow').exists()).toBe(false);
+      expect(wrapper.find('.wg-tooltip__arrow').exists()).toBe(false);
     });
   });
 
@@ -160,7 +160,7 @@ describe('Tooltip (Vue)', () => {
         props: { content: 'Tooltip' },
         slots: { default: '<button>Trigger</button>' },
       });
-      const tooltip = wrapper.find('.tooltip');
+      const tooltip = wrapper.find('.wg-tooltip');
       expect(tooltip.attributes('role')).toBe('tooltip');
     });
 
@@ -172,7 +172,7 @@ describe('Tooltip (Vue)', () => {
 
       await wrapper.trigger('mouseenter');
 
-      const trigger = wrapper.find('.tooltip-trigger');
+      const trigger = wrapper.find('.wg-tooltip__trigger');
       expect(trigger.attributes('aria-describedby')).toBeTruthy();
     });
   });
@@ -183,7 +183,7 @@ describe('Tooltip (Vue)', () => {
         props: { content: 'Default' },
         slots: { default: '<button>Trigger</button>' },
       });
-      const tooltip = wrapper.find('.tooltip');
+      const tooltip = wrapper.find('.wg-tooltip');
       expect(tooltip.attributes('data-position')).toBe('top');
     });
 
@@ -192,7 +192,7 @@ describe('Tooltip (Vue)', () => {
         props: { content: 'Default' },
         slots: { default: '<button>Trigger</button>' },
       });
-      const tooltip = wrapper.find('.tooltip');
+      const tooltip = wrapper.find('.wg-tooltip');
       expect(tooltip.attributes('data-trigger')).toBe('hover');
     });
   });
@@ -206,7 +206,7 @@ describe('Tooltip (Vue)', () => {
 
       await wrapper.trigger('mouseenter');
 
-      const tooltip = wrapper.find('.tooltip');
+      const tooltip = wrapper.find('.wg-tooltip');
       expect(tooltip.attributes('data-visible')).toBe('true');
     });
 
@@ -221,13 +221,13 @@ describe('Tooltip (Vue)', () => {
       await wrapper.trigger('mouseenter');
 
       // Not visible yet
-      let tooltip = wrapper.find('.tooltip');
+      let tooltip = wrapper.find('.wg-tooltip');
       expect(tooltip.attributes('aria-hidden')).toBe('true');
 
       vi.advanceTimersByTime(500);
       await wrapper.vm.$nextTick();
 
-      tooltip = wrapper.find('.tooltip');
+      tooltip = wrapper.find('.wg-tooltip');
       expect(tooltip.attributes('data-visible')).toBe('true');
 
       vi.useRealTimers();

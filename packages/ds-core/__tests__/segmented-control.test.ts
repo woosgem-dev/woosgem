@@ -33,7 +33,7 @@ describe('SegmentedControl', () => {
   describe('mapPropsToAttrs', () => {
     it('should return correct attrs with defaults', () => {
       const attrs = SegmentedControl.mapPropsToAttrs({});
-      expect(attrs.class).toBe('segmented-control');
+      expect(attrs.class).toBe('wg-segmented-control');
       expect(attrs.role).toBe('group');
       expect(attrs['data-size']).toBe('md');
       expect(attrs['data-full-width']).toBeUndefined();
@@ -93,7 +93,7 @@ describe('SegmentedControlItem', () => {
   describe('mapPropsToAttrs', () => {
     it('should return correct attrs with defaults', () => {
       const attrs = SegmentedControlItem.mapPropsToAttrs({});
-      expect(attrs.class).toBe('segmented-control-item');
+      expect(attrs.class).toBe('wg-segmented-control__item');
       expect(attrs['data-state']).toBeUndefined();
       expect(attrs['aria-selected']).toBeUndefined();
       expect(attrs.disabled).toBeUndefined();

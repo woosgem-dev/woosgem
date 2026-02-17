@@ -40,7 +40,7 @@ describe('Tooltip Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = Tooltip.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'tooltip',
+        class: 'wg-tooltip',
         'data-position': 'top',
         'data-trigger': 'hover',
         'data-arrow': true,
@@ -117,7 +117,7 @@ describe('Tooltip Core', () => {
         disabled: false,
       });
       expect(attrs).toEqual({
-        class: 'tooltip',
+        class: 'wg-tooltip',
         'data-position': 'bottom',
         'data-trigger': 'click',
         'data-arrow': undefined,

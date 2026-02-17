@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls, clsEl } from '../constants';
 
 /** Modal size options */
 export const ModalSizes = ['sm', 'md', 'lg', 'xl', 'full'] as const;
@@ -43,7 +44,7 @@ export const Modal = {
   mapPropsToAttrs: (props: ModalStyleProps): ModalAttrs => {
     const merged = { ...Modal.defaultProps, ...filterNullish(props) };
     return {
-      class: 'modal',
+      class: cls('modal'),
       'data-size': merged.size,
       'data-open': merged.open || undefined,
       'data-closable': merged.closable || undefined,
@@ -82,7 +83,7 @@ export const ModalHeader = {
   mapPropsToAttrs: (props: ModalHeaderStyleProps): ModalHeaderAttrs => {
     const merged = { ...ModalHeader.defaultProps, ...filterNullish(props) };
     return {
-      class: 'modal-header',
+      class: clsEl('modal', 'header'),
       'data-show-close': merged.showClose || undefined,
     };
   },
@@ -116,7 +117,7 @@ export const ModalBody = {
   mapPropsToAttrs: (props: ModalBodyStyleProps): ModalBodyAttrs => {
     const merged = { ...ModalBody.defaultProps, ...filterNullish(props) };
     return {
-      class: 'modal-body',
+      class: clsEl('modal', 'body'),
       'data-scrollable': merged.scrollable || undefined,
     };
   },
@@ -152,7 +153,7 @@ export const ModalFooter = {
   mapPropsToAttrs: (props: ModalFooterStyleProps): ModalFooterAttrs => {
     const merged = { ...ModalFooter.defaultProps, ...filterNullish(props) };
     return {
-      class: 'modal-footer',
+      class: clsEl('modal', 'footer'),
       'data-align': merged.align,
     };
   },

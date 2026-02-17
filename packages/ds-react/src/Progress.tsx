@@ -122,10 +122,10 @@ export const Progress = memo(
         aria-valuemin={attrs['aria-valuemin']}
         aria-valuemax={attrs['aria-valuemax']}
       >
-        <div className="progress-track">
-          <div className="progress-fill">
+        <div className="wg-progress__track">
+          <div className="wg-progress__fill">
             {merged.showLabel && (
-              <span className="progress-label">{percentage}%</span>
+              <span className="wg-progress__label">{percentage}%</span>
             )}
           </div>
         </div>

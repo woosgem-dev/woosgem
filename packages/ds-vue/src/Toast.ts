@@ -223,7 +223,7 @@ export const ToastContainer = defineComponent({
           'div',
           {
             key: pos,
-            class: 'toast-container',
+            class: 'wg-toast-container',
             'data-position': pos,
           },
           items.map((toast) =>

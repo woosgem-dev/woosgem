@@ -1,6 +1,6 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
-.overlay {
+.#{tokens.$prefix}-overlay {
   // Reset & Base
   position: fixed;
   top: 0;
@@ -29,38 +29,38 @@
   // ===================
   // Z-index levels
   // ===================
-  &[data-level='base'] {
+  &[data-level="base"] {
     z-index: 1000;
   }
 
-  &[data-level='dropdown'] {
+  &[data-level="dropdown"] {
     z-index: tokens.$z-index-dropdown;
   }
 
-  &[data-level='modal'] {
+  &[data-level="modal"] {
     z-index: tokens.$z-index-modal-backdrop;
   }
 
-  &[data-level='popover'] {
+  &[data-level="popover"] {
     z-index: tokens.$z-index-popover;
   }
 
-  &[data-level='toast'] {
+  &[data-level="toast"] {
     z-index: tokens.$z-index-tooltip;
   }
 
   // ===================
   // Opacity levels
   // ===================
-  &[data-opacity='light'] {
+  &[data-opacity="light"] {
     --wg-overlay-bg: rgba(0, 0, 0, 0.3);
   }
 
-  &[data-opacity='medium'] {
+  &[data-opacity="medium"] {
     --wg-overlay-bg: rgba(0, 0, 0, 0.5);
   }
 
-  &[data-opacity='dark'] {
+  &[data-opacity="dark"] {
     --wg-overlay-bg: rgba(0, 0, 0, 0.7);
   }
 

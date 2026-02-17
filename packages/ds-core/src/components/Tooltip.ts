@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls } from '../constants';
 
 /** Tooltip position options */
 export const TooltipPositions = ['top', 'bottom', 'left', 'right'] as const;
@@ -60,7 +61,7 @@ export const Tooltip = {
   mapPropsToAttrs: (props: TooltipStyleProps): TooltipAttrs => {
     const merged = { ...Tooltip.defaultProps, ...filterNullish(props) };
     return {
-      class: 'tooltip',
+      class: cls('tooltip'),
       'data-position': merged.position,
       'data-trigger': merged.trigger,
       'data-arrow': merged.arrow || undefined,

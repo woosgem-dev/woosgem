@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls } from '../constants';
 
 /** Overlay opacity options */
 export const OverlayOpacities = ['light', 'medium', 'dark'] as const;
@@ -50,7 +51,7 @@ export const Overlay = {
   mapPropsToAttrs: (props: OverlayStyleProps): OverlayAttrs => {
     const merged = { ...Overlay.defaultProps, ...filterNullish(props) };
     return {
-      class: 'overlay',
+      class: cls('overlay'),
       'data-blur': merged.blur || undefined,
       'data-opacity': merged.opacity,
       'data-level': merged.level,

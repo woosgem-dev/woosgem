@@ -28,7 +28,7 @@ describe('Pagination Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = Pagination.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'pagination',
+        class: 'wg-pagination',
         'data-variant': 'outline',
         'data-size': 'md',
         'data-shape': 'rounded',
@@ -96,7 +96,7 @@ describe('PaginationItem Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = PaginationItem.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'pagination-item',
+        class: 'wg-pagination__item',
         type: 'button',
         'data-state': undefined,
         'aria-current': undefined,

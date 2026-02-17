@@ -16,7 +16,7 @@ describe('Radio (Lit)', () => {
       `);
 
       expect(el.getAttribute('data-size')).toBe(coreAttrs['data-size']);
-      expect(el.classList.contains('radio')).toBe(true);
+      expect(el.classList.contains('wg-radio')).toBe(true);
     });
 
     it('TC-L101: size prop이 core 결과와 일치한다', async () => {

@@ -156,7 +156,7 @@ describe('Modal (React)', () => {
         </Modal>
       );
 
-      const overlay = document.querySelector('.overlay');
+      const overlay = document.querySelector('.wg-overlay');
       expect(overlay).not.toBeNull();
 
       act(() => {
@@ -175,7 +175,7 @@ describe('Modal (React)', () => {
         </Modal>
       );
 
-      const overlay = document.querySelector('.overlay');
+      const overlay = document.querySelector('.wg-overlay');
       act(() => {
         fireEvent.click(overlay!);
       });
@@ -196,7 +196,7 @@ describe('Modal (React)', () => {
         fireEvent.keyDown(document, { key: 'Escape' });
       });
 
-      const overlay = document.querySelector('.overlay');
+      const overlay = document.querySelector('.wg-overlay');
       act(() => {
         fireEvent.click(overlay!);
       });
@@ -394,7 +394,7 @@ describe('ModalHeader (React)', () => {
         <ModalHeader>Title</ModalHeader>
       </Modal>
     );
-    const header = document.querySelector('.modal-header');
+    const header = document.querySelector('.wg-modal__header');
     expect(header).not.toBeNull();
   });
 
@@ -440,7 +440,7 @@ describe('ModalBody (React)', () => {
         <ModalBody>Body content</ModalBody>
       </Modal>
     );
-    const body = document.querySelector('.modal-body');
+    const body = document.querySelector('.wg-modal__body');
     expect(body).not.toBeNull();
   });
 
@@ -461,7 +461,7 @@ describe('ModalFooter (React)', () => {
         <ModalFooter>Footer</ModalFooter>
       </Modal>
     );
-    const footer = document.querySelector('.modal-footer');
+    const footer = document.querySelector('.wg-modal__footer');
     expect(footer).not.toBeNull();
   });
 
@@ -480,7 +480,7 @@ describe('ModalFooter (React)', () => {
         <ModalFooter align="center">Footer</ModalFooter>
       </Modal>
     );
-    const footer = document.querySelector('.modal-footer');
+    const footer = document.querySelector('.wg-modal__footer');
     expect(footer).toHaveAttribute('data-align', 'center');
   });
 });

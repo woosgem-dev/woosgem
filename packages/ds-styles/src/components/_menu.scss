@@ -1,9 +1,9 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
 // ============================================
 // Menu Component
 // ============================================
-.menu {
+.#{tokens.$prefix}-menu {
   display: flex;
   flex-direction: column;
   min-width: 180px;
@@ -18,28 +18,28 @@
   // Sizes
   // ===================
 
-  &[data-size='sm'] {
+  &[data-size="sm"] {
     min-width: 140px;
 
-    .menu-item {
+    .#{tokens.$prefix}-menu__item {
       padding: tokens.$spacing-1 tokens.$spacing-2;
       font-size: tokens.$font-size-12;
     }
   }
 
-  &[data-size='md'] {
+  &[data-size="md"] {
     min-width: 180px;
 
-    .menu-item {
+    .#{tokens.$prefix}-menu__item {
       padding: tokens.$spacing-2 tokens.$spacing-3;
       font-size: tokens.$font-size-14;
     }
   }
 
-  &[data-size='lg'] {
+  &[data-size="lg"] {
     min-width: 220px;
 
-    .menu-item {
+    .#{tokens.$prefix}-menu__item {
       padding: tokens.$spacing-3 tokens.$spacing-4;
       font-size: tokens.$font-size-16;
     }
@@ -49,7 +49,7 @@
 // ============================================
 // MenuItem
 // ============================================
-.menu-item {
+.#{tokens.$prefix}-menu__item {
   display: flex;
   align-items: center;
   gap: tokens.$spacing-2;
@@ -63,16 +63,16 @@
   text-align: left;
   transition: background-color tokens.$transition-fast, color tokens.$transition-fast;
 
-  &:hover:not([data-state='disabled']) {
+  &:hover:not([data-state="disabled"]) {
     background-color: var(--wg-menu-item-hover-bg, #{tokens.$background-muted});
   }
 
-  &[data-state='active'] {
+  &[data-state="active"] {
     background-color: tokens.$primary-alpha-10;
     color: tokens.$primary;
   }
 
-  &[data-state='disabled'] {
+  &[data-state="disabled"] {
     opacity: 0.5;
     pointer-events: none;
     cursor: not-allowed;
@@ -81,7 +81,7 @@
   &[data-destructive] {
     color: tokens.$danger;
 
-    &:hover:not([data-state='disabled']) {
+    &:hover:not([data-state="disabled"]) {
       background-color: tokens.$red-light;
     }
   }
@@ -95,7 +95,7 @@
 // ============================================
 // MenuDivider
 // ============================================
-.menu-divider {
+.#{tokens.$prefix}-menu__divider {
   height: 1px;
   background-color: tokens.$border;
   margin: tokens.$spacing-1 0;
@@ -104,12 +104,12 @@
 // ============================================
 // MenuGroup
 // ============================================
-.menu-group {
+.#{tokens.$prefix}-menu__group {
   display: flex;
   flex-direction: column;
 }
 
-.menu-group-label {
+.#{tokens.$prefix}-menu__group-label {
   padding: tokens.$spacing-1 tokens.$spacing-3;
   font-size: tokens.$font-size-12;
   font-weight: tokens.$font-weight-medium;

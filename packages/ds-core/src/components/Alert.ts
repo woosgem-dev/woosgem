@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls } from '../constants';
 
 /** Alert variant options */
 export const AlertVariants = ['filled', 'outline', 'subtle'] as const;
@@ -43,7 +44,7 @@ export const Alert = {
   mapPropsToAttrs: (props: AlertStyleProps): AlertAttrs => {
     const merged = { ...Alert.defaultProps, ...filterNullish(props) };
     return {
-      class: 'alert',
+      class: cls('alert'),
       'data-variant': merged.variant,
       'data-status': merged.status,
       'data-closable': merged.closable || undefined,

@@ -21,7 +21,7 @@ describe('Drawer Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = Drawer.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'drawer',
+        class: 'wg-drawer',
         'data-position': 'right',
         'data-size': 'md',
         role: 'dialog',

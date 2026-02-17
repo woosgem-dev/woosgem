@@ -28,7 +28,7 @@ describe('Modal (Vue)', () => {
         props: { open: true, size: 'sm', teleportTo: false },
         slots: { default: 'Content' },
       });
-      const modal = wrapper.find('.modal');
+      const modal = wrapper.find('.wg-modal');
       expect(modal.attributes('data-size')).toBe('sm');
     });
 
@@ -37,7 +37,7 @@ describe('Modal (Vue)', () => {
         props: { open: true, size: 'md', teleportTo: false },
         slots: { default: 'Content' },
       });
-      const modal = wrapper.find('.modal');
+      const modal = wrapper.find('.wg-modal');
       expect(modal.attributes('data-size')).toBe('md');
     });
 
@@ -46,7 +46,7 @@ describe('Modal (Vue)', () => {
         props: { open: true, size: 'lg', teleportTo: false },
         slots: { default: 'Content' },
       });
-      const modal = wrapper.find('.modal');
+      const modal = wrapper.find('.wg-modal');
       expect(modal.attributes('data-size')).toBe('lg');
     });
 
@@ -55,7 +55,7 @@ describe('Modal (Vue)', () => {
         props: { open: true, size: 'xl', teleportTo: false },
         slots: { default: 'Content' },
       });
-      const modal = wrapper.find('.modal');
+      const modal = wrapper.find('.wg-modal');
       expect(modal.attributes('data-size')).toBe('xl');
     });
 
@@ -64,7 +64,7 @@ describe('Modal (Vue)', () => {
         props: { open: true, size: 'full', teleportTo: false },
         slots: { default: 'Content' },
       });
-      const modal = wrapper.find('.modal');
+      const modal = wrapper.find('.wg-modal');
       expect(modal.attributes('data-size')).toBe('full');
     });
   });
@@ -75,7 +75,7 @@ describe('Modal (Vue)', () => {
         props: { open: true, teleportTo: false },
         slots: { default: 'Content' },
       });
-      const modal = wrapper.find('.modal');
+      const modal = wrapper.find('.wg-modal');
       expect(modal.attributes('role')).toBe('dialog');
     });
 
@@ -84,7 +84,7 @@ describe('Modal (Vue)', () => {
         props: { open: true, teleportTo: false },
         slots: { default: 'Content' },
       });
-      const modal = wrapper.find('.modal');
+      const modal = wrapper.find('.wg-modal');
       expect(modal.attributes('aria-modal')).toBe('true');
     });
 
@@ -93,7 +93,7 @@ describe('Modal (Vue)', () => {
         props: { open: true, teleportTo: false },
         slots: { default: 'Content' },
       });
-      const modal = wrapper.find('.modal');
+      const modal = wrapper.find('.wg-modal');
       expect(modal.attributes('aria-hidden')).toBe('false');
     });
   });
@@ -105,7 +105,7 @@ describe('Modal (Vue)', () => {
         slots: { default: 'Content' },
       });
 
-      const overlay = wrapper.find('.overlay');
+      const overlay = wrapper.find('.wg-overlay');
       await overlay.trigger('click');
 
       expect(wrapper.emitted('close')).toBeTruthy();
@@ -117,7 +117,7 @@ describe('Modal (Vue)', () => {
         slots: { default: 'Content' },
       });
 
-      const overlay = wrapper.find('.overlay');
+      const overlay = wrapper.find('.wg-overlay');
       await overlay.trigger('click');
 
       expect(wrapper.emitted('close')).toBeFalsy();
@@ -129,7 +129,7 @@ describe('Modal (Vue)', () => {
         slots: { default: 'Content' },
       });
 
-      const overlay = wrapper.find('.overlay');
+      const overlay = wrapper.find('.wg-overlay');
       await overlay.trigger('click');
 
       expect(wrapper.emitted('close')).toBeFalsy();
@@ -142,7 +142,7 @@ describe('Modal (Vue)', () => {
         props: { open: true, teleportTo: false },
         slots: { default: 'Content' },
       });
-      const modal = wrapper.find('.modal');
+      const modal = wrapper.find('.wg-modal');
       expect(modal.attributes('data-size')).toBe('md');
     });
   });
@@ -154,7 +154,7 @@ describe('Modal (Vue)', () => {
         slots: { default: 'Content' },
       });
 
-      const overlay = wrapper.find('.overlay');
+      const overlay = wrapper.find('.wg-overlay');
       await overlay.trigger('click');
 
       expect(wrapper.emitted('update:open')).toBeTruthy();
@@ -326,7 +326,7 @@ describe('Modal Focus & Scroll Management (Vue)', () => {
 describe('ModalHeader (Vue)', () => {
   it('should render with modal-header class', () => {
     const wrapper = mount(ModalHeader, { slots: { default: 'Header' } });
-    expect(wrapper.classes()).toContain('modal-header');
+    expect(wrapper.classes()).toContain('wg-modal__header');
   });
 
   it('should render slot content', () => {
@@ -339,7 +339,7 @@ describe('ModalHeader (Vue)', () => {
       props: { showClose: true },
       slots: { default: 'Title' },
     });
-    const closeBtn = wrapper.find('.modal-close');
+    const closeBtn = wrapper.find('.wg-modal__close');
     expect(closeBtn.exists()).toBe(true);
   });
 
@@ -349,7 +349,7 @@ describe('ModalHeader (Vue)', () => {
       slots: { default: 'Title' },
     });
 
-    const closeBtn = wrapper.find('.modal-close');
+    const closeBtn = wrapper.find('.wg-modal__close');
     await closeBtn.trigger('click');
 
     expect(wrapper.emitted('close')).toBeTruthy();
@@ -359,7 +359,7 @@ describe('ModalHeader (Vue)', () => {
 describe('ModalBody (Vue)', () => {
   it('should render with modal-body class', () => {
     const wrapper = mount(ModalBody, { slots: { default: 'Body' } });
-    expect(wrapper.classes()).toContain('modal-body');
+    expect(wrapper.classes()).toContain('wg-modal__body');
   });
 
   it('should render slot content', () => {
@@ -376,7 +376,7 @@ describe('ModalBody (Vue)', () => {
 describe('ModalFooter (Vue)', () => {
   it('should render with modal-footer class', () => {
     const wrapper = mount(ModalFooter, { slots: { default: 'Footer' } });
-    expect(wrapper.classes()).toContain('modal-footer');
+    expect(wrapper.classes()).toContain('wg-modal__footer');
   });
 
   it('should render slot content', () => {

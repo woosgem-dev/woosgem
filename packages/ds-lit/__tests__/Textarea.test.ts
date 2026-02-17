@@ -17,7 +17,7 @@ describe('Textarea (Lit)', () => {
 
       expect(el.getAttribute('data-variant')).toBe(coreAttrs['data-variant']);
       expect(el.getAttribute('data-size')).toBe(coreAttrs['data-size']);
-      expect(el.classList.contains('textarea')).toBe(true);
+      expect(el.classList.contains('wg-textarea')).toBe(true);
     });
 
     it('TC-L101: variant prop이 core 결과와 일치한다', async () => {

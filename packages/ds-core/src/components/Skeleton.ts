@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls } from '../constants';
 
 /** Skeleton variant options */
 export const SkeletonVariants = ['text', 'circular', 'rectangular'] as const;
@@ -69,7 +70,7 @@ export const Skeleton = {
     if (height) styleParts.push(`height: ${height}`);
 
     return {
-      class: 'skeleton',
+      class: cls('skeleton'),
       'data-variant': merged.variant,
       'data-size': merged.size,
       'data-animation': merged.animation,

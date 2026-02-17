@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls, clsEl } from '../constants';
 
 export const MenuSizes = ['sm', 'md', 'lg'] as const;
 export type MenuSize = (typeof MenuSizes)[number];
@@ -28,7 +29,7 @@ export const Menu = {
   mapPropsToAttrs: (props: MenuStyleProps): MenuAttrs => {
     const merged = { ...Menu.defaultProps, ...filterNullish(props) };
     return {
-      class: 'menu',
+      class: cls('menu'),
       'data-size': merged.size,
       role: 'menu',
     };
@@ -75,7 +76,7 @@ export const MenuItem = {
     const merged = { ...MenuItem.defaultProps, ...filterNullish(props) };
     const state = merged.active ? 'active' : merged.disabled ? 'disabled' : undefined;
     return {
-      class: 'menu-item',
+      class: clsEl('menu', 'item'),
       type: 'button',
       role: 'menuitem',
       'data-state': state,
@@ -110,7 +111,7 @@ export const MenuDivider = {
   propTypes: {},
 
   mapPropsToAttrs: (): MenuDividerAttrs => ({
-    class: 'menu-divider',
+    class: clsEl('menu', 'divider'),
     role: 'separator',
   }),
 
@@ -139,7 +140,7 @@ export const MenuGroup = {
   propTypes: {},
 
   mapPropsToAttrs: (): MenuGroupAttrs => ({
-    class: 'menu-group',
+    class: clsEl('menu', 'group'),
     role: 'group',
   }),
 

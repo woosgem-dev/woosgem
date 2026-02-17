@@ -10,7 +10,7 @@ describe('ListItem', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({});
 
       render(<ListItem>Item</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).toHaveAttribute('data-variant', coreAttrs['data-variant']);
       expect(item).toHaveClass(coreAttrs.class);
@@ -20,7 +20,7 @@ describe('ListItem', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ variant: 'interactive' });
 
       render(<ListItem variant="interactive">Interactive</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).toHaveAttribute('data-variant', coreAttrs['data-variant']);
       expect(item).toHaveAttribute('data-variant', 'interactive');
@@ -30,7 +30,7 @@ describe('ListItem', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ selected: true });
 
       render(<ListItem selected>Selected</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).toHaveAttribute('data-state', coreAttrs['data-state']);
       expect(item).toHaveAttribute('data-state', 'selected');
@@ -41,7 +41,7 @@ describe('ListItem', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ disabled: true });
 
       render(<ListItem disabled>Disabled</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).toHaveAttribute('data-state', coreAttrs['data-state']);
       expect(item).toHaveAttribute('data-state', 'disabled');
@@ -52,7 +52,7 @@ describe('ListItem', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ divider: true });
 
       render(<ListItem divider>With Divider</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).toHaveAttribute('data-divider', String(coreAttrs['data-divider']));
     });
@@ -70,7 +70,7 @@ describe('ListItem', () => {
           Complex
         </ListItem>
       );
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).toHaveAttribute('data-variant', coreAttrs['data-variant']);
       expect(item).toHaveAttribute('data-state', coreAttrs['data-state']);
@@ -86,7 +86,7 @@ describe('ListItem', () => {
           Both
         </ListItem>
       );
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(coreAttrs['data-state']).toBe('selected');
       expect(item).toHaveAttribute('data-state', 'selected');
@@ -101,7 +101,7 @@ describe('ListItem', () => {
       const handleClick = vi.fn();
 
       render(<ListItem onClick={handleClick}>Click me</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       await user.click(item!);
 
@@ -117,7 +117,7 @@ describe('ListItem', () => {
           Disabled
         </ListItem>
       );
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       await user.click(item!);
 
@@ -130,7 +130,7 @@ describe('ListItem', () => {
       const handleClick = vi.fn();
 
       render(<ListItem onClick={handleClick}>Click me</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       await user.click(item!);
       await user.click(item!);
@@ -143,7 +143,7 @@ describe('ListItem', () => {
   describe('React 전용 props', () => {
     it('TC-R300: children이 렌더링된다', () => {
       render(<ListItem>Hello</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).toHaveTextContent('Hello');
     });
@@ -161,9 +161,9 @@ describe('ListItem', () => {
 
     it('TC-R302: className이 병합된다', () => {
       render(<ListItem className="custom-class">Item</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
-      expect(item).toHaveClass('list-item');
+      expect(item).toHaveClass('wg-list-item');
       expect(item).toHaveClass('custom-class');
     });
 
@@ -176,7 +176,7 @@ describe('ListItem', () => {
 
     it('TC-R304: aria-label이 적용된다', () => {
       render(<ListItem aria-label="Menu item">Item</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).toHaveAttribute('aria-label', 'Menu item');
     });
@@ -185,17 +185,17 @@ describe('ListItem', () => {
   describe('커스터마이즈 오버라이드', () => {
     it('TC-O100: className이 병합된다', () => {
       render(<ListItem className="custom">Item</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
-      expect(item).toHaveClass('list-item');
+      expect(item).toHaveClass('wg-list-item');
       expect(item).toHaveClass('custom');
     });
 
     it('TC-O101: className 여러 개 추가', () => {
       render(<ListItem className="a b c">Item</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
-      expect(item).toHaveClass('list-item');
+      expect(item).toHaveClass('wg-list-item');
       expect(item).toHaveClass('a');
       expect(item).toHaveClass('b');
       expect(item).toHaveClass('c');
@@ -203,7 +203,7 @@ describe('ListItem', () => {
 
     it('TC-O110: style 인라인 적용', () => {
       render(<ListItem style={{ padding: 8 }}>Item</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).toHaveStyle({ padding: '8px' });
     });
@@ -215,28 +215,28 @@ describe('ListItem', () => {
 
     it('TC-O140: aria-label 적용', () => {
       render(<ListItem aria-label="Menu item">Item</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).toHaveAttribute('aria-label', 'Menu item');
     });
 
     it('TC-O141: aria-labelledby 적용', () => {
       render(<ListItem aria-labelledby="label-id">Item</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).toHaveAttribute('aria-labelledby', 'label-id');
     });
 
     it('TC-O143: aria-current 적용', () => {
       render(<ListItem aria-current="page">Current</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).toHaveAttribute('aria-current', 'page');
     });
 
     it('TC-O160: id 속성 전달 적용', () => {
       render(<ListItem id="my-item">Item</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).toHaveAttribute('id', 'my-item');
     });
@@ -251,7 +251,7 @@ describe('ListItem', () => {
     it('TC-O130: 보호 속성 $1 오버라이드 차단', () => {
       // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<ListItem data-variant="custom" variant="interactive">Item</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).toHaveAttribute('data-variant', 'interactive');
     });
@@ -259,7 +259,7 @@ describe('ListItem', () => {
     it('TC-O131: 보호 속성 $1 오버라이드 차단', () => {
       // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<ListItem data-state="custom" selected>Item</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).toHaveAttribute('data-state', 'selected');
     });
@@ -267,7 +267,7 @@ describe('ListItem', () => {
     it('TC-O132: 보호 속성 $1 오버라이드 차단', () => {
       // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<ListItem data-divider="custom" divider>Item</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).toHaveAttribute('data-divider', 'true');
     });
@@ -275,7 +275,7 @@ describe('ListItem', () => {
     it('TC-O133: 보호 속성 $1 오버라이드 차단', () => {
       // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<ListItem aria-selected="false" selected>Item</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).toHaveAttribute('aria-selected', 'true');
     });
@@ -283,7 +283,7 @@ describe('ListItem', () => {
     it('TC-O134: 보호 속성 $1 오버라이드 차단', () => {
       // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<ListItem aria-disabled="false" disabled>Item</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).toHaveAttribute('aria-disabled', 'true');
     });
@@ -292,14 +292,14 @@ describe('ListItem', () => {
   describe('기본값', () => {
     it('TC-C010: variant 기본값 default이다', () => {
       render(<ListItem>Item</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).toHaveAttribute('data-variant', 'default');
     });
 
     it('TC-C011: selected 기본값 false이다', () => {
       render(<ListItem>Item</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).not.toHaveAttribute('data-state');
       expect(item).not.toHaveAttribute('aria-selected');
@@ -307,14 +307,14 @@ describe('ListItem', () => {
 
     it('TC-C012: disabled 기본값 false이다', () => {
       render(<ListItem>Item</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).not.toHaveAttribute('aria-disabled');
     });
 
     it('TC-C013: divider 기본값 false이다', () => {
       render(<ListItem>Item</ListItem>);
-      const item = document.querySelector('.list-item');
+      const item = document.querySelector('.wg-list-item');
 
       expect(item).not.toHaveAttribute('data-divider');
     });

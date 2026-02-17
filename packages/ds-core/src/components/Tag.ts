@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls } from '../constants';
 
 /** Tag variant options */
 export const TagVariants = ['solid', 'outline', 'subtle'] as const;
@@ -54,7 +55,7 @@ export const Tag = {
   mapPropsToAttrs: (props: TagStyleProps): TagAttrs => {
     const merged = { ...Tag.defaultProps, ...filterNullish(props) };
     return {
-      class: 'tag',
+      class: cls('tag'),
       'data-variant': merged.variant,
       'data-color': merged.color,
       'data-size': merged.size,

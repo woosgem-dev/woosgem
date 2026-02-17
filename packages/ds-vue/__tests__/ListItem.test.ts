@@ -175,7 +175,7 @@ describe('ListItem', () => {
       });
       const item = screen.getByRole('listitem');
 
-      expect(item).toHaveClass('list-item');
+      expect(item).toHaveClass('wg-list-item');
       expect(item).toHaveClass('custom-class');
     });
 
@@ -205,7 +205,7 @@ describe('ListItem', () => {
       });
       const item = screen.getByRole('listitem');
 
-      expect(item).toHaveClass('list-item');
+      expect(item).toHaveClass('wg-list-item');
       expect(item).toHaveClass('custom');
     });
 

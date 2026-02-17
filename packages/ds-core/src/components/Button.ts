@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls } from '../constants';
 
 /** Button variant options */
 export const ButtonVariants = ['filled', 'outline', 'ghost', 'link'] as const;
@@ -57,7 +58,7 @@ export const Button = {
   mapPropsToAttrs: (props: ButtonStyleProps): ButtonAttrs => {
     const merged = { ...Button.defaultProps, ...filterNullish(props) };
     return {
-      class: 'btn',
+      class: cls('btn'),
       'data-variant': merged.variant,
       'data-color': merged.color,
       'data-size': merged.size,

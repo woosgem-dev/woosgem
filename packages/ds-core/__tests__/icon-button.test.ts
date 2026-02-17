@@ -55,7 +55,7 @@ describe('IconButton', () => {
   describe('mapPropsToAttrs', () => {
     it('should return correct attrs with defaults', () => {
       const attrs = IconButton.mapPropsToAttrs({});
-      expect(attrs.class).toBe('icon-btn');
+      expect(attrs.class).toBe('wg-icon-btn');
       expect(attrs['data-variant']).toBe('filled');
       expect(attrs['data-color']).toBe('primary');
       expect(attrs['data-size']).toBe('md');

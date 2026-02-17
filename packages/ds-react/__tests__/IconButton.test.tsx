@@ -188,7 +188,7 @@ describe('IconButton', () => {
       render(<IconButton className="custom-class" aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
-      expect(btn).toHaveClass('icon-btn');
+      expect(btn).toHaveClass('wg-icon-btn');
       expect(btn).toHaveClass('custom-class');
     });
 
@@ -219,7 +219,7 @@ describe('IconButton', () => {
       render(<IconButton className="custom" aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
-      expect(btn).toHaveClass('icon-btn');
+      expect(btn).toHaveClass('wg-icon-btn');
       expect(btn).toHaveClass('custom');
     });
 
@@ -227,7 +227,7 @@ describe('IconButton', () => {
       render(<IconButton className="a b c" aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
-      expect(btn).toHaveClass('icon-btn');
+      expect(btn).toHaveClass('wg-icon-btn');
       expect(btn).toHaveClass('a');
       expect(btn).toHaveClass('b');
       expect(btn).toHaveClass('c');

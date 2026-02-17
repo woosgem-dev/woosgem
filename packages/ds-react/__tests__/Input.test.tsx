@@ -174,7 +174,7 @@ describe('Input', () => {
       render(<Input className="custom-class" aria-label="test input" />);
       const input = screen.getByRole('textbox');
 
-      expect(input).toHaveClass('input');
+      expect(input).toHaveClass('wg-input');
       expect(input).toHaveClass('custom-class');
     });
 
@@ -236,7 +236,7 @@ describe('Input', () => {
       render(<Input className="custom" aria-label="test" />);
       const input = screen.getByRole('textbox');
 
-      expect(input).toHaveClass('input');
+      expect(input).toHaveClass('wg-input');
       expect(input).toHaveClass('custom');
     });
 

@@ -32,7 +32,7 @@ describe('Menu Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = Menu.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'menu',
+        class: 'wg-menu',
         'data-size': 'md',
         role: 'menu',
       });
@@ -83,7 +83,7 @@ describe('MenuItem Core', () => {
   it('should return default attrs when no props provided', () => {
     const attrs = MenuItem.mapPropsToAttrs({});
     expect(attrs).toEqual({
-      class: 'menu-item',
+      class: 'wg-menu__item',
       type: 'button',
       role: 'menuitem',
       'data-state': undefined,
@@ -156,7 +156,7 @@ describe('MenuDivider Core', () => {
   it('should return correct attrs', () => {
     const attrs = MenuDivider.mapPropsToAttrs();
     expect(attrs).toEqual({
-      class: 'menu-divider',
+      class: 'wg-menu__divider',
       role: 'separator',
     });
   });
@@ -179,7 +179,7 @@ describe('MenuGroup Core', () => {
   it('should return correct attrs', () => {
     const attrs = MenuGroup.mapPropsToAttrs();
     expect(attrs).toEqual({
-      class: 'menu-group',
+      class: 'wg-menu__group',
       role: 'group',
     });
   });

@@ -35,7 +35,7 @@ describe('Table (Lit)', () => {
 
       expect(el.getAttribute('data-variant')).toBe(coreAttrs['data-variant']);
       expect(el.getAttribute('data-size')).toBe(coreAttrs['data-size']);
-      expect(el.classList.contains('table')).toBe(true);
+      expect(el.classList.contains('wg-table')).toBe(true);
     });
 
     it('TC-L101: variant prop이 core 결과와 일치한다', async () => {
@@ -119,7 +119,7 @@ describe('TableHead (Lit)', () => {
       </wg-table-head>
     `);
 
-    expect(el.classList.contains('table-head')).toBe(true);
+    expect(el.classList.contains('wg-table__head')).toBe(true);
   });
 });
 
@@ -133,7 +133,7 @@ describe('TableBody (Lit)', () => {
       </wg-table-body>
     `);
 
-    expect(el.classList.contains('table-body')).toBe(true);
+    expect(el.classList.contains('wg-table__body')).toBe(true);
   });
 });
 
@@ -145,7 +145,7 @@ describe('TableRow (Lit)', () => {
       </wg-table-row>
     `);
 
-    expect(el.classList.contains('table-row')).toBe(true);
+    expect(el.classList.contains('wg-table__row')).toBe(true);
   });
 
   it('should apply selected prop', async () => {
@@ -176,7 +176,7 @@ describe('TableCell (Lit)', () => {
       <wg-table-cell>Cell content</wg-table-cell>
     `);
 
-    expect(el.classList.contains('table-cell')).toBe(true);
+    expect(el.classList.contains('wg-table__cell')).toBe(true);
   });
 
   it('should apply align prop', async () => {
@@ -202,7 +202,7 @@ describe('TableHeaderCell (Lit)', () => {
       <wg-table-header-cell>Header</wg-table-header-cell>
     `);
 
-    expect(el.classList.contains('table-header-cell')).toBe(true);
+    expect(el.classList.contains('wg-table__header-cell')).toBe(true);
   });
 
   it('should apply align prop', async () => {

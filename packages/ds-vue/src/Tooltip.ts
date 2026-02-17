@@ -156,8 +156,8 @@ export const Tooltip = defineComponent({
             : {};
 
     const wrapperClass = this.$attrs.class
-      ? `tooltip-wrapper ${this.$attrs.class}`
-      : 'tooltip-wrapper';
+      ? `wg-tooltip-wrapper ${this.$attrs.class}`
+      : 'wg-tooltip-wrapper';
 
     const visible = this.isVisible;
 
@@ -173,7 +173,7 @@ export const Tooltip = defineComponent({
         h(
           'span',
           {
-            class: 'tooltip-trigger',
+            class: 'wg-tooltip__trigger',
             'aria-describedby': visible ? this.tooltipId : undefined,
           },
           this.$slots.default?.()
@@ -184,7 +184,7 @@ export const Tooltip = defineComponent({
           'div',
           {
             id: this.tooltipId,
-            class: 'tooltip',
+            class: 'wg-tooltip',
             'data-position': this.position,
             'data-trigger': this.trigger,
             'data-arrow': this.arrow ? 'true' : undefined,
@@ -194,8 +194,8 @@ export const Tooltip = defineComponent({
             'aria-hidden': visible ? undefined : 'true',
           },
           [
-            this.arrow && h('span', { class: 'tooltip-arrow' }),
-            h('span', { class: 'tooltip-content' }, this.content),
+            this.arrow && h('span', { class: 'wg-tooltip__arrow' }),
+            h('span', { class: 'wg-tooltip__content' }, this.content),
           ]
         ),
       ]

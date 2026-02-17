@@ -77,7 +77,7 @@ describe('AvatarGroup (Vue)', () => {
   describe('커스터마이즈 오버라이드', () => {
     it('TC-O100: class 추가 시 병합된다', () => {
       const wrapper = mount(AvatarGroup, { props: { class: 'custom' } });
-      expect(wrapper.classes()).toContain('avatar-group');
+      expect(wrapper.classes()).toContain('wg-avatar-group');
       expect(wrapper.classes()).toContain('custom');
     });
 

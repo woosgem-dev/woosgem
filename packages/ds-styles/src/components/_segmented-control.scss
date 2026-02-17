@@ -1,6 +1,6 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
-.segmented-control {
+.#{tokens.$prefix}-segmented-control {
   // Base styles
   display: inline-flex;
   gap: tokens.$spacing-1;
@@ -18,33 +18,33 @@
   // ===================
   // Sizes
   // ===================
-  &[data-size='sm'] {
+  &[data-size="sm"] {
     padding: tokens.$spacing-1;
     gap: tokens.$spacing-1;
 
-    .segmented-control-item {
+    .#{tokens.$prefix}-segmented-control__item {
       height: 28px;
       padding: tokens.$spacing-0 tokens.$spacing-2;
       font-size: tokens.$font-size-12;
     }
   }
 
-  &[data-size='md'] {
+  &[data-size="md"] {
     padding: tokens.$spacing-1;
     gap: tokens.$spacing-1;
 
-    .segmented-control-item {
+    .#{tokens.$prefix}-segmented-control__item {
       height: 36px;
       padding: tokens.$spacing-1 tokens.$spacing-3;
       font-size: tokens.$font-size-13;
     }
   }
 
-  &[data-size='lg'] {
+  &[data-size="lg"] {
     padding: tokens.$spacing-2;
     gap: tokens.$spacing-2;
 
-    .segmented-control-item {
+    .#{tokens.$prefix}-segmented-control__item {
       height: 44px;
       padding: tokens.$spacing-2 tokens.$spacing-4;
       font-size: tokens.$font-size-14;
@@ -52,7 +52,7 @@
   }
 }
 
-.segmented-control-item {
+.#{tokens.$prefix}-segmented-control__item {
   // Reset
   appearance: none;
   border: none;
@@ -90,23 +90,23 @@
 
   // Disabled state
   &:disabled,
-  &[data-state='disabled'] {
+  &[data-state="disabled"] {
     cursor: not-allowed;
     opacity: 0.5;
   }
 
   // Unselected hover state
-  &:not([data-state='selected']):hover:not(:disabled):not([data-state='disabled']) {
+  &:not([data-state="selected"]):hover:not(:disabled):not([data-state="disabled"]) {
     --wg-segment-item-bg: #{tokens.$background-subtle};
   }
 
   // Selected state
-  &[data-state='selected'] {
+  &[data-state="selected"] {
     --wg-segment-item-bg: #{tokens.$background};
     --wg-segment-item-color: #{tokens.$text};
     box-shadow: tokens.$shadow-sm;
 
-    &:not(:disabled):not([data-state='disabled']) {
+    &:not(:disabled):not([data-state="disabled"]) {
       &:hover {
         --wg-segment-item-bg: #{tokens.$background};
       }

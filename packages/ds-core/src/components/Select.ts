@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls, clsEl } from '../constants';
 
 /** Select variant options */
 export const SelectVariants = ['outline', 'filled'] as const;
@@ -75,7 +76,7 @@ export const Select = {
     }
 
     return {
-      class: 'select',
+      class: cls('select'),
       'data-variant': merged.variant,
       'data-size': merged.size,
       'data-state': state,
@@ -127,7 +128,7 @@ export const SelectMenu = {
   mapPropsToAttrs: (props: SelectMenuStyleProps): SelectMenuAttrs => {
     const merged = { ...SelectMenu.defaultProps, ...filterNullish(props) };
     return {
-      class: 'select-menu',
+      class: clsEl('select', 'menu'),
       'data-size': merged.size,
       'data-state': merged.open ? 'open' : undefined,
       role: 'listbox',
@@ -190,7 +191,7 @@ export const SelectOption = {
     }
 
     return {
-      class: 'select-option',
+      class: clsEl('select', 'option'),
       'data-size': merged.size,
       'data-state': state,
       role: 'option',

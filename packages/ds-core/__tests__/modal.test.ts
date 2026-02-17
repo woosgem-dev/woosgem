@@ -34,7 +34,7 @@ describe('Modal Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = Modal.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'modal',
+        class: 'wg-modal',
         'data-size': 'md',
         'data-open': undefined,
         'data-closable': true,
@@ -94,7 +94,7 @@ describe('Modal Core', () => {
         closable: false,
       });
       expect(attrs).toEqual({
-        class: 'modal',
+        class: 'wg-modal',
         'data-size': 'lg',
         'data-open': true,
         'data-closable': undefined,
@@ -127,7 +127,7 @@ describe('ModalHeader Core', () => {
 
   it('should return default attrs', () => {
     const attrs = ModalHeader.mapPropsToAttrs({});
-    expect(attrs).toEqual({ class: 'modal-header', 'data-show-close': true });
+    expect(attrs).toEqual({ class: 'wg-modal__header', 'data-show-close': true });
   });
 
   it('should apply showClose prop', () => {
@@ -150,7 +150,7 @@ describe('ModalBody Core', () => {
 
   it('should return default attrs', () => {
     const attrs = ModalBody.mapPropsToAttrs({});
-    expect(attrs).toEqual({ class: 'modal-body', 'data-scrollable': true });
+    expect(attrs).toEqual({ class: 'wg-modal__body', 'data-scrollable': true });
   });
 
   it('should apply scrollable prop', () => {
@@ -170,7 +170,7 @@ describe('ModalFooter Core', () => {
 
   it('should return default attrs', () => {
     const attrs = ModalFooter.mapPropsToAttrs({});
-    expect(attrs).toEqual({ class: 'modal-footer', 'data-align': 'end' });
+    expect(attrs).toEqual({ class: 'wg-modal__footer', 'data-align': 'end' });
   });
 
   it('should apply align prop', () => {

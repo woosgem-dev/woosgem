@@ -182,7 +182,7 @@ describe('Tab', () => {
       render(<Tab className="custom-class">Tab</Tab>);
       const tab = screen.getByRole('tab');
 
-      expect(tab).toHaveClass('tab');
+      expect(tab).toHaveClass('wg-tab');
       expect(tab).toHaveClass('custom-class');
     });
 
@@ -210,7 +210,7 @@ describe('Tab', () => {
       render(<Tab className="custom">Tab</Tab>);
       const tab = screen.getByRole('tab');
 
-      expect(tab).toHaveClass('tab');
+      expect(tab).toHaveClass('wg-tab');
       expect(tab).toHaveClass('custom');
     });
 
@@ -218,7 +218,7 @@ describe('Tab', () => {
       render(<Tab className="a b c">Tab</Tab>);
       const tab = screen.getByRole('tab');
 
-      expect(tab).toHaveClass('tab');
+      expect(tab).toHaveClass('wg-tab');
       expect(tab).toHaveClass('a');
       expect(tab).toHaveClass('b');
       expect(tab).toHaveClass('c');

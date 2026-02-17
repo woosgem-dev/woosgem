@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls } from '../constants';
 
 /** Textarea variant options */
 export const TextareaVariants = ['outline', 'filled'] as const;
@@ -58,7 +59,7 @@ export const Textarea = {
     const state = merged.disabled ? 'disabled' : merged.error ? 'error' : undefined;
 
     return {
-      class: 'textarea',
+      class: cls('textarea'),
       'data-variant': merged.variant,
       'data-size': merged.size,
       'data-resize': merged.resize,

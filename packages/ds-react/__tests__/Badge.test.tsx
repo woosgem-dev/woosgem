@@ -175,7 +175,7 @@ describe('Badge', () => {
       render(<Badge className="custom-class">Badge</Badge>);
       const badge = screen.getByText('Badge');
 
-      expect(badge).toHaveClass('badge');
+      expect(badge).toHaveClass('wg-badge');
       expect(badge).toHaveClass('custom-class');
     });
 
@@ -218,7 +218,7 @@ describe('Badge', () => {
       render(<Badge className="custom">Badge</Badge>);
       const badge = screen.getByText('Badge');
 
-      expect(badge).toHaveClass('badge');
+      expect(badge).toHaveClass('wg-badge');
       expect(badge).toHaveClass('custom');
     });
 
@@ -226,7 +226,7 @@ describe('Badge', () => {
       render(<Badge className="a b c">Badge</Badge>);
       const badge = screen.getByText('Badge');
 
-      expect(badge).toHaveClass('badge');
+      expect(badge).toHaveClass('wg-badge');
       expect(badge).toHaveClass('a');
       expect(badge).toHaveClass('b');
       expect(badge).toHaveClass('c');

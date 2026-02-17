@@ -1,6 +1,6 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
-.divider {
+.#{tokens.$prefix}-divider {
   // Base styles
   display: block;
   flex-shrink: 0;
@@ -15,12 +15,12 @@
   // ===================
   // Orientations
   // ===================
-  &[data-orientation='horizontal'] {
+  &[data-orientation="horizontal"] {
     width: 100%;
     height: 1px;
   }
 
-  &[data-orientation='vertical'] {
+  &[data-orientation="vertical"] {
     width: 1px;
     height: 100%;
   }
@@ -28,20 +28,20 @@
   // ===================
   // Variants
   // ===================
-  &[data-variant='solid'] {
+  &[data-variant="solid"] {
     background-color: var(--wg-divider-color);
     border: none;
   }
 
-  &[data-variant='dashed'] {
+  &[data-variant="dashed"] {
     background-color: transparent;
 
-    &[data-orientation='horizontal'] {
+    &[data-orientation="horizontal"] {
       border-top: 1px dashed var(--wg-divider-color);
       height: 0;
     }
 
-    &[data-orientation='vertical'] {
+    &[data-orientation="vertical"] {
       border-left: 1px dashed var(--wg-divider-color);
       width: 0;
     }
@@ -50,36 +50,36 @@
   // ===================
   // Spacing
   // ===================
-  &[data-spacing='none'] {
+  &[data-spacing="none"] {
     margin: 0;
   }
 
-  &[data-spacing='sm'] {
-    &[data-orientation='horizontal'] {
+  &[data-spacing="sm"] {
+    &[data-orientation="horizontal"] {
       margin: tokens.$spacing-2 0;
     }
 
-    &[data-orientation='vertical'] {
+    &[data-orientation="vertical"] {
       margin: 0 tokens.$spacing-2;
     }
   }
 
-  &[data-spacing='md'] {
-    &[data-orientation='horizontal'] {
+  &[data-spacing="md"] {
+    &[data-orientation="horizontal"] {
       margin: tokens.$spacing-4 0;
     }
 
-    &[data-orientation='vertical'] {
+    &[data-orientation="vertical"] {
       margin: 0 tokens.$spacing-4;
     }
   }
 
-  &[data-spacing='lg'] {
-    &[data-orientation='horizontal'] {
+  &[data-spacing="lg"] {
+    &[data-orientation="horizontal"] {
       margin: tokens.$spacing-6 0;
     }
 
-    &[data-orientation='vertical'] {
+    &[data-orientation="vertical"] {
       margin: 0 tokens.$spacing-6;
     }
   }
@@ -87,27 +87,27 @@
   // ===================
   // Color variants
   // ===================
-  &[data-color='default'] {
+  &[data-color="default"] {
     --wg-divider-color: #{tokens.$border};
   }
 
-  &[data-color='muted'] {
+  &[data-color="muted"] {
     --wg-divider-color: #{tokens.$border-hover};
   }
 
-  &[data-color='primary'] {
+  &[data-color="primary"] {
     --wg-divider-color: #{tokens.$primary};
   }
 
-  &[data-color='secondary'] {
+  &[data-color="secondary"] {
     --wg-divider-color: #{tokens.$secondary};
   }
 
-  &[data-color='danger'] {
+  &[data-color="danger"] {
     --wg-divider-color: #{tokens.$danger};
   }
 
-  &[data-color='success'] {
+  &[data-color="success"] {
     --wg-divider-color: #{tokens.$success};
   }
 }

@@ -82,7 +82,7 @@ describe('AvatarGroup (React)', () => {
     it('TC-O100: className 추가 시 병합된다', () => {
       const { container } = render(<AvatarGroup className="custom" />);
       const el = container.firstChild as HTMLElement;
-      expect(el.className).toContain('avatar-group');
+      expect(el.className).toContain('wg-avatar-group');
       expect(el.className).toContain('custom');
     });
   });

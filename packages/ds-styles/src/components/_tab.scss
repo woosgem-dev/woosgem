@@ -1,6 +1,6 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
-.tab {
+.#{tokens.$prefix}-tab {
   // Reset
   appearance: none;
   border: none;
@@ -39,7 +39,7 @@
 
   // Disabled state
   &:disabled,
-  &[data-state='disabled'] {
+  &[data-state="disabled"] {
     cursor: not-allowed;
     opacity: 0.5;
   }
@@ -52,19 +52,19 @@
   // ===================
   // Sizes
   // ===================
-  &[data-size='sm'] {
+  &[data-size="sm"] {
     height: 32px;
     padding: tokens.$spacing-0 tokens.$spacing-3;
     font-size: tokens.$font-size-13;
   }
 
-  &[data-size='md'] {
+  &[data-size="md"] {
     height: 40px;
     padding: tokens.$spacing-1 tokens.$spacing-4;
     font-size: tokens.$font-size-14;
   }
 
-  &[data-size='lg'] {
+  &[data-size="lg"] {
     height: 48px;
     padding: tokens.$spacing-2 tokens.$spacing-6;
     font-size: tokens.$font-size-16;
@@ -75,32 +75,32 @@
   // ===================
 
   // Underline variant (default primary color)
-  &[data-variant='underline'] {
+  &[data-variant="underline"] {
     border: none;
     border-bottom: 2px solid var(--wg-tab-border, #{tokens.$border});
     border-radius: 0;
     --wg-tab-color: #{tokens.$text-muted};
     --wg-tab-border: #{tokens.$border};
 
-    &:hover:not(:disabled):not([data-state='selected']):not([data-state='disabled']) {
+    &:hover:not(:disabled):not([data-state="selected"]):not([data-state="disabled"]) {
       --wg-tab-color: #{tokens.$text};
       --wg-tab-border: #{tokens.$border-hover};
     }
 
-    &[data-state='selected'] {
+    &[data-state="selected"] {
       --wg-tab-color: #{tokens.$primary};
       --wg-tab-border: #{tokens.$primary};
     }
 
     &:disabled,
-    &[data-state='disabled'] {
+    &[data-state="disabled"] {
       --wg-tab-color: #{tokens.$text-subtle};
       --wg-tab-border: #{tokens.$border};
     }
 
     // Secondary color override
-    &[data-color='secondary'] {
-      &[data-state='selected'] {
+    &[data-color="secondary"] {
+      &[data-state="selected"] {
         --wg-tab-color: #{tokens.$secondary};
         --wg-tab-border: #{tokens.$secondary};
       }
@@ -108,16 +108,16 @@
   }
 
   // Filled variant (default primary color)
-  &[data-variant='filled'] {
+  &[data-variant="filled"] {
     border-radius: tokens.$radius-8;
     --wg-tab-bg: transparent;
     --wg-tab-color: #{tokens.$text};
 
-    &:hover:not(:disabled):not([data-state='selected']) {
+    &:hover:not(:disabled):not([data-state="selected"]) {
       --wg-tab-bg: #{tokens.$background-muted};
     }
 
-    &[data-state='selected'] {
+    &[data-state="selected"] {
       --wg-tab-bg: #{tokens.$primary};
       --wg-tab-color: #{tokens.$text-inverse};
 
@@ -131,8 +131,8 @@
     }
 
     // Secondary color override
-    &[data-color='secondary'] {
-      &[data-state='selected'] {
+    &[data-color="secondary"] {
+      &[data-state="selected"] {
         --wg-tab-bg: #{tokens.$secondary};
         --wg-tab-color: #{tokens.$text-inverse};
 

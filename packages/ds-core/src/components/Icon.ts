@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls } from '../constants';
 
 /** Icon size options */
 export const IconSizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
@@ -51,7 +52,7 @@ export const Icon = {
   mapPropsToAttrs: (props: IconStyleProps): IconAttrs => {
     const merged = { ...Icon.defaultProps, ...filterNullish(props) };
     return {
-      class: 'icon',
+      class: cls('icon'),
       'data-size': merged.size,
       'data-color': merged.color,
       'aria-hidden': true,

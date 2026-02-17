@@ -1,6 +1,6 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
-.textarea {
+.#{tokens.$prefix}-textarea {
   // Reset
   appearance: none;
   margin: 0;
@@ -35,17 +35,17 @@
   // ===================
   // Sizes
   // ===================
-  &[data-size='sm'] {
+  &[data-size="sm"] {
     padding: tokens.$spacing-2 tokens.$spacing-3;
     font-size: tokens.$font-size-13;
   }
 
-  &[data-size='md'] {
+  &[data-size="md"] {
     padding: tokens.$spacing-3 tokens.$spacing-4;
     font-size: tokens.$font-size-14;
   }
 
-  &[data-size='lg'] {
+  &[data-size="lg"] {
     padding: tokens.$spacing-4 tokens.$spacing-5;
     font-size: tokens.$font-size-16;
   }
@@ -53,20 +53,20 @@
   // ===================
   // Variants
   // ===================
-  &[data-variant='outline'] {
+  &[data-variant="outline"] {
     --wg-textarea-bg: transparent;
     --wg-textarea-border: #{tokens.$border};
 
-    &:hover:not(:focus):not(:disabled):not([data-state='disabled']) {
+    &:hover:not(:focus):not(:disabled):not([data-state="disabled"]) {
       --wg-textarea-border: #{tokens.$border-hover};
     }
   }
 
-  &[data-variant='filled'] {
+  &[data-variant="filled"] {
     --wg-textarea-bg: #{tokens.$background-muted};
     --wg-textarea-border: transparent;
 
-    &:hover:not(:focus):not(:disabled):not([data-state='disabled']) {
+    &:hover:not(:focus):not(:disabled):not([data-state="disabled"]) {
       --wg-textarea-bg: #{tokens.$background-subtle};
     }
   }
@@ -74,26 +74,26 @@
   // ===================
   // Resize
   // ===================
-  &[data-resize='none'] {
+  &[data-resize="none"] {
     resize: none;
   }
 
-  &[data-resize='vertical'] {
+  &[data-resize="vertical"] {
     resize: vertical;
   }
 
-  &[data-resize='horizontal'] {
+  &[data-resize="horizontal"] {
     resize: horizontal;
   }
 
-  &[data-resize='both'] {
+  &[data-resize="both"] {
     resize: both;
   }
 
   // ===================
   // States
   // ===================
-  &[data-state='error'] {
+  &[data-state="error"] {
     --wg-textarea-border: #{tokens.$danger};
 
     &:focus {
@@ -101,7 +101,7 @@
     }
   }
 
-  &[data-state='disabled'],
+  &[data-state="disabled"],
   &:disabled {
     cursor: not-allowed;
     opacity: 0.5;

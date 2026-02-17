@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls, clsEl } from '../constants';
 
 /** Table variant options */
 export const TableVariants = ['default', 'striped', 'bordered'] as const;
@@ -53,7 +54,7 @@ export const Table = {
   mapPropsToAttrs: (props: TableStyleProps): TableAttrs => {
     const merged = { ...Table.defaultProps, ...filterNullish(props) };
     return {
-      class: 'table',
+      class: cls('table'),
       'data-variant': merged.variant,
       'data-size': merged.size,
       'data-hoverable': merged.hoverable || undefined,
@@ -85,7 +86,7 @@ export const TableHead = {
 
   mapPropsToAttrs: (): TableHeadAttrs => {
     return {
-      class: 'table-head',
+      class: clsEl('table', 'head'),
     };
   },
 
@@ -117,7 +118,7 @@ export const TableBody = {
 
   mapPropsToAttrs: (): TableBodyAttrs => {
     return {
-      class: 'table-body',
+      class: clsEl('table', 'body'),
     };
   },
 
@@ -160,7 +161,7 @@ export const TableRow = {
   mapPropsToAttrs: (props: TableRowStyleProps): TableRowAttrs => {
     const merged = { ...TableRow.defaultProps, ...filterNullish(props) };
     return {
-      class: 'table-row',
+      class: clsEl('table', 'row'),
       'data-state': merged.selected ? 'selected' : undefined,
       'aria-selected': merged.selected ? 'true' : undefined,
     };
@@ -203,7 +204,7 @@ export const TableCell = {
   mapPropsToAttrs: (props: TableCellStyleProps): TableCellAttrs => {
     const merged = { ...TableCell.defaultProps, ...filterNullish(props) };
     return {
-      class: 'table-cell',
+      class: clsEl('table', 'cell'),
       'data-align': merged.align,
     };
   },
@@ -250,7 +251,7 @@ export const TableHeaderCell = {
   mapPropsToAttrs: (props: TableHeaderCellStyleProps): TableHeaderCellAttrs => {
     const merged = { ...TableHeaderCell.defaultProps, ...filterNullish(props) };
     return {
-      class: 'table-header-cell',
+      class: clsEl('table', 'header-cell'),
       'data-align': merged.align,
       'data-sortable': merged.sortable || undefined,
       scope: 'col',
@@ -262,3 +263,4 @@ export const TableHeaderCell = {
     slots: ['default'],
   },
 } as const satisfies ComponentDefinition<TableHeaderCellStyleProps, TableHeaderCellAttrs, 'th'>;
+

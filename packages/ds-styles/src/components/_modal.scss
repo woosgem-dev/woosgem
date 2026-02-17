@@ -1,21 +1,26 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
 // Modal Container (wrapper for overlay + modal)
-.modal-container {
+.#{tokens.$prefix}-modal-container {
+  // Layout
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: tokens.$z-index-modal-backdrop;
-  display: flex;
   align-items: center;
   justify-content: center;
+
+  // Box Model
   padding: tokens.$spacing-4;
 
-  // Fade in animation
+  // Visual
   opacity: 0;
   visibility: hidden;
+
+  // Misc
   transition:
     opacity tokens.$transition-normal,
     visibility tokens.$transition-normal;
@@ -27,48 +32,53 @@
 }
 
 // Modal Dialog
-.modal {
+.#{tokens.$prefix}-modal {
+  // Layout
+  display: flex;
   position: relative;
   z-index: tokens.$z-index-modal;
-  display: flex;
   flex-direction: column;
-  max-height: calc(100vh - #{tokens.$spacing-8});
+
+  // Box Model
   max-width: 100%;
+  max-height: calc(100vh - #{tokens.$spacing-8});
+
+  // Visual
   background-color: var(--wg-modal-bg, #{tokens.$background});
   border-radius: var(--wg-modal-radius, #{tokens.$radius-2xl});
   box-shadow: var(--wg-modal-shadow, #{tokens.$shadow-xl});
   outline: none;
 
-  // Animation
+  // Misc
   transform: scale(0.95) translateY(-10px);
   transition:
     transform tokens.$transition-normal,
     opacity tokens.$transition-normal;
 
-  .modal-container[data-open] & {
+  .#{tokens.$prefix}-modal-container[data-open] & {
     transform: scale(1) translateY(0);
   }
 
   // ===================
   // Sizes
   // ===================
-  &[data-size='sm'] {
+  &[data-size="sm"] {
     width: var(--wg-modal-width, 400px);
   }
 
-  &[data-size='md'] {
+  &[data-size="md"] {
     width: var(--wg-modal-width, 560px);
   }
 
-  &[data-size='lg'] {
+  &[data-size="lg"] {
     width: var(--wg-modal-width, 720px);
   }
 
-  &[data-size='xl'] {
+  &[data-size="xl"] {
     width: var(--wg-modal-width, 960px);
   }
 
-  &[data-size='full'] {
+  &[data-size="full"] {
     width: calc(100vw - #{tokens.$spacing-8});
     height: calc(100vh - #{tokens.$spacing-8});
     max-height: calc(100vh - #{tokens.$spacing-8});
@@ -82,16 +92,21 @@
 }
 
 // Modal Header
-.modal-header {
+.#{tokens.$prefix}-modal__header {
+  // Layout
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: space-between;
   gap: tokens.$spacing-4;
-  padding: tokens.$spacing-5 tokens.$spacing-6;
-  border-bottom: 1px solid var(--wg-modal-border, #{tokens.$border});
-  flex-shrink: 0;
 
-  .modal-title {
+  // Box Model
+  padding: tokens.$spacing-5 tokens.$spacing-6;
+
+  // Visual
+  border-bottom: 1px solid var(--wg-modal-border, #{tokens.$border});
+
+  .#{tokens.$prefix}-modal__title {
     font-family: tokens.$font-family-default;
     font-size: tokens.$font-size-18;
     font-weight: tokens.$font-weight-semibold;
@@ -100,22 +115,31 @@
     margin: 0;
   }
 
-  .modal-close {
+  .#{tokens.$prefix}-modal__close {
+    // Layout
     display: flex;
     align-items: center;
     justify-content: center;
+
+    // Box Model
     width: 32px;
     height: 32px;
     padding: 0;
     margin: 0;
+
+    // Typography
+    color: var(--wg-modal-close-color, #{tokens.$text-muted});
+
+    // Visual
+    background-color: transparent;
     border: none;
     border-radius: tokens.$radius-8;
-    background-color: transparent;
-    color: var(--wg-modal-close-color, #{tokens.$text-muted});
-    cursor: pointer;
+
+    // Misc
     transition:
       background-color tokens.$transition-fast,
       color tokens.$transition-fast;
+    cursor: pointer;
 
     &:hover {
       background-color: var(--wg-modal-close-hover-bg, #{tokens.$background-muted});
@@ -127,22 +151,28 @@
       outline-offset: 2px;
     }
 
+    // Direct child tag selector: component always wraps this element
     svg {
       width: 20px;
       height: 20px;
     }
   }
 
-  &[data-show-close='false'] .modal-close,
-  &:not([data-show-close]) .modal-close {
+  &[data-show-close="false"] .#{tokens.$prefix}-modal__close,
+  &:not([data-show-close]) .#{tokens.$prefix}-modal__close {
     display: none;
   }
 }
 
 // Modal Body
-.modal-body {
+.#{tokens.$prefix}-modal__body {
+  // Layout
   flex: 1;
+
+  // Box Model
   padding: tokens.$spacing-6;
+
+  // Typography
   font-family: tokens.$font-family-default;
   font-size: tokens.$font-size-14;
   line-height: tokens.$line-height-normal;
@@ -173,41 +203,52 @@
 }
 
 // Modal Footer
-.modal-footer {
+.#{tokens.$prefix}-modal__footer {
+  // Layout
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   gap: tokens.$spacing-3;
+
+  // Box Model
   padding: tokens.$spacing-4 tokens.$spacing-6;
+
+  // Visual
   border-top: 1px solid var(--wg-modal-border, #{tokens.$border});
-  flex-shrink: 0;
 
   // Alignment
-  &[data-align='start'] {
+  &[data-align="start"] {
     justify-content: flex-start;
   }
 
-  &[data-align='center'] {
+  &[data-align="center"] {
     justify-content: center;
   }
 
-  &[data-align='end'] {
+  &[data-align="end"] {
     justify-content: flex-end;
   }
 }
 
 // Responsive adjustments
 @media (max-width: 640px) {
-  .modal-container {
+  .#{tokens.$prefix}-modal-container {
     padding: tokens.$spacing-2;
     align-items: flex-end;
   }
 
-  .modal {
-    width: 100% !important;
+  .#{tokens.$prefix}-modal {
     max-height: 85vh;
     border-radius: tokens.$radius-16 tokens.$radius-16 0 0;
 
-    &[data-size='full'] {
+    &[data-size="sm"],
+    &[data-size="md"],
+    &[data-size="lg"],
+    &[data-size="xl"] {
+      width: 100%;
+    }
+
+    &[data-size="full"] {
       width: 100%;
       height: 100vh;
       max-height: 100vh;
@@ -215,9 +256,9 @@
     }
   }
 
-  .modal-header,
-  .modal-body,
-  .modal-footer {
+  .#{tokens.$prefix}-modal__header,
+  .#{tokens.$prefix}-modal__body,
+  .#{tokens.$prefix}-modal__footer {
     padding-left: tokens.$spacing-4;
     padding-right: tokens.$spacing-4;
   }

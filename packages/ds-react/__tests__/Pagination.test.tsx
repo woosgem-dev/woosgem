@@ -101,7 +101,7 @@ describe('Pagination (React)', () => {
     it('TC-O100: className 추가 시 병합된다', () => {
       const { container } = render(<Pagination className="custom" />);
       const el = container.firstChild as HTMLElement;
-      expect(el.className).toContain('pagination');
+      expect(el.className).toContain('wg-pagination');
       expect(el.className).toContain('custom');
     });
   });

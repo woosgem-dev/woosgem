@@ -147,7 +147,7 @@ describe('Spinner', () => {
       render(<Spinner className="custom-spinner" />);
       const spinner = screen.getByRole('status');
 
-      expect(spinner).toHaveClass('spinner');
+      expect(spinner).toHaveClass('wg-spinner');
       expect(spinner).toHaveClass('custom-spinner');
     });
 

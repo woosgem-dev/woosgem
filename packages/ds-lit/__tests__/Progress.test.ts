@@ -18,7 +18,7 @@ describe('Progress (Lit)', () => {
       expect(el.getAttribute('data-variant')).toBe(coreAttrs['data-variant']);
       expect(el.getAttribute('data-color')).toBe(coreAttrs['data-color']);
       expect(el.getAttribute('data-size')).toBe(coreAttrs['data-size']);
-      expect(el.classList.contains('progress')).toBe(true);
+      expect(el.classList.contains('wg-progress')).toBe(true);
     });
 
     it('TC-L101: variant prop이 core 결과와 일치한다', async () => {
@@ -96,8 +96,8 @@ describe('Progress (Lit)', () => {
         <wg-progress value="50"></wg-progress>
       `);
 
-      const track = el.querySelector('.progress-track');
-      const fill = el.querySelector('.progress-fill');
+      const track = el.querySelector('.wg-progress__track');
+      const fill = el.querySelector('.wg-progress__fill');
       expect(track).not.toBeNull();
       expect(fill).not.toBeNull();
     });
@@ -107,7 +107,7 @@ describe('Progress (Lit)', () => {
         <wg-progress value="50"></wg-progress>
       `);
 
-      const label = el.querySelector('.progress-label');
+      const label = el.querySelector('.wg-progress__label');
       expect(label).toBeNull();
     });
 
@@ -116,7 +116,7 @@ describe('Progress (Lit)', () => {
         <wg-progress value="75" show-label></wg-progress>
       `);
 
-      const label = el.querySelector('.progress-label');
+      const label = el.querySelector('.wg-progress__label');
       expect(label).not.toBeNull();
       expect(label?.textContent).toContain('75%');
     });
@@ -126,7 +126,7 @@ describe('Progress (Lit)', () => {
         <wg-progress value="3" max="5" show-label></wg-progress>
       `);
 
-      const label = el.querySelector('.progress-label');
+      const label = el.querySelector('.wg-progress__label');
       expect(label?.textContent).toContain('60%');
     });
 
@@ -162,13 +162,13 @@ describe('Progress (Lit)', () => {
         <wg-progress value="50"></wg-progress>
       `);
 
-      expect(el.querySelector('.progress-label')).toBeNull();
+      expect(el.querySelector('.wg-progress__label')).toBeNull();
 
       el.showLabel = true;
       await el.updateComplete;
 
-      expect(el.querySelector('.progress-label')).not.toBeNull();
-      expect(el.querySelector('.progress-label')?.textContent).toContain('50%');
+      expect(el.querySelector('.wg-progress__label')).not.toBeNull();
+      expect(el.querySelector('.wg-progress__label')?.textContent).toContain('50%');
     });
   });
 });

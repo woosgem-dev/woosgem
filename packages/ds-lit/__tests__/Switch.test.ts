@@ -16,7 +16,7 @@ describe('Switch (Lit)', () => {
       `);
 
       expect(el.getAttribute('data-size')).toBe(coreAttrs['data-size']);
-      expect(el.classList.contains('switch')).toBe(true);
+      expect(el.classList.contains('wg-switch')).toBe(true);
     });
 
     it('TC-L101: size prop이 core 결과와 일치한다', async () => {

@@ -1,9 +1,9 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
 // ===================
 // Select Trigger
 // ===================
-.select {
+.#{tokens.$prefix}-select {
   // Reset
   appearance: none;
   border: none;
@@ -35,7 +35,7 @@
 
   // Dropdown icon
   &::after {
-    content: '';
+    content: "";
     display: inline-block;
     width: 0;
     height: 0;
@@ -54,12 +54,12 @@
   }
 
   // Placeholder text style
-  .select-placeholder {
+  .#{tokens.$prefix}-select__placeholder {
     color: tokens.$text-subtle;
   }
 
   // Value display
-  .select-value {
+  .#{tokens.$prefix}-select__value {
     flex: 1;
     text-align: left;
     overflow: hidden;
@@ -72,11 +72,11 @@
   // ===================
 
   // Outline variant (default)
-  &[data-variant='outline'] {
+  &[data-variant="outline"] {
     --wg-select-bg: #{tokens.$background};
     --wg-select-border: #{tokens.$border};
 
-    &:hover:not(:disabled):not([data-state='disabled']) {
+    &:hover:not(:disabled):not([data-state="disabled"]) {
       --wg-select-border: #{tokens.$border-hover};
     }
 
@@ -86,7 +86,7 @@
       box-shadow: 0 0 0 2px #{tokens.$primary-alpha-20};
     }
 
-    &[data-state='error'] {
+    &[data-state="error"] {
       --wg-select-border: #{tokens.$danger};
 
       &:focus,
@@ -95,7 +95,7 @@
       }
     }
 
-    &[data-state='open'] {
+    &[data-state="open"] {
       --wg-select-border: #{tokens.$primary};
       box-shadow: 0 0 0 2px #{tokens.$primary-alpha-20};
 
@@ -106,11 +106,11 @@
   }
 
   // Filled variant
-  &[data-variant='filled'] {
+  &[data-variant="filled"] {
     --wg-select-bg: #{tokens.$background-subtle};
     --wg-select-border: transparent;
 
-    &:hover:not(:disabled):not([data-state='disabled']) {
+    &:hover:not(:disabled):not([data-state="disabled"]) {
       --wg-select-bg: #{tokens.$background-subtle-darken-3};
     }
 
@@ -121,7 +121,7 @@
       box-shadow: 0 0 0 2px #{tokens.$primary-alpha-20};
     }
 
-    &[data-state='error'] {
+    &[data-state="error"] {
       --wg-select-border: #{tokens.$danger};
 
       &:focus,
@@ -130,7 +130,7 @@
       }
     }
 
-    &[data-state='open'] {
+    &[data-state="open"] {
       --wg-select-border: #{tokens.$primary};
       --wg-select-bg: #{tokens.$background};
       box-shadow: 0 0 0 2px #{tokens.$primary-alpha-20};
@@ -144,19 +144,19 @@
   // ===================
   // Sizes
   // ===================
-  &[data-size='sm'] {
+  &[data-size="sm"] {
     height: 32px;
     padding: tokens.$spacing-1 tokens.$spacing-3;
     font-size: tokens.$font-size-13;
   }
 
-  &[data-size='md'] {
+  &[data-size="md"] {
     height: 40px;
     padding: tokens.$spacing-2 tokens.$spacing-4;
     font-size: tokens.$font-size-14;
   }
 
-  &[data-size='lg'] {
+  &[data-size="lg"] {
     height: 48px;
     padding: tokens.$spacing-3 tokens.$spacing-4;
     font-size: tokens.$font-size-16;
@@ -168,20 +168,20 @@
 
   // Disabled state
   &:disabled,
-  &[data-state='disabled'] {
+  &[data-state="disabled"] {
     cursor: not-allowed;
     opacity: 0.5;
     background-color: tokens.$background-muted;
   }
 
   // Error state
-  &[data-state='error'] {
+  &[data-state="error"] {
     --wg-select-border: #{tokens.$danger};
   }
 
   // Multiple mode indicator
   &[data-multiple] {
-    .select-value {
+    .#{tokens.$prefix}-select__value {
       display: flex;
       flex-wrap: wrap;
       gap: tokens.$spacing-1;
@@ -192,7 +192,7 @@
 // ===================
 // Select Menu (Dropdown)
 // ===================
-.select-menu {
+.#{tokens.$prefix}-select__menu {
   // Reset
   list-style: none;
   margin: 0;
@@ -218,7 +218,7 @@
     transform tokens.$transition-fast;
 
   // Open state
-  &[data-state='open'] {
+  &[data-state="open"] {
     display: block;
     opacity: 1;
     transform: translateY(0);
@@ -246,7 +246,7 @@
 // ===================
 // Select Option
 // ===================
-.select-option {
+.#{tokens.$prefix}-select__option {
   // Reset
   list-style: none;
   margin: 0;
@@ -263,7 +263,7 @@
     color tokens.$transition-fast;
 
   // Option content
-  .select-option-content {
+  .#{tokens.$prefix}-select__option-content {
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -271,7 +271,7 @@
   }
 
   // Checkmark
-  .select-option-checkmark {
+  .#{tokens.$prefix}-select__option-checkmark {
     flex-shrink: 0;
     width: 16px;
     height: 16px;
@@ -280,26 +280,26 @@
   }
 
   // Hover state
-  &:hover:not([data-state='disabled']):not([data-state='selected-disabled']) {
+  &:hover:not([data-state="disabled"]):not([data-state="selected-disabled"]) {
     background-color: tokens.$background-subtle;
   }
 
   // ===================
   // Sizes
   // ===================
-  &[data-size='sm'] {
+  &[data-size="sm"] {
     padding: tokens.$spacing-1 tokens.$spacing-3;
     font-size: tokens.$font-size-13;
     min-height: 32px;
   }
 
-  &[data-size='md'] {
+  &[data-size="md"] {
     padding: tokens.$spacing-2 tokens.$spacing-4;
     font-size: tokens.$font-size-14;
     min-height: 40px;
   }
 
-  &[data-size='lg'] {
+  &[data-size="lg"] {
     padding: tokens.$spacing-3 tokens.$spacing-4;
     font-size: tokens.$font-size-16;
     min-height: 48px;
@@ -310,17 +310,17 @@
   // ===================
 
   // Highlighted state (keyboard navigation)
-  &[data-state='highlighted'] {
+  &[data-state="highlighted"] {
     background-color: tokens.$background-subtle;
   }
 
   // Selected state
-  &[data-state='selected'] {
+  &[data-state="selected"] {
     background-color: #{tokens.$primary-alpha-10};
     color: tokens.$primary;
     font-weight: tokens.$font-weight-medium;
 
-    .select-option-checkmark {
+    .#{tokens.$prefix}-select__option-checkmark {
       display: block;
     }
 
@@ -330,20 +330,20 @@
   }
 
   // Disabled state
-  &[data-state='disabled'] {
+  &[data-state="disabled"] {
     cursor: not-allowed;
     opacity: 0.5;
     color: tokens.$text-muted;
   }
 
   // Selected + Disabled state
-  &[data-state='selected-disabled'] {
+  &[data-state="selected-disabled"] {
     cursor: not-allowed;
     opacity: 0.5;
     background-color: #{tokens.$primary-alpha-10};
     color: tokens.$primary;
 
-    .select-option-checkmark {
+    .#{tokens.$prefix}-select__option-checkmark {
       display: block;
     }
   }
@@ -352,7 +352,7 @@
 // ===================
 // Select Container (for positioning)
 // ===================
-.select-container {
+.#{tokens.$prefix}-select-container {
   position: relative;
   display: inline-block;
   width: 100%;
@@ -361,7 +361,7 @@
 // ===================
 // Select Tags (for multiple mode)
 // ===================
-.select-tag {
+.#{tokens.$prefix}-select__tag {
   display: inline-flex;
   align-items: center;
   gap: tokens.$spacing-1;
@@ -372,13 +372,13 @@
   font-size: tokens.$font-size-12;
   max-width: 120px;
 
-  .select-tag-label {
+  .#{tokens.$prefix}-select__tag-label {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
-  .select-tag-remove {
+  .#{tokens.$prefix}-select__tag-remove {
     cursor: pointer;
     opacity: 0.6;
     transition: opacity tokens.$transition-fast;
@@ -392,7 +392,7 @@
 // ===================
 // Select Empty State
 // ===================
-.select-empty {
+.#{tokens.$prefix}-select__empty {
   padding: tokens.$spacing-4;
   text-align: center;
   color: tokens.$text-muted;
@@ -402,7 +402,7 @@
 // ===================
 // Select Group
 // ===================
-.select-group {
+.#{tokens.$prefix}-select__group {
   &:not(:first-child) {
     border-top: 1px solid tokens.$border;
     margin-top: tokens.$spacing-1;
@@ -410,7 +410,7 @@
   }
 }
 
-.select-group-label {
+.#{tokens.$prefix}-select__group-label {
   padding: tokens.$spacing-1 tokens.$spacing-4;
   font-size: tokens.$font-size-12;
   font-weight: tokens.$font-weight-medium;

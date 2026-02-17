@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls, clsEl } from '../constants';
 
 /** Checkbox size options */
 export const CheckboxSizes = ['sm', 'md', 'lg'] as const;
@@ -41,7 +42,7 @@ export const CheckboxRoot = {
   mapPropsToAttrs: (props: CheckboxRootStyleProps): CheckboxRootAttrs => {
     const merged = { ...CheckboxRoot.defaultProps, ...filterNullish(props) };
     return {
-      class: 'checkbox-root',
+      class: clsEl('checkbox', 'root'),
       'data-size': merged.size,
       'data-disabled': merged.disabled || undefined,
     };
@@ -98,7 +99,7 @@ export const CheckboxIndicator = {
       ? 'checked'
       : 'unchecked';
     return {
-      class: 'checkbox-indicator',
+      class: clsEl('checkbox', 'indicator'),
       'data-size': merged.size,
       'data-state': state,
       'aria-hidden': true,
@@ -139,7 +140,7 @@ export const CheckboxLabel = {
   mapPropsToAttrs: (props: CheckboxLabelStyleProps): CheckboxLabelAttrs => {
     const merged = { ...CheckboxLabel.defaultProps, ...filterNullish(props) };
     return {
-      class: 'checkbox-label',
+      class: clsEl('checkbox', 'label'),
       'data-disabled': merged.disabled || undefined,
     };
   },
@@ -194,7 +195,7 @@ export const Checkbox = {
       ? 'checked'
       : 'unchecked';
     return {
-      class: 'checkbox',
+      class: cls('checkbox'),
       'data-size': merged.size,
       'data-state': state,
     };

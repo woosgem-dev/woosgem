@@ -185,7 +185,7 @@ export const ToastContainer = forwardRef<HTMLDivElement, ToastContainerProps>(
           <div
             key={pos}
             ref={pos === position ? ref : undefined}
-            className="toast-container"
+            className="wg-toast-container"
             data-position={pos}
           >
             {items.map((toast) => (

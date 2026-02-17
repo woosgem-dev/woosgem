@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls, clsEl } from '../constants';
 
 /** SegmentedControl size options */
 export const SegmentedControlSizes = ['sm', 'md', 'lg'] as const;
@@ -52,7 +53,7 @@ export const SegmentedControl = {
   mapPropsToAttrs: (props: SegmentedControlStyleProps): SegmentedControlAttrs => {
     const merged = { ...SegmentedControl.defaultProps, ...filterNullish(props) };
     return {
-      class: 'segmented-control',
+      class: cls('segmented-control'),
       role: 'group',
       'data-size': merged.size,
       'data-full-width': merged.fullWidth || undefined,
@@ -80,7 +81,7 @@ export const SegmentedControlItem = {
   mapPropsToAttrs: (props: SegmentedControlItemStyleProps): SegmentedControlItemAttrs => {
     const merged = { ...SegmentedControlItem.defaultProps, ...filterNullish(props) };
     return {
-      class: 'segmented-control-item',
+      class: clsEl('segmented-control', 'item'),
       'data-state': merged.selected ? 'selected' : merged.disabled ? 'disabled' : undefined,
       'aria-selected': merged.selected || undefined,
       disabled: merged.disabled || undefined,

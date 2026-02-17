@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls } from '../constants';
 
 /** Toast variant options */
 export const ToastVariants = ['info', 'success', 'warning', 'error'] as const;
@@ -62,7 +63,7 @@ export const Toast = {
   mapPropsToAttrs: (props: ToastStyleProps): ToastAttrs => {
     const merged = { ...Toast.defaultProps, ...filterNullish(props) };
     return {
-      class: 'toast',
+      class: cls('toast'),
       'data-variant': merged.variant,
       'data-position': merged.position,
       'data-closable': merged.closable || undefined,

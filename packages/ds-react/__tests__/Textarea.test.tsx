@@ -237,7 +237,7 @@ describe('Textarea', () => {
       render(<Textarea className="custom-textarea" data-testid="textarea" />);
       const textarea = screen.getByTestId('textarea');
 
-      expect(textarea).toHaveClass('textarea');
+      expect(textarea).toHaveClass('wg-textarea');
       expect(textarea).toHaveClass('custom-textarea');
     });
 

@@ -156,13 +156,13 @@ export const Modal = defineComponent({
       const content = h(
         'div',
         {
-          class: 'modal-container',
+          class: 'wg-modal-container',
           'data-open': props.open || undefined,
         },
         [
           // Overlay
           h('div', {
-            class: 'overlay',
+            class: 'wg-overlay',
             'data-opacity': 'medium',
             'data-level': 'modal',
             'data-visible': props.open || undefined,
@@ -177,7 +177,7 @@ export const Modal = defineComponent({
               class: baseClass,
               ...restAttrs,
               tabindex: -1,
-              'aria-labelledby': props.title ? 'modal-title' : undefined,
+              'aria-labelledby': props.title ? 'wg-modal__title' : undefined,
             },
             slots.default?.()
           ),
@@ -226,13 +226,13 @@ export const ModalHeader = defineComponent({
           ...restAttrs,
         },
         [
-          h('div', { class: 'modal-title', id: 'modal-title' }, slots.default?.()),
+          h('div', { class: 'wg-modal__title', id: 'wg-modal__title' }, slots.default?.()),
           props.showClose &&
             h(
               'button',
               {
                 type: 'button',
-                class: 'modal-close',
+                class: 'wg-modal__close',
                 onClick: () => emit('close'),
                 'aria-label': 'Close modal',
               },

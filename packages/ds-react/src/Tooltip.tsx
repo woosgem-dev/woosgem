@@ -149,7 +149,7 @@ const TooltipBase = forwardRef<TooltipRef, TooltipProps>(function Tooltip(
             }
           : {};
 
-  const finalClassName = className ? `tooltip-wrapper ${className}` : 'tooltip-wrapper';
+  const finalClassName = className ? `wg-tooltip-wrapper ${className}` : 'wg-tooltip-wrapper';
 
   return (
     <div
@@ -160,7 +160,7 @@ const TooltipBase = forwardRef<TooltipRef, TooltipProps>(function Tooltip(
       {...restProps}
     >
       {/* Trigger element with aria-describedby */}
-      <span className="tooltip-trigger" aria-describedby={isVisible ? tooltipId : undefined}>
+      <span className="wg-tooltip__trigger" aria-describedby={isVisible ? tooltipId : undefined}>
         {children}
       </span>
 
@@ -176,8 +176,8 @@ const TooltipBase = forwardRef<TooltipRef, TooltipProps>(function Tooltip(
         role={attrs.role}
         aria-hidden={!isVisible}
       >
-        {arrow && <span className="tooltip-arrow" />}
-        <span className="tooltip-content">{content}</span>
+        {arrow && <span className="wg-tooltip__arrow" />}
+        <span className="wg-tooltip__content">{content}</span>
       </div>
     </div>
   );

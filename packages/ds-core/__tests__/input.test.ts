@@ -37,7 +37,7 @@ describe('Input', () => {
   describe('mapPropsToAttrs', () => {
     it('should return correct attrs with defaults', () => {
       const attrs = Input.mapPropsToAttrs({});
-      expect(attrs.class).toBe('input');
+      expect(attrs.class).toBe('wg-input');
       expect(attrs['data-variant']).toBe('outline');
       expect(attrs['data-size']).toBe('md');
       expect(attrs['data-state']).toBeUndefined();

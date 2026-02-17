@@ -16,7 +16,7 @@ describe('Divider (Lit)', () => {
       `);
 
       expect(el.getAttribute('data-orientation')).toBe(coreAttrs['data-orientation']);
-      expect(el.classList.contains('divider')).toBe(true);
+      expect(el.classList.contains('wg-divider')).toBe(true);
     });
 
     it('TC-L101: orientation prop이 core 결과와 일치한다', async () => {

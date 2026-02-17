@@ -42,7 +42,7 @@ describe('Tab', () => {
   describe('mapPropsToAttrs', () => {
     it('should return correct attrs with defaults', () => {
       const attrs = Tab.mapPropsToAttrs({});
-      expect(attrs.class).toBe('tab');
+      expect(attrs.class).toBe('wg-tab');
       expect(attrs.role).toBe('tab');
       expect(attrs['data-variant']).toBe('underline');
       expect(attrs['data-size']).toBe('md');

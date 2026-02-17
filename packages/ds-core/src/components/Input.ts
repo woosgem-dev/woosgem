@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls } from '../constants';
 
 /** Input variant options */
 export const InputVariants = ['outline', 'filled', 'underline'] as const;
@@ -77,7 +78,7 @@ export const Input = {
     const merged = { ...Input.defaultProps, ...filterNullish(props) };
     const state = merged.error ? 'error' : merged.success ? 'success' : merged.disabled ? 'disabled' : undefined;
     return {
-      class: 'input',
+      class: cls('input'),
       'data-variant': merged.variant,
       'data-size': merged.size,
       'data-state': state,

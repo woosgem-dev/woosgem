@@ -30,7 +30,7 @@ describe('Table (React)', () => {
           </TableBody>
         </Table>
       );
-      const table = document.querySelector('.table')!;
+      const table = document.querySelector('.wg-table')!;
 
       expect(table).toHaveAttribute('data-variant', coreAttrs['data-variant']);
       expect(table).toHaveAttribute('data-size', coreAttrs['data-size']);
@@ -49,7 +49,7 @@ describe('Table (React)', () => {
           </TableBody>
         </Table>
       );
-      const table = document.querySelector('.table')!;
+      const table = document.querySelector('.wg-table')!;
 
       expect(table).toHaveAttribute('data-variant', coreAttrs['data-variant']);
     });
@@ -66,7 +66,7 @@ describe('Table (React)', () => {
           </TableBody>
         </Table>
       );
-      const table = document.querySelector('.table')!;
+      const table = document.querySelector('.wg-table')!;
 
       expect(table).toHaveAttribute('data-size', coreAttrs['data-size']);
     });
@@ -83,7 +83,7 @@ describe('Table (React)', () => {
           </TableBody>
         </Table>
       );
-      const table = document.querySelector('.table')!;
+      const table = document.querySelector('.wg-table')!;
       expect(table).toHaveAttribute('data-variant', 'default');
     });
 
@@ -97,7 +97,7 @@ describe('Table (React)', () => {
           </TableBody>
         </Table>
       );
-      const table = document.querySelector('.table')!;
+      const table = document.querySelector('.wg-table')!;
       expect(table).toHaveAttribute('data-variant', 'striped');
     });
 
@@ -111,7 +111,7 @@ describe('Table (React)', () => {
           </TableBody>
         </Table>
       );
-      const table = document.querySelector('.table')!;
+      const table = document.querySelector('.wg-table')!;
       expect(table).toHaveAttribute('data-variant', 'bordered');
     });
   });
@@ -127,7 +127,7 @@ describe('Table (React)', () => {
           </TableBody>
         </Table>
       );
-      const table = document.querySelector('.table')!;
+      const table = document.querySelector('.wg-table')!;
       expect(table).toHaveAttribute('data-size', 'sm');
     });
 
@@ -141,7 +141,7 @@ describe('Table (React)', () => {
           </TableBody>
         </Table>
       );
-      const table = document.querySelector('.table')!;
+      const table = document.querySelector('.wg-table')!;
       expect(table).toHaveAttribute('data-size', 'md');
     });
 
@@ -155,7 +155,7 @@ describe('Table (React)', () => {
           </TableBody>
         </Table>
       );
-      const table = document.querySelector('.table')!;
+      const table = document.querySelector('.wg-table')!;
       expect(table).toHaveAttribute('data-size', 'lg');
     });
   });
@@ -171,7 +171,7 @@ describe('Table (React)', () => {
           </TableBody>
         </Table>
       );
-      const table = document.querySelector('.table')!;
+      const table = document.querySelector('.wg-table')!;
       expect(table).toHaveAttribute('data-variant', 'default');
     });
 
@@ -185,7 +185,7 @@ describe('Table (React)', () => {
           </TableBody>
         </Table>
       );
-      const table = document.querySelector('.table')!;
+      const table = document.querySelector('.wg-table')!;
       expect(table).toHaveAttribute('data-size', 'md');
     });
   });
@@ -214,8 +214,8 @@ describe('Table (React)', () => {
           </TableBody>
         </Table>
       );
-      const table = document.querySelector('.table')!;
-      expect(table).toHaveClass('table');
+      const table = document.querySelector('.wg-table')!;
+      expect(table).toHaveClass('wg-table');
       expect(table).toHaveClass('custom-table');
     });
   });
@@ -232,8 +232,8 @@ describe('TableHead (React)', () => {
         </TableHead>
       </table>
     );
-    const thead = document.querySelector('.table-head')!;
-    expect(thead).toHaveClass('table-head');
+    const thead = document.querySelector('.wg-table__head')!;
+    expect(thead).toHaveClass('wg-table__head');
   });
 
   it('should render children', () => {
@@ -261,8 +261,8 @@ describe('TableBody (React)', () => {
         </TableBody>
       </table>
     );
-    const tbody = document.querySelector('.table-body')!;
-    expect(tbody).toHaveClass('table-body');
+    const tbody = document.querySelector('.wg-table__body')!;
+    expect(tbody).toHaveClass('wg-table__body');
   });
 
   it('should render children', () => {
@@ -290,8 +290,8 @@ describe('TableRow (React)', () => {
         </tbody>
       </table>
     );
-    const row = document.querySelector('.table-row')!;
-    expect(row).toHaveClass('table-row');
+    const row = document.querySelector('.wg-table__row')!;
+    expect(row).toHaveClass('wg-table__row');
   });
 
   it('should render children', () => {
@@ -319,7 +319,7 @@ describe('TableRow (React)', () => {
         </tbody>
       </table>
     );
-    const row = document.querySelector('.table-row')!;
+    const row = document.querySelector('.wg-table__row')!;
     expect(row).toHaveAttribute('data-state', coreAttrs['data-state']);
     expect(row).toHaveAttribute('aria-selected', coreAttrs['aria-selected']);
   });
@@ -334,7 +334,7 @@ describe('TableRow (React)', () => {
         </tbody>
       </table>
     );
-    const row = document.querySelector('.table-row')!;
+    const row = document.querySelector('.wg-table__row')!;
     expect(row).not.toHaveAttribute('data-state');
     expect(row).not.toHaveAttribute('aria-selected');
   });
@@ -351,8 +351,8 @@ describe('TableCell (React)', () => {
         </tbody>
       </table>
     );
-    const cell = document.querySelector('.table-cell')!;
-    expect(cell).toHaveClass('table-cell');
+    const cell = document.querySelector('.wg-table__cell')!;
+    expect(cell).toHaveClass('wg-table__cell');
   });
 
   it('should render children', () => {
@@ -380,7 +380,7 @@ describe('TableCell (React)', () => {
         </tbody>
       </table>
     );
-    const cell = document.querySelector('.table-cell')!;
+    const cell = document.querySelector('.wg-table__cell')!;
     expect(cell).toHaveAttribute('data-align', coreAttrs['data-align']);
   });
 
@@ -394,7 +394,7 @@ describe('TableCell (React)', () => {
         </tbody>
       </table>
     );
-    const cell = document.querySelector('.table-cell')!;
+    const cell = document.querySelector('.wg-table__cell')!;
     expect(cell).toHaveAttribute('data-align', 'left');
   });
 });
@@ -410,8 +410,8 @@ describe('TableHeaderCell (React)', () => {
         </thead>
       </table>
     );
-    const cell = document.querySelector('.table-header-cell')!;
-    expect(cell).toHaveClass('table-header-cell');
+    const cell = document.querySelector('.wg-table__header-cell')!;
+    expect(cell).toHaveClass('wg-table__header-cell');
   });
 
   it('should render children', () => {
@@ -439,7 +439,7 @@ describe('TableHeaderCell (React)', () => {
         </thead>
       </table>
     );
-    const cell = document.querySelector('.table-header-cell')!;
+    const cell = document.querySelector('.wg-table__header-cell')!;
     expect(cell).toHaveAttribute('data-align', coreAttrs['data-align']);
   });
 
@@ -453,7 +453,7 @@ describe('TableHeaderCell (React)', () => {
         </thead>
       </table>
     );
-    const cell = document.querySelector('.table-header-cell')!;
+    const cell = document.querySelector('.wg-table__header-cell')!;
     expect(cell).toHaveAttribute('data-sortable', 'true');
   });
 
@@ -467,7 +467,7 @@ describe('TableHeaderCell (React)', () => {
         </thead>
       </table>
     );
-    const cell = document.querySelector('.table-header-cell')!;
+    const cell = document.querySelector('.wg-table__header-cell')!;
     expect(cell).toHaveAttribute('scope', 'col');
   });
 });
@@ -502,7 +502,7 @@ describe('Table Compound Usage (React)', () => {
     expect(screen.getByText('Item B')).toBeInTheDocument();
     expect(screen.getByText('$20')).toBeInTheDocument();
 
-    const table = document.querySelector('.table')!;
+    const table = document.querySelector('.wg-table')!;
     expect(table).toHaveAttribute('data-variant', 'striped');
     expect(table).toHaveAttribute('data-hoverable', 'true');
   });

@@ -148,7 +148,7 @@ describe('Skeleton', () => {
     it('TC-O100: class 추가 시 병합된다', () => {
       const wrapper = mount(Skeleton, { props: { class: 'custom-skeleton' } });
 
-      expect(wrapper.classes()).toContain('skeleton');
+      expect(wrapper.classes()).toContain('wg-skeleton');
       expect(wrapper.classes()).toContain('custom-skeleton');
     });
 

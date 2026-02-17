@@ -2,7 +2,7 @@
 // Build-time theme separation - outputs only dark theme styles
 
 // Theme CSS Custom Properties (must be first to define variables)
-@use '../tokens/theme-dark';
+@use "../tokens/theme-dark";
 
 // Component styles (reference CSS Custom Properties from theme)
-@use '../components';
+@use "../components";

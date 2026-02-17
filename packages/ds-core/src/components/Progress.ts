@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls } from '../constants';
 
 /** Progress variant options */
 export const ProgressVariants = ['default', 'gradient'] as const;
@@ -69,7 +70,7 @@ export const Progress = {
     const percentage = max > 0 ? (value / max) * 100 : 0;
 
     return {
-      class: 'progress',
+      class: cls('progress'),
       'data-variant': merged.variant,
       'data-color': merged.color,
       'data-size': merged.size,

@@ -42,7 +42,7 @@ describe('Popover Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = Popover.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'popover',
+        class: 'wg-popover',
         'data-position': 'bottom',
         'data-size': 'md',
         'data-variant': 'default',
@@ -94,7 +94,7 @@ describe('Popover Core', () => {
         variant: 'tooltip',
       });
       expect(attrs).toEqual({
-        class: 'popover',
+        class: 'wg-popover',
         'data-position': 'top',
         'data-size': 'lg',
         'data-variant': 'tooltip',
@@ -124,7 +124,7 @@ describe('PopoverArrow Core', () => {
   describe('mapPropsToAttrs', () => {
     it('should return class "popover-arrow"', () => {
       const attrs = PopoverArrow.mapPropsToAttrs();
-      expect(attrs.class).toBe('popover-arrow');
+      expect(attrs.class).toBe('wg-popover__arrow');
     });
   });
 

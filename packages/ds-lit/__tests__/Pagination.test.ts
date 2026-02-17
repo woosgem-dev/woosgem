@@ -20,7 +20,7 @@ describe('Pagination (Lit)', () => {
       expect(el.getAttribute('data-shape')).toBe(coreAttrs['data-shape']);
       expect(el.getAttribute('role')).toBe(coreAttrs.role);
       expect(el.getAttribute('aria-label')).toBe(coreAttrs['aria-label']);
-      expect(el.classList.contains('pagination')).toBe(true);
+      expect(el.classList.contains('wg-pagination')).toBe(true);
     });
 
     it('TC-L101: variant prop이 core 결과와 일치한다', async () => {
@@ -103,7 +103,7 @@ describe('PaginationItem (Lit)', () => {
         <wg-pagination-item>1</wg-pagination-item>
       `);
 
-      expect(el.classList.contains('pagination-item')).toBe(true);
+      expect(el.classList.contains('wg-pagination__item')).toBe(true);
       expect(el.getAttribute('data-state')).toBe(coreAttrs['data-state'] ?? null);
     });
 

@@ -188,7 +188,7 @@ describe('Tab', () => {
       });
       const tab = screen.getByRole('tab');
 
-      expect(tab).toHaveClass('tab');
+      expect(tab).toHaveClass('wg-tab');
       expect(tab).toHaveClass('custom-class');
     });
 
@@ -217,7 +217,7 @@ describe('Tab', () => {
       });
       const tab = screen.getByRole('tab');
 
-      expect(tab).toHaveClass('tab');
+      expect(tab).toHaveClass('wg-tab');
       expect(tab).toHaveClass('custom');
     });
 

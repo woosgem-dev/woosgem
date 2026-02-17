@@ -1,9 +1,9 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
 // ============================================
 // Table Component
 // ============================================
-.table {
+.#{tokens.$prefix}-table {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
@@ -13,27 +13,27 @@
   // ===================
   // Variants
   // ===================
-  &[data-variant='default'] {
-    .table-row {
+  &[data-variant="default"] {
+    .#{tokens.$prefix}-table__row {
       border-bottom: 1px solid tokens.$border;
     }
   }
 
-  &[data-variant='striped'] {
-    .table-row {
+  &[data-variant="striped"] {
+    .#{tokens.$prefix}-table__row {
       border-bottom: 1px solid tokens.$border;
     }
 
-    .table-body .table-row:nth-child(even) {
+    .#{tokens.$prefix}-table__body .#{tokens.$prefix}-table__row:nth-child(even) {
       background-color: var(--wg-table-stripe-bg, #{tokens.$background-subtle});
     }
   }
 
-  &[data-variant='bordered'] {
+  &[data-variant="bordered"] {
     border: 1px solid tokens.$border;
 
-    .table-cell,
-    .table-header-cell {
+    .#{tokens.$prefix}-table__cell,
+    .#{tokens.$prefix}-table__header-cell {
       border: 1px solid tokens.$border;
     }
   }
@@ -41,29 +41,29 @@
   // ===================
   // Sizes
   // ===================
-  &[data-size='sm'] {
+  &[data-size="sm"] {
     font-size: tokens.$font-size-12;
 
-    .table-cell,
-    .table-header-cell {
+    .#{tokens.$prefix}-table__cell,
+    .#{tokens.$prefix}-table__header-cell {
       padding: tokens.$spacing-1 tokens.$spacing-2;
     }
   }
 
-  &[data-size='md'] {
+  &[data-size="md"] {
     font-size: tokens.$font-size-14;
 
-    .table-cell,
-    .table-header-cell {
+    .#{tokens.$prefix}-table__cell,
+    .#{tokens.$prefix}-table__header-cell {
       padding: tokens.$spacing-2 tokens.$spacing-3;
     }
   }
 
-  &[data-size='lg'] {
+  &[data-size="lg"] {
     font-size: tokens.$font-size-16;
 
-    .table-cell,
-    .table-header-cell {
+    .#{tokens.$prefix}-table__cell,
+    .#{tokens.$prefix}-table__header-cell {
       padding: tokens.$spacing-3 tokens.$spacing-4;
     }
   }
@@ -72,7 +72,7 @@
   // Hoverable
   // ===================
   &[data-hoverable] {
-    .table-body .table-row:hover {
+    .#{tokens.$prefix}-table__body .#{tokens.$prefix}-table__row:hover {
       background-color: var(--wg-table-hover-bg, #{tokens.$background-muted});
     }
   }
@@ -81,10 +81,10 @@
 // ============================================
 // TableHead
 // ============================================
-.table-head {
+.#{tokens.$prefix}-table__head {
   background-color: var(--wg-table-head-bg, #{tokens.$background-muted});
 
-  .table-header-cell {
+  .#{tokens.$prefix}-table__header-cell {
     font-weight: tokens.$font-weight-semibold;
   }
 }
@@ -92,18 +92,18 @@
 // ============================================
 // TableBody
 // ============================================
-.table-body {
+.#{tokens.$prefix}-table__body {
   // Base styles handled by parent .table
 }
 
 // ============================================
 // TableRow
 // ============================================
-.table-row {
+.#{tokens.$prefix}-table__row {
   transition: background-color tokens.$transition-fast;
 
   // Selected state
-  &[data-state='selected'] {
+  &[data-state="selected"] {
     background-color: var(--wg-table-selected-bg, #{tokens.$primary-alpha-10});
   }
 }
@@ -111,20 +111,20 @@
 // ============================================
 // TableCell
 // ============================================
-.table-cell {
+.#{tokens.$prefix}-table__cell {
   line-height: tokens.$line-height-normal;
   vertical-align: middle;
 
   // Alignment
-  &[data-align='left'] {
+  &[data-align="left"] {
     text-align: left;
   }
 
-  &[data-align='center'] {
+  &[data-align="center"] {
     text-align: center;
   }
 
-  &[data-align='right'] {
+  &[data-align="right"] {
     text-align: right;
   }
 }
@@ -132,21 +132,21 @@
 // ============================================
 // TableHeaderCell
 // ============================================
-.table-header-cell {
+.#{tokens.$prefix}-table__header-cell {
   line-height: tokens.$line-height-normal;
   vertical-align: middle;
   text-align: left;
 
   // Alignment
-  &[data-align='left'] {
+  &[data-align="left"] {
     text-align: left;
   }
 
-  &[data-align='center'] {
+  &[data-align="center"] {
     text-align: center;
   }
 
-  &[data-align='right'] {
+  &[data-align="right"] {
     text-align: right;
   }
 

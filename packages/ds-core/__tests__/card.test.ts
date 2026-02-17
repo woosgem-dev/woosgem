@@ -45,7 +45,7 @@ describe('Card Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = Card.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'card',
+        class: 'wg-card',
         'data-variant': 'outlined',
         'data-padding': 'md',
         'data-hoverable': undefined,
@@ -111,7 +111,7 @@ describe('Card Core', () => {
         clickable: true,
       });
       expect(attrs).toEqual({
-        class: 'card',
+        class: 'wg-card',
         'data-variant': 'elevated',
         'data-padding': 'lg',
         'data-hoverable': true,
@@ -144,7 +144,7 @@ describe('CardHeader Core', () => {
 
   it('should return default attrs', () => {
     const attrs = CardHeader.mapPropsToAttrs({});
-    expect(attrs).toEqual({ class: 'card-header', 'data-divider': undefined });
+    expect(attrs).toEqual({ class: 'wg-card__header', 'data-divider': undefined });
   });
 
   it('should apply divider prop', () => {
@@ -162,7 +162,7 @@ describe('CardBody Core', () => {
   });
 
   it('should return correct attrs', () => {
-    expect(CardBody.mapPropsToAttrs()).toEqual({ class: 'card-body' });
+    expect(CardBody.mapPropsToAttrs()).toEqual({ class: 'wg-card__body' });
   });
 });
 
@@ -177,7 +177,7 @@ describe('CardFooter Core', () => {
 
   it('should return default attrs', () => {
     const attrs = CardFooter.mapPropsToAttrs({});
-    expect(attrs).toEqual({ class: 'card-footer', 'data-divider': undefined, 'data-align': 'start' });
+    expect(attrs).toEqual({ class: 'wg-card__footer', 'data-divider': undefined, 'data-align': 'start' });
   });
 
   it('should apply divider prop', () => {

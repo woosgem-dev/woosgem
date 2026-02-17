@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls, clsEl } from '../constants';
 
 export const PopoverPositions = ['top', 'bottom', 'left', 'right'] as const;
 export type PopoverPosition = (typeof PopoverPositions)[number];
@@ -42,7 +43,7 @@ export const Popover = {
   mapPropsToAttrs: (props: PopoverStyleProps): PopoverAttrs => {
     const merged = { ...Popover.defaultProps, ...filterNullish(props) };
     return {
-      class: 'popover',
+      class: cls('popover'),
       'data-position': merged.position,
       'data-size': merged.size,
       'data-variant': merged.variant,
@@ -69,7 +70,7 @@ export const PopoverArrow = {
   propTypes: {},
 
   mapPropsToAttrs: (): PopoverArrowAttrs => ({
-    class: 'popover-arrow',
+    class: clsEl('popover', 'arrow'),
   }),
 
   template: {

@@ -1,7 +1,9 @@
+@use "../tokens" as tokens;
+
 // Kbd Component Styles
 // Displays keyboard shortcuts in a visually distinct way
 
-.kbd {
+.#{tokens.$prefix}-kbd {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -63,7 +65,7 @@
 
 // Dark mode support
 [data-theme="dark"] {
-  .kbd {
+  .#{tokens.$prefix}-kbd {
     &[data-variant="raised"] {
       background: linear-gradient(
         180deg,

@@ -71,7 +71,7 @@ describe('Progress', () => {
   describe('Label/값 표시', () => {
     it('TC-L100: showLabel이 true이면 퍼센트 레이블을 렌더링한다', () => {
       render(<Progress value={75} showLabel />);
-      const label = document.querySelector('.progress-label');
+      const label = document.querySelector('.wg-progress__label');
 
       expect(label).toBeInTheDocument();
       expect(label).toHaveTextContent('75%');
@@ -79,28 +79,28 @@ describe('Progress', () => {
 
     it('TC-L101: showLabel이 false이면 레이블을 렌더링하지 않는다', () => {
       render(<Progress value={75} />);
-      const label = document.querySelector('.progress-label');
+      const label = document.querySelector('.wg-progress__label');
 
       expect(label).not.toBeInTheDocument();
     });
 
     it('TC-L102: custom max에 따른 퍼센트가 계산된다', () => {
       render(<Progress value={3} max={5} showLabel />);
-      const label = document.querySelector('.progress-label');
+      const label = document.querySelector('.wg-progress__label');
 
       expect(label).toHaveTextContent('60%');
     });
 
     it('TC-L103: value가 0이면 0%를 표시한다', () => {
       render(<Progress value={0} showLabel />);
-      const label = document.querySelector('.progress-label');
+      const label = document.querySelector('.wg-progress__label');
 
       expect(label).toHaveTextContent('0%');
     });
 
     it('TC-L104: value가 max와 같으면 100%를 표시한다', () => {
       render(<Progress value={100} showLabel />);
-      const label = document.querySelector('.progress-label');
+      const label = document.querySelector('.wg-progress__label');
 
       expect(label).toHaveTextContent('100%');
     });
@@ -175,22 +175,22 @@ describe('Progress', () => {
   describe('내부 구조', () => {
     it('TC-S100: progress-track 요소가 렌더링된다', () => {
       render(<Progress />);
-      const track = document.querySelector('.progress-track');
+      const track = document.querySelector('.wg-progress__track');
 
       expect(track).toBeInTheDocument();
     });
 
     it('TC-S101: progress-fill 요소가 렌더링된다', () => {
       render(<Progress />);
-      const fill = document.querySelector('.progress-fill');
+      const fill = document.querySelector('.wg-progress__fill');
 
       expect(fill).toBeInTheDocument();
     });
 
     it('TC-S102: progress-fill이 progress-track 안에 있다', () => {
       render(<Progress />);
-      const track = document.querySelector('.progress-track');
-      const fill = document.querySelector('.progress-fill');
+      const track = document.querySelector('.wg-progress__track');
+      const fill = document.querySelector('.wg-progress__fill');
 
       expect(track).toContainElement(fill as HTMLElement);
     });
@@ -206,7 +206,7 @@ describe('Progress', () => {
       render(<Progress className="custom-progress" />);
       const el = screen.getByRole('progressbar');
 
-      expect(el).toHaveClass('progress');
+      expect(el).toHaveClass('wg-progress');
       expect(el).toHaveClass('custom-progress');
     });
 
@@ -245,7 +245,7 @@ describe('Progress', () => {
       render(<Progress className="custom" />);
       const el = screen.getByRole('progressbar');
 
-      expect(el).toHaveClass('progress');
+      expect(el).toHaveClass('wg-progress');
       expect(el).toHaveClass('custom');
     });
 

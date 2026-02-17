@@ -190,7 +190,7 @@ describe('Textarea (Vue)', () => {
     it('TC-O100: class 추가 시 병합된다', () => {
       const wrapper = mount(Textarea, { props: { class: 'custom-textarea' } });
 
-      expect(wrapper.classes()).toContain('textarea');
+      expect(wrapper.classes()).toContain('wg-textarea');
       expect(wrapper.classes()).toContain('custom-textarea');
     });
 

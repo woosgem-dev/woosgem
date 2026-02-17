@@ -1,10 +1,10 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
 // ===================
 // Toast Component
 // ===================
 
-.toast {
+.#{tokens.$prefix}-toast {
   display: flex;
   align-items: flex-start;
   gap: tokens.$spacing-3;
@@ -29,7 +29,7 @@
     transform tokens.$duration-moderate-02 tokens.$easing-standard;
 
   // Icon slot
-  .toast-icon {
+  .#{tokens.$prefix}-toast__icon {
     flex-shrink: 0;
     width: 20px;
     height: 20px;
@@ -37,29 +37,29 @@
   }
 
   // Content
-  .toast-content {
+  .#{tokens.$prefix}-toast__content {
     flex: 1;
     min-width: 0;
     word-wrap: break-word;
   }
 
-  .toast-title {
+  .#{tokens.$prefix}-toast__title {
     font-weight: tokens.$font-weight-semibold;
     margin-bottom: tokens.$spacing-1;
   }
 
-  .toast-description {
+  .#{tokens.$prefix}-toast__description {
     color: var(--wg-toast-description, #{tokens.$text-muted});
   }
 
   // Action slot (close button, etc.)
-  .toast-action {
+  .#{tokens.$prefix}-toast__action {
     flex-shrink: 0;
     margin-left: auto;
   }
 
   // Close button
-  .toast-close {
+  .#{tokens.$prefix}-toast__close {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,7 +86,7 @@
   // ===================
   // Variants
   // ===================
-  &[data-variant='info'] {
+  &[data-variant="info"] {
     --wg-toast-bg: #{tokens.$blue-light};
     --wg-toast-color: #{tokens.$info};
     --wg-toast-icon: #{tokens.$info};
@@ -94,7 +94,7 @@
     --wg-toast-description: #{tokens.$text};
   }
 
-  &[data-variant='success'] {
+  &[data-variant="success"] {
     --wg-toast-bg: #{tokens.$green-light};
     --wg-toast-color: #{tokens.$success};
     --wg-toast-icon: #{tokens.$success};
@@ -102,7 +102,7 @@
     --wg-toast-description: #{tokens.$text};
   }
 
-  &[data-variant='warning'] {
+  &[data-variant="warning"] {
     --wg-toast-bg: #{tokens.$yellow-light};
     --wg-toast-color: #{tokens.$warning};
     --wg-toast-icon: #{tokens.$warning};
@@ -110,7 +110,7 @@
     --wg-toast-description: #{tokens.$text};
   }
 
-  &[data-variant='error'] {
+  &[data-variant="error"] {
     --wg-toast-bg: #{tokens.$red-light};
     --wg-toast-color: #{tokens.$danger};
     --wg-toast-icon: #{tokens.$danger};
@@ -123,7 +123,7 @@
     padding-right: tokens.$spacing-10;
     position: relative;
 
-    .toast-close {
+    .#{tokens.$prefix}-toast__close {
       position: absolute;
       top: tokens.$spacing-2;
       right: tokens.$spacing-2;
@@ -141,7 +141,7 @@
 // Toast Container
 // ===================
 
-.toast-container {
+.#{tokens.$prefix}-toast-container {
   position: fixed;
   z-index: tokens.$z-index-tooltip;
   display: flex;
@@ -150,7 +150,7 @@
   pointer-events: none;
 
   // All toasts inside should be interactive
-  > .toast,
+  > .#{tokens.$prefix}-toast,
   > wg-toast {
     pointer-events: auto;
   }
@@ -158,38 +158,38 @@
   // ===================
   // Positions
   // ===================
-  &[data-position='top-right'] {
+  &[data-position="top-right"] {
     top: tokens.$spacing-4;
     right: tokens.$spacing-4;
     align-items: flex-end;
   }
 
-  &[data-position='top-left'] {
+  &[data-position="top-left"] {
     top: tokens.$spacing-4;
     left: tokens.$spacing-4;
     align-items: flex-start;
   }
 
-  &[data-position='bottom-right'] {
+  &[data-position="bottom-right"] {
     bottom: tokens.$spacing-4;
     right: tokens.$spacing-4;
     align-items: flex-end;
   }
 
-  &[data-position='bottom-left'] {
+  &[data-position="bottom-left"] {
     bottom: tokens.$spacing-4;
     left: tokens.$spacing-4;
     align-items: flex-start;
   }
 
-  &[data-position='top-center'] {
+  &[data-position="top-center"] {
     top: tokens.$spacing-4;
     left: 50%;
     transform: translateX(-50%);
     align-items: center;
   }
 
-  &[data-position='bottom-center'] {
+  &[data-position="bottom-center"] {
     bottom: tokens.$spacing-4;
     left: 50%;
     transform: translateX(-50%);
@@ -247,32 +247,32 @@
 }
 
 // Apply animations based on position
-.toast-container {
-  &[data-position='top-right'],
-  &[data-position='bottom-right'] {
-    .toast[data-visible],
+.#{tokens.$prefix}-toast-container {
+  &[data-position="top-right"],
+  &[data-position="bottom-right"] {
+    .#{tokens.$prefix}-toast[data-visible],
     wg-toast[data-visible] {
       animation: toast-slide-in-right tokens.$duration-moderate-02 tokens.$easing-entrance;
     }
   }
 
-  &[data-position='top-left'],
-  &[data-position='bottom-left'] {
-    .toast[data-visible],
+  &[data-position="top-left"],
+  &[data-position="bottom-left"] {
+    .#{tokens.$prefix}-toast[data-visible],
     wg-toast[data-visible] {
       animation: toast-slide-in-left tokens.$duration-moderate-02 tokens.$easing-entrance;
     }
   }
 
-  &[data-position='top-center'] {
-    .toast[data-visible],
+  &[data-position="top-center"] {
+    .#{tokens.$prefix}-toast[data-visible],
     wg-toast[data-visible] {
       animation: toast-slide-in-top tokens.$duration-moderate-02 tokens.$easing-entrance;
     }
   }
 
-  &[data-position='bottom-center'] {
-    .toast[data-visible],
+  &[data-position="bottom-center"] {
+    .#{tokens.$prefix}-toast[data-visible],
     wg-toast[data-visible] {
       animation: toast-slide-in-bottom tokens.$duration-moderate-02 tokens.$easing-entrance;
     }
@@ -284,24 +284,24 @@
 // ===================
 
 @media (max-width: 480px) {
-  .toast {
+  .#{tokens.$prefix}-toast {
     min-width: 100%;
     max-width: 100%;
   }
 
-  .toast-container {
-    &[data-position='top-right'],
-    &[data-position='top-left'],
-    &[data-position='top-center'] {
+  .#{tokens.$prefix}-toast-container {
+    &[data-position="top-right"],
+    &[data-position="top-left"],
+    &[data-position="top-center"] {
       top: tokens.$spacing-2;
       left: tokens.$spacing-2;
       right: tokens.$spacing-2;
       transform: none;
     }
 
-    &[data-position='bottom-right'],
-    &[data-position='bottom-left'],
-    &[data-position='bottom-center'] {
+    &[data-position="bottom-right"],
+    &[data-position="bottom-left"],
+    &[data-position="bottom-center"] {
       bottom: tokens.$spacing-2;
       left: tokens.$spacing-2;
       right: tokens.$spacing-2;

@@ -45,7 +45,7 @@ describe('Toast Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = Toast.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'toast',
+        class: 'wg-toast',
         'data-variant': 'info',
         'data-position': 'top-right',
         'data-closable': true,
@@ -118,7 +118,7 @@ describe('Toast Core', () => {
         visible: true,
       });
       expect(attrs).toEqual({
-        class: 'toast',
+        class: 'wg-toast',
         'data-variant': 'error',
         'data-position': 'bottom-center',
         'data-closable': undefined,

@@ -134,7 +134,7 @@ describe('Toast (Vue)', () => {
   describe('커스터마이즈 오버라이드', () => {
     it('TC-O100: class 추가 시 병합된다', () => {
       const wrapper = mount(Toast, { props: { class: 'custom-toast' } });
-      expect(wrapper.classes()).toContain('toast');
+      expect(wrapper.classes()).toContain('wg-toast');
       expect(wrapper.classes()).toContain('custom-toast');
     });
   });
@@ -174,7 +174,7 @@ describe('ToastContainer (Vue)', () => {
       props: { toasts },
     });
 
-    const groups = wrapper.findAll('.toast-container');
+    const groups = wrapper.findAll('.wg-toast-container');
     expect(groups.length).toBe(2);
 
     const topRight = wrapper.find('[data-position="top-right"]');
@@ -237,7 +237,7 @@ describe('ToastContainer (Vue)', () => {
       props: { toasts: [] },
     });
 
-    expect(wrapper.findAll('.toast-container').length).toBe(0);
+    expect(wrapper.findAll('.wg-toast-container').length).toBe(0);
   });
 });
 

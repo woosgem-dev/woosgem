@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls, clsEl } from '../constants';
 
 export const SliderSizes = ['sm', 'md', 'lg'] as const;
 export type SliderSize = (typeof SliderSizes)[number];
@@ -45,7 +46,7 @@ export const Slider = {
   mapPropsToAttrs: (props: SliderStyleProps): SliderAttrs => {
     const merged = { ...Slider.defaultProps, ...filterNullish(props) };
     return {
-      class: 'slider',
+      class: cls('slider'),
       'data-size': merged.size,
       'data-color': merged.color,
       'data-orientation': merged.orientation,
@@ -78,7 +79,7 @@ export const SliderTrack = {
   propTypes: {},
 
   mapPropsToAttrs: (): SliderTrackAttrs => ({
-    class: 'slider-track',
+    class: clsEl('slider', 'track'),
   }),
 
   template: {
@@ -105,7 +106,7 @@ export const SliderFill = {
   propTypes: {},
 
   mapPropsToAttrs: (): SliderFillAttrs => ({
-    class: 'slider-fill',
+    class: clsEl('slider', 'fill'),
   }),
 
   template: {
@@ -134,7 +135,7 @@ export const SliderThumb = {
   propTypes: {},
 
   mapPropsToAttrs: (): SliderThumbAttrs => ({
-    class: 'slider-thumb',
+    class: clsEl('slider', 'thumb'),
     role: 'slider',
     tabindex: '0',
   }),

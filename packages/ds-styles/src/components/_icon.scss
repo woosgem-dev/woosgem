@@ -1,6 +1,6 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
-.icon {
+.#{tokens.$prefix}-icon {
   // Base styles
   display: inline-flex;
   align-items: center;
@@ -9,7 +9,7 @@
   line-height: 1;
   vertical-align: middle;
 
-  // SVG 스타일링
+  // Direct child tag selector: component always wraps this element
   svg {
     display: block;
     width: 100%;
@@ -20,8 +20,8 @@
   }
 
   // 작은 사이즈에서 더 선명하게
-  &[data-size='xs'],
-  &[data-size='sm'] {
+  &[data-size="xs"],
+  &[data-size="sm"] {
     svg {
       shape-rendering: crispEdges;
     }
@@ -30,27 +30,27 @@
   // ===================
   // Sizes
   // ===================
-  &[data-size='xs'] {
+  &[data-size="xs"] {
     width: 12px;
     height: 12px;
   }
 
-  &[data-size='sm'] {
+  &[data-size="sm"] {
     width: 16px;
     height: 16px;
   }
 
-  &[data-size='md'] {
+  &[data-size="md"] {
     width: 20px;
     height: 20px;
   }
 
-  &[data-size='lg'] {
+  &[data-size="lg"] {
     width: 24px;
     height: 24px;
   }
 
-  &[data-size='xl'] {
+  &[data-size="xl"] {
     width: 32px;
     height: 32px;
   }
@@ -58,35 +58,35 @@
   // ===================
   // Colors
   // ===================
-  &[data-color='inherit'] {
+  &[data-color="inherit"] {
     color: inherit;
   }
 
-  &[data-color='primary'] {
+  &[data-color="primary"] {
     color: tokens.$primary;
   }
 
-  &[data-color='secondary'] {
+  &[data-color="secondary"] {
     color: tokens.$secondary;
   }
 
-  &[data-color='danger'] {
+  &[data-color="danger"] {
     color: tokens.$danger;
   }
 
-  &[data-color='success'] {
+  &[data-color="success"] {
     color: tokens.$success;
   }
 
-  &[data-color='warning'] {
+  &[data-color="warning"] {
     color: tokens.$warning;
   }
 
-  &[data-color='info'] {
+  &[data-color="info"] {
     color: tokens.$info;
   }
 
-  &[data-color='muted'] {
+  &[data-color="muted"] {
     color: tokens.$text-muted;
   }
 }

@@ -1,13 +1,16 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
 // ===================
 // Checkbox Root (label wrapper)
 // ===================
 
-.checkbox-root {
+.#{tokens.$prefix}-checkbox__root {
+  // Layout
   display: inline-flex;
   align-items: center;
   gap: tokens.$spacing-2;
+
+  // Misc
   cursor: pointer;
   user-select: none;
 
@@ -18,7 +21,7 @@
 
   // Hover effect on indicator
   &:hover:not([data-disabled]) {
-    .checkbox-indicator[data-state='unchecked'] {
+    .#{tokens.$prefix}-checkbox__indicator[data-state="unchecked"] {
       border-color: tokens.$border-hover;
     }
   }
@@ -28,15 +31,19 @@
 // Checkbox Indicator (visual box)
 // ===================
 
-.checkbox-indicator {
-  // Base styles
+.#{tokens.$prefix}-checkbox__indicator {
+  // Layout
   display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  border-radius: tokens.$radius-4;
+
+  // Visual
   background-color: tokens.$background;
   border: 1px solid tokens.$border;
+  border-radius: tokens.$radius-4;
+
+  // Misc
   transition:
     background-color tokens.$transition-fast,
     border-color tokens.$transition-fast,
@@ -45,7 +52,7 @@
   // ===================
   // Sizes
   // ===================
-  &[data-size='sm'] {
+  &[data-size="sm"] {
     width: 16px;
     height: 16px;
 
@@ -55,7 +62,7 @@
     }
   }
 
-  &[data-size='md'] {
+  &[data-size="md"] {
     width: 20px;
     height: 20px;
 
@@ -65,7 +72,7 @@
     }
   }
 
-  &[data-size='lg'] {
+  &[data-size="lg"] {
     width: 24px;
     height: 24px;
 
@@ -80,19 +87,19 @@
   // ===================
 
   // Unchecked state
-  &[data-state='unchecked'] {
+  &[data-state="unchecked"] {
     background-color: tokens.$background;
     border-color: tokens.$border;
   }
 
   // Checked state
-  &[data-state='checked'] {
+  &[data-state="checked"] {
     background-color: tokens.$primary;
     border-color: tokens.$primary;
 
     // Checkmark icon (CSS)
     &::after {
-      content: '';
+      content: "";
       display: block;
       border: solid tokens.$text-inverse;
       border-width: 0 2px 2px 0;
@@ -101,13 +108,13 @@
       height: 9px;
     }
 
-    &[data-size='sm']::after {
+    &[data-size="sm"]::after {
       width: 4px;
       height: 7px;
       border-width: 0 1.5px 1.5px 0;
     }
 
-    &[data-size='lg']::after {
+    &[data-size="lg"]::after {
       width: 6px;
       height: 11px;
       border-width: 0 2.5px 2.5px 0;
@@ -115,40 +122,40 @@
   }
 
   // Indeterminate state
-  &[data-state='indeterminate'] {
+  &[data-state="indeterminate"] {
     background-color: tokens.$primary;
     border-color: tokens.$primary;
 
     // Minus icon (CSS)
     &::after {
-      content: '';
+      content: "";
       display: block;
       background-color: tokens.$text-inverse;
       border-radius: 1px;
       height: 2px;
     }
 
-    &[data-size='sm']::after {
+    &[data-size="sm"]::after {
       width: 8px;
     }
 
-    &[data-size='md']::after {
+    &[data-size="md"]::after {
       width: 10px;
     }
 
-    &[data-size='lg']::after {
+    &[data-size="lg"]::after {
       width: 12px;
     }
   }
 
   // Disabled state
-  &[data-state='disabled'] {
+  &[data-state="disabled"] {
     background-color: tokens.$background-muted;
     border-color: tokens.$border;
   }
 
   // Focus ring (when parent is focused)
-  .checkbox-root:focus-within & {
+  .#{tokens.$prefix}-checkbox__root:focus-within & {
     outline: none;
     box-shadow: 0 0 0 2px #{tokens.$primary-alpha-20};
   }
@@ -158,7 +165,7 @@
 // Checkbox Label
 // ===================
 
-.checkbox-label {
+.#{tokens.$prefix}-checkbox__label {
   font-size: tokens.$font-size-14;
   line-height: tokens.$line-height-normal;
   color: tokens.$text;
@@ -172,45 +179,50 @@
 // Legacy .checkbox class (backwards compatibility)
 // ===================
 
-.checkbox {
+.#{tokens.$prefix}-checkbox {
+  // Layout
   display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  border-radius: tokens.$radius-4;
+
+  // Visual
   background-color: tokens.$background;
   border: 1px solid tokens.$border;
-  cursor: pointer;
+  border-radius: tokens.$radius-4;
+
+  // Misc
   transition:
     background-color tokens.$transition-fast,
     border-color tokens.$transition-fast;
+  cursor: pointer;
 
-  &[data-size='sm'] {
+  &[data-size="sm"] {
     width: 16px;
     height: 16px;
   }
 
-  &[data-size='md'] {
+  &[data-size="md"] {
     width: 20px;
     height: 20px;
   }
 
-  &[data-size='lg'] {
+  &[data-size="lg"] {
     width: 24px;
     height: 24px;
   }
 
-  &[data-state='checked'] {
+  &[data-state="checked"] {
     background-color: tokens.$primary;
     border-color: tokens.$primary;
   }
 
-  &[data-state='indeterminate'] {
+  &[data-state="indeterminate"] {
     background-color: tokens.$primary;
     border-color: tokens.$primary;
   }
 
-  &[data-state='disabled'] {
+  &[data-state="disabled"] {
     cursor: not-allowed;
     opacity: 0.5;
     background-color: tokens.$background-muted;

@@ -201,7 +201,7 @@ describe('Checkbox', () => {
       });
       const checkbox = screen.getByLabelText('Checkbox');
 
-      expect(checkbox).toHaveClass('checkbox');
+      expect(checkbox).toHaveClass('wg-checkbox');
       expect(checkbox).toHaveClass('custom-class');
     });
 
@@ -234,7 +234,7 @@ describe('Checkbox', () => {
       });
       const checkbox = screen.getByLabelText('Checkbox');
 
-      expect(checkbox).toHaveClass('checkbox');
+      expect(checkbox).toHaveClass('wg-checkbox');
       expect(checkbox).toHaveClass('custom');
     });
 

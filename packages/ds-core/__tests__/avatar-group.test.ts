@@ -22,7 +22,7 @@ describe('AvatarGroup Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = AvatarGroup.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'avatar-group',
+        class: 'wg-avatar-group',
         'data-size': 'md',
         'data-spacing': 'tight',
         role: 'group',

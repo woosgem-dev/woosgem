@@ -44,7 +44,7 @@ describe('Badge', () => {
   describe('mapPropsToAttrs', () => {
     it('should return correct attrs with defaults', () => {
       const attrs = Badge.mapPropsToAttrs({});
-      expect(attrs.class).toBe('badge');
+      expect(attrs.class).toBe('wg-badge');
       expect(attrs['data-variant']).toBe('solid');
       expect(attrs['data-color']).toBe('primary');
       expect(attrs['data-size']).toBe('md');

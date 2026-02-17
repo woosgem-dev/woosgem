@@ -30,7 +30,7 @@ describe('Checkbox', () => {
   describe('mapPropsToAttrs', () => {
     it('should return correct attrs with defaults', () => {
       const attrs = Checkbox.mapPropsToAttrs({});
-      expect(attrs.class).toBe('checkbox');
+      expect(attrs.class).toBe('wg-checkbox');
       expect(attrs['data-size']).toBe('md');
       expect(attrs['data-state']).toBe('unchecked');
     });

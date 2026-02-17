@@ -126,7 +126,7 @@ describe('Overlay', () => {
     it('TC-O100: class 추가 시 병합된다', () => {
       const wrapper = mount(Overlay, { props: { class: 'custom-overlay' } });
 
-      expect(wrapper.classes()).toContain('overlay');
+      expect(wrapper.classes()).toContain('wg-overlay');
       expect(wrapper.classes()).toContain('custom-overlay');
     });
 

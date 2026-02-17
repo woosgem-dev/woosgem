@@ -33,7 +33,7 @@ describe('Radio Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = Radio.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'radio',
+        class: 'wg-radio',
         'data-size': 'md',
         'data-color': 'primary',
         'data-state': undefined,
@@ -126,7 +126,7 @@ describe('RadioGroup Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = RadioGroup.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'radio-group',
+        class: 'wg-radio-group',
         'data-orientation': 'vertical',
         role: 'radiogroup',
         'aria-disabled': undefined,

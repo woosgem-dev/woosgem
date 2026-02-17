@@ -38,7 +38,7 @@ describe('Avatar', () => {
   describe('mapPropsToAttrs', () => {
     it('should return correct attrs with defaults', () => {
       const attrs = Avatar.mapPropsToAttrs({});
-      expect(attrs.class).toBe('avatar');
+      expect(attrs.class).toBe('wg-avatar');
       expect(attrs['data-size']).toBe('md');
       expect(attrs['data-shape']).toBe('circle');
       expect(attrs['data-has-image']).toBeUndefined();

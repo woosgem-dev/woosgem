@@ -151,7 +151,7 @@ describe('Alert', () => {
       render(<Alert className="custom-alert">Message</Alert>);
       const alert = screen.getByRole('alert');
 
-      expect(alert).toHaveClass('alert');
+      expect(alert).toHaveClass('wg-alert');
       expect(alert).toHaveClass('custom-alert');
     });
   });
@@ -161,7 +161,7 @@ describe('Alert', () => {
       render(<Alert className="my-alert">Message</Alert>);
       const alert = screen.getByRole('alert');
 
-      expect(alert).toHaveClass('alert');
+      expect(alert).toHaveClass('wg-alert');
       expect(alert).toHaveClass('my-alert');
     });
 

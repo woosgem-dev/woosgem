@@ -134,16 +134,16 @@ export class Modal extends LitElement {
     }
 
     return html`
-      <div class="modal-container" data-open>
+      <div class="wg-modal-container" data-open>
         <div
-          class="overlay"
+          class="wg-overlay"
           data-opacity="medium"
           data-level="modal"
           data-visible
           aria-hidden="true"
           @click=${this.handleOverlayClick}
         ></div>
-        <div class="modal" tabindex="-1">
+        <div class="wg-modal" tabindex="-1">
           <slot></slot>
         </div>
       </div>
@@ -192,14 +192,14 @@ export class ModalHeaderElement extends LitElement {
 
   override render() {
     return html`
-      <div class="modal-title" id="modal-title">
+      <div class="wg-modal__title" id="wg-modal__title">
         <slot></slot>
       </div>
       ${this.showClose
         ? html`
             <button
               type="button"
-              class="modal-close"
+              class="wg-modal__close"
               @click=${this.handleClose}
               aria-label="Close modal"
             >

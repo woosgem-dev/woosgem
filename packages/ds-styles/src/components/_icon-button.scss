@@ -1,6 +1,6 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
-.icon-btn {
+.#{tokens.$prefix}-icon-btn {
   // Reset
   appearance: none;
   border: none;
@@ -39,65 +39,65 @@
 
   // Disabled state
   &:disabled,
-  &[data-state='disabled'] {
+  &[data-state="disabled"] {
     cursor: not-allowed;
     opacity: 0.5;
   }
 
   // SVG 기본 스타일
   svg,
-  .icon {
+  .#{tokens.$prefix}-icon {
     shape-rendering: geometricPrecision;
   }
 
   // ===================
   // Sizes
   // ===================
-  &[data-size='xs'] {
+  &[data-size="xs"] {
     width: 24px;
     height: 24px;
     font-size: tokens.$font-size-12;
 
     svg,
-    .icon {
+    .#{tokens.$prefix}-icon {
       width: 12px;
       height: 12px;
       shape-rendering: crispEdges;
     }
   }
 
-  &[data-size='sm'] {
+  &[data-size="sm"] {
     width: 32px;
     height: 32px;
     font-size: tokens.$font-size-14;
 
     svg,
-    .icon {
+    .#{tokens.$prefix}-icon {
       width: 16px;
       height: 16px;
       shape-rendering: crispEdges;
     }
   }
 
-  &[data-size='md'] {
+  &[data-size="md"] {
     width: 40px;
     height: 40px;
     font-size: tokens.$font-size-16;
 
     svg,
-    .icon {
+    .#{tokens.$prefix}-icon {
       width: 20px;
       height: 20px;
     }
   }
 
-  &[data-size='lg'] {
+  &[data-size="lg"] {
     width: 48px;
     height: 48px;
     font-size: tokens.$font-size-18;
 
     svg,
-    .icon {
+    .#{tokens.$prefix}-icon {
       width: 24px;
       height: 24px;
     }
@@ -106,11 +106,11 @@
   // ===================
   // Shapes
   // ===================
-  &[data-shape='square'] {
+  &[data-shape="square"] {
     border-radius: tokens.$radius-8;
   }
 
-  &[data-shape='circle'] {
+  &[data-shape="circle"] {
     border-radius: tokens.$radius-full;
   }
 
@@ -119,8 +119,8 @@
   // ===================
 
   // Filled variant
-  &[data-variant='filled'] {
-    &[data-color='primary'] {
+  &[data-variant="filled"] {
+    &[data-color="primary"] {
       --wg-icon-btn-bg: #{tokens.$primary};
       --wg-icon-btn-color: #{tokens.$text-inverse};
 
@@ -133,7 +133,7 @@
       }
     }
 
-    &[data-color='secondary'] {
+    &[data-color="secondary"] {
       --wg-icon-btn-bg: #{tokens.$secondary};
       --wg-icon-btn-color: #{tokens.$text-inverse};
 
@@ -146,7 +146,7 @@
       }
     }
 
-    &[data-color='danger'] {
+    &[data-color="danger"] {
       --wg-icon-btn-bg: #{tokens.$danger};
       --wg-icon-btn-color: #{tokens.$text-inverse};
 
@@ -161,10 +161,10 @@
   }
 
   // Outline variant
-  &[data-variant='outline'] {
+  &[data-variant="outline"] {
     --wg-icon-btn-bg: transparent;
 
-    &[data-color='primary'] {
+    &[data-color="primary"] {
       --wg-icon-btn-border: #{tokens.$primary};
       --wg-icon-btn-color: #{tokens.$primary};
 
@@ -177,7 +177,7 @@
       }
     }
 
-    &[data-color='secondary'] {
+    &[data-color="secondary"] {
       --wg-icon-btn-border: #{tokens.$border};
       --wg-icon-btn-color: #{tokens.$text};
 
@@ -191,7 +191,7 @@
       }
     }
 
-    &[data-color='danger'] {
+    &[data-color="danger"] {
       --wg-icon-btn-border: #{tokens.$danger};
       --wg-icon-btn-color: #{tokens.$danger};
 
@@ -206,11 +206,11 @@
   }
 
   // Ghost variant
-  &[data-variant='ghost'] {
+  &[data-variant="ghost"] {
     --wg-icon-btn-bg: transparent;
     --wg-icon-btn-border: transparent;
 
-    &[data-color='primary'] {
+    &[data-color="primary"] {
       --wg-icon-btn-color: #{tokens.$primary};
 
       &:hover:not(:disabled) {
@@ -222,7 +222,7 @@
       }
     }
 
-    &[data-color='secondary'] {
+    &[data-color="secondary"] {
       --wg-icon-btn-color: #{tokens.$text};
 
       &:hover:not(:disabled) {
@@ -234,7 +234,7 @@
       }
     }
 
-    &[data-color='danger'] {
+    &[data-color="danger"] {
       --wg-icon-btn-color: #{tokens.$danger};
 
       &:hover:not(:disabled) {

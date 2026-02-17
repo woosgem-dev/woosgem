@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls, clsEl } from '../constants';
 
 export const BreadcrumbSizes = ['sm', 'md', 'lg'] as const;
 export type BreadcrumbSize = (typeof BreadcrumbSizes)[number];
@@ -27,7 +28,7 @@ export const Breadcrumb = {
   mapPropsToAttrs: (props: BreadcrumbStyleProps): BreadcrumbAttrs => {
     const merged = { ...Breadcrumb.defaultProps, ...filterNullish(props) };
     return {
-      class: 'breadcrumb',
+      class: cls('breadcrumb'),
       'data-size': merged.size,
       'aria-label': 'Breadcrumb',
     };
@@ -62,7 +63,7 @@ export const BreadcrumbItem = {
     const merged = { ...BreadcrumbItem.defaultProps, ...filterNullish(props) };
     const state = merged.active ? 'active' : merged.disabled ? 'disabled' : undefined;
     return {
-      class: 'breadcrumb-item',
+      class: clsEl('breadcrumb', 'item'),
       'data-state': state,
       'aria-current': merged.active ? 'page' : undefined,
       'aria-disabled': merged.disabled ? 'true' : undefined,

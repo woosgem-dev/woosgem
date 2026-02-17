@@ -29,7 +29,7 @@ describe('ListItem', () => {
   describe('mapPropsToAttrs', () => {
     it('should return correct attrs with defaults', () => {
       const attrs = ListItem.mapPropsToAttrs({});
-      expect(attrs.class).toBe('list-item');
+      expect(attrs.class).toBe('wg-list-item');
       expect(attrs['data-variant']).toBe('default');
       expect(attrs['data-state']).toBeUndefined();
       expect(attrs['data-divider']).toBeUndefined();

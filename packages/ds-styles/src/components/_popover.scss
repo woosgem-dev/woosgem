@@ -1,6 +1,6 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
-.popover {
+.#{tokens.$prefix}-popover {
   position: absolute;
   z-index: 1000;
   background-color: var(--wg-popover-bg, #{tokens.$background});
@@ -11,21 +11,21 @@
   color: var(--wg-popover-color, #{tokens.$text});
 
   // Sizes
-  &[data-size='sm'] {
+  &[data-size="sm"] {
     padding: tokens.$spacing-2;
     font-size: tokens.$font-size-12;
     min-width: 120px;
     max-width: 240px;
   }
 
-  &[data-size='md'] {
+  &[data-size="md"] {
     padding: tokens.$spacing-3;
     font-size: tokens.$font-size-14;
     min-width: 180px;
     max-width: 320px;
   }
 
-  &[data-size='lg'] {
+  &[data-size="lg"] {
     padding: tokens.$spacing-4;
     font-size: tokens.$font-size-16;
     min-width: 240px;
@@ -33,7 +33,7 @@
   }
 
   // Tooltip variant
-  &[data-variant='tooltip'] {
+  &[data-variant="tooltip"] {
     background-color: var(--wg-popover-bg, #{tokens.$text});
     color: var(--wg-popover-color, #{tokens.$text-inverse});
     border: none;
@@ -44,13 +44,13 @@
   }
 
   // Position-based margin for spacing from trigger
-  &[data-position='top'] { margin-bottom: tokens.$spacing-2; }
-  &[data-position='bottom'] { margin-top: tokens.$spacing-2; }
-  &[data-position='left'] { margin-right: tokens.$spacing-2; }
-  &[data-position='right'] { margin-left: tokens.$spacing-2; }
+  &[data-position="top"] { margin-bottom: tokens.$spacing-2; }
+  &[data-position="bottom"] { margin-top: tokens.$spacing-2; }
+  &[data-position="left"] { margin-right: tokens.$spacing-2; }
+  &[data-position="right"] { margin-left: tokens.$spacing-2; }
 }
 
-.popover-arrow {
+.#{tokens.$prefix}-popover__arrow {
   position: absolute;
   width: 8px;
   height: 8px;
@@ -59,32 +59,32 @@
   transform: rotate(45deg);
 
   // Position arrows
-  .popover[data-position='top'] > & {
+  .#{tokens.$prefix}-popover[data-position="top"] > & {
     bottom: -5px;
     border-top: none;
     border-left: none;
   }
 
-  .popover[data-position='bottom'] > & {
+  .#{tokens.$prefix}-popover[data-position="bottom"] > & {
     top: -5px;
     border-bottom: none;
     border-right: none;
   }
 
-  .popover[data-position='left'] > & {
+  .#{tokens.$prefix}-popover[data-position="left"] > & {
     right: -5px;
     border-bottom: none;
     border-left: none;
   }
 
-  .popover[data-position='right'] > & {
+  .#{tokens.$prefix}-popover[data-position="right"] > & {
     left: -5px;
     border-top: none;
     border-right: none;
   }
 
   // Tooltip arrow inherits dark bg
-  .popover[data-variant='tooltip'] > & {
+  .#{tokens.$prefix}-popover[data-variant="tooltip"] > & {
     border: none;
   }
 }

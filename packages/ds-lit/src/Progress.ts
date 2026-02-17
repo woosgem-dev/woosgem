@@ -71,10 +71,10 @@ export class Progress extends LitElement {
     const percentage = getProgressPercentage(this.value, this.max);
 
     return html`
-      <div class="progress-track">
-        <div class="progress-fill">
+      <div class="wg-progress__track">
+        <div class="wg-progress__fill">
           ${this.showLabel
-            ? html`<span class="progress-label">${percentage}%</span>`
+            ? html`<span class="wg-progress__label">${percentage}%</span>`
             : ''}
         </div>
       </div>

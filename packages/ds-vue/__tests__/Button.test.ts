@@ -192,7 +192,7 @@ describe('Button', () => {
       });
       const btn = screen.getByRole('button');
 
-      expect(btn).toHaveClass('btn');
+      expect(btn).toHaveClass('wg-btn');
       expect(btn).toHaveClass('custom-class');
     });
 
@@ -221,7 +221,7 @@ describe('Button', () => {
       });
       const btn = screen.getByRole('button');
 
-      expect(btn).toHaveClass('btn');
+      expect(btn).toHaveClass('wg-btn');
       expect(btn).toHaveClass('custom');
     });
 

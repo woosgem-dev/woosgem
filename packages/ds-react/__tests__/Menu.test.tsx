@@ -112,7 +112,7 @@ describe('MenuItem (React)', () => {
     it('TC-O200: className 추가 시 병합된다', () => {
       const { container } = render(<MenuItem className="custom">Action</MenuItem>);
       const el = container.firstChild as HTMLElement;
-      expect(el.className).toContain('menu-item');
+      expect(el.className).toContain('wg-menu__item');
       expect(el.className).toContain('custom');
     });
   });
@@ -161,7 +161,7 @@ describe('MenuGroup (React)', () => {
     it('TC-O400: className 추가 시 병합된다', () => {
       const { container } = render(<MenuGroup className="custom">Content</MenuGroup>);
       const el = container.firstChild as HTMLElement;
-      expect(el.className).toContain('menu-group');
+      expect(el.className).toContain('wg-menu__group');
       expect(el.className).toContain('custom');
     });
   });

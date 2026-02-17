@@ -179,7 +179,7 @@ describe('Popover', () => {
       });
       const popover = screen.getByText('Content');
 
-      expect(popover).toHaveClass('popover');
+      expect(popover).toHaveClass('wg-popover');
       expect(popover).toHaveClass('custom-class');
     });
 
@@ -256,7 +256,7 @@ describe('PopoverArrow', () => {
     });
     const arrow = screen.getByTestId('arrow');
 
-    expect(arrow).toHaveClass('popover-arrow');
+    expect(arrow).toHaveClass('wg-popover__arrow');
   });
 
   it('TC-V402: class가 병합된다', () => {
@@ -265,7 +265,7 @@ describe('PopoverArrow', () => {
     });
     const arrow = screen.getByTestId('arrow');
 
-    expect(arrow).toHaveClass('popover-arrow');
+    expect(arrow).toHaveClass('wg-popover__arrow');
     expect(arrow).toHaveClass('custom');
   });
 });

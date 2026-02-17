@@ -120,7 +120,7 @@ describe('Alert (Vue)', () => {
     it('TC-O100: class 추가 시 병합된다', () => {
       const wrapper = mount(Alert, { props: { class: 'custom-alert' } });
 
-      expect(wrapper.classes()).toContain('alert');
+      expect(wrapper.classes()).toContain('wg-alert');
       expect(wrapper.classes()).toContain('custom-alert');
     });
 

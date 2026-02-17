@@ -18,7 +18,7 @@ describe('Button (Lit)', () => {
       expect(el.getAttribute('data-variant')).toBe(coreAttrs['data-variant']);
       expect(el.getAttribute('data-color')).toBe(coreAttrs['data-color']);
       expect(el.getAttribute('data-size')).toBe(coreAttrs['data-size']);
-      expect(el.classList.contains('btn')).toBe(true);
+      expect(el.classList.contains('wg-btn')).toBe(true);
     });
 
     it('TC-L101: variant prop이 core 결과와 일치한다', async () => {

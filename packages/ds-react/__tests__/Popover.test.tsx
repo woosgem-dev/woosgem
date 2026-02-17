@@ -142,7 +142,7 @@ describe('Popover', () => {
       render(<Popover className="custom-class">Content</Popover>);
       const popover = screen.getByText('Content');
 
-      expect(popover).toHaveClass('popover');
+      expect(popover).toHaveClass('wg-popover');
       expect(popover).toHaveClass('custom-class');
     });
 
@@ -193,14 +193,14 @@ describe('PopoverArrow', () => {
     render(<PopoverArrow data-testid="arrow" />);
     const arrow = screen.getByTestId('arrow');
 
-    expect(arrow).toHaveClass('popover-arrow');
+    expect(arrow).toHaveClass('wg-popover__arrow');
   });
 
   it('TC-R302: className이 병합된다', () => {
     render(<PopoverArrow data-testid="arrow" className="custom" />);
     const arrow = screen.getByTestId('arrow');
 
-    expect(arrow).toHaveClass('popover-arrow');
+    expect(arrow).toHaveClass('wg-popover__arrow');
     expect(arrow).toHaveClass('custom');
   });
 });

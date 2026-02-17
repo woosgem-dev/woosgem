@@ -120,7 +120,7 @@ describe('Select (React)', () => {
     it('TC-O100: className이 병합된다', () => {
       render(<Select className="custom-select" aria-label="test">Choose</Select>);
       const select = screen.getByRole('combobox');
-      expect(select).toHaveClass('select');
+      expect(select).toHaveClass('wg-select');
       expect(select).toHaveClass('custom-select');
     });
 
@@ -136,7 +136,7 @@ describe('SelectMenu (React)', () => {
   it('should render with select-menu class', () => {
     render(<SelectMenu open data-testid="menu"><li>opt</li></SelectMenu>);
     const menu = screen.getByRole('listbox');
-    expect(menu).toHaveClass('select-menu');
+    expect(menu).toHaveClass('wg-select__menu');
   });
 
   it('should have role="listbox"', () => {
@@ -164,7 +164,7 @@ describe('SelectOption (React)', () => {
   it('should render with select-option class', () => {
     render(<SelectOption value="1">Option 1</SelectOption>);
     const option = screen.getByRole('option');
-    expect(option).toHaveClass('select-option');
+    expect(option).toHaveClass('wg-select__option');
   });
 
   it('should have role="option"', () => {

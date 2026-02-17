@@ -20,7 +20,7 @@ describe('Slider (Lit)', () => {
       expect(el.getAttribute('data-size')).toBe(coreAttrs['data-size']);
       expect(el.getAttribute('data-color')).toBe(coreAttrs['data-color']);
       expect(el.getAttribute('data-orientation')).toBe(coreAttrs['data-orientation']);
-      expect(el.classList.contains('slider')).toBe(true);
+      expect(el.classList.contains('wg-slider')).toBe(true);
     });
 
     it('TC-L101: size prop이 core 결과와 일치한다', async () => {
@@ -98,7 +98,7 @@ describe('SliderTrack (Lit)', () => {
       <wg-slider-track>Track</wg-slider-track>
     `);
 
-    expect(el.classList.contains('slider-track')).toBe(true);
+    expect(el.classList.contains('wg-slider__track')).toBe(true);
   });
 
   it('TC-L201: slot 컨텐츠가 렌더링된다', async () => {
@@ -116,7 +116,7 @@ describe('SliderFill (Lit)', () => {
       <wg-slider-fill></wg-slider-fill>
     `);
 
-    expect(el.classList.contains('slider-fill')).toBe(true);
+    expect(el.classList.contains('wg-slider__fill')).toBe(true);
   });
 });
 
@@ -126,7 +126,7 @@ describe('SliderThumb (Lit)', () => {
       <wg-slider-thumb></wg-slider-thumb>
     `);
 
-    expect(el.classList.contains('slider-thumb')).toBe(true);
+    expect(el.classList.contains('wg-slider__thumb')).toBe(true);
   });
 
   it('TC-L401: role="slider" 속성이 설정된다', async () => {

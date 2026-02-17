@@ -19,7 +19,7 @@ describe('Tooltip (React)', () => {
           <button>Trigger</button>
         </Tooltip>
       );
-      const wrapper = screen.getByText('Trigger').closest('.tooltip-wrapper');
+      const wrapper = screen.getByText('Trigger').closest('.wg-tooltip-wrapper');
       expect(wrapper).toBeInTheDocument();
     });
 
@@ -84,7 +84,7 @@ describe('Tooltip (React)', () => {
         </Tooltip>
       );
 
-      const wrapper = screen.getByText('Hover me').closest('.tooltip-wrapper')!;
+      const wrapper = screen.getByText('Hover me').closest('.wg-tooltip-wrapper')!;
 
       act(() => {
         fireEvent.mouseEnter(wrapper);
@@ -101,7 +101,7 @@ describe('Tooltip (React)', () => {
         </Tooltip>
       );
 
-      const wrapper = screen.getByText('Hover me').closest('.tooltip-wrapper')!;
+      const wrapper = screen.getByText('Hover me').closest('.wg-tooltip-wrapper')!;
 
       act(() => {
         fireEvent.mouseEnter(wrapper);
@@ -122,7 +122,7 @@ describe('Tooltip (React)', () => {
         </Tooltip>
       );
 
-      const wrapper = screen.getByText('Click me').closest('.tooltip-wrapper')!;
+      const wrapper = screen.getByText('Click me').closest('.wg-tooltip-wrapper')!;
 
       act(() => {
         fireEvent.click(wrapper);
@@ -145,7 +145,7 @@ describe('Tooltip (React)', () => {
         </Tooltip>
       );
 
-      const wrapper = screen.getByText('Focus me').closest('.tooltip-wrapper')!;
+      const wrapper = screen.getByText('Focus me').closest('.wg-tooltip-wrapper')!;
 
       act(() => {
         fireEvent.focus(wrapper);
@@ -164,7 +164,7 @@ describe('Tooltip (React)', () => {
         </Tooltip>
       );
 
-      const wrapper = screen.getByText('Hover me').closest('.tooltip-wrapper')!;
+      const wrapper = screen.getByText('Hover me').closest('.wg-tooltip-wrapper')!;
 
       act(() => {
         fireEvent.mouseEnter(wrapper);
@@ -184,7 +184,7 @@ describe('Tooltip (React)', () => {
       );
 
       const tooltip = screen.getByRole('tooltip', { hidden: true });
-      const arrow = tooltip.querySelector('.tooltip-arrow');
+      const arrow = tooltip.querySelector('.wg-tooltip__arrow');
       expect(arrow).toBeInTheDocument();
     });
 
@@ -196,7 +196,7 @@ describe('Tooltip (React)', () => {
       );
 
       const tooltip = screen.getByRole('tooltip', { hidden: true });
-      const arrow = tooltip.querySelector('.tooltip-arrow');
+      const arrow = tooltip.querySelector('.wg-tooltip__arrow');
       expect(arrow).not.toBeInTheDocument();
     });
   });
@@ -218,13 +218,13 @@ describe('Tooltip (React)', () => {
         </Tooltip>
       );
 
-      const wrapper = screen.getByText('Trigger').closest('.tooltip-wrapper')!;
+      const wrapper = screen.getByText('Trigger').closest('.wg-tooltip-wrapper')!;
 
       act(() => {
         fireEvent.mouseEnter(wrapper);
       });
 
-      const trigger = wrapper.querySelector('.tooltip-trigger');
+      const trigger = wrapper.querySelector('.wg-tooltip__trigger');
       expect(trigger).toHaveAttribute('aria-describedby');
     });
   });
@@ -257,7 +257,7 @@ describe('Tooltip (React)', () => {
         </Tooltip>
       );
 
-      const wrapper = screen.getByText('Trigger').closest('.tooltip-wrapper')!;
+      const wrapper = screen.getByText('Trigger').closest('.wg-tooltip-wrapper')!;
 
       act(() => {
         fireEvent.mouseEnter(wrapper);
@@ -275,7 +275,7 @@ describe('Tooltip (React)', () => {
         </Tooltip>
       );
 
-      const wrapper = screen.getByText('Trigger').closest('.tooltip-wrapper')!;
+      const wrapper = screen.getByText('Trigger').closest('.wg-tooltip-wrapper')!;
 
       act(() => {
         fireEvent.mouseEnter(wrapper);
@@ -302,8 +302,8 @@ describe('Tooltip (React)', () => {
         </Tooltip>
       );
 
-      const wrapper = screen.getByText('Trigger').closest('.tooltip-wrapper')!;
-      expect(wrapper).toHaveClass('tooltip-wrapper');
+      const wrapper = screen.getByText('Trigger').closest('.wg-tooltip-wrapper')!;
+      expect(wrapper).toHaveClass('wg-tooltip-wrapper');
       expect(wrapper).toHaveClass('custom-tooltip');
     });
   });

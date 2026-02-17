@@ -1,6 +1,6 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
-.list-item {
+.#{tokens.$prefix}-list-item {
   // Base styles
   display: flex;
   align-items: center;
@@ -20,7 +20,7 @@
     border-color tokens.$transition-fast;
 
   // Remove button default styles if used as button
-  &[type='button'] {
+  &[type="button"] {
     appearance: none;
     margin: 0;
     padding: tokens.$spacing-3 tokens.$spacing-4;
@@ -37,12 +37,12 @@
   // States
   // ===================
   &:disabled,
-  &[data-state='disabled'] {
+  &[data-state="disabled"] {
     cursor: not-allowed;
     opacity: 0.5;
   }
 
-  &[data-state='selected'] {
+  &[data-state="selected"] {
     --wg-list-item-bg: #{tokens.$primary-alpha-10};
     --wg-list-item-color: #{tokens.$primary};
   }
@@ -52,18 +52,18 @@
   // ===================
 
   // Default variant (no interaction)
-  &[data-variant='default'] {
+  &[data-variant="default"] {
     &:disabled,
-    &[data-state='disabled'] {
+    &[data-state="disabled"] {
       --wg-list-item-color: #{tokens.$text-muted};
     }
   }
 
   // Interactive variant
-  &[data-variant='interactive'] {
+  &[data-variant="interactive"] {
     cursor: pointer;
 
-    &:not(:disabled):not([data-state='disabled']) {
+    &:not(:disabled):not([data-state="disabled"]) {
       &:hover {
         --wg-list-item-bg: #{tokens.$background-muted};
       }

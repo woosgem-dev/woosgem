@@ -41,7 +41,7 @@ export const Progress = defineComponent({
       }
 
       const fillChildren = props.showLabel
-        ? [h('span', { class: 'progress-label' }, `${percentage.value}%`)]
+        ? [h('span', { class: 'wg-progress__label' }, `${percentage.value}%`)]
         : [];
 
       return h(
@@ -53,8 +53,8 @@ export const Progress = defineComponent({
           style: attrStyle,
         },
         [
-          h('div', { class: 'progress-track' }, [
-            h('div', { class: 'progress-fill' }, fillChildren),
+          h('div', { class: 'wg-progress__track' }, [
+            h('div', { class: 'wg-progress__fill' }, fillChildren),
           ]),
           slots.default?.(),
         ]

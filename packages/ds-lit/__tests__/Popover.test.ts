@@ -22,7 +22,7 @@ describe('Popover (Lit)', () => {
       expect(el.getAttribute('data-size')).toBe(coreAttrs['data-size']);
       expect(el.getAttribute('data-variant')).toBe(coreAttrs['data-variant']);
       expect(el.getAttribute('role')).toBe(coreAttrs.role);
-      expect(el.classList.contains('popover')).toBe(true);
+      expect(el.classList.contains('wg-popover')).toBe(true);
     });
 
     it('TC-L101: position prop이 core 결과와 일치한다', async () => {
@@ -135,6 +135,6 @@ describe('PopoverArrow (Lit)', () => {
       <wg-popover-arrow></wg-popover-arrow>
     `);
 
-    expect(el.classList.contains('popover-arrow')).toBe(true);
+    expect(el.classList.contains('wg-popover__arrow')).toBe(true);
   });
 });

@@ -139,7 +139,7 @@ describe('Avatar', () => {
       });
       const avatar = screen.getByLabelText('User avatar');
 
-      expect(avatar).toHaveClass('avatar');
+      expect(avatar).toHaveClass('wg-avatar');
       expect(avatar).toHaveClass('custom-class');
     });
 
@@ -158,7 +158,7 @@ describe('Avatar', () => {
       });
       const avatar = screen.getByLabelText('User avatar');
 
-      expect(avatar).toHaveClass('avatar');
+      expect(avatar).toHaveClass('wg-avatar');
       expect(avatar).toHaveClass('custom');
     });
 

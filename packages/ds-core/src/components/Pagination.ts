@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls, clsEl } from '../constants';
 
 export const PaginationVariants = ['outline', 'filled', 'ghost'] as const;
 export type PaginationVariant = (typeof PaginationVariants)[number];
@@ -40,7 +41,7 @@ export const Pagination = {
   mapPropsToAttrs: (props: PaginationStyleProps): PaginationAttrs => {
     const merged = { ...Pagination.defaultProps, ...filterNullish(props) };
     return {
-      class: 'pagination',
+      class: cls('pagination'),
       'data-variant': merged.variant,
       'data-size': merged.size,
       'data-shape': merged.shape,
@@ -79,7 +80,7 @@ export const PaginationItem = {
     const merged = { ...PaginationItem.defaultProps, ...filterNullish(props) };
     const state = merged.active ? 'active' : merged.disabled ? 'disabled' : undefined;
     return {
-      class: 'pagination-item',
+      class: clsEl('pagination', 'item'),
       type: 'button',
       'data-state': state,
       'aria-current': merged.active ? 'page' : undefined,

@@ -3,7 +3,7 @@
 // ===================
 // Outputs only dark theme CSS Custom Properties scoped to [data-theme="dark"]
 
-@use 'theme-generator' as generator;
+@use "theme-generator" as generator;
 
 // Output dark theme CSS Custom Properties on [data-theme="dark"]
-@include generator.theme('dark', '[data-theme="dark"]');
+@include generator.theme("dark", "[data-theme="dark"]");

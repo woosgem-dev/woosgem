@@ -56,7 +56,7 @@ describe('Divider', () => {
   describe('mapPropsToAttrs', () => {
     it('should return correct attrs with defaults', () => {
       const attrs = Divider.mapPropsToAttrs({});
-      expect(attrs.class).toBe('divider');
+      expect(attrs.class).toBe('wg-divider');
       expect(attrs.role).toBe('separator');
       expect(attrs['data-orientation']).toBe('horizontal');
       expect(attrs['data-variant']).toBe('solid');

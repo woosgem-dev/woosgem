@@ -32,7 +32,7 @@ describe('Spinner Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = Spinner.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'spinner',
+        class: 'wg-spinner',
         'data-size': 'md',
         'data-color': 'primary',
         role: 'status',
@@ -82,7 +82,7 @@ describe('Spinner Core', () => {
         label: 'Please wait',
       });
       expect(attrs).toEqual({
-        class: 'spinner',
+        class: 'wg-spinner',
         'data-size': 'lg',
         'data-color': 'secondary',
         role: 'status',

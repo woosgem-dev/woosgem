@@ -1,20 +1,22 @@
+@forward "config";
+
 // ===================
 // Token Exports
 // ===================
 
 // Color system (must be first)
-@forward 'color-sets';
-@forward 'theme-generator';
-@forward 'colors';
+@forward "color-sets";
+@forward "theme-generator" hide $prefix;
+@forward "colors";
 
 // Layout & Spacing
-@forward 'spacing';
+@forward "spacing";
 
 // Typography
-@forward 'typography';
+@forward "typography";
 
 // Motion & Animation
-@forward 'motion';
+@forward "motion";
 
 // Effects (shadows, focus, layers)
-@forward 'effects';
+@forward "effects";

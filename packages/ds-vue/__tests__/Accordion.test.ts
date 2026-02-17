@@ -114,7 +114,7 @@ describe('Accordion (Vue)', () => {
   describe('커스터마이즈 오버라이드', () => {
     it('TC-O100: class 추가 시 병합된다', () => {
       const wrapper = mount(Accordion, { props: { class: 'custom-accordion' } });
-      expect(wrapper.classes()).toContain('accordion');
+      expect(wrapper.classes()).toContain('wg-accordion');
       expect(wrapper.classes()).toContain('custom-accordion');
     });
 
@@ -131,7 +131,7 @@ describe('Accordion (Vue)', () => {
 describe('AccordionItem (Vue)', () => {
   it('should render with accordion-item class', () => {
     const wrapper = mount(AccordionItem, { slots: { default: 'Item' } });
-    expect(wrapper.classes()).toContain('accordion-item');
+    expect(wrapper.classes()).toContain('wg-accordion__item');
   });
 
   it('should render slot content', () => {
@@ -158,7 +158,7 @@ describe('AccordionItem (Vue)', () => {
 describe('AccordionTrigger (Vue)', () => {
   it('should render with accordion-trigger class', () => {
     const wrapper = mount(AccordionTrigger, { slots: { default: 'Trigger' } });
-    expect(wrapper.classes()).toContain('accordion-trigger');
+    expect(wrapper.classes()).toContain('wg-accordion__trigger');
   });
 
   it('should render slot content', () => {
@@ -180,7 +180,7 @@ describe('AccordionTrigger (Vue)', () => {
 describe('AccordionContent (Vue)', () => {
   it('should render with accordion-content class', () => {
     const wrapper = mount(AccordionContent, { slots: { default: 'Content' } });
-    expect(wrapper.classes()).toContain('accordion-content');
+    expect(wrapper.classes()).toContain('wg-accordion__content');
   });
 
   it('should render slot content', () => {

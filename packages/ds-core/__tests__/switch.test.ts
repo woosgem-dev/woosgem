@@ -33,7 +33,7 @@ describe('Switch Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = Switch.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'switch',
+        class: 'wg-switch',
         'data-size': 'md',
         'data-color': 'primary',
         'data-state': undefined,
@@ -101,7 +101,7 @@ describe('Switch Core', () => {
         checked: true,
       });
       expect(attrs).toEqual({
-        class: 'switch',
+        class: 'wg-switch',
         'data-size': 'lg',
         'data-color': 'success',
         'data-state': 'checked',

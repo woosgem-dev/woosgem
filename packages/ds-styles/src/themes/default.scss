@@ -2,7 +2,7 @@
 // Build-time theme separation - outputs only default theme styles
 
 // Theme CSS Custom Properties (must be first to define variables)
-@use '../tokens/theme-default';
+@use "../tokens/theme-default";
 
 // Component styles (reference CSS Custom Properties from theme)
-@use '../components';
+@use "../components";

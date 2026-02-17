@@ -1,9 +1,9 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
 // ============================================
 // Accordion Component
 // ============================================
-.accordion {
+.#{tokens.$prefix}-accordion {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -13,29 +13,29 @@
   // ===================
 
   // Outline variant (default)
-  &[data-variant='outline'] {
+  &[data-variant="outline"] {
     border: 1px solid tokens.$border;
     border-radius: tokens.$radius-8;
     overflow: hidden;
 
-    > .accordion-item + .accordion-item {
+    > .#{tokens.$prefix}-accordion__item + .#{tokens.$prefix}-accordion__item {
       border-top: 1px solid tokens.$border;
     }
   }
 
   // Filled variant
-  &[data-variant='filled'] {
+  &[data-variant="filled"] {
     gap: tokens.$spacing-1;
 
-    > .accordion-item {
+    > .#{tokens.$prefix}-accordion__item {
       background-color: tokens.$background-muted;
       border-radius: tokens.$radius-8;
     }
   }
 
   // Ghost variant
-  &[data-variant='ghost'] {
-    > .accordion-item + .accordion-item {
+  &[data-variant="ghost"] {
+    > .#{tokens.$prefix}-accordion__item + .#{tokens.$prefix}-accordion__item {
       border-top: 1px solid tokens.$border;
     }
   }
@@ -45,39 +45,39 @@
   // ===================
 
   // Size: sm
-  &[data-size='sm'] {
-    .accordion-trigger {
+  &[data-size="sm"] {
+    .#{tokens.$prefix}-accordion__trigger {
       padding: tokens.$spacing-2 tokens.$spacing-3;
       font-size: tokens.$font-size-13;
     }
 
-    .accordion-content {
+    .#{tokens.$prefix}-accordion__content {
       padding: 0 tokens.$spacing-3 tokens.$spacing-2;
       font-size: tokens.$font-size-13;
     }
   }
 
   // Size: md
-  &[data-size='md'] {
-    .accordion-trigger {
+  &[data-size="md"] {
+    .#{tokens.$prefix}-accordion__trigger {
       padding: tokens.$spacing-3 tokens.$spacing-4;
       font-size: tokens.$font-size-14;
     }
 
-    .accordion-content {
+    .#{tokens.$prefix}-accordion__content {
       padding: 0 tokens.$spacing-4 tokens.$spacing-3;
       font-size: tokens.$font-size-14;
     }
   }
 
   // Size: lg
-  &[data-size='lg'] {
-    .accordion-trigger {
+  &[data-size="lg"] {
+    .#{tokens.$prefix}-accordion__trigger {
       padding: tokens.$spacing-4 tokens.$spacing-5;
       font-size: tokens.$font-size-16;
     }
 
-    .accordion-content {
+    .#{tokens.$prefix}-accordion__content {
       padding: 0 tokens.$spacing-5 tokens.$spacing-4;
       font-size: tokens.$font-size-16;
     }
@@ -87,8 +87,8 @@
 // ============================================
 // AccordionItem
 // ============================================
-.accordion-item {
-  &[data-state='disabled'] {
+.#{tokens.$prefix}-accordion__item {
+  &[data-state="disabled"] {
     opacity: 0.5;
     pointer-events: none;
   }
@@ -97,7 +97,7 @@
 // ============================================
 // AccordionTrigger
 // ============================================
-.accordion-trigger {
+.#{tokens.$prefix}-accordion__trigger {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -116,7 +116,7 @@
   }
 
   &::after {
-    content: '';
+    content: "";
     width: 16px;
     height: 16px;
     flex-shrink: 0;
@@ -128,7 +128,7 @@
   }
 
   // Rotate chevron when parent item is open
-  [data-state='open'] > & {
+  [data-state="open"] > & {
     &::after {
       transform: rotate(180deg);
     }
@@ -138,13 +138,13 @@
 // ============================================
 // AccordionContent
 // ============================================
-.accordion-content {
+.#{tokens.$prefix}-accordion__content {
   overflow: hidden;
   color: tokens.$text-muted;
   line-height: tokens.$line-height-normal;
 
   // Hidden when parent item is not open
-  .accordion-item:not([data-state='open']) > & {
+  .#{tokens.$prefix}-accordion__item:not([data-state="open"]) > & {
     display: none;
   }
 }

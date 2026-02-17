@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls } from '../constants';
 
 /** Badge variant options */
 export const BadgeVariants = ['solid', 'outline', 'subtle'] as const;
@@ -47,7 +48,7 @@ export const Badge = {
   mapPropsToAttrs: (props: BadgeStyleProps): BadgeAttrs => {
     const merged = { ...Badge.defaultProps, ...filterNullish(props) };
     return {
-      class: 'badge',
+      class: cls('badge'),
       'data-variant': merged.variant,
       'data-color': merged.color,
       'data-size': merged.size,

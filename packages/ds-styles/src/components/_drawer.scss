@@ -1,6 +1,6 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
-.drawer {
+.#{tokens.$prefix}-drawer {
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -12,50 +12,50 @@
   transition: transform tokens.$transition-normal;
 
   // Positions
-  &[data-position='left'] {
+  &[data-position="left"] {
     top: 0;
     left: 0;
     bottom: 0;
   }
 
-  &[data-position='right'] {
+  &[data-position="right"] {
     top: 0;
     right: 0;
     bottom: 0;
   }
 
-  &[data-position='top'] {
+  &[data-position="top"] {
     top: 0;
     left: 0;
     right: 0;
   }
 
-  &[data-position='bottom'] {
+  &[data-position="bottom"] {
     bottom: 0;
     left: 0;
     right: 0;
   }
 
   // Sizes for left/right
-  &[data-position='left'],
-  &[data-position='right'] {
-    &[data-size='sm'] { width: 280px; }
-    &[data-size='md'] { width: 380px; }
-    &[data-size='lg'] { width: 520px; }
-    &[data-size='full'] { width: 100vw; }
+  &[data-position="left"],
+  &[data-position="right"] {
+    &[data-size="sm"] { width: 280px; }
+    &[data-size="md"] { width: 380px; }
+    &[data-size="lg"] { width: 520px; }
+    &[data-size="full"] { width: 100vw; }
   }
 
   // Sizes for top/bottom
-  &[data-position='top'],
-  &[data-position='bottom'] {
-    &[data-size='sm'] { height: 200px; }
-    &[data-size='md'] { height: 320px; }
-    &[data-size='lg'] { height: 480px; }
-    &[data-size='full'] { height: 100vh; }
+  &[data-position="top"],
+  &[data-position="bottom"] {
+    &[data-size="sm"] { height: 200px; }
+    &[data-size="md"] { height: 320px; }
+    &[data-size="lg"] { height: 480px; }
+    &[data-size="full"] { height: 100vh; }
   }
 }
 
-.drawer-header {
+.#{tokens.$prefix}-drawer__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -66,13 +66,13 @@
   flex-shrink: 0;
 }
 
-.drawer-body {
+.#{tokens.$prefix}-drawer__body {
   flex: 1;
   padding: tokens.$spacing-4;
   overflow-y: auto;
 }
 
-.drawer-footer {
+.#{tokens.$prefix}-drawer__footer {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -82,7 +82,7 @@
   flex-shrink: 0;
 }
 
-.drawer-close {
+.#{tokens.$prefix}-drawer__close {
   display: inline-flex;
   align-items: center;
   justify-content: center;

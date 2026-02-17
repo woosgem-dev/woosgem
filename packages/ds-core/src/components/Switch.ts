@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls } from '../constants';
 
 /** Switch size options */
 export const SwitchSizes = ['sm', 'md', 'lg'] as const;
@@ -57,7 +58,7 @@ export const Switch = {
     }
 
     return {
-      class: 'switch',
+      class: cls('switch'),
       'data-size': merged.size,
       'data-color': merged.color,
       'data-state': state,

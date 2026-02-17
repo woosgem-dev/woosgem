@@ -1,6 +1,6 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
-.pagination {
+.#{tokens.$prefix}-pagination {
   display: inline-flex;
   align-items: center;
   gap: tokens.$spacing-1;
@@ -10,8 +10,8 @@
   font-family: tokens.$font-family-default;
 
   // Sizes
-  &[data-size='sm'] {
-    .pagination-item {
+  &[data-size="sm"] {
+    .#{tokens.$prefix}-pagination__item {
       min-width: 28px;
       height: 28px;
       font-size: tokens.$font-size-12;
@@ -19,8 +19,8 @@
     }
   }
 
-  &[data-size='md'] {
-    .pagination-item {
+  &[data-size="md"] {
+    .#{tokens.$prefix}-pagination__item {
       min-width: 36px;
       height: 36px;
       font-size: tokens.$font-size-14;
@@ -28,8 +28,8 @@
     }
   }
 
-  &[data-size='lg'] {
-    .pagination-item {
+  &[data-size="lg"] {
+    .#{tokens.$prefix}-pagination__item {
       min-width: 44px;
       height: 44px;
       font-size: tokens.$font-size-16;
@@ -38,7 +38,7 @@
   }
 }
 
-.pagination-item {
+.#{tokens.$prefix}-pagination__item {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -54,24 +54,24 @@
     border-color tokens.$transition-fast;
 
   // Shapes
-  .pagination[data-shape='rounded'] & {
+  .#{tokens.$prefix}-pagination[data-shape="rounded"] & {
     border-radius: tokens.$radius-md;
   }
 
-  .pagination[data-shape='circle'] & {
+  .#{tokens.$prefix}-pagination[data-shape="circle"] & {
     border-radius: 50%;
   }
 
   // Outline variant
-  .pagination[data-variant='outline'] & {
+  .#{tokens.$prefix}-pagination[data-variant="outline"] & {
     border: 1px solid tokens.$border;
 
-    &:hover:not([data-state='disabled']):not([data-state='active']) {
+    &:hover:not([data-state="disabled"]):not([data-state="active"]) {
       border-color: tokens.$primary;
       color: tokens.$primary;
     }
 
-    &[data-state='active'] {
+    &[data-state="active"] {
       border-color: tokens.$primary;
       background-color: tokens.$primary;
       color: tokens.$text-inverse;
@@ -79,33 +79,33 @@
   }
 
   // Filled variant
-  .pagination[data-variant='filled'] & {
+  .#{tokens.$prefix}-pagination[data-variant="filled"] & {
     background-color: tokens.$background-muted;
 
-    &:hover:not([data-state='disabled']):not([data-state='active']) {
+    &:hover:not([data-state="disabled"]):not([data-state="active"]) {
       background-color: tokens.$background-muted-darken-3;
     }
 
-    &[data-state='active'] {
+    &[data-state="active"] {
       background-color: tokens.$primary;
       color: tokens.$text-inverse;
     }
   }
 
   // Ghost variant
-  .pagination[data-variant='ghost'] & {
-    &:hover:not([data-state='disabled']):not([data-state='active']) {
+  .#{tokens.$prefix}-pagination[data-variant="ghost"] & {
+    &:hover:not([data-state="disabled"]):not([data-state="active"]) {
       background-color: tokens.$background-muted;
     }
 
-    &[data-state='active'] {
+    &[data-state="active"] {
       background-color: tokens.$primary;
       color: tokens.$text-inverse;
     }
   }
 
   // Disabled
-  &[data-state='disabled'] {
+  &[data-state="disabled"] {
     opacity: 0.5;
     pointer-events: none;
     cursor: not-allowed;
@@ -118,7 +118,7 @@
   }
 }
 
-.pagination-ellipsis {
+.#{tokens.$prefix}-pagination__ellipsis {
   display: inline-flex;
   align-items: center;
   justify-content: center;

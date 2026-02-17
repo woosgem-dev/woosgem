@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls } from '../constants';
 
 /** Spinner size options */
 export const SpinnerSizes = ['xs', 'sm', 'md', 'lg'] as const;
@@ -43,7 +44,7 @@ export const Spinner = {
   mapPropsToAttrs: (props: SpinnerStyleProps): SpinnerAttrs => {
     const merged = { ...Spinner.defaultProps, ...filterNullish(props) };
     return {
-      class: 'spinner',
+      class: cls('spinner'),
       'data-size': merged.size,
       'data-color': merged.color,
       role: 'status',

@@ -118,7 +118,7 @@ describe('Select (Vue)', () => {
   describe('커스터마이즈 오버라이드', () => {
     it('TC-O100: class 추가 시 병합된다', () => {
       const wrapper = mount(Select, { props: { class: 'custom-select' } });
-      expect(wrapper.classes()).toContain('select');
+      expect(wrapper.classes()).toContain('wg-select');
       expect(wrapper.classes()).toContain('custom-select');
     });
 
@@ -135,7 +135,7 @@ describe('Select (Vue)', () => {
 describe('SelectMenu (Vue)', () => {
   it('should render with select-menu class', () => {
     const wrapper = mount(SelectMenu, { props: { open: true } });
-    expect(wrapper.classes()).toContain('select-menu');
+    expect(wrapper.classes()).toContain('wg-select__menu');
   });
 
   it('should have role="listbox"', () => {
@@ -162,7 +162,7 @@ describe('SelectMenu (Vue)', () => {
 describe('SelectOption (Vue)', () => {
   it('should render with select-option class', () => {
     const wrapper = mount(SelectOption);
-    expect(wrapper.classes()).toContain('select-option');
+    expect(wrapper.classes()).toContain('wg-select__option');
   });
 
   it('should have role="option"', () => {

@@ -38,7 +38,7 @@ describe('Textarea Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = Textarea.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'textarea',
+        class: 'wg-textarea',
         'data-variant': 'outline',
         'data-size': 'md',
         'data-resize': 'vertical',
@@ -109,7 +109,7 @@ describe('Textarea Core', () => {
         resize: 'both',
       });
       expect(attrs).toEqual({
-        class: 'textarea',
+        class: 'wg-textarea',
         'data-variant': 'filled',
         'data-size': 'lg',
         'data-resize': 'both',

@@ -220,7 +220,7 @@ describe('IconButton', () => {
       });
       const btn = screen.getByRole('button');
 
-      expect(btn).toHaveClass('icon-btn');
+      expect(btn).toHaveClass('wg-icon-btn');
       expect(btn).toHaveClass('custom-class');
     });
 
@@ -257,7 +257,7 @@ describe('IconButton', () => {
       });
       const btn = screen.getByRole('button');
 
-      expect(btn).toHaveClass('icon-btn');
+      expect(btn).toHaveClass('wg-icon-btn');
       expect(btn).toHaveClass('custom');
     });
 

@@ -19,7 +19,7 @@ describe('Drawer (Lit)', () => {
       expect(el.getAttribute('data-size')).toBe(coreAttrs['data-size']);
       expect(el.getAttribute('role')).toBe(coreAttrs.role);
       expect(el.getAttribute('aria-modal')).toBe(coreAttrs['aria-modal']);
-      expect(el.classList.contains('drawer')).toBe(true);
+      expect(el.classList.contains('wg-drawer')).toBe(true);
     });
 
     it('TC-L101: position prop이 core 결과와 일치한다', async () => {

@@ -17,7 +17,7 @@ describe('AvatarGroup (Lit)', () => {
 
       expect(el.getAttribute('data-size')).toBe(coreAttrs['data-size']);
       expect(el.getAttribute('data-spacing')).toBe(coreAttrs['data-spacing']);
-      expect(el.classList.contains('avatar-group')).toBe(true);
+      expect(el.classList.contains('wg-avatar-group')).toBe(true);
     });
 
     it('TC-L101: size prop이 core 결과와 일치한다', async () => {

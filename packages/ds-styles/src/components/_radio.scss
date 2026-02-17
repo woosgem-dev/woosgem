@@ -1,6 +1,6 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
-.radio {
+.#{tokens.$prefix}-radio {
   // Reset
   appearance: none;
   border: none;
@@ -24,7 +24,7 @@
 
   // Inner dot
   &::after {
-    content: '';
+    content: "";
     display: block;
     border-radius: tokens.$radius-full;
     background-color: var(--wg-radio-dot, transparent);
@@ -41,7 +41,7 @@
   // ===================
   // Sizes
   // ===================
-  &[data-size='sm'] {
+  &[data-size="sm"] {
     width: 16px;
     height: 16px;
 
@@ -51,7 +51,7 @@
     }
   }
 
-  &[data-size='md'] {
+  &[data-size="md"] {
     width: 20px;
     height: 20px;
 
@@ -61,7 +61,7 @@
     }
   }
 
-  &[data-size='lg'] {
+  &[data-size="lg"] {
     width: 24px;
     height: 24px;
 
@@ -74,11 +74,11 @@
   // ===================
   // States
   // ===================
-  &:hover:not(:disabled):not([data-state='disabled']):not([data-state='checked-disabled']) {
+  &:hover:not(:disabled):not([data-state="disabled"]):not([data-state="checked-disabled"]) {
     --wg-radio-border: #{tokens.$border-hover};
   }
 
-  &[data-state='checked'] {
+  &[data-state="checked"] {
     --wg-radio-border: var(--wg-radio-color, #{tokens.$primary});
     --wg-radio-dot: var(--wg-radio-color, #{tokens.$primary});
 
@@ -92,8 +92,8 @@
     }
   }
 
-  &[data-state='disabled'],
-  &[data-state='checked-disabled'] {
+  &[data-state="disabled"],
+  &[data-state="checked-disabled"] {
     cursor: not-allowed;
     opacity: 0.5;
   }
@@ -101,50 +101,50 @@
   // ===================
   // Colors
   // ===================
-  &[data-color='primary'] {
+  &[data-color="primary"] {
     --wg-radio-color: #{tokens.$primary};
     --wg-radio-hover: #{tokens.$primary-hover};
   }
 
-  &[data-color='secondary'] {
+  &[data-color="secondary"] {
     --wg-radio-color: #{tokens.$secondary};
     --wg-radio-hover: #{tokens.$secondary-hover};
   }
 
-  &[data-color='success'] {
+  &[data-color="success"] {
     --wg-radio-color: #{tokens.$success};
     --wg-radio-hover: #{tokens.$success-hover};
   }
 }
 
-.radio-group {
+.#{tokens.$prefix}-radio-group {
   display: flex;
   gap: tokens.$spacing-3;
 
-  &[data-orientation='vertical'] {
+  &[data-orientation="vertical"] {
     flex-direction: column;
   }
 
-  &[data-orientation='horizontal'] {
+  &[data-orientation="horizontal"] {
     flex-direction: row;
     flex-wrap: wrap;
   }
 
   // RadioGroup item wrapper
-  .radio-item {
+  .#{tokens.$prefix}-radio-group__item {
     display: inline-flex;
     align-items: center;
     gap: tokens.$spacing-2;
     cursor: pointer;
 
-    &:has(.radio:disabled),
-    &:has(.radio[data-state='disabled']),
-    &:has(.radio[data-state='checked-disabled']) {
+    &:has(.#{tokens.$prefix}-radio:disabled),
+    &:has(.#{tokens.$prefix}-radio[data-state="disabled"]),
+    &:has(.#{tokens.$prefix}-radio[data-state="checked-disabled"]) {
       cursor: not-allowed;
     }
   }
 
-  .radio-label {
+  .#{tokens.$prefix}-radio-group__label {
     font-family: tokens.$font-family-default;
     font-size: tokens.$font-size-14;
     color: tokens.$text;

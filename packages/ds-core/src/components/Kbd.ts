@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls } from '../constants';
 
 /** Kbd size options */
 export const KbdSizes = ['sm', 'md', 'lg'] as const;
@@ -41,7 +42,7 @@ export const Kbd = {
   mapPropsToAttrs: (props: KbdStyleProps): KbdAttrs => {
     const merged = { ...Kbd.defaultProps, ...filterNullish(props) };
     return {
-      class: 'kbd',
+      class: cls('kbd'),
       'data-size': merged.size,
       'data-variant': merged.variant,
     };

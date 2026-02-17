@@ -17,7 +17,7 @@ describe('Breadcrumb (Lit)', () => {
 
       expect(el.getAttribute('data-size')).toBe(coreAttrs['data-size']);
       expect(el.getAttribute('aria-label')).toBe(coreAttrs['aria-label']);
-      expect(el.classList.contains('breadcrumb')).toBe(true);
+      expect(el.classList.contains('wg-breadcrumb')).toBe(true);
     });
 
     it('TC-L101: size prop이 core 결과와 일치한다', async () => {
@@ -78,7 +78,7 @@ describe('BreadcrumbItem (Lit)', () => {
         <wg-breadcrumb-item>Home</wg-breadcrumb-item>
       `);
 
-      expect(el.classList.contains('breadcrumb-item')).toBe(true);
+      expect(el.classList.contains('wg-breadcrumb__item')).toBe(true);
       expect(el.getAttribute('data-state')).toBe(coreAttrs['data-state'] ?? null);
     });
 

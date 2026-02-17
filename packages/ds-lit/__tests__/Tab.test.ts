@@ -17,7 +17,7 @@ describe('Tab (Lit)', () => {
 
       expect(el.getAttribute('data-variant')).toBe(coreAttrs['data-variant']);
       expect(el.getAttribute('data-size')).toBe(coreAttrs['data-size']);
-      expect(el.classList.contains('tab')).toBe(true);
+      expect(el.classList.contains('wg-tab')).toBe(true);
     });
 
     it('TC-L101: variant prop이 core 결과와 일치한다', async () => {

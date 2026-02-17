@@ -1,6 +1,6 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
-.tag {
+.#{tokens.$prefix}-tag {
   // Reset
   appearance: none;
   border: none;
@@ -28,19 +28,19 @@
   // ===================
   // Sizes
   // ===================
-  &[data-size='sm'] {
+  &[data-size="sm"] {
     height: 24px;
     padding: tokens.$spacing-0 tokens.$spacing-2;
     font-size: tokens.$font-size-12;
   }
 
-  &[data-size='md'] {
+  &[data-size="md"] {
     height: 28px;
     padding: tokens.$spacing-1 tokens.$spacing-3;
     font-size: tokens.$font-size-13;
   }
 
-  &[data-size='lg'] {
+  &[data-size="lg"] {
     height: 32px;
     padding: tokens.$spacing-1 tokens.$spacing-4;
     font-size: tokens.$font-size-14;
@@ -51,34 +51,34 @@
   // ===================
 
   // Solid variant
-  &[data-variant='solid'] {
-    &[data-color='primary'] { --wg-tag-bg: #{tokens.$primary}; --wg-tag-color: #{tokens.$text-inverse}; }
-    &[data-color='secondary'] { --wg-tag-bg: #{tokens.$secondary}; --wg-tag-color: #{tokens.$text-inverse}; }
-    &[data-color='danger'] { --wg-tag-bg: #{tokens.$danger}; --wg-tag-color: #{tokens.$text-inverse}; }
-    &[data-color='success'] { --wg-tag-bg: #{tokens.$success}; --wg-tag-color: #{tokens.$text-inverse}; }
-    &[data-color='warning'] { --wg-tag-bg: #{tokens.$warning}; --wg-tag-color: #{tokens.$text}; }
-    &[data-color='info'] { --wg-tag-bg: #{tokens.$info}; --wg-tag-color: #{tokens.$text-inverse}; }
+  &[data-variant="solid"] {
+    &[data-color="primary"] { --wg-tag-bg: #{tokens.$primary}; --wg-tag-color: #{tokens.$text-inverse}; }
+    &[data-color="secondary"] { --wg-tag-bg: #{tokens.$secondary}; --wg-tag-color: #{tokens.$text-inverse}; }
+    &[data-color="danger"] { --wg-tag-bg: #{tokens.$danger}; --wg-tag-color: #{tokens.$text-inverse}; }
+    &[data-color="success"] { --wg-tag-bg: #{tokens.$success}; --wg-tag-color: #{tokens.$text-inverse}; }
+    &[data-color="warning"] { --wg-tag-bg: #{tokens.$warning}; --wg-tag-color: #{tokens.$text}; }
+    &[data-color="info"] { --wg-tag-bg: #{tokens.$info}; --wg-tag-color: #{tokens.$text-inverse}; }
   }
 
   // Outline variant
-  &[data-variant='outline'] {
+  &[data-variant="outline"] {
     --wg-tag-bg: transparent;
-    &[data-color='primary'] { --wg-tag-border: #{tokens.$primary}; --wg-tag-color: #{tokens.$primary}; }
-    &[data-color='secondary'] { --wg-tag-border: #{tokens.$secondary}; --wg-tag-color: #{tokens.$secondary}; }
-    &[data-color='danger'] { --wg-tag-border: #{tokens.$danger}; --wg-tag-color: #{tokens.$danger}; }
-    &[data-color='success'] { --wg-tag-border: #{tokens.$success}; --wg-tag-color: #{tokens.$success}; }
-    &[data-color='warning'] { --wg-tag-border: #{tokens.$warning}; --wg-tag-color: #{tokens.$warning}; }
-    &[data-color='info'] { --wg-tag-border: #{tokens.$info}; --wg-tag-color: #{tokens.$info}; }
+    &[data-color="primary"] { --wg-tag-border: #{tokens.$primary}; --wg-tag-color: #{tokens.$primary}; }
+    &[data-color="secondary"] { --wg-tag-border: #{tokens.$secondary}; --wg-tag-color: #{tokens.$secondary}; }
+    &[data-color="danger"] { --wg-tag-border: #{tokens.$danger}; --wg-tag-color: #{tokens.$danger}; }
+    &[data-color="success"] { --wg-tag-border: #{tokens.$success}; --wg-tag-color: #{tokens.$success}; }
+    &[data-color="warning"] { --wg-tag-border: #{tokens.$warning}; --wg-tag-color: #{tokens.$warning}; }
+    &[data-color="info"] { --wg-tag-border: #{tokens.$info}; --wg-tag-color: #{tokens.$info}; }
   }
 
   // Subtle variant (light background)
-  &[data-variant='subtle'] {
-    &[data-color='primary'] { --wg-tag-bg: #{tokens.$primary-alpha-10}; --wg-tag-color: #{tokens.$primary}; }
-    &[data-color='secondary'] { --wg-tag-bg: #{tokens.$secondary-alpha-10}; --wg-tag-color: #{tokens.$secondary}; }
-    &[data-color='danger'] { --wg-tag-bg: #{tokens.$red-light}; --wg-tag-color: #{tokens.$danger}; }
-    &[data-color='success'] { --wg-tag-bg: #{tokens.$green-light}; --wg-tag-color: #{tokens.$success}; }
-    &[data-color='warning'] { --wg-tag-bg: #{tokens.$yellow-light}; --wg-tag-color: #{tokens.$warning}; }
-    &[data-color='info'] { --wg-tag-bg: #{tokens.$blue-light}; --wg-tag-color: #{tokens.$info}; }
+  &[data-variant="subtle"] {
+    &[data-color="primary"] { --wg-tag-bg: #{tokens.$primary-alpha-10}; --wg-tag-color: #{tokens.$primary}; }
+    &[data-color="secondary"] { --wg-tag-bg: #{tokens.$secondary-alpha-10}; --wg-tag-color: #{tokens.$secondary}; }
+    &[data-color="danger"] { --wg-tag-bg: #{tokens.$red-light}; --wg-tag-color: #{tokens.$danger}; }
+    &[data-color="success"] { --wg-tag-bg: #{tokens.$green-light}; --wg-tag-color: #{tokens.$success}; }
+    &[data-color="warning"] { --wg-tag-bg: #{tokens.$yellow-light}; --wg-tag-color: #{tokens.$warning}; }
+    &[data-color="info"] { --wg-tag-bg: #{tokens.$blue-light}; --wg-tag-color: #{tokens.$info}; }
   }
 
   // ===================
@@ -91,14 +91,14 @@
   }
 
   // Disabled
-  &[data-state='disabled'] {
+  &[data-state="disabled"] {
     opacity: 0.5;
     pointer-events: none;
     cursor: not-allowed;
   }
 }
 
-.tag-close {
+.#{tokens.$prefix}-tag__close {
   display: inline-flex;
   align-items: center;
   justify-content: center;

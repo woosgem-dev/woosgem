@@ -96,7 +96,7 @@ describe('Pagination (Vue)', () => {
   describe('커스터마이즈 오버라이드', () => {
     it('TC-O100: class 추가 시 병합된다', () => {
       const wrapper = mount(Pagination, { props: { class: 'custom' } });
-      expect(wrapper.classes()).toContain('pagination');
+      expect(wrapper.classes()).toContain('wg-pagination');
       expect(wrapper.classes()).toContain('custom');
     });
 

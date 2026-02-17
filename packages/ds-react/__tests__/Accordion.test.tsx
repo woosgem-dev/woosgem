@@ -14,7 +14,7 @@ describe('Accordion (React)', () => {
       const coreAttrs = AccordionDef.mapPropsToAttrs({});
 
       render(<Accordion>Content</Accordion>);
-      const el = screen.getByText('Content').closest('.accordion')!;
+      const el = screen.getByText('Content').closest('.wg-accordion')!;
 
       expect(el).toHaveAttribute('data-type', coreAttrs['data-type']);
       expect(el).toHaveAttribute('data-size', coreAttrs['data-size']);
@@ -26,7 +26,7 @@ describe('Accordion (React)', () => {
       const coreAttrs = AccordionDef.mapPropsToAttrs({ type: 'multiple' });
 
       render(<Accordion type="multiple">Content</Accordion>);
-      const el = screen.getByText('Content').closest('.accordion')!;
+      const el = screen.getByText('Content').closest('.wg-accordion')!;
 
       expect(el).toHaveAttribute('data-type', coreAttrs['data-type']);
     });
@@ -35,7 +35,7 @@ describe('Accordion (React)', () => {
       const coreAttrs = AccordionDef.mapPropsToAttrs({ size: 'lg' });
 
       render(<Accordion size="lg">Content</Accordion>);
-      const el = screen.getByText('Content').closest('.accordion')!;
+      const el = screen.getByText('Content').closest('.wg-accordion')!;
 
       expect(el).toHaveAttribute('data-size', coreAttrs['data-size']);
     });
@@ -44,7 +44,7 @@ describe('Accordion (React)', () => {
       const coreAttrs = AccordionDef.mapPropsToAttrs({ variant: 'filled' });
 
       render(<Accordion variant="filled">Content</Accordion>);
-      const el = screen.getByText('Content').closest('.accordion')!;
+      const el = screen.getByText('Content').closest('.wg-accordion')!;
 
       expect(el).toHaveAttribute('data-variant', coreAttrs['data-variant']);
     });
@@ -53,19 +53,19 @@ describe('Accordion (React)', () => {
   describe('Variant 변형', () => {
     it('TC-C110: variant: outline이 적용된다', () => {
       render(<Accordion variant="outline">Content</Accordion>);
-      const el = screen.getByText('Content').closest('.accordion')!;
+      const el = screen.getByText('Content').closest('.wg-accordion')!;
       expect(el).toHaveAttribute('data-variant', 'outline');
     });
 
     it('TC-C111: variant: filled가 적용된다', () => {
       render(<Accordion variant="filled">Content</Accordion>);
-      const el = screen.getByText('Content').closest('.accordion')!;
+      const el = screen.getByText('Content').closest('.wg-accordion')!;
       expect(el).toHaveAttribute('data-variant', 'filled');
     });
 
     it('TC-C112: variant: ghost가 적용된다', () => {
       render(<Accordion variant="ghost">Content</Accordion>);
-      const el = screen.getByText('Content').closest('.accordion')!;
+      const el = screen.getByText('Content').closest('.wg-accordion')!;
       expect(el).toHaveAttribute('data-variant', 'ghost');
     });
   });
@@ -73,19 +73,19 @@ describe('Accordion (React)', () => {
   describe('Size 변형', () => {
     it('TC-C120: size: sm이 적용된다', () => {
       render(<Accordion size="sm">Content</Accordion>);
-      const el = screen.getByText('Content').closest('.accordion')!;
+      const el = screen.getByText('Content').closest('.wg-accordion')!;
       expect(el).toHaveAttribute('data-size', 'sm');
     });
 
     it('TC-C121: size: md가 적용된다', () => {
       render(<Accordion size="md">Content</Accordion>);
-      const el = screen.getByText('Content').closest('.accordion')!;
+      const el = screen.getByText('Content').closest('.wg-accordion')!;
       expect(el).toHaveAttribute('data-size', 'md');
     });
 
     it('TC-C122: size: lg가 적용된다', () => {
       render(<Accordion size="lg">Content</Accordion>);
-      const el = screen.getByText('Content').closest('.accordion')!;
+      const el = screen.getByText('Content').closest('.wg-accordion')!;
       expect(el).toHaveAttribute('data-size', 'lg');
     });
   });
@@ -93,13 +93,13 @@ describe('Accordion (React)', () => {
   describe('Type 변형', () => {
     it('TC-C130: type: single이 적용된다', () => {
       render(<Accordion type="single">Content</Accordion>);
-      const el = screen.getByText('Content').closest('.accordion')!;
+      const el = screen.getByText('Content').closest('.wg-accordion')!;
       expect(el).toHaveAttribute('data-type', 'single');
     });
 
     it('TC-C131: type: multiple이 적용된다', () => {
       render(<Accordion type="multiple">Content</Accordion>);
-      const el = screen.getByText('Content').closest('.accordion')!;
+      const el = screen.getByText('Content').closest('.wg-accordion')!;
       expect(el).toHaveAttribute('data-type', 'multiple');
     });
   });
@@ -107,19 +107,19 @@ describe('Accordion (React)', () => {
   describe('기본값', () => {
     it('TC-C010: type 기본값이 single이다', () => {
       render(<Accordion>Content</Accordion>);
-      const el = screen.getByText('Content').closest('.accordion')!;
+      const el = screen.getByText('Content').closest('.wg-accordion')!;
       expect(el).toHaveAttribute('data-type', 'single');
     });
 
     it('TC-C011: size 기본값이 md이다', () => {
       render(<Accordion>Content</Accordion>);
-      const el = screen.getByText('Content').closest('.accordion')!;
+      const el = screen.getByText('Content').closest('.wg-accordion')!;
       expect(el).toHaveAttribute('data-size', 'md');
     });
 
     it('TC-C012: variant 기본값이 outline이다', () => {
       render(<Accordion>Content</Accordion>);
-      const el = screen.getByText('Content').closest('.accordion')!;
+      const el = screen.getByText('Content').closest('.wg-accordion')!;
       expect(el).toHaveAttribute('data-variant', 'outline');
     });
   });
@@ -132,8 +132,8 @@ describe('Accordion (React)', () => {
 
     it('TC-R201: className이 병합된다', () => {
       render(<Accordion className="custom-accordion">Content</Accordion>);
-      const el = screen.getByText('Content').closest('.accordion')!;
-      expect(el).toHaveClass('accordion');
+      const el = screen.getByText('Content').closest('.wg-accordion')!;
+      expect(el).toHaveClass('wg-accordion');
       expect(el).toHaveClass('custom-accordion');
     });
   });
@@ -142,8 +142,8 @@ describe('Accordion (React)', () => {
 describe('AccordionItem (React)', () => {
   it('should render with accordion-item class', () => {
     render(<AccordionItem>Item</AccordionItem>);
-    const el = screen.getByText('Item').closest('.accordion-item')!;
-    expect(el).toHaveClass('accordion-item');
+    const el = screen.getByText('Item').closest('.wg-accordion__item')!;
+    expect(el).toHaveClass('wg-accordion__item');
   });
 
   it('should render children', () => {
@@ -153,26 +153,26 @@ describe('AccordionItem (React)', () => {
 
   it('should apply open prop', () => {
     render(<AccordionItem open>Item</AccordionItem>);
-    const el = screen.getByText('Item').closest('.accordion-item')!;
+    const el = screen.getByText('Item').closest('.wg-accordion__item')!;
     expect(el).toHaveAttribute('data-state', 'open');
   });
 
   it('should apply disabled prop', () => {
     render(<AccordionItem disabled>Item</AccordionItem>);
-    const el = screen.getByText('Item').closest('.accordion-item')!;
+    const el = screen.getByText('Item').closest('.wg-accordion__item')!;
     expect(el).toHaveAttribute('data-state', 'disabled');
   });
 
   it('should have no data-state when closed and enabled', () => {
     render(<AccordionItem>Item</AccordionItem>);
-    const el = screen.getByText('Item').closest('.accordion-item')!;
+    const el = screen.getByText('Item').closest('.wg-accordion__item')!;
     expect(el).not.toHaveAttribute('data-state');
   });
 
   it('should merge className', () => {
     render(<AccordionItem className="custom-item">Item</AccordionItem>);
-    const el = screen.getByText('Item').closest('.accordion-item')!;
-    expect(el).toHaveClass('accordion-item');
+    const el = screen.getByText('Item').closest('.wg-accordion__item')!;
+    expect(el).toHaveClass('wg-accordion__item');
     expect(el).toHaveClass('custom-item');
   });
 });
@@ -180,8 +180,8 @@ describe('AccordionItem (React)', () => {
 describe('AccordionTrigger (React)', () => {
   it('should render with accordion-trigger class', () => {
     render(<AccordionTrigger>Trigger</AccordionTrigger>);
-    const el = screen.getByText('Trigger').closest('.accordion-trigger')!;
-    expect(el).toHaveClass('accordion-trigger');
+    const el = screen.getByText('Trigger').closest('.wg-accordion__trigger')!;
+    expect(el).toHaveClass('wg-accordion__trigger');
   });
 
   it('should render children', () => {
@@ -205,8 +205,8 @@ describe('AccordionTrigger (React)', () => {
 describe('AccordionContent (React)', () => {
   it('should render with accordion-content class', () => {
     render(<AccordionContent>Content body</AccordionContent>);
-    const el = screen.getByText('Content body').closest('.accordion-content')!;
-    expect(el).toHaveClass('accordion-content');
+    const el = screen.getByText('Content body').closest('.wg-accordion__content')!;
+    expect(el).toHaveClass('wg-accordion__content');
   });
 
   it('should render children', () => {
@@ -222,8 +222,8 @@ describe('AccordionContent (React)', () => {
 
   it('should merge className', () => {
     render(<AccordionContent className="custom-content">Content</AccordionContent>);
-    const el = screen.getByText('Content').closest('.accordion-content')!;
-    expect(el).toHaveClass('accordion-content');
+    const el = screen.getByText('Content').closest('.wg-accordion__content')!;
+    expect(el).toHaveClass('wg-accordion__content');
     expect(el).toHaveClass('custom-content');
   });
 });

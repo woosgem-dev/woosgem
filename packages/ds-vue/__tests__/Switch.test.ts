@@ -163,7 +163,7 @@ describe('Switch (Vue)', () => {
     it('TC-O100: class 추가 시 병합된다', () => {
       const wrapper = mount(Switch, { props: { class: 'custom-switch' } });
 
-      expect(wrapper.classes()).toContain('switch');
+      expect(wrapper.classes()).toContain('wg-switch');
       expect(wrapper.classes()).toContain('custom-switch');
     });
 

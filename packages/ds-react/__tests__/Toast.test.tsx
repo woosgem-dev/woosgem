@@ -139,7 +139,7 @@ describe('Toast (React)', () => {
     it('TC-R201: className이 병합된다', () => {
       render(<Toast className="custom-toast">Message</Toast>);
       const toast = screen.getByRole('alert');
-      expect(toast).toHaveClass('toast');
+      expect(toast).toHaveClass('wg-toast');
       expect(toast).toHaveClass('custom-toast');
     });
   });
@@ -180,7 +180,7 @@ describe('ToastContainer (React)', () => {
       <ToastContainer toasts={toasts} onDismiss={onDismiss} />
     );
 
-    const groups = container.querySelectorAll('.toast-container');
+    const groups = container.querySelectorAll('.wg-toast-container');
     expect(groups.length).toBe(2);
 
     const topRight = container.querySelector('[data-position="top-right"]');
@@ -247,7 +247,7 @@ describe('ToastContainer (React)', () => {
       <ToastContainer toasts={[]} onDismiss={onDismiss} />
     );
 
-    expect(container.querySelectorAll('.toast-container').length).toBe(0);
+    expect(container.querySelectorAll('.wg-toast-container').length).toBe(0);
   });
 });
 

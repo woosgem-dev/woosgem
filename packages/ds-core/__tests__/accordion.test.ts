@@ -44,7 +44,7 @@ describe('Accordion Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = Accordion.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'accordion',
+        class: 'wg-accordion',
         'data-type': 'single',
         'data-size': 'md',
         'data-variant': 'outline',
@@ -86,7 +86,7 @@ describe('Accordion Core', () => {
         variant: 'filled',
       });
       expect(attrs).toEqual({
-        class: 'accordion',
+        class: 'wg-accordion',
         'data-type': 'multiple',
         'data-size': 'lg',
         'data-variant': 'filled',
@@ -120,7 +120,7 @@ describe('AccordionItem Core', () => {
   it('should return default attrs when no props provided', () => {
     const attrs = AccordionItem.mapPropsToAttrs({});
     expect(attrs).toEqual({
-      class: 'accordion-item',
+      class: 'wg-accordion__item',
       'data-state': undefined,
     });
   });
@@ -158,7 +158,7 @@ describe('AccordionTrigger Core', () => {
   it('should return correct attrs', () => {
     const attrs = AccordionTrigger.mapPropsToAttrs();
     expect(attrs).toEqual({
-      class: 'accordion-trigger',
+      class: 'wg-accordion__trigger',
       type: 'button',
     });
   });
@@ -176,7 +176,7 @@ describe('AccordionContent Core', () => {
   it('should return correct attrs', () => {
     const attrs = AccordionContent.mapPropsToAttrs();
     expect(attrs).toEqual({
-      class: 'accordion-content',
+      class: 'wg-accordion__content',
       role: 'region',
     });
   });

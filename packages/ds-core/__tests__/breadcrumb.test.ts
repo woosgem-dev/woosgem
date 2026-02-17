@@ -21,7 +21,7 @@ describe('Breadcrumb Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = Breadcrumb.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'breadcrumb',
+        class: 'wg-breadcrumb',
         'data-size': 'md',
         'aria-label': 'Breadcrumb',
       });
@@ -67,7 +67,7 @@ describe('BreadcrumbItem Core', () => {
     it('should return default attrs when no props provided', () => {
       const attrs = BreadcrumbItem.mapPropsToAttrs({});
       expect(attrs).toEqual({
-        class: 'breadcrumb-item',
+        class: 'wg-breadcrumb__item',
         'data-state': undefined,
         'aria-current': undefined,
         'aria-disabled': undefined,

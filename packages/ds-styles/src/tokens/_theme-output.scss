@@ -4,7 +4,7 @@
 // This file outputs CSS Custom Properties for all themes
 // It should be imported before component styles
 
-@use 'theme-generator' as generator;
+@use "theme-generator" as generator;
 
 // Output all theme CSS Custom Properties
 @include generator.all-themes();

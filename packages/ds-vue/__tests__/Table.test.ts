@@ -98,7 +98,7 @@ describe('Table (Vue)', () => {
   describe('커스터마이즈 오버라이드', () => {
     it('TC-O100: class 추가 시 병합된다', () => {
       const wrapper = mount(Table, { props: { class: 'custom-table' } });
-      expect(wrapper.classes()).toContain('table');
+      expect(wrapper.classes()).toContain('wg-table');
       expect(wrapper.classes()).toContain('custom-table');
     });
 
@@ -115,7 +115,7 @@ describe('Table (Vue)', () => {
 describe('TableHead (Vue)', () => {
   it('should render with table-head class', () => {
     const wrapper = mount(TableHead, { slots: { default: '<tr><th>Header</th></tr>' } });
-    expect(wrapper.classes()).toContain('table-head');
+    expect(wrapper.classes()).toContain('wg-table__head');
   });
 
   it('should render slot content', () => {
@@ -127,7 +127,7 @@ describe('TableHead (Vue)', () => {
 describe('TableBody (Vue)', () => {
   it('should render with table-body class', () => {
     const wrapper = mount(TableBody, { slots: { default: '<tr><td>Body</td></tr>' } });
-    expect(wrapper.classes()).toContain('table-body');
+    expect(wrapper.classes()).toContain('wg-table__body');
   });
 
   it('should render slot content', () => {
@@ -139,7 +139,7 @@ describe('TableBody (Vue)', () => {
 describe('TableRow (Vue)', () => {
   it('should render with table-row class', () => {
     const wrapper = mount(TableRow, { slots: { default: '<td>Row</td>' } });
-    expect(wrapper.classes()).toContain('table-row');
+    expect(wrapper.classes()).toContain('wg-table__row');
   });
 
   it('should render slot content', () => {
@@ -162,7 +162,7 @@ describe('TableRow (Vue)', () => {
 describe('TableCell (Vue)', () => {
   it('should render with table-cell class', () => {
     const wrapper = mount(TableCell, { slots: { default: 'Cell' } });
-    expect(wrapper.classes()).toContain('table-cell');
+    expect(wrapper.classes()).toContain('wg-table__cell');
   });
 
   it('should render slot content', () => {
@@ -184,7 +184,7 @@ describe('TableCell (Vue)', () => {
 describe('TableHeaderCell (Vue)', () => {
   it('should render with table-header-cell class', () => {
     const wrapper = mount(TableHeaderCell, { slots: { default: 'Header' } });
-    expect(wrapper.classes()).toContain('table-header-cell');
+    expect(wrapper.classes()).toContain('wg-table__header-cell');
   });
 
   it('should render slot content', () => {

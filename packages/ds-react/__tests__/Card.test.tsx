@@ -14,7 +14,7 @@ describe('Card (React)', () => {
       const coreAttrs = CardDef.mapPropsToAttrs({});
 
       render(<Card>Content</Card>);
-      const card = screen.getByText('Content').closest('.card')!;
+      const card = screen.getByText('Content').closest('.wg-card')!;
 
       expect(card).toHaveAttribute('data-variant', coreAttrs['data-variant']);
       expect(card).toHaveAttribute('data-padding', coreAttrs['data-padding']);
@@ -25,7 +25,7 @@ describe('Card (React)', () => {
       const coreAttrs = CardDef.mapPropsToAttrs({ variant: 'elevated' });
 
       render(<Card variant="elevated">Content</Card>);
-      const card = screen.getByText('Content').closest('.card')!;
+      const card = screen.getByText('Content').closest('.wg-card')!;
 
       expect(card).toHaveAttribute('data-variant', coreAttrs['data-variant']);
     });
@@ -34,7 +34,7 @@ describe('Card (React)', () => {
       const coreAttrs = CardDef.mapPropsToAttrs({ padding: 'lg' });
 
       render(<Card padding="lg">Content</Card>);
-      const card = screen.getByText('Content').closest('.card')!;
+      const card = screen.getByText('Content').closest('.wg-card')!;
 
       expect(card).toHaveAttribute('data-padding', coreAttrs['data-padding']);
     });
@@ -52,19 +52,19 @@ describe('Card (React)', () => {
   describe('Variant 변형', () => {
     it('TC-C110: variant: outlined가 적용된다', () => {
       render(<Card variant="outlined">Content</Card>);
-      const card = screen.getByText('Content').closest('.card')!;
+      const card = screen.getByText('Content').closest('.wg-card')!;
       expect(card).toHaveAttribute('data-variant', 'outlined');
     });
 
     it('TC-C111: variant: elevated가 적용된다', () => {
       render(<Card variant="elevated">Content</Card>);
-      const card = screen.getByText('Content').closest('.card')!;
+      const card = screen.getByText('Content').closest('.wg-card')!;
       expect(card).toHaveAttribute('data-variant', 'elevated');
     });
 
     it('TC-C112: variant: filled가 적용된다', () => {
       render(<Card variant="filled">Content</Card>);
-      const card = screen.getByText('Content').closest('.card')!;
+      const card = screen.getByText('Content').closest('.wg-card')!;
       expect(card).toHaveAttribute('data-variant', 'filled');
     });
   });
@@ -72,25 +72,25 @@ describe('Card (React)', () => {
   describe('Padding 변형', () => {
     it('TC-C120: padding: none 적용된다', () => {
       render(<Card padding="none">Content</Card>);
-      const card = screen.getByText('Content').closest('.card')!;
+      const card = screen.getByText('Content').closest('.wg-card')!;
       expect(card).toHaveAttribute('data-padding', 'none');
     });
 
     it('TC-C121: padding: sm 적용된다', () => {
       render(<Card padding="sm">Content</Card>);
-      const card = screen.getByText('Content').closest('.card')!;
+      const card = screen.getByText('Content').closest('.wg-card')!;
       expect(card).toHaveAttribute('data-padding', 'sm');
     });
 
     it('TC-C122: padding: md가 적용된다', () => {
       render(<Card padding="md">Content</Card>);
-      const card = screen.getByText('Content').closest('.card')!;
+      const card = screen.getByText('Content').closest('.wg-card')!;
       expect(card).toHaveAttribute('data-padding', 'md');
     });
 
     it('TC-C123: padding: lg가 적용된다', () => {
       render(<Card padding="lg">Content</Card>);
-      const card = screen.getByText('Content').closest('.card')!;
+      const card = screen.getByText('Content').closest('.wg-card')!;
       expect(card).toHaveAttribute('data-padding', 'lg');
     });
   });
@@ -98,13 +98,13 @@ describe('Card (React)', () => {
   describe('기본값', () => {
     it('TC-C010: variant 기본값 outlined다', () => {
       render(<Card>Content</Card>);
-      const card = screen.getByText('Content').closest('.card')!;
+      const card = screen.getByText('Content').closest('.wg-card')!;
       expect(card).toHaveAttribute('data-variant', 'outlined');
     });
 
     it('TC-C011: padding 기본값 md다', () => {
       render(<Card>Content</Card>);
-      const card = screen.getByText('Content').closest('.card')!;
+      const card = screen.getByText('Content').closest('.wg-card')!;
       expect(card).toHaveAttribute('data-padding', 'md');
     });
   });
@@ -128,8 +128,8 @@ describe('Card (React)', () => {
 
     it('TC-R202: className이 병합된다', () => {
       render(<Card className="custom-card">Content</Card>);
-      const card = screen.getByText('Content').closest('.card')!;
-      expect(card).toHaveClass('card');
+      const card = screen.getByText('Content').closest('.wg-card')!;
+      expect(card).toHaveClass('wg-card');
       expect(card).toHaveClass('custom-card');
     });
   });
@@ -137,14 +137,14 @@ describe('Card (React)', () => {
   describe('커스터마이즈 오버라이드', () => {
     it('TC-O100: className이 병합된다', () => {
       render(<Card className="my-card">Content</Card>);
-      const card = screen.getByText('Content').closest('.card')!;
-      expect(card).toHaveClass('card');
+      const card = screen.getByText('Content').closest('.wg-card')!;
+      expect(card).toHaveClass('wg-card');
       expect(card).toHaveClass('my-card');
     });
 
     it('TC-O110: style 라용', () => {
       render(<Card style={{ marginTop: 16 }}>Content</Card>);
-      const card = screen.getByText('Content').closest('.card')!;
+      const card = screen.getByText('Content').closest('.wg-card')!;
       expect(card).toHaveStyle({ marginTop: '16px' });
     });
 
@@ -156,14 +156,14 @@ describe('Card (React)', () => {
     it('TC-O130: 보호 속성 $1 오버라이드 차단', () => {
       // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<Card data-variant="custom" variant="elevated">Content</Card>);
-      const card = screen.getByText('Content').closest('.card')!;
+      const card = screen.getByText('Content').closest('.wg-card')!;
       expect(card).toHaveAttribute('data-variant', 'elevated');
     });
 
     it('TC-O131: 보호 속성 $1 오버라이드 차단', () => {
       // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<Card data-padding="custom" padding="lg">Content</Card>);
-      const card = screen.getByText('Content').closest('.card')!;
+      const card = screen.getByText('Content').closest('.wg-card')!;
       expect(card).toHaveAttribute('data-padding', 'lg');
     });
   });
@@ -172,8 +172,8 @@ describe('Card (React)', () => {
 describe('CardHeader (React)', () => {
   it('should render with card-header class', () => {
     render(<CardHeader>Header</CardHeader>);
-    const header = screen.getByText('Header').closest('.card-header')!;
-    expect(header).toHaveClass('card-header');
+    const header = screen.getByText('Header').closest('.wg-card__header')!;
+    expect(header).toHaveClass('wg-card__header');
   });
 
   it('should render children', () => {
@@ -183,7 +183,7 @@ describe('CardHeader (React)', () => {
 
   it('should apply divider prop', () => {
     render(<CardHeader divider>Header</CardHeader>);
-    const header = screen.getByText('Header').closest('.card-header')!;
+    const header = screen.getByText('Header').closest('.wg-card__header')!;
     expect(header).toHaveAttribute('data-divider', 'true');
   });
 });
@@ -191,8 +191,8 @@ describe('CardHeader (React)', () => {
 describe('CardBody (React)', () => {
   it('should render with card-body class', () => {
     render(<CardBody>Body content</CardBody>);
-    const body = screen.getByText('Body content').closest('.card-body')!;
-    expect(body).toHaveClass('card-body');
+    const body = screen.getByText('Body content').closest('.wg-card__body')!;
+    expect(body).toHaveClass('wg-card__body');
   });
 
   it('should render children', () => {
@@ -204,8 +204,8 @@ describe('CardBody (React)', () => {
 describe('CardFooter (React)', () => {
   it('should render with card-footer class', () => {
     render(<CardFooter>Footer</CardFooter>);
-    const footer = screen.getByText('Footer').closest('.card-footer')!;
-    expect(footer).toHaveClass('card-footer');
+    const footer = screen.getByText('Footer').closest('.wg-card__footer')!;
+    expect(footer).toHaveClass('wg-card__footer');
   });
 
   it('should render children', () => {
@@ -215,13 +215,13 @@ describe('CardFooter (React)', () => {
 
   it('should apply divider prop', () => {
     render(<CardFooter divider>Footer</CardFooter>);
-    const footer = screen.getByText('Footer').closest('.card-footer')!;
+    const footer = screen.getByText('Footer').closest('.wg-card__footer')!;
     expect(footer).toHaveAttribute('data-divider', 'true');
   });
 
   it('should apply align prop', () => {
     render(<CardFooter align="end">Footer</CardFooter>);
-    const footer = screen.getByText('Footer').closest('.card-footer')!;
+    const footer = screen.getByText('Footer').closest('.wg-card__footer')!;
     expect(footer).toHaveAttribute('data-align', 'end');
   });
 });

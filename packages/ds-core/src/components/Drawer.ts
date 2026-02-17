@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls } from '../constants';
 
 export const DrawerPositions = ['left', 'right', 'top', 'bottom'] as const;
 export type DrawerPosition = (typeof DrawerPositions)[number];
@@ -36,7 +37,7 @@ export const Drawer = {
   mapPropsToAttrs: (props: DrawerStyleProps): DrawerAttrs => {
     const merged = { ...Drawer.defaultProps, ...filterNullish(props) };
     return {
-      class: 'drawer',
+      class: cls('drawer'),
       'data-position': merged.position,
       'data-size': merged.size,
       role: 'dialog',

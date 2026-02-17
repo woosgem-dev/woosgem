@@ -21,7 +21,7 @@ describe('Accordion (Lit)', () => {
       expect(el.getAttribute('data-type')).toBe(coreAttrs['data-type']);
       expect(el.getAttribute('data-size')).toBe(coreAttrs['data-size']);
       expect(el.getAttribute('data-variant')).toBe(coreAttrs['data-variant']);
-      expect(el.classList.contains('accordion')).toBe(true);
+      expect(el.classList.contains('wg-accordion')).toBe(true);
     });
 
     it('TC-L101: type prop이 core 결과와 일치한다', async () => {
@@ -100,7 +100,7 @@ describe('AccordionItem (Lit)', () => {
         <wg-accordion-item>Item</wg-accordion-item>
       `);
 
-      expect(el.classList.contains('accordion-item')).toBe(true);
+      expect(el.classList.contains('wg-accordion__item')).toBe(true);
     });
 
     it('TC-L201: open prop이 data-state="open"을 설정한다', async () => {
@@ -140,7 +140,7 @@ describe('AccordionTrigger (Lit)', () => {
       <wg-accordion-trigger>Trigger</wg-accordion-trigger>
     `);
 
-    expect(el.classList.contains('accordion-trigger')).toBe(true);
+    expect(el.classList.contains('wg-accordion__trigger')).toBe(true);
   });
 
   it('TC-L401: type="button" 속성이 설정된다', async () => {
@@ -166,7 +166,7 @@ describe('AccordionContent (Lit)', () => {
       <wg-accordion-content>Content body</wg-accordion-content>
     `);
 
-    expect(el.classList.contains('accordion-content')).toBe(true);
+    expect(el.classList.contains('wg-accordion__content')).toBe(true);
   });
 
   it('TC-L501: role="region" 속성이 설정된다', async () => {

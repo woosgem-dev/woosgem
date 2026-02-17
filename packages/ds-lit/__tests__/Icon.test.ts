@@ -16,7 +16,7 @@ describe('Icon (Lit)', () => {
       `);
 
       expect(el.getAttribute('data-size')).toBe(coreAttrs['data-size']);
-      expect(el.classList.contains('icon')).toBe(true);
+      expect(el.classList.contains('wg-icon')).toBe(true);
     });
 
     it('TC-L101: size prop이 core 결과와 일치한다', async () => {

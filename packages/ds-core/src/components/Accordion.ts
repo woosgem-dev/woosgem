@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls, clsEl } from '../constants';
 
 export const AccordionTypes = ['single', 'multiple'] as const;
 export type AccordionType = (typeof AccordionTypes)[number];
@@ -41,7 +42,7 @@ export const Accordion = {
   mapPropsToAttrs: (props: AccordionStyleProps): AccordionAttrs => {
     const merged = { ...Accordion.defaultProps, ...filterNullish(props) };
     return {
-      class: 'accordion',
+      class: cls('accordion'),
       'data-type': merged.type,
       'data-size': merged.size,
       'data-variant': merged.variant,
@@ -82,7 +83,7 @@ export const AccordionItem = {
     const merged = { ...AccordionItem.defaultProps, ...filterNullish(props) };
     const state = merged.open ? 'open' : merged.disabled ? 'disabled' : undefined;
     return {
-      class: 'accordion-item',
+      class: clsEl('accordion', 'item'),
       'data-state': state,
     };
   },
@@ -113,7 +114,7 @@ export const AccordionTrigger = {
 
   mapPropsToAttrs: (): AccordionTriggerAttrs => {
     return {
-      class: 'accordion-trigger',
+      class: clsEl('accordion', 'trigger'),
       type: 'button',
     };
   },
@@ -144,7 +145,7 @@ export const AccordionContent = {
 
   mapPropsToAttrs: (): AccordionContentAttrs => {
     return {
-      class: 'accordion-content',
+      class: clsEl('accordion', 'content'),
       role: 'region',
     };
   },

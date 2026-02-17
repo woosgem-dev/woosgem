@@ -186,7 +186,7 @@ describe('Button', () => {
       render(<Button className="custom-class">Button</Button>);
       const btn = screen.getByRole('button');
 
-      expect(btn).toHaveClass('btn');
+      expect(btn).toHaveClass('wg-btn');
       expect(btn).toHaveClass('custom-class');
     });
 
@@ -206,7 +206,7 @@ describe('Button', () => {
       render(<Button className="custom">Button</Button>);
       const btn = screen.getByRole('button');
 
-      expect(btn).toHaveClass('btn');
+      expect(btn).toHaveClass('wg-btn');
       expect(btn).toHaveClass('custom');
     });
 
@@ -214,7 +214,7 @@ describe('Button', () => {
       render(<Button className="a b c">Button</Button>);
       const btn = screen.getByRole('button');
 
-      expect(btn).toHaveClass('btn');
+      expect(btn).toHaveClass('wg-btn');
       expect(btn).toHaveClass('a');
       expect(btn).toHaveClass('b');
       expect(btn).toHaveClass('c');

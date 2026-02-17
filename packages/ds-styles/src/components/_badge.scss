@@ -1,6 +1,6 @@
-@use '../tokens' as tokens;
+@use "../tokens" as tokens;
 
-.badge {
+.#{tokens.$prefix}-badge {
   // Reset
   appearance: none;
   border: none;
@@ -29,19 +29,19 @@
   // ===================
   // Sizes
   // ===================
-  &[data-size='sm'] {
+  &[data-size="sm"] {
     height: 20px;
     padding: tokens.$spacing-0 tokens.$spacing-2;
     font-size: tokens.$font-size-12;
   }
 
-  &[data-size='md'] {
+  &[data-size="md"] {
     height: 28px;
     padding: tokens.$spacing-1 tokens.$spacing-3;
     font-size: tokens.$font-size-13;
   }
 
-  &[data-size='lg'] {
+  &[data-size="lg"] {
     height: 32px;
     padding: tokens.$spacing-1 tokens.$spacing-4;
     font-size: tokens.$font-size-14;
@@ -52,71 +52,71 @@
   // ===================
 
   // Solid variant (default)
-  &[data-variant='solid'] {
-    &[data-color='primary'] {
+  &[data-variant="solid"] {
+    &[data-color="primary"] {
       --wg-badge-bg: #{tokens.$primary};
       --wg-badge-color: #{tokens.$text-inverse};
     }
 
-    &[data-color='secondary'] {
+    &[data-color="secondary"] {
       --wg-badge-bg: #{tokens.$secondary};
       --wg-badge-color: #{tokens.$text-inverse};
     }
 
-    &[data-color='danger'] {
+    &[data-color="danger"] {
       --wg-badge-bg: #{tokens.$danger};
       --wg-badge-color: #{tokens.$text-inverse};
     }
 
-    &[data-color='success'] {
+    &[data-color="success"] {
       --wg-badge-bg: #{tokens.$success};
       --wg-badge-color: #{tokens.$text-inverse};
     }
 
-    &[data-color='warning'] {
+    &[data-color="warning"] {
       --wg-badge-bg: #{tokens.$warning};
       --wg-badge-color: #{tokens.$text};
     }
 
-    &[data-color='info'] {
+    &[data-color="info"] {
       --wg-badge-bg: #{tokens.$info};
       --wg-badge-color: #{tokens.$text-inverse};
     }
   }
 
   // Outline variant
-  &[data-variant='outline'] {
-    &[data-color='primary'] {
+  &[data-variant="outline"] {
+    &[data-color="primary"] {
       --wg-badge-border: #{tokens.$primary};
       --wg-badge-color: #{tokens.$primary};
       --wg-badge-bg: transparent;
     }
 
-    &[data-color='secondary'] {
+    &[data-color="secondary"] {
       --wg-badge-border: #{tokens.$secondary};
       --wg-badge-color: #{tokens.$secondary};
       --wg-badge-bg: transparent;
     }
 
-    &[data-color='danger'] {
+    &[data-color="danger"] {
       --wg-badge-border: #{tokens.$danger};
       --wg-badge-color: #{tokens.$danger};
       --wg-badge-bg: transparent;
     }
 
-    &[data-color='success'] {
+    &[data-color="success"] {
       --wg-badge-border: #{tokens.$success};
       --wg-badge-color: #{tokens.$success};
       --wg-badge-bg: transparent;
     }
 
-    &[data-color='warning'] {
+    &[data-color="warning"] {
       --wg-badge-border: #{tokens.$warning};
       --wg-badge-color: #{tokens.$warning};
       --wg-badge-bg: transparent;
     }
 
-    &[data-color='info'] {
+    &[data-color="info"] {
       --wg-badge-border: #{tokens.$info};
       --wg-badge-color: #{tokens.$info};
       --wg-badge-bg: transparent;
@@ -124,38 +124,38 @@
   }
 
   // Subtle variant (light background)
-  &[data-variant='subtle'] {
-    &[data-color='primary'] {
+  &[data-variant="subtle"] {
+    &[data-color="primary"] {
       --wg-badge-bg: #{tokens.$primary-alpha-10};
       --wg-badge-color: #{tokens.$primary};
       --wg-badge-border: transparent;
     }
 
-    &[data-color='secondary'] {
+    &[data-color="secondary"] {
       --wg-badge-bg: #{tokens.$secondary-alpha-10};
       --wg-badge-color: #{tokens.$secondary};
       --wg-badge-border: transparent;
     }
 
-    &[data-color='danger'] {
+    &[data-color="danger"] {
       --wg-badge-bg: #{tokens.$red-light};
       --wg-badge-color: #{tokens.$danger};
       --wg-badge-border: transparent;
     }
 
-    &[data-color='success'] {
+    &[data-color="success"] {
       --wg-badge-bg: #{tokens.$green-light};
       --wg-badge-color: #{tokens.$success};
       --wg-badge-border: transparent;
     }
 
-    &[data-color='warning'] {
+    &[data-color="warning"] {
       --wg-badge-bg: #{tokens.$yellow-light};
       --wg-badge-color: #{tokens.$warning};
       --wg-badge-border: transparent;
     }
 
-    &[data-color='info'] {
+    &[data-color="info"] {
       --wg-badge-bg: #{tokens.$blue-light};
       --wg-badge-color: #{tokens.$info};
       --wg-badge-border: transparent;

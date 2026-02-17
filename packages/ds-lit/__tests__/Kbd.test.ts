@@ -17,7 +17,7 @@ describe('Kbd (Lit)', () => {
 
       expect(el.getAttribute('data-size')).toBe(coreAttrs['data-size']);
       expect(el.getAttribute('data-variant')).toBe(coreAttrs['data-variant']);
-      expect(el.classList.contains('kbd')).toBe(true);
+      expect(el.classList.contains('wg-kbd')).toBe(true);
     });
 
     it('TC-L101: size prop이 core 결과와 일치한다', async () => {

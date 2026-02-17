@@ -17,7 +17,7 @@ describe('Alert (Lit)', () => {
 
       expect(el.getAttribute('data-variant')).toBe(coreAttrs['data-variant']);
       expect(el.getAttribute('data-status')).toBe(coreAttrs['data-status']);
-      expect(el.classList.contains('alert')).toBe(true);
+      expect(el.classList.contains('wg-alert')).toBe(true);
     });
 
     it('TC-L101: status prop이 core 결과와 일치한다', async () => {

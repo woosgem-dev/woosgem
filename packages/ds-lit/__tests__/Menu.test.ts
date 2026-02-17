@@ -24,7 +24,7 @@ describe('Menu (Lit)', () => {
 
       expect(el.getAttribute('data-size')).toBe(coreAttrs['data-size']);
       expect(el.getAttribute('role')).toBe(coreAttrs.role);
-      expect(el.classList.contains('menu')).toBe(true);
+      expect(el.classList.contains('wg-menu')).toBe(true);
     });
 
     it('TC-L101: size prop이 core 결과와 일치한다', async () => {
@@ -93,7 +93,7 @@ describe('MenuItem (Lit)', () => {
 
       expect(el.getAttribute('role')).toBe(coreAttrs.role);
       expect(el.getAttribute('tabindex')).toBe(coreAttrs.tabindex);
-      expect(el.classList.contains('menu-item')).toBe(true);
+      expect(el.classList.contains('wg-menu__item')).toBe(true);
     });
 
     it('TC-L201: active 상태가 core 결과와 일치한다', async () => {
@@ -148,7 +148,7 @@ describe('MenuDivider (Lit)', () => {
       `);
 
       expect(el.getAttribute('role')).toBe(coreAttrs.role);
-      expect(el.classList.contains('menu-divider')).toBe(true);
+      expect(el.classList.contains('wg-menu__divider')).toBe(true);
     });
   });
 });
@@ -165,7 +165,7 @@ describe('MenuGroup (Lit)', () => {
       `);
 
       expect(el.getAttribute('role')).toBe(coreAttrs.role);
-      expect(el.classList.contains('menu-group')).toBe(true);
+      expect(el.classList.contains('wg-menu__group')).toBe(true);
     });
   });
 });

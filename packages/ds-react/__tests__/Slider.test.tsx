@@ -15,7 +15,7 @@ describe('Slider (React)', () => {
       const coreAttrs = SliderDef.mapPropsToAttrs({});
 
       render(<Slider>Content</Slider>);
-      const el = screen.getByText('Content').closest('.slider')!;
+      const el = screen.getByText('Content').closest('.wg-slider')!;
 
       expect(el).toHaveAttribute('data-size', coreAttrs['data-size']);
       expect(el).toHaveAttribute('data-color', coreAttrs['data-color']);
@@ -27,7 +27,7 @@ describe('Slider (React)', () => {
       const coreAttrs = SliderDef.mapPropsToAttrs({ size: 'lg' });
 
       render(<Slider size="lg">Content</Slider>);
-      const el = screen.getByText('Content').closest('.slider')!;
+      const el = screen.getByText('Content').closest('.wg-slider')!;
 
       expect(el).toHaveAttribute('data-size', coreAttrs['data-size']);
     });
@@ -36,7 +36,7 @@ describe('Slider (React)', () => {
       const coreAttrs = SliderDef.mapPropsToAttrs({ color: 'danger' });
 
       render(<Slider color="danger">Content</Slider>);
-      const el = screen.getByText('Content').closest('.slider')!;
+      const el = screen.getByText('Content').closest('.wg-slider')!;
 
       expect(el).toHaveAttribute('data-color', coreAttrs['data-color']);
     });
@@ -45,7 +45,7 @@ describe('Slider (React)', () => {
       const coreAttrs = SliderDef.mapPropsToAttrs({ orientation: 'vertical' });
 
       render(<Slider orientation="vertical">Content</Slider>);
-      const el = screen.getByText('Content').closest('.slider')!;
+      const el = screen.getByText('Content').closest('.wg-slider')!;
 
       expect(el).toHaveAttribute('data-orientation', coreAttrs['data-orientation']);
     });
@@ -54,7 +54,7 @@ describe('Slider (React)', () => {
       const coreAttrs = SliderDef.mapPropsToAttrs({ disabled: true });
 
       render(<Slider disabled>Content</Slider>);
-      const el = screen.getByText('Content').closest('.slider')!;
+      const el = screen.getByText('Content').closest('.wg-slider')!;
 
       expect(el).toHaveAttribute('data-state', coreAttrs['data-state']);
       expect(el).toHaveAttribute('aria-disabled', coreAttrs['aria-disabled']);
@@ -64,19 +64,19 @@ describe('Slider (React)', () => {
   describe('Size 변형', () => {
     it('TC-C120: size: sm이 적용된다', () => {
       render(<Slider size="sm">Content</Slider>);
-      const el = screen.getByText('Content').closest('.slider')!;
+      const el = screen.getByText('Content').closest('.wg-slider')!;
       expect(el).toHaveAttribute('data-size', 'sm');
     });
 
     it('TC-C121: size: md가 적용된다', () => {
       render(<Slider size="md">Content</Slider>);
-      const el = screen.getByText('Content').closest('.slider')!;
+      const el = screen.getByText('Content').closest('.wg-slider')!;
       expect(el).toHaveAttribute('data-size', 'md');
     });
 
     it('TC-C122: size: lg가 적용된다', () => {
       render(<Slider size="lg">Content</Slider>);
-      const el = screen.getByText('Content').closest('.slider')!;
+      const el = screen.getByText('Content').closest('.wg-slider')!;
       expect(el).toHaveAttribute('data-size', 'lg');
     });
   });
@@ -84,31 +84,31 @@ describe('Slider (React)', () => {
   describe('Color 변형', () => {
     it('TC-C130: color: primary가 적용된다', () => {
       render(<Slider color="primary">Content</Slider>);
-      const el = screen.getByText('Content').closest('.slider')!;
+      const el = screen.getByText('Content').closest('.wg-slider')!;
       expect(el).toHaveAttribute('data-color', 'primary');
     });
 
     it('TC-C131: color: secondary가 적용된다', () => {
       render(<Slider color="secondary">Content</Slider>);
-      const el = screen.getByText('Content').closest('.slider')!;
+      const el = screen.getByText('Content').closest('.wg-slider')!;
       expect(el).toHaveAttribute('data-color', 'secondary');
     });
 
     it('TC-C132: color: success가 적용된다', () => {
       render(<Slider color="success">Content</Slider>);
-      const el = screen.getByText('Content').closest('.slider')!;
+      const el = screen.getByText('Content').closest('.wg-slider')!;
       expect(el).toHaveAttribute('data-color', 'success');
     });
 
     it('TC-C133: color: warning이 적용된다', () => {
       render(<Slider color="warning">Content</Slider>);
-      const el = screen.getByText('Content').closest('.slider')!;
+      const el = screen.getByText('Content').closest('.wg-slider')!;
       expect(el).toHaveAttribute('data-color', 'warning');
     });
 
     it('TC-C134: color: danger가 적용된다', () => {
       render(<Slider color="danger">Content</Slider>);
-      const el = screen.getByText('Content').closest('.slider')!;
+      const el = screen.getByText('Content').closest('.wg-slider')!;
       expect(el).toHaveAttribute('data-color', 'danger');
     });
   });
@@ -116,25 +116,25 @@ describe('Slider (React)', () => {
   describe('기본값', () => {
     it('TC-C010: size 기본값이 md이다', () => {
       render(<Slider>Content</Slider>);
-      const el = screen.getByText('Content').closest('.slider')!;
+      const el = screen.getByText('Content').closest('.wg-slider')!;
       expect(el).toHaveAttribute('data-size', 'md');
     });
 
     it('TC-C011: color 기본값이 primary이다', () => {
       render(<Slider>Content</Slider>);
-      const el = screen.getByText('Content').closest('.slider')!;
+      const el = screen.getByText('Content').closest('.wg-slider')!;
       expect(el).toHaveAttribute('data-color', 'primary');
     });
 
     it('TC-C012: orientation 기본값이 horizontal이다', () => {
       render(<Slider>Content</Slider>);
-      const el = screen.getByText('Content').closest('.slider')!;
+      const el = screen.getByText('Content').closest('.wg-slider')!;
       expect(el).toHaveAttribute('data-orientation', 'horizontal');
     });
 
     it('TC-C013: disabled 기본값이 false이다', () => {
       render(<Slider>Content</Slider>);
-      const el = screen.getByText('Content').closest('.slider')!;
+      const el = screen.getByText('Content').closest('.wg-slider')!;
       expect(el).not.toHaveAttribute('data-state');
       expect(el).not.toHaveAttribute('aria-disabled');
     });
@@ -148,8 +148,8 @@ describe('Slider (React)', () => {
 
     it('TC-R201: className이 병합된다', () => {
       render(<Slider className="custom-slider">Content</Slider>);
-      const el = screen.getByText('Content').closest('.slider')!;
-      expect(el).toHaveClass('slider');
+      const el = screen.getByText('Content').closest('.wg-slider')!;
+      expect(el).toHaveClass('wg-slider');
       expect(el).toHaveClass('custom-slider');
     });
   });
@@ -158,8 +158,8 @@ describe('Slider (React)', () => {
 describe('SliderTrack (React)', () => {
   it('should render with slider-track class', () => {
     render(<SliderTrack>Track</SliderTrack>);
-    const el = screen.getByText('Track').closest('.slider-track')!;
-    expect(el).toHaveClass('slider-track');
+    const el = screen.getByText('Track').closest('.wg-slider__track')!;
+    expect(el).toHaveClass('wg-slider__track');
   });
 
   it('should render children', () => {
@@ -169,8 +169,8 @@ describe('SliderTrack (React)', () => {
 
   it('should merge className', () => {
     render(<SliderTrack className="custom-track">Track</SliderTrack>);
-    const el = screen.getByText('Track').closest('.slider-track')!;
-    expect(el).toHaveClass('slider-track');
+    const el = screen.getByText('Track').closest('.wg-slider__track')!;
+    expect(el).toHaveClass('wg-slider__track');
     expect(el).toHaveClass('custom-track');
   });
 });
@@ -178,8 +178,8 @@ describe('SliderTrack (React)', () => {
 describe('SliderFill (React)', () => {
   it('should render with slider-fill class', () => {
     const { container } = render(<SliderFill />);
-    const el = container.querySelector('.slider-fill')!;
-    expect(el).toHaveClass('slider-fill');
+    const el = container.querySelector('.wg-slider__fill')!;
+    expect(el).toHaveClass('wg-slider__fill');
   });
 });
 
@@ -187,7 +187,7 @@ describe('SliderThumb (React)', () => {
   it('should render with slider-thumb class', () => {
     render(<SliderThumb />);
     const el = screen.getByRole('slider');
-    expect(el).toHaveClass('slider-thumb');
+    expect(el).toHaveClass('wg-slider__thumb');
   });
 
   it('should have role="slider"', () => {
@@ -214,10 +214,10 @@ describe('Slider Compound Usage (React)', () => {
       </Slider>
     );
 
-    const slider = document.querySelector('.slider')!;
-    const track = document.querySelector('.slider-track')!;
-    const fill = document.querySelector('.slider-fill')!;
-    const thumb = document.querySelector('.slider-thumb')!;
+    const slider = document.querySelector('.wg-slider')!;
+    const track = document.querySelector('.wg-slider__track')!;
+    const fill = document.querySelector('.wg-slider__fill')!;
+    const thumb = document.querySelector('.wg-slider__thumb')!;
 
     expect(slider).toBeInTheDocument();
     expect(track).toBeInTheDocument();

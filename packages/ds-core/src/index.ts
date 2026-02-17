@@ -11,7 +11,7 @@ export type {
 export { filterNullish } from './types';
 
 // Constants
-export { PROTECTED_ATTRS, PROTECTED_ATTRS_SET } from './constants';
+export { PROTECTED_ATTRS, PROTECTED_ATTRS_SET, CLASS_PREFIX, cls, clsEl } from './constants';
 
 // Components
 export {

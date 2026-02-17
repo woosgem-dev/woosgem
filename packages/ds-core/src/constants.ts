@@ -19,3 +19,16 @@ export const PROTECTED_ATTRS = [
 ] as const;
 
 export const PROTECTED_ATTRS_SET = new Set<string>(PROTECTED_ATTRS);
+
+/** Class name prefix for all WooSGem components */
+export const CLASS_PREFIX = 'wg';
+
+/** Generate a BEdM block class name */
+export function cls(block: string): string {
+  return `${CLASS_PREFIX}-${block}`;
+}
+
+/** Generate a BEdM element class name */
+export function clsEl(block: string, element: string): string {
+  return `${CLASS_PREFIX}-${block}__${element}`;
+}

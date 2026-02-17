@@ -168,22 +168,22 @@ describe('Progress', () => {
   describe('내부 구조', () => {
     it('TC-ST100: progress-track 요소가 존재한다', () => {
       const wrapper = mount(Progress);
-      expect(wrapper.find('.progress-track').exists()).toBe(true);
+      expect(wrapper.find('.wg-progress__track').exists()).toBe(true);
     });
 
     it('TC-ST101: progress-fill 요소가 존재한다', () => {
       const wrapper = mount(Progress);
-      expect(wrapper.find('.progress-fill').exists()).toBe(true);
+      expect(wrapper.find('.wg-progress__fill').exists()).toBe(true);
     });
 
     it('TC-ST102: showLabel=false이면 label이 없다', () => {
       const wrapper = mount(Progress, { props: { value: 50 } });
-      expect(wrapper.find('.progress-label').exists()).toBe(false);
+      expect(wrapper.find('.wg-progress__label').exists()).toBe(false);
     });
 
     it('TC-ST103: showLabel=true이면 label이 표시된다', () => {
       const wrapper = mount(Progress, { props: { value: 50, showLabel: true } });
-      const label = wrapper.find('.progress-label');
+      const label = wrapper.find('.wg-progress__label');
 
       expect(label.exists()).toBe(true);
       expect(label.text()).toBe('50%');
@@ -191,7 +191,7 @@ describe('Progress', () => {
 
     it('TC-ST104: showLabel=true에서 퍼센트 계산이 맞다', () => {
       const wrapper = mount(Progress, { props: { value: 3, max: 5, showLabel: true } });
-      const label = wrapper.find('.progress-label');
+      const label = wrapper.find('.wg-progress__label');
       const expected = getProgressPercentage(3, 5);
 
       expect(label.text()).toBe(`${expected}%`);
@@ -199,7 +199,7 @@ describe('Progress', () => {
 
     it('TC-ST105: showLabel=true에서 클램핑된 값의 퍼센트가 맞다', () => {
       const wrapper = mount(Progress, { props: { value: 200, max: 100, showLabel: true } });
-      const label = wrapper.find('.progress-label');
+      const label = wrapper.find('.wg-progress__label');
 
       expect(label.text()).toBe('100%');
     });
@@ -223,7 +223,7 @@ describe('Progress', () => {
         attrs: { class: 'custom-progress' },
       });
 
-      expect(wrapper.classes()).toContain('progress');
+      expect(wrapper.classes()).toContain('wg-progress');
       expect(wrapper.classes()).toContain('custom-progress');
     });
 

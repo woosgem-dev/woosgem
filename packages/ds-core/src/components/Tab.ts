@@ -1,5 +1,6 @@
 import type { ComponentDefinition } from '../types';
 import { filterNullish } from '../types';
+import { cls } from '../constants';
 
 /** Tab variant options */
 export const TabVariants = ['underline', 'filled'] as const;
@@ -58,7 +59,7 @@ export const Tab = {
   mapPropsToAttrs: (props: TabStyleProps): TabAttrs => {
     const merged = { ...Tab.defaultProps, ...filterNullish(props) };
     return {
-      class: 'tab',
+      class: cls('tab'),
       role: 'tab',
       'data-variant': merged.variant,
       'data-size': merged.size,
