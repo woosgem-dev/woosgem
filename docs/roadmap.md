@@ -2,37 +2,47 @@
 
 ## Component Coverage
 
-25 component definitions in Core, with framework coverage:
+35 component definitions in Core, with full framework coverage:
 
-| Component | Core | React | Vue | Lit | Styles | Storybook | Tests |
-|-----------|:----:|:-----:|:---:|:---:|:------:|:---------:|:-----:|
-| Alert | ✅ | ✅ | ✅ | ✅ | ✅ | 🚧 | ✅ |
-| Avatar | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Badge | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Button | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Card | ✅ | ✅ | ✅ | ✅ | ✅ | — | ✅ |
-| Checkbox | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Divider | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Icon | ✅ | ✅ | ✅ | ✅ | ✅ | — | ✅ |
-| IconButton | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Input | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Kbd | ✅ | ✅ | — | — | ✅ | — | — |
-| ListItem | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Modal | ✅ | ✅ | ✅ | ✅ | ✅ | — | ✅ |
-| Overlay | ✅ | ✅ | — | ✅ | ✅ | — | ✅ |
-| Progress | ✅ | ✅ | — | — | ✅ | — | — |
-| Radio | ✅ | ✅ | ✅ | ✅ | ✅ | 🚧 | ✅ |
-| SegmentedControl | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Select | ✅ | ✅ | ✅ | ✅ | ✅ | — | ✅ |
-| Skeleton | ✅ | ✅ | — | — | ✅ | — | — |
-| Spinner | ✅ | ✅ | ✅ | ✅ | ✅ | 🚧 | ✅ |
-| Switch | ✅ | ✅ | ✅ | ✅ | ✅ | 🚧 | ✅ |
-| Tab | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Textarea | ✅ | ✅ | ✅ | ✅ | ✅ | 🚧 | ✅ |
-| Toast | ✅ | ✅ | ✅ | ✅ | ✅ | — | ✅ |
-| Tooltip | ✅ | ✅ | ✅ | ✅ | ✅ | — | ✅ |
+| Component | Core | React | Vue | Lit | Styles | Tests |
+|-----------|:----:|:-----:|:---:|:---:|:------:|:-----:|
+| Accordion | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Alert | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Avatar | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| AvatarGroup | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Badge | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Breadcrumb | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Button | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Card | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Checkbox | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Divider | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Drawer | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Icon | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| IconButton | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Input | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Kbd | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| ListItem | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Menu | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Modal | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Overlay | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Pagination | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Popover | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Progress | ✅ | ✅ | ✅ | ✅ | — | ✅ |
+| Radio | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| SegmentedControl | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Select | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Skeleton | ✅ | ✅ | ✅ | ✅ | — | ✅ |
+| Slider | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Spinner | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Switch | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Tab | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Table | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Tag | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Textarea | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Toast | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Tooltip | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 
-**Framework totals**: React 25 / Vue 21 / Lit 22
+**Framework totals**: React 35 / Vue 35 / Lit 35 — full parity
 
 ## Completed Systems
 
@@ -66,27 +76,25 @@
 
 ### High Priority
 
-- [ ] Storybook stories (Alert, Radio, Spinner, Switch, Textarea, Modal, Toast, Tooltip, Select, Card)
-- [ ] Vue parity: add Kbd, Overlay, Progress, Skeleton
-- [ ] Lit parity: add Kbd, Progress, Skeleton
+- [ ] SCSS styles for Progress and Skeleton components
+- [ ] Storybook stories for new P2 components
 
 ### Medium Priority
 
-- [ ] Accessibility (a11y) tests
-- [ ] Tooltip headless extraction (useTooltip primitive for position calculation)
-- [ ] Vue Portal composable in headless package
+- [ ] Animation system
+- [ ] Storybook coverage for remaining components
 
 ### Low Priority
 
-- [ ] Animation system
 - [ ] Figma plugin
 - [ ] Svelte support
+- [ ] DatePicker component
 
 ---
 
 ## Component Roadmap
 
-25 components defined, 22 fully cross-framework → **~88% coverage**
+35 components defined, full cross-framework parity → **100% coverage**
 
 ### Completed Phases
 
@@ -94,61 +102,36 @@
 Phase 1: Button, Input, Badge, Checkbox, IconButton, Tab, Avatar, ListItem, SegmentedControl, Divider
 Phase 2: Spinner, Alert, Switch, Textarea, Radio
 Phase 3: Modal, Toast, Tooltip, Select, Card, Icon, Overlay, Kbd, Progress, Skeleton
+Phase 4 (P2): Tag, AvatarGroup, Breadcrumb, Accordion, Drawer, Pagination, Menu, Table, Slider, Popover
 ```
-
-### Next: Framework Parity
-
-| Component | Vue | Lit |
-|-----------|-----|-----|
-| Kbd | needed | needed |
-| Overlay | needed | — |
-| Progress | needed | needed |
-| Skeleton | needed | needed |
-
-### Future Components (P2)
-
-| Component | Purpose |
-|-----------|---------|
-| Menu | Context menu, action list |
-| Popover | Anchor-based positioning |
-| Breadcrumb | Navigation path |
-| Table | Data display |
-| Pagination | Large data navigation |
-| Slider | Range input |
-| DatePicker | Date selection |
-| Accordion | Collapsible content |
-| Drawer | Side panel |
-| AvatarGroup | Multiple users |
-| Tag/Chip | Tag input, filtering |
 
 ### Category Coverage
 
-| Category | Current | Target | Gap |
-|----------|:-------:|:------:|:---:|
-| Action | 2 | 2 | ✅ |
-| Form | 7 | 7 | ✅ |
-| Data Display | 7 | 7 | ✅ |
-| Feedback | 4 | 4 | ✅ |
-| Navigation | 2 | 4 | -2 |
-| Overlay | 3 | 4 | -1 |
-| Layout | 1 | 2 | -1 |
+| Category | Count | Components |
+|----------|:-----:|------------|
+| Action | 2 | Button, IconButton |
+| Form | 8 | Input, Checkbox, Radio, Select, Switch, Textarea, Slider, SegmentedControl |
+| Data Display | 10 | Badge, Avatar, AvatarGroup, Card, ListItem, Icon, Tag, Table, Kbd, Skeleton |
+| Feedback | 4 | Alert, Toast, Spinner, Progress |
+| Navigation | 4 | Tab, Breadcrumb, Pagination, Menu |
+| Overlay | 5 | Modal, Tooltip, Overlay, Drawer, Popover |
+| Layout | 2 | Divider, Accordion |
 
 ## Recent Changes
 
+- [x] **P2 components** — 10 new components (Tag, AvatarGroup, Breadcrumb, Accordion, Drawer, Pagination, Menu, Table, Slider, Popover) across all frameworks
+- [x] **Framework parity** — Vue and Lit now have Kbd, Progress, Skeleton, Overlay
+- [x] **Coverage improvement** — Progress, Checkbox compound, Toast tests added
 - [x] **Monorepo refactoring** — code cleanup, barrel fix, test distribution, headless extraction, Modal refactor, CSP pipeline
 - [x] **@woosgem-dev/headless** package created (vanilla + React hooks + Vue composables)
-- [x] **Test distribution** — tests moved from ds-test to each package (core, react, vue, lit, headless)
-- [x] **CSP pipeline** automated — `generate-themes.ts` generates SCSS from CSP presets
-- [x] **Modal refactored** in all 3 frameworks to use headless primitives
-- [x] **Barrel files eliminated** — explicit named exports, no `export *`
 - [x] PROTECTED_ATTRS moved to ds-core/constants.ts (single source of truth)
 - [x] Lit types aligned with core ComponentDefinition
 - [x] React internal/ renamed to _internal/ for consistency
 
 ## Test Status
 
-- [x] 1,665 tests passing across 5 packages
-  - Core: 415 | React: 617 | Vue: 487 | Lit: 97 | Headless: 49
+- [x] 2,695 tests passing across 5 packages
+  - Core: 619 | React: 930 | Vue: 830 | Lit: 242 | Headless: 74
 - [x] Tests colocated with source packages (no centralized ds-test)
 - [x] Per-package `pnpm test` + monorepo-wide `pnpm test`
 

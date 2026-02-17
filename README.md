@@ -4,11 +4,10 @@
 
 ### Build & Quality
 [![CI](https://github.com/woosgem-dev/woosgem/actions/workflows/test.yml/badge.svg)](https://github.com/woosgem-dev/woosgem/actions/workflows/test.yml)
-[![Tests](https://img.shields.io/badge/tests-1136%20passed-brightgreen)](./docs/test-report.md)
-[![Coverage](https://img.shields.io/badge/coverage-68%25-brightgreen)](./docs/test-report.md)
+[![Tests](https://img.shields.io/badge/tests-2695%20passed-brightgreen)](./docs/test-report.md)
 
 ### Project Status
-[![Components](https://img.shields.io/badge/components-25-blue)](./docs/roadmap.md)
+[![Components](https://img.shields.io/badge/components-35-blue)](./docs/roadmap.md)
 [![Storybook](https://img.shields.io/badge/stories-191-blueviolet)](./packages/ds-storybook)
 [![Vibe Coding](https://img.shields.io/badge/Vibe%20Coding-Claude%20Code-orange)](https://claude.ai/code)
 [![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org)

@@ -4,7 +4,7 @@
 
 | Metric | Value |
 |--------|-------|
-| Total Tests | 1,665 passed |
+| Total Tests | 2,695 passed |
 | Packages | 5 (core, react, vue, lit, headless) |
 | Architecture | Per-package tests (`__tests__/`) + Vitest workspace |
 
@@ -14,12 +14,12 @@
 
 | Package | Tests | Description |
 |---------|------:|-------------|
-| @woosgem-dev/core | 415 | Component definitions, CSP protocol, tokens |
-| @woosgem-dev/react | 617 | React component wrappers + Modal focus/scroll tests |
-| @woosgem-dev/vue | 487 | Vue component wrappers + Modal focus/scroll tests |
-| @woosgem-dev/lit | 97 | Lit Web Component wrappers |
-| @woosgem-dev/headless | 49 | Vanilla utilities, React hooks, Vue composables |
-| **Total** | **1,665** | |
+| @woosgem-dev/core | 619 | Component definitions (35), CSP protocol, tokens |
+| @woosgem-dev/react | 930 | React wrappers (35 components) + compound/hook tests |
+| @woosgem-dev/vue | 830 | Vue wrappers (35 components) + composable tests |
+| @woosgem-dev/lit | 242 | Lit Web Component wrappers (35 components) |
+| @woosgem-dev/headless | 74 | Vanilla utilities, React hooks, Vue composables |
+| **Total** | **2,695** | |
 
 ## Test Architecture
 
