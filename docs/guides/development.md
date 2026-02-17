@@ -39,7 +39,7 @@ pnpm --filter @woosgem/ds-storybook dev
 3. **Vue wrapper**: `packages/ds-vue/src/ComponentName.ts`
 4. **SCSS styles**: `packages/ds-styles/src/components/_component-name.scss`
 5. **Stories**: `packages/ds-storybook/src/stories/ComponentName.stories.tsx`
-6. **Tests**: `packages/ds-test/src/{core,react,vue}/ComponentName.test.ts`
+6. **Tests**: `packages/ds-{core,react,vue,lit}/__tests__/ComponentName.test.ts`
 
 ## Project Structure
 
@@ -54,7 +54,7 @@ woosgem/
 │   ├── ds-vue/             # Vue wrappers
 │   ├── ds-styles/          # SCSS styles
 │   ├── ds-icons/           # SVG icons
-│   ├── ds-test/            # Consolidated test suite
+│   ├── ds-headless/        # Headless primitives
 │   ├── ds-storybook/       # Storybook
 │   └── utils/              # Utilities
 ├── scripts/                 # Build scripts

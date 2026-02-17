@@ -4,14 +4,14 @@ WooSGem is a personal monorepo containing a multi-framework design system and ut
 
 **Packages (GitHub Packages @woosgem-dev):**
 - `@woosgem-dev/core` - Component definitions + CSP
+- `@woosgem-dev/headless` - Headless primitives (vanilla + React hooks + Vue composables)
 - `@woosgem-dev/styles` - SCSS styles & themes
-- `@woosgem-dev/react` - React wrappers
-- `@woosgem-dev/vue` - Vue wrappers
-- `@woosgem-dev/lit` - Lit (Web Components) wrappers
+- `@woosgem-dev/react` - React wrappers (25 components)
+- `@woosgem-dev/vue` - Vue wrappers (25 components)
+- `@woosgem-dev/lit` - Lit Web Components (25 components)
 - `@woosgem-dev/utils` - Utilities
 - `@woosgem-dev/icons` - Pure SVG icon assets (private)
 - `@woosgem-dev/storybook` - Storybook (internal)
-- `@woosgem-dev/test` - Test suites (internal)
 
 ## Quick Commands
 

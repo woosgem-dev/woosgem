@@ -109,8 +109,8 @@ function main(): void {
         : '-';
 
       report = report.replace(
-        /\| @woosgem\/ds-test \| .+ \| .+ \|/,
-        `| @woosgem/ds-test | ${passed} passed | ${totalCoverage} |`
+        /\| \*\*Total\*\* \| \*\*[\d,]+ passed\*\* \| \|/,
+        `| **Total** | **${passed} passed** | |`
       );
     }
 

@@ -42,22 +42,22 @@ docs/test-cases/
 
 ## 테스트 코드 위치
 
-모든 테스트 파일은 `@woosgem/ds-test` 패키지 내부에서 통합 관리됩니다.
+테스트는 각 패키지에 colocate되어 있습니다.
 
 ```
-packages/ds-test/src/
-├── core/       # ds-core 로직 테스트
-├── react/      # ds-react 래퍼 테스트
-└── vue/        # ds-vue 래퍼 테스트
+packages/ds-core/__tests__/       # Core 로직 테스트
+packages/ds-react/__tests__/      # React 래퍼 테스트
+packages/ds-vue/__tests__/        # Vue 래퍼 테스트
+packages/ds-lit/__tests__/        # Lit 래퍼 테스트
+packages/ds-headless/__tests__/   # Headless 유틸리티 테스트
 ```
 
 ## 테스트 실행
 
 ```bash
-pnpm test:all                # 전체 테스트 실행
+pnpm test                    # 전체 테스트 실행
+pnpm test --filter ds-react  # 특정 패키지만 실행
 pnpm test:dashboard          # 테스트 실행 및 대시보드 업데이트
-pnpm test:coverage           # 커버리지 측정
-pnpm test:watch              # Watch 모드
 ```
 
 빌드 과정 없이 소스 코드를 직접 참조하여 테스트가 수행되므로 빠른 피드백이 가능합니다.

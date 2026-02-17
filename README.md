@@ -264,13 +264,13 @@ pnpm test:all
 woosgem/
 ├── packages/
 │   ├── ds-core/      # 컴포넌트 정의 + CSP + 토큰 시스템
+│   ├── ds-headless/  # Headless primitives (vanilla + React hooks + Vue composables)
 │   ├── ds-react/     # React 컴포넌트 (25개)
-│   ├── ds-vue/       # Vue 컴포넌트 (21개)
-│   ├── ds-lit/       # Lit Web Components (22개)
+│   ├── ds-vue/       # Vue 컴포넌트 (25개)
+│   ├── ds-lit/       # Lit Web Components (25개)
 │   ├── ds-styles/    # SCSS 스타일 및 테마 (default/dark)
 │   ├── ds-icons/     # SVG 아이콘 에셋 (sm/md/lg)
-│   ├── ds-test/      # 통합 테스트 스위트 (1,136개 테스트)
-│   ├── ds-storybook/ # Storybook (191개 스토리)
+│   ├── ds-storybook/ # Storybook
 │   └── utils/        # 유틸리티 함수
 ├── turbo.json         # Turborepo 설정
 └── pnpm-workspace.yaml
@@ -284,7 +284,7 @@ woosgem/
 2. `packages/ds-styles/src/components`에 스타일 추가
 3. `packages/ds-react/src`, `packages/ds-vue/src`, `packages/ds-lit/src`에 프레임워크별 구현 추가
 4. `packages/ds-storybook/src/stories`에 스토리 추가
-5. `packages/ds-test/src`에 테스트 추가
+5. 각 패키지의 `__tests__/`에 테스트 추가
 
 ### 새 테마 추가 (CSP 사용)
 

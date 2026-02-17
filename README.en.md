@@ -264,13 +264,13 @@ pnpm test:all
 woosgem/
 ├── packages/
 │   ├── ds-core/      # Component definitions + CSP + token system
+│   ├── ds-headless/  # Headless primitives (vanilla + React hooks + Vue composables)
 │   ├── ds-react/     # React components (25)
-│   ├── ds-vue/       # Vue components (21)
-│   ├── ds-lit/       # Lit Web Components (22)
+│   ├── ds-vue/       # Vue components (25)
+│   ├── ds-lit/       # Lit Web Components (25)
 │   ├── ds-styles/    # SCSS styles and themes (default/dark)
 │   ├── ds-icons/     # SVG icon assets (sm/md/lg)
-│   ├── ds-test/      # Consolidated test suite (1,136 tests)
-│   ├── ds-storybook/ # Storybook (191 stories)
+│   ├── ds-storybook/ # Storybook
 │   └── utils/        # Utility functions
 ├── turbo.json         # Turborepo configuration
 └── pnpm-workspace.yaml
@@ -284,7 +284,7 @@ woosgem/
 2. Add styles in `packages/ds-styles/src/components`
 3. Add framework implementations in `packages/ds-react/src`, `packages/ds-vue/src`, and `packages/ds-lit/src`
 4. Add stories in `packages/ds-storybook/src/stories`
-5. Add tests in `packages/ds-test/src`
+5. Add tests in each package's `__tests__/` directory
 
 ### Adding a New Theme (Using CSP)
 
