@@ -35,8 +35,8 @@ export type CardProps = Prettify<
  *   <p>Card content here</p>
  * </Card>
  *
- * <!-- Elevated card with large padding -->
- * <Card variant="elevated" padding="lg">
+ * <!-- Large card with elevated variant -->
+ * <Card variant="elevated" size="lg">
  *   <p>Elevated card content</p>
  * </Card>
  *

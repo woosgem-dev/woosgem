@@ -16,10 +16,10 @@ const meta: Meta = {
       description: 'Visual variant of the card',
       table: { category: 'Style' },
     },
-    padding: {
+    size: {
       control: 'select',
-      options: ['none', 'sm', 'md', 'lg'],
-      description: 'Inner padding size',
+      options: ['sm', 'md', 'lg'],
+      description: 'Card size (controls padding, border-radius, typography, gap)',
       table: { category: 'Style' },
     },
     hoverable: {
@@ -41,10 +41,10 @@ type Story = StoryObj;
 export const Default: Story = {
   args: {
     variant: 'outlined',
-    padding: 'md',
+    size: 'md',
   },
   render: (args) => html`
-    <wg-card variant=${args.variant} padding=${args.padding}>
+    <wg-card variant=${args.variant} size=${args.size}>
       <div>
         <h3 style="margin: 0 0 8px; font-size: 16px; font-weight: 600">Card Title</h3>
         <p style="margin: 0; color: var(--wg-color-text-secondary)">
@@ -74,22 +74,17 @@ export const Variants: Story = {
   `,
 };
 
-export const Paddings: Story = {
+export const Sizes: Story = {
   render: () => html`
     <div style="display: flex; flex-direction: column; gap: 16px; max-width: 600px">
-      <wg-card padding="none">
-        <div style="padding: 12px; background: var(--wg-color-primary-alpha-10)">
-          <strong>None:</strong> No padding (useful for custom layouts)
-        </div>
+      <wg-card size="sm">
+        <strong>Small:</strong> Compact size for dense layouts
       </wg-card>
-      <wg-card padding="sm">
-        <strong>Small:</strong> Compact padding for dense layouts
-      </wg-card>
-      <wg-card padding="md">
+      <wg-card size="md">
         <strong>Medium:</strong> Default comfortable spacing
       </wg-card>
-      <wg-card padding="lg">
-        <strong>Large:</strong> Spacious padding for emphasis
+      <wg-card size="lg">
+        <strong>Large:</strong> Spacious size for emphasis
       </wg-card>
     </div>
   `,
@@ -143,19 +138,19 @@ export const Clickable: Story = {
 export const WithHeader: Story = {
   render: () => html`
     <div style="display: flex; flex-direction: column; gap: 16px; max-width: 600px">
-      <wg-card padding="none">
-        <wg-card-header style="padding: 16px">
+      <wg-card>
+        <wg-card-header style="size: 16px">
           <h3 style="margin: 0; font-size: 18px; font-weight: 600">Card with Header</h3>
         </wg-card-header>
-        <div style="padding: 16px">
+        <div style="size: 16px">
           <p style="margin: 0">The header section is separate from the body content. No divider by default.</p>
         </div>
       </wg-card>
-      <wg-card padding="none">
-        <wg-card-header ?divider=${true} style="padding: 16px">
+      <wg-card>
+        <wg-card-header ?divider=${true} style="size: 16px">
           <h3 style="margin: 0; font-size: 18px; font-weight: 600">Header with Divider</h3>
         </wg-card-header>
-        <div style="padding: 16px">
+        <div style="size: 16px">
           <p style="margin: 0">Add divider prop to show a separator line below the header.</p>
         </div>
       </wg-card>
@@ -166,22 +161,22 @@ export const WithHeader: Story = {
 export const WithFooter: Story = {
   render: () => html`
     <div style="display: flex; flex-direction: column; gap: 16px; max-width: 600px">
-      <wg-card padding="none">
-        <div style="padding: 16px">
+      <wg-card>
+        <div style="size: 16px">
           <h3 style="margin: 0 0 8px; font-size: 18px; font-weight: 600">Card with Footer</h3>
           <p style="margin: 0">Content area with action buttons in the footer.</p>
         </div>
-        <wg-card-footer style="padding: 12px 16px">
+        <wg-card-footer style="size: 12px 16px">
           <wg-button size="sm" variant="ghost">Cancel</wg-button>
           <wg-button size="sm">Confirm</wg-button>
         </wg-card-footer>
       </wg-card>
-      <wg-card padding="none">
-        <div style="padding: 16px">
+      <wg-card>
+        <div style="size: 16px">
           <h3 style="margin: 0 0 8px; font-size: 18px; font-weight: 600">Footer with Divider</h3>
           <p style="margin: 0">Add divider prop to separate footer from body.</p>
         </div>
-        <wg-card-footer ?divider=${true} align="end" style="padding: 12px 16px">
+        <wg-card-footer ?divider=${true} align="end" style="size: 12px 16px">
           <wg-button size="sm" variant="outline">Cancel</wg-button>
           <wg-button size="sm">Submit</wg-button>
         </wg-card-footer>
@@ -194,30 +189,30 @@ export const FooterAlignment: Story = {
   name: 'Footer Alignment Options',
   render: () => html`
     <div style="display: flex; flex-direction: column; gap: 16px; max-width: 600px">
-      <wg-card padding="none">
-        <div style="padding: 16px"><strong>Align Start (default)</strong></div>
-        <wg-card-footer ?divider=${true} align="start" style="padding: 12px 16px">
+      <wg-card>
+        <div style="size: 16px"><strong>Align Start (default)</strong></div>
+        <wg-card-footer ?divider=${true} align="start" style="size: 12px 16px">
           <wg-button size="sm">Left</wg-button>
           <wg-button size="sm" variant="outline">Button</wg-button>
         </wg-card-footer>
       </wg-card>
-      <wg-card padding="none">
-        <div style="padding: 16px"><strong>Align Center</strong></div>
-        <wg-card-footer ?divider=${true} align="center" style="padding: 12px 16px">
+      <wg-card>
+        <div style="size: 16px"><strong>Align Center</strong></div>
+        <wg-card-footer ?divider=${true} align="center" style="size: 12px 16px">
           <wg-button size="sm">Center</wg-button>
           <wg-button size="sm" variant="outline">Button</wg-button>
         </wg-card-footer>
       </wg-card>
-      <wg-card padding="none">
-        <div style="padding: 16px"><strong>Align End</strong></div>
-        <wg-card-footer ?divider=${true} align="end" style="padding: 12px 16px">
+      <wg-card>
+        <div style="size: 16px"><strong>Align End</strong></div>
+        <wg-card-footer ?divider=${true} align="end" style="size: 12px 16px">
           <wg-button size="sm" variant="outline">Cancel</wg-button>
           <wg-button size="sm">Confirm</wg-button>
         </wg-card-footer>
       </wg-card>
-      <wg-card padding="none">
-        <div style="padding: 16px"><strong>Align Between (space-between)</strong></div>
-        <wg-card-footer ?divider=${true} align="between" style="padding: 12px 16px">
+      <wg-card>
+        <div style="size: 16px"><strong>Align Between (space-between)</strong></div>
+        <wg-card-footer ?divider=${true} align="between" style="size: 12px 16px">
           <wg-button size="sm" variant="ghost">Delete</wg-button>
           <div style="display: flex; gap: 8px">
             <wg-button size="sm" variant="outline">Cancel</wg-button>
@@ -233,12 +228,12 @@ export const FullStructure: Story = {
   name: 'Complete Card Structure',
   render: () => html`
     <div style="display: flex; gap: 16px; flex-wrap: wrap; max-width: 900px">
-      <wg-card variant="outlined" padding="none" style="flex: 1 1 350px">
-        <wg-card-header ?divider=${true} style="padding: 16px">
+      <wg-card variant="outlined" style="flex: 1 1 350px">
+        <wg-card-header ?divider=${true} style="size: 16px">
           <h3 style="margin: 0; font-size: 18px; font-weight: 600">User Profile</h3>
           <p style="margin: 4px 0 0; font-size: 14px; color: var(--wg-color-text-secondary)">Complete your profile information</p>
         </wg-card-header>
-        <wg-card-body style="padding: 16px">
+        <wg-card-body style="size: 16px">
           <div style="display: flex; flex-direction: column; gap: 12px">
             <div>
               <strong style="display: block; margin-bottom: 4px; font-size: 14px">Name</strong>
@@ -254,16 +249,16 @@ export const FullStructure: Story = {
             </div>
           </div>
         </wg-card-body>
-        <wg-card-footer ?divider=${true} align="end" style="padding: 12px 16px">
+        <wg-card-footer ?divider=${true} align="end" style="size: 12px 16px">
           <wg-button size="sm" variant="outline">Cancel</wg-button>
           <wg-button size="sm">Save Changes</wg-button>
         </wg-card-footer>
       </wg-card>
-      <wg-card variant="elevated" padding="none" style="flex: 1 1 350px">
-        <wg-card-header ?divider=${true} style="padding: 16px">
+      <wg-card variant="elevated" style="flex: 1 1 350px">
+        <wg-card-header ?divider=${true} style="size: 16px">
           <h3 style="margin: 0; font-size: 18px; font-weight: 600">Notification Settings</h3>
         </wg-card-header>
-        <wg-card-body style="padding: 16px">
+        <wg-card-body style="size: 16px">
           <div style="display: flex; flex-direction: column; gap: 12px; font-size: 14px">
             <label style="display: flex; align-items: center; gap: 8px">
               <input type="checkbox" checked /> Email notifications
@@ -276,7 +271,7 @@ export const FullStructure: Story = {
             </label>
           </div>
         </wg-card-body>
-        <wg-card-footer ?divider=${true} align="between" style="padding: 12px 16px">
+        <wg-card-footer ?divider=${true} align="between" style="size: 12px 16px">
           <wg-button size="sm" variant="ghost">Reset to Default</wg-button>
           <wg-button size="sm">Apply</wg-button>
         </wg-card-footer>
@@ -317,36 +312,36 @@ export const RealWorldExample: Story = {
   name: 'Real World: Product Card',
   render: () => html`
     <div style="display: flex; gap: 16px; flex-wrap: wrap; max-width: 900px">
-      <wg-card variant="outlined" padding="none" ?hoverable=${true} style="flex: 1 1 280px">
+      <wg-card variant="outlined" ?hoverable=${true} style="flex: 1 1 280px">
         <div style="height: 180px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 48px">\u{1F3A7}</div>
-        <wg-card-body style="padding: 16px">
+        <wg-card-body style="size: 16px">
           <h3 style="margin: 0 0 8px; font-size: 18px; font-weight: 600">Wireless Headphones</h3>
           <p style="margin: 0 0 12px; font-size: 14px; color: var(--wg-color-text-secondary)">Premium sound quality with active noise cancellation</p>
           <div style="font-size: 24px; font-weight: 700; color: var(--wg-color-primary)">$299</div>
         </wg-card-body>
-        <wg-card-footer style="padding: 12px 16px">
+        <wg-card-footer style="size: 12px 16px">
           <wg-button ?fullWidth=${true}>Add to Cart</wg-button>
         </wg-card-footer>
       </wg-card>
-      <wg-card variant="elevated" padding="none" ?hoverable=${true} style="flex: 1 1 280px">
+      <wg-card variant="elevated" ?hoverable=${true} style="flex: 1 1 280px">
         <div style="height: 180px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 48px">\u231A</div>
-        <wg-card-body style="padding: 16px">
+        <wg-card-body style="size: 16px">
           <h3 style="margin: 0 0 8px; font-size: 18px; font-weight: 600">Smart Watch Pro</h3>
           <p style="margin: 0 0 12px; font-size: 14px; color: var(--wg-color-text-secondary)">Track your fitness goals and stay connected</p>
           <div style="font-size: 24px; font-weight: 700; color: var(--wg-color-primary)">$449</div>
         </wg-card-body>
-        <wg-card-footer style="padding: 12px 16px">
+        <wg-card-footer style="size: 12px 16px">
           <wg-button ?fullWidth=${true}>Add to Cart</wg-button>
         </wg-card-footer>
       </wg-card>
-      <wg-card variant="outlined" padding="none" ?hoverable=${true} style="flex: 1 1 280px">
+      <wg-card variant="outlined" ?hoverable=${true} style="flex: 1 1 280px">
         <div style="height: 180px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 48px">\u{1F4F1}</div>
-        <wg-card-body style="padding: 16px">
+        <wg-card-body style="size: 16px">
           <h3 style="margin: 0 0 8px; font-size: 18px; font-weight: 600">Latest Smartphone</h3>
           <p style="margin: 0 0 12px; font-size: 14px; color: var(--wg-color-text-secondary)">Experience next-gen performance and camera</p>
           <div style="font-size: 24px; font-weight: 700; color: var(--wg-color-primary)">$999</div>
         </wg-card-body>
-        <wg-card-footer style="padding: 12px 16px">
+        <wg-card-footer style="size: 12px 16px">
           <wg-button ?fullWidth=${true}>Add to Cart</wg-button>
         </wg-card-footer>
       </wg-card>

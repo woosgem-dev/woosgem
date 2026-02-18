@@ -171,7 +171,7 @@ export type {
   // Card
   CardStyleProps,
   CardVariant,
-  CardPadding,
+  CardSize,
   CardHeaderStyleProps,
   CardBodyStyleProps,
   CardFooterStyleProps,

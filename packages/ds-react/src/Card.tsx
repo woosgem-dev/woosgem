@@ -21,10 +21,10 @@ export type CardProps = Prettify<
   CardStyleProps &
     Omit<
       ComponentPropsWithoutRef<'div'>,
-      keyof CardStyleProps | 'data-variant' | 'data-padding' | 'data-hoverable' | 'data-clickable'
+      keyof CardStyleProps | 'data-variant' | 'data-size' | 'data-hoverable' | 'data-clickable'
     > & {
       'data-variant'?: never;
-      'data-padding'?: never;
+      'data-size'?: never;
       'data-hoverable'?: never;
       'data-clickable'?: never;
       /** Click handler for clickable cards */
@@ -47,8 +47,8 @@ export type CardRef = HTMLDivElement;
  *   <p>Card content here</p>
  * </Card>
  *
- * // Elevated card with large padding
- * <Card variant="elevated" padding="lg">
+ * // Large card with elevated variant
+ * <Card variant="elevated" size="lg">
  *   <p>Elevated card content</p>
  * </Card>
  *

@@ -12,7 +12,7 @@
 
   // Visual
   background-color: var(--wg-card-bg, #{tokens.$background});
-  border-radius: tokens.$radius-12;
+  border-radius: var(--wg-card-radius, #{tokens.$radius-12});
 
   // Misc
   transition:
@@ -40,22 +40,33 @@
   }
 
   // ===================
-  // Padding
+  // Size
   // ===================
-  &[data-padding="none"] {
-    --wg-card-padding: 0;
-  }
-
-  &[data-padding="sm"] {
+  &[data-size="sm"] {
     --wg-card-padding: #{tokens.$spacing-3};
+    --wg-card-radius: #{tokens.$radius-8};
+    --wg-card-header-font-size: #{tokens.$font-size-14};
+    --wg-card-body-font-size: #{tokens.$font-size-13};
+    --wg-card-body-line-height: #{tokens.$line-height-normal};
+    --wg-card-footer-gap: #{tokens.$spacing-2};
   }
 
-  &[data-padding="md"] {
+  &[data-size="md"] {
     --wg-card-padding: #{tokens.$spacing-4};
+    --wg-card-radius: #{tokens.$radius-12};
+    --wg-card-header-font-size: #{tokens.$font-size-16};
+    --wg-card-body-font-size: #{tokens.$font-size-14};
+    --wg-card-body-line-height: #{tokens.$line-height-normal};
+    --wg-card-footer-gap: #{tokens.$spacing-2};
   }
 
-  &[data-padding="lg"] {
+  &[data-size="lg"] {
     --wg-card-padding: #{tokens.$spacing-6};
+    --wg-card-radius: #{tokens.$radius-16};
+    --wg-card-header-font-size: #{tokens.$font-size-20};
+    --wg-card-body-font-size: #{tokens.$font-size-16};
+    --wg-card-body-line-height: #{tokens.$line-height-relaxed};
+    --wg-card-footer-gap: #{tokens.$spacing-3};
   }
 
   // Default content padding (when not using compound components)
@@ -130,7 +141,7 @@
 .#{tokens.$prefix}-card__header {
   padding: var(--wg-card-padding, #{tokens.$spacing-4});
   font-weight: tokens.$font-weight-semibold;
-  font-size: tokens.$font-size-16;
+  font-size: var(--wg-card-header-font-size, #{tokens.$font-size-16});
   line-height: tokens.$line-height-tight;
 
   &[data-divider] {
@@ -151,8 +162,8 @@
 // ============================================
 .#{tokens.$prefix}-card__body {
   padding: var(--wg-card-padding, #{tokens.$spacing-4});
-  font-size: tokens.$font-size-14;
-  line-height: tokens.$line-height-normal;
+  font-size: var(--wg-card-body-font-size, #{tokens.$font-size-14});
+  line-height: var(--wg-card-body-line-height, #{tokens.$line-height-normal});
 }
 
 // ============================================
@@ -161,7 +172,7 @@
 .#{tokens.$prefix}-card__footer {
   display: flex;
   align-items: center;
-  gap: tokens.$spacing-2;
+  gap: var(--wg-card-footer-gap, #{tokens.$spacing-2});
   padding: var(--wg-card-padding, #{tokens.$spacing-4});
 
   &[data-divider] {

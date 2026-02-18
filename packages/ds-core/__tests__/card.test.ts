@@ -5,7 +5,7 @@ import {
   CardBody,
   CardFooter,
   CardVariants,
-  CardPaddings,
+  CardSizes,
   CardFooterAligns,
 } from '@woosgem-dev/core';
 
@@ -20,7 +20,7 @@ describe('Card Core', () => {
     it('should have correct default props', () => {
       expect(Card.defaultProps).toEqual({
         variant: 'outlined',
-        padding: 'md',
+        size: 'md',
         hoverable: false,
         clickable: false,
       });
@@ -32,8 +32,8 @@ describe('Card Core', () => {
       expect(CardVariants).toEqual(['outlined', 'elevated', 'filled']);
     });
 
-    it('should have correct padding options', () => {
-      expect(CardPaddings).toEqual(['none', 'sm', 'md', 'lg']);
+    it('should have correct size options', () => {
+      expect(CardSizes).toEqual(['sm', 'md', 'lg']);
     });
 
     it('should have correct footer align options', () => {
@@ -47,7 +47,7 @@ describe('Card Core', () => {
       expect(attrs).toEqual({
         class: 'wg-card',
         'data-variant': 'outlined',
-        'data-padding': 'md',
+        'data-size': 'md',
         'data-hoverable': undefined,
         'data-clickable': undefined,
         role: undefined,
@@ -62,10 +62,10 @@ describe('Card Core', () => {
       }
     });
 
-    it('should apply padding prop', () => {
-      for (const padding of CardPaddings) {
-        const attrs = Card.mapPropsToAttrs({ padding });
-        expect(attrs['data-padding']).toBe(padding);
+    it('should apply size prop', () => {
+      for (const size of CardSizes) {
+        const attrs = Card.mapPropsToAttrs({ size });
+        expect(attrs['data-size']).toBe(size);
       }
     });
 
@@ -98,22 +98,22 @@ describe('Card Core', () => {
     });
 
     it('should use default values for undefined props', () => {
-      const attrs = Card.mapPropsToAttrs({ variant: undefined, padding: undefined });
+      const attrs = Card.mapPropsToAttrs({ variant: undefined, size: undefined });
       expect(attrs['data-variant']).toBe('outlined');
-      expect(attrs['data-padding']).toBe('md');
+      expect(attrs['data-size']).toBe('md');
     });
 
     it('should combine multiple props', () => {
       const attrs = Card.mapPropsToAttrs({
         variant: 'elevated',
-        padding: 'lg',
+        size: 'lg',
         hoverable: true,
         clickable: true,
       });
       expect(attrs).toEqual({
         class: 'wg-card',
         'data-variant': 'elevated',
-        'data-padding': 'lg',
+        'data-size': 'lg',
         'data-hoverable': true,
         'data-clickable': true,
         role: 'button',

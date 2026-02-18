@@ -6,9 +6,9 @@ import { cls, clsEl } from '../constants';
 export const CardVariants = ['outlined', 'elevated', 'filled'] as const;
 export type CardVariant = (typeof CardVariants)[number];
 
-/** Card padding options */
-export const CardPaddings = ['none', 'sm', 'md', 'lg'] as const;
-export type CardPadding = (typeof CardPaddings)[number];
+/** Card size options */
+export const CardSizes = ['sm', 'md', 'lg'] as const;
+export type CardSize = (typeof CardSizes)[number];
 
 /** Footer alignment options */
 export const CardFooterAligns = ['start', 'center', 'end', 'between'] as const;
@@ -18,8 +18,8 @@ export type CardFooterAlign = (typeof CardFooterAligns)[number];
 export interface CardStyleProps {
   /** Visual variant */
   variant?: CardVariant;
-  /** Inner padding */
-  padding?: CardPadding;
+  /** Size (controls padding, border-radius, typography, gap) */
+  size?: CardSize;
   /** Show hover effect */
   hoverable?: boolean;
   /** Act as clickable button */
@@ -30,7 +30,7 @@ export interface CardStyleProps {
 export interface CardAttrs {
   class: string;
   'data-variant': CardVariant;
-  'data-padding': CardPadding;
+  'data-size': CardSize;
   'data-hoverable'?: boolean | undefined;
   'data-clickable'?: boolean | undefined;
   role?: 'button' | undefined;
@@ -43,14 +43,14 @@ export const Card = {
 
   defaultProps: {
     variant: 'outlined',
-    padding: 'md',
+    size: 'md',
     hoverable: false,
     clickable: false,
   },
 
   propTypes: {
     variant: CardVariants,
-    padding: CardPaddings,
+    size: CardSizes,
   },
 
   mapPropsToAttrs: (props: CardStyleProps): CardAttrs => {
@@ -58,7 +58,7 @@ export const Card = {
     return {
       class: cls('card'),
       'data-variant': merged.variant,
-      'data-padding': merged.padding,
+      'data-size': merged.size,
       'data-hoverable': merged.hoverable || merged.clickable || undefined,
       'data-clickable': merged.clickable || undefined,
       role: merged.clickable ? 'button' : undefined,

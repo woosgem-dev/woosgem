@@ -10,7 +10,7 @@ describe('Card (Vue)', () => {
       const wrapper = mount(Card, { slots: { default: 'Content' } });
 
       expect(wrapper.attributes('data-variant')).toBe(coreAttrs['data-variant']);
-      expect(wrapper.attributes('data-padding')).toBe(coreAttrs['data-padding']);
+      expect(wrapper.attributes('data-size')).toBe(coreAttrs['data-size']);
       expect(wrapper.classes()).toContain(coreAttrs.class);
     });
 
@@ -22,11 +22,11 @@ describe('Card (Vue)', () => {
       expect(wrapper.attributes('data-variant')).toBe('elevated');
     });
 
-    it('TC-V102: padding prop이 core 결과와 일치한다', () => {
-      const coreAttrs = CardDef.mapPropsToAttrs({ padding: 'lg' });
-      const wrapper = mount(Card, { props: { padding: 'lg' } });
+    it('TC-V102: size prop이 core 결과와 일치한다', () => {
+      const coreAttrs = CardDef.mapPropsToAttrs({ size: 'lg' });
+      const wrapper = mount(Card, { props: { size: 'lg' } });
 
-      expect(wrapper.attributes('data-padding')).toBe(coreAttrs['data-padding']);
+      expect(wrapper.attributes('data-size')).toBe(coreAttrs['data-size']);
     });
 
     it('TC-V103: clickable prop이 core 결과와 일치한다', () => {
@@ -54,25 +54,20 @@ describe('Card (Vue)', () => {
     });
   });
 
-  describe('Padding 변형', () => {
-    it('TC-C120: padding: none 적용된다', () => {
-      const wrapper = mount(Card, { props: { padding: 'none' } });
-      expect(wrapper.attributes('data-padding')).toBe('none');
+  describe('Size 변형', () => {
+    it('TC-C121: size: sm 적용된다', () => {
+      const wrapper = mount(Card, { props: { size: 'sm' } });
+      expect(wrapper.attributes('data-size')).toBe('sm');
     });
 
-    it('TC-C121: padding: sm 적용된다', () => {
-      const wrapper = mount(Card, { props: { padding: 'sm' } });
-      expect(wrapper.attributes('data-padding')).toBe('sm');
+    it('TC-C122: size: md가 적용된다', () => {
+      const wrapper = mount(Card, { props: { size: 'md' } });
+      expect(wrapper.attributes('data-size')).toBe('md');
     });
 
-    it('TC-C122: padding: md가 적용된다', () => {
-      const wrapper = mount(Card, { props: { padding: 'md' } });
-      expect(wrapper.attributes('data-padding')).toBe('md');
-    });
-
-    it('TC-C123: padding: lg가 적용된다', () => {
-      const wrapper = mount(Card, { props: { padding: 'lg' } });
-      expect(wrapper.attributes('data-padding')).toBe('lg');
+    it('TC-C123: size: lg가 적용된다', () => {
+      const wrapper = mount(Card, { props: { size: 'lg' } });
+      expect(wrapper.attributes('data-size')).toBe('lg');
     });
   });
 
@@ -82,9 +77,9 @@ describe('Card (Vue)', () => {
       expect(wrapper.attributes('data-variant')).toBe('outlined');
     });
 
-    it('TC-C011: padding 기본값이 md이다', () => {
+    it('TC-C011: size 기본값이 md이다', () => {
       const wrapper = mount(Card);
-      expect(wrapper.attributes('data-padding')).toBe('md');
+      expect(wrapper.attributes('data-size')).toBe('md');
     });
   });
 

@@ -14,11 +14,11 @@ import { createComponent } from './_internal/createComponent';
  *
  * @example
  * ```html
- * <wg-card variant="outlined" padding="md">
+ * <wg-card variant="outlined" size="md">
  *   <p>Card content here</p>
  * </wg-card>
  *
- * <wg-card variant="elevated" padding="lg" hoverable>
+ * <wg-card variant="elevated" size="lg" hoverable>
  *   <p>Hoverable elevated card</p>
  * </wg-card>
  *
@@ -33,7 +33,7 @@ export const Card = createComponent(
   {
     props: {
       variant: { type: String, default: 'outlined' },
-      padding: { type: String, default: 'md' },
+      size: { type: String, default: 'md' },
       hoverable: { type: Boolean, default: false },
       clickable: { type: Boolean, default: false },
     },
