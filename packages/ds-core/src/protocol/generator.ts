@@ -14,32 +14,20 @@ import type {
 } from './schema';
 import { transforms } from './transformations';
 import { darken, lighten, withAlpha } from './transformer';
+import {
+  deriveSecondary,
+  deriveSemantic,
+  deriveNeutralStep,
+  SEMANTIC_HUES,
+  type NeutralStep,
+} from './derivation';
 
 /**
  * Smart defaults for light mode
+ * Semantic, secondary, and neutral colors are now derived from primary
+ * via derivation.ts — only mode-specific UI chrome remains here.
  */
 const LIGHT_DEFAULTS = {
-  // Semantic colors (universal)
-  danger: '#DC2626' as HexColor,
-  success: '#16A34A' as HexColor,
-  warning: '#F59E0B' as HexColor,
-  info: '#2563EB' as HexColor,
-
-  // Neutral scale (Tailwind-inspired gray)
-  neutral: {
-    50: '#FAFAFA' as HexColor,
-    100: '#F4F4F5' as HexColor,
-    200: '#E4E4E7' as HexColor,
-    300: '#D4D4D8' as HexColor,
-    400: '#A1A1AA' as HexColor,
-    500: '#71717A' as HexColor,
-    600: '#52525B' as HexColor,
-    700: '#3F3F46' as HexColor,
-    800: '#27272A' as HexColor,
-    900: '#18181B' as HexColor,
-    950: '#09090B' as HexColor,
-  },
-
   // Text
   text: '#111827' as HexColor,
   textMuted: '#6B7280' as HexColor,
@@ -71,27 +59,6 @@ const LIGHT_DEFAULTS = {
  * Smart defaults for dark mode
  */
 const DARK_DEFAULTS = {
-  // Semantic colors (brighter for dark mode)
-  danger: '#EF4444' as HexColor,
-  success: '#22C55E' as HexColor,
-  warning: '#F59E0B' as HexColor,
-  info: '#3B82F6' as HexColor,
-
-  // Neutral scale (inverted)
-  neutral: {
-    50: '#18181B' as HexColor,
-    100: '#27272A' as HexColor,
-    200: '#3F3F46' as HexColor,
-    300: '#52525B' as HexColor,
-    400: '#71717A' as HexColor,
-    500: '#A1A1AA' as HexColor,
-    600: '#D4D4D8' as HexColor,
-    700: '#E4E4E7' as HexColor,
-    800: '#F4F4F5' as HexColor,
-    900: '#FAFAFA' as HexColor,
-    950: '#FFFFFF' as HexColor,
-  },
-
   // Text
   text: '#F9FAFB' as HexColor,
   textMuted: '#9CA3AF' as HexColor,
@@ -180,37 +147,37 @@ export class ColorSetGenerator {
     tokens['primary-alpha-20'] = withAlpha(def.primary.base, 0.2);
 
     // ===================
-    // Secondary (optional - defaults to neutral gray)
+    // Secondary (derived from primary — same hue, washed out)
     // ===================
-    const secondaryBase = def.secondary?.base ?? defaults.neutral[600];
+    const secondaryBase = def.secondary?.base ?? deriveSecondary(def.primary.base, mode);
     tokens['secondary'] = secondaryBase;
     tokens['secondary-hover'] = def.secondary?.hover ?? this.derive(secondaryBase, 'hover', mode);
     tokens['secondary-active'] = def.secondary?.active ?? this.derive(secondaryBase, 'active', mode);
     tokens['secondary-alpha-10'] = withAlpha(secondaryBase, 0.1);
 
     // ===================
-    // Semantic colors (optional - universal defaults)
+    // Semantic colors (derived from canonical hues + primary energy)
     // ===================
-    const dangerBase = def.semantic?.danger?.base ?? defaults.danger;
+    const dangerBase = def.semantic?.danger?.base ?? deriveSemantic(SEMANTIC_HUES.danger, def.primary.base, mode);
     tokens['danger'] = dangerBase;
     tokens['danger-hover'] = def.semantic?.danger?.hover ?? this.derive(dangerBase, 'hover', mode);
     tokens['danger-active'] = def.semantic?.danger?.active ?? this.derive(dangerBase, 'active', mode);
     tokens['danger-alpha-20'] = withAlpha(dangerBase, 0.2);
     tokens['danger-lighten-20'] = mode === 'light' ? lighten(dangerBase, 20) : lighten(dangerBase, 15);
 
-    const successBase = def.semantic?.success?.base ?? defaults.success;
+    const successBase = def.semantic?.success?.base ?? deriveSemantic(SEMANTIC_HUES.success, def.primary.base, mode);
     tokens['success'] = successBase;
     tokens['success-hover'] = def.semantic?.success?.hover ?? this.derive(successBase, 'hover', mode);
     tokens['success-active'] = def.semantic?.success?.active ?? this.derive(successBase, 'active', mode);
     tokens['success-alpha-20'] = withAlpha(successBase, 0.2);
     tokens['success-lighten-20'] = mode === 'light' ? lighten(successBase, 20) : lighten(successBase, 15);
 
-    const warningBase = def.semantic?.warning?.base ?? defaults.warning;
+    const warningBase = def.semantic?.warning?.base ?? deriveSemantic(SEMANTIC_HUES.warning, def.primary.base, mode);
     tokens['warning'] = warningBase;
     tokens['warning-hover'] = def.semantic?.warning?.hover ?? this.derive(warningBase, 'hover', mode);
     tokens['warning-active'] = def.semantic?.warning?.active ?? this.derive(warningBase, 'active', mode);
 
-    const infoBase = def.semantic?.info?.base ?? defaults.info;
+    const infoBase = def.semantic?.info?.base ?? deriveSemantic(SEMANTIC_HUES.info, def.primary.base, mode);
     tokens['info'] = infoBase;
     tokens['info-hover'] = def.semantic?.info?.hover ?? this.derive(infoBase, 'hover', mode);
     tokens['info-active'] = def.semantic?.info?.active ?? this.derive(infoBase, 'active', mode);
@@ -272,19 +239,12 @@ export class ColorSetGenerator {
     }
 
     // ===================
-    // Neutral scale (optional - mode-based defaults)
+    // Neutral scale (tinted with primary hue)
     // ===================
-    tokens['neutral-50'] = def.neutral?.[50] ?? defaults.neutral[50];
-    tokens['neutral-100'] = def.neutral?.[100] ?? defaults.neutral[100];
-    tokens['neutral-200'] = def.neutral?.[200] ?? defaults.neutral[200];
-    tokens['neutral-300'] = def.neutral?.[300] ?? defaults.neutral[300];
-    tokens['neutral-400'] = def.neutral?.[400] ?? defaults.neutral[400];
-    tokens['neutral-500'] = def.neutral?.[500] ?? defaults.neutral[500];
-    tokens['neutral-600'] = def.neutral?.[600] ?? defaults.neutral[600];
-    tokens['neutral-700'] = def.neutral?.[700] ?? defaults.neutral[700];
-    tokens['neutral-800'] = def.neutral?.[800] ?? defaults.neutral[800];
-    tokens['neutral-900'] = def.neutral?.[900] ?? defaults.neutral[900];
-    tokens['neutral-950'] = def.neutral?.[950] ?? defaults.neutral[950];
+    const neutralSteps: NeutralStep[] = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
+    for (const step of neutralSteps) {
+      tokens[`neutral-${step}`] = def.neutral?.[step] ?? deriveNeutralStep(step, def.primary.base, mode);
+    }
 
     // ===================
     // Surface (optional - derived from background)

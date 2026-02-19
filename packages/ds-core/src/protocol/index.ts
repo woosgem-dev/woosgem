@@ -103,6 +103,16 @@ export {
   type DerivedTokenRule,
 } from './transformations';
 
+// Primary-based derivation
+export {
+  deriveSecondary,
+  deriveSemantic,
+  deriveNeutralStep,
+  SEMANTIC_HUES,
+  type SemanticHueDef,
+  type NeutralStep,
+} from './derivation';
+
 // Generator
 export {
   ColorSetGenerator,
