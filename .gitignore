@@ -30,6 +30,7 @@ pnpm-debug.log*
 .env
 .env.local
 .env.*.local
+.npmrc
 
 # Test outputs
 test_output.txt
