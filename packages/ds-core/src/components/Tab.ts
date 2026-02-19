@@ -30,7 +30,7 @@ export interface TabAttrs {
   'data-variant': TabVariant;
   'data-size': TabSize;
   'data-color': TabColor;
-  'data-state'?: 'selected' | 'disabled' | undefined;
+  'data-state'?: 'selected' | 'disabled' | 'selected-disabled' | undefined;
   'data-full-width'?: boolean | undefined;
   disabled?: boolean | undefined;
   'aria-selected'?: boolean | undefined;
@@ -58,13 +58,23 @@ export const Tab = {
 
   mapPropsToAttrs: (props: TabStyleProps): TabAttrs => {
     const merged = { ...Tab.defaultProps, ...filterNullish(props) };
+
+    let state: TabAttrs['data-state'];
+    if (merged.selected && merged.disabled) {
+      state = 'selected-disabled';
+    } else if (merged.selected) {
+      state = 'selected';
+    } else if (merged.disabled) {
+      state = 'disabled';
+    }
+
     return {
       class: cls('tab'),
       role: 'tab',
       'data-variant': merged.variant,
       'data-size': merged.size,
       'data-color': merged.color,
-      'data-state': merged.selected ? 'selected' : merged.disabled ? 'disabled' : undefined,
+      'data-state': state,
       'data-full-width': merged.fullWidth || undefined,
       'aria-selected': merged.selected || undefined,
       disabled: merged.disabled || undefined,

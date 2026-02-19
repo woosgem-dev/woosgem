@@ -117,6 +117,15 @@
     }
   }
 
+  // Selected + disabled compound state
+  &[data-state="selected-disabled"] {
+    --wg-segment-item-bg: #{tokens.$background};
+    --wg-segment-item-color: #{tokens.$text};
+    box-shadow: tokens.$shadow-sm;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
   // Full width items
   [data-full-width] & {
     flex: 1;

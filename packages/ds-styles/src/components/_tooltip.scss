@@ -33,8 +33,6 @@
   line-height: tokens.$line-height-normal;
   white-space: nowrap;
   max-width: 250px;
-  text-overflow: ellipsis;
-  overflow: hidden;
 
   // Default hidden state
   opacity: 0;
@@ -158,6 +156,8 @@
   display: block;
   position: relative;
   z-index: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 // ===================

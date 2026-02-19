@@ -148,6 +148,64 @@
     border-color: tokens.$border;
   }
 
+  // Checked + disabled compound state
+  &[data-state="checked-disabled"] {
+    background-color: tokens.$primary;
+    border-color: tokens.$primary;
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &::after {
+      content: "";
+      display: block;
+      border: solid tokens.$text-inverse;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg) translate(-1px, -1px);
+      width: 5px;
+      height: 9px;
+    }
+
+    &[data-size="sm"]::after {
+      width: 4px;
+      height: 7px;
+      border-width: 0 1.5px 1.5px 0;
+    }
+
+    &[data-size="lg"]::after {
+      width: 6px;
+      height: 11px;
+      border-width: 0 2.5px 2.5px 0;
+    }
+  }
+
+  // Indeterminate + disabled compound state
+  &[data-state="indeterminate-disabled"] {
+    background-color: tokens.$primary;
+    border-color: tokens.$primary;
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &::after {
+      content: "";
+      display: block;
+      background-color: tokens.$text-inverse;
+      border-radius: 1px;
+      height: 2px;
+    }
+
+    &[data-size="sm"]::after {
+      width: 8px;
+    }
+
+    &[data-size="md"]::after {
+      width: 10px;
+    }
+
+    &[data-size="lg"]::after {
+      width: 12px;
+    }
+  }
+
   // Focus ring (when parent is focused)
   .#{tokens.$prefix}-checkbox__root:focus-within & {
     outline: none;

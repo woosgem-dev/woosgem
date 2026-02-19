@@ -28,6 +28,12 @@ const meta: Meta<typeof Divider> = {
       description: 'Spacing around the divider',
       table: { category: 'Layout' },
     },
+    color: {
+      control: 'select',
+      options: ['default', 'muted', 'primary', 'secondary', 'danger', 'success'],
+      description: 'Color of the divider',
+      table: { category: 'Style' },
+    },
   },
 };
 
@@ -35,11 +41,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => (
-    <div style={{ width: '300px' }}>
-      <Divider />
-    </div>
-  ),
+  args: {
+    orientation: 'horizontal',
+    variant: 'solid',
+    spacing: 'none',
+    color: 'default',
+  },
+  decorators: [(Story) => <div style={{ width: '300px' }}><Story /></div>],
 };
 
 export const Variants: Story = {

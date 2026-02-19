@@ -33,13 +33,18 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => (
-    <SegmentedControl size="md">
+  render: (args) => (
+    <SegmentedControl {...args}>
       <SegmentedControl.Item selected>Option 1</SegmentedControl.Item>
       <SegmentedControl.Item>Option 2</SegmentedControl.Item>
       <SegmentedControl.Item>Option 3</SegmentedControl.Item>
     </SegmentedControl>
   ),
+  args: {
+    size: 'md',
+    fullWidth: false,
+    disabled: false,
+  },
 };
 
 export const Sizes: Story = {

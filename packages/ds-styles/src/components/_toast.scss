@@ -15,6 +15,7 @@
   line-height: tokens.$line-height-normal;
   min-width: 280px;
   max-width: 400px;
+  min-height: 48px;
 
   background-color: var(--wg-toast-bg, #{tokens.$background});
   color: var(--wg-toast-color, #{tokens.$text});
@@ -63,6 +64,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
+    align-self: center;
     width: 24px;
     height: 24px;
     padding: 0;
@@ -114,12 +117,10 @@
     --wg-toast-border: #{tokens.$danger};
   }
 
-  // Closable state
-  &[data-closable] {
+  // Closable with description: pin close button to top
+  &[data-closable]:has(.#{tokens.$prefix}-toast__description) {
     .#{tokens.$prefix}-toast__close {
-      flex-shrink: 0;
       align-self: flex-start;
-      margin-left: auto;
     }
   }
 

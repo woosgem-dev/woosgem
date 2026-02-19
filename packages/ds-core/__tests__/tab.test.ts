@@ -86,9 +86,9 @@ describe('Tab', () => {
       expect(attrs.disabled).toBe(true);
     });
 
-    it('should prioritize selected over disabled state', () => {
+    it('should apply selected-disabled compound state', () => {
       const attrs = Tab.mapPropsToAttrs({ selected: true, disabled: true });
-      expect(attrs['data-state']).toBe('selected');
+      expect(attrs['data-state']).toBe('selected-disabled');
     });
 
     it('should set fullWidth attribute', () => {

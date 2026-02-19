@@ -7,9 +7,11 @@ export const CheckboxSizes = ['sm', 'md', 'lg'] as const;
 export type CheckboxSize = (typeof CheckboxSizes)[number];
 
 /** Checkbox state */
-export type CheckboxState = 'unchecked' | 'checked' | 'indeterminate' | 'disabled';
+export type CheckboxState = 'unchecked' | 'checked' | 'indeterminate' | 'disabled' | 'checked-disabled' | 'indeterminate-disabled';
 
 function getCheckboxState(merged: { disabled?: boolean; indeterminate?: boolean; checked?: boolean }): CheckboxState {
+  if (merged.disabled && merged.indeterminate) return 'indeterminate-disabled';
+  if (merged.disabled && merged.checked) return 'checked-disabled';
   if (merged.disabled) return 'disabled';
   if (merged.indeterminate) return 'indeterminate';
   if (merged.checked) return 'checked';

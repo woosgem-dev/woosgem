@@ -98,11 +98,25 @@
       --wg-tab-border: #{tokens.$border};
     }
 
+    &[data-state="selected-disabled"] {
+      --wg-tab-color: #{tokens.$primary};
+      --wg-tab-border: #{tokens.$primary};
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
     // Secondary color override
     &[data-color="secondary"] {
       &[data-state="selected"] {
         --wg-tab-color: #{tokens.$secondary};
         --wg-tab-border: #{tokens.$secondary};
+      }
+
+      &[data-state="selected-disabled"] {
+        --wg-tab-color: #{tokens.$secondary};
+        --wg-tab-border: #{tokens.$secondary};
+        opacity: 0.5;
+        cursor: not-allowed;
       }
     }
   }
@@ -130,6 +144,13 @@
       }
     }
 
+    &[data-state="selected-disabled"] {
+      --wg-tab-bg: #{tokens.$primary};
+      --wg-tab-color: #{tokens.$text-inverse};
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
     // Secondary color override
     &[data-color="secondary"] {
       &[data-state="selected"] {
@@ -143,6 +164,13 @@
         &:active:not(:disabled) {
           --wg-tab-bg: #{tokens.$secondary-active};
         }
+      }
+
+      &[data-state="selected-disabled"] {
+        --wg-tab-bg: #{tokens.$secondary};
+        --wg-tab-color: #{tokens.$text-inverse};
+        opacity: 0.5;
+        cursor: not-allowed;
       }
     }
   }

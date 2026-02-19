@@ -18,7 +18,7 @@ const meta: Meta<typeof Button> = {
     },
     color: {
       control: 'select',
-      options: ['primary', 'secondary', 'danger', 'success'],
+      options: ['primary', 'secondary', 'danger', 'success', 'warning', 'info'],
       description: 'Color theme of the button',
       table: { category: 'Style' },
     },
@@ -76,6 +76,8 @@ export const Colors: Story = {
       <Button color="secondary">Secondary</Button>
       <Button color="danger">Danger</Button>
       <Button color="success">Success</Button>
+      <Button color="warning">Warning</Button>
+      <Button color="info">Info</Button>
     </div>
   ),
 };
@@ -98,6 +100,8 @@ export const OutlineVariants: Story = {
       <Button variant="outline" color="secondary">Secondary</Button>
       <Button variant="outline" color="danger">Danger</Button>
       <Button variant="outline" color="success">Success</Button>
+      <Button variant="outline" color="warning">Warning</Button>
+      <Button variant="outline" color="info">Info</Button>
     </div>
   ),
 };
@@ -109,6 +113,8 @@ export const GhostVariants: Story = {
       <Button variant="ghost" color="secondary">Secondary</Button>
       <Button variant="ghost" color="danger">Danger</Button>
       <Button variant="ghost" color="success">Success</Button>
+      <Button variant="ghost" color="warning">Warning</Button>
+      <Button variant="ghost" color="info">Info</Button>
     </div>
   ),
 };
@@ -134,6 +140,8 @@ export const LinkVariants: Story = {
       <Button variant="link" color="secondary">Secondary</Button>
       <Button variant="link" color="danger">Danger</Button>
       <Button variant="link" color="success">Success</Button>
+      <Button variant="link" color="warning">Warning</Button>
+      <Button variant="link" color="info">Info</Button>
     </div>
   ),
 };

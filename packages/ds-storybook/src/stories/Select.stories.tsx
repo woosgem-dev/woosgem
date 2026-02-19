@@ -62,10 +62,16 @@ const sampleOptions = [
 ];
 
 export const Default: Story = {
+  render: (args) => (
+    <div style={{ width: '300px' }}>
+      <Select {...args} />
+    </div>
+  ),
   args: {
     placeholder: 'Select an option...',
     variant: 'outline',
     size: 'md',
+    options: sampleOptions,
   },
 };
 

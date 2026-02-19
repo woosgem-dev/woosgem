@@ -18,7 +18,7 @@ export interface ListItemStyleProps {
 export interface ListItemAttrs {
   class: string;
   'data-variant': ListItemVariant;
-  'data-state'?: 'selected' | 'disabled' | undefined;
+  'data-state'?: 'selected' | 'disabled' | 'selected-disabled' | undefined;
   'data-divider'?: boolean | undefined;
   'aria-selected'?: boolean | undefined;
   'aria-disabled'?: boolean | undefined;
@@ -41,10 +41,20 @@ export const ListItem = {
 
   mapPropsToAttrs: (props: ListItemStyleProps): ListItemAttrs => {
     const merged = { ...ListItem.defaultProps, ...filterNullish(props) };
+
+    let state: ListItemAttrs['data-state'];
+    if (merged.selected && merged.disabled) {
+      state = 'selected-disabled';
+    } else if (merged.selected) {
+      state = 'selected';
+    } else if (merged.disabled) {
+      state = 'disabled';
+    }
+
     return {
       class: cls('list-item'),
       'data-variant': merged.variant,
-      'data-state': merged.selected ? 'selected' : merged.disabled ? 'disabled' : undefined,
+      'data-state': state,
       'data-divider': merged.divider || undefined,
       'aria-selected': merged.selected || undefined,
       'aria-disabled': merged.disabled || undefined,

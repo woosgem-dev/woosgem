@@ -145,5 +145,11 @@
         background: linear-gradient(90deg, #{tokens.$red-light}, #{tokens.$danger});
       }
     }
+
+    &[data-color="neutral"] {
+      .#{tokens.$prefix}-progress__fill {
+        background: linear-gradient(90deg, #{tokens.$neutral-200}, #{tokens.$text-muted});
+      }
+    }
   }
 }

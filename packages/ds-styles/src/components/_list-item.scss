@@ -47,6 +47,13 @@
     --wg-list-item-color: #{tokens.$primary};
   }
 
+  &[data-state="selected-disabled"] {
+    --wg-list-item-bg: #{tokens.$primary-alpha-10};
+    --wg-list-item-color: #{tokens.$primary};
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
   // ===================
   // Variants
   // ===================

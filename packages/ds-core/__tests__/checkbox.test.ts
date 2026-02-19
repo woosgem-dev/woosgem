@@ -60,13 +60,13 @@ describe('Checkbox', () => {
       expect(attrs['data-state']).toBe('disabled');
     });
 
-    it('should prioritize disabled over other states', () => {
+    it('should apply indeterminate-disabled compound state', () => {
       const attrs = Checkbox.mapPropsToAttrs({
         checked: true,
         indeterminate: true,
         disabled: true,
       });
-      expect(attrs['data-state']).toBe('disabled');
+      expect(attrs['data-state']).toBe('indeterminate-disabled');
     });
 
     it('should prioritize indeterminate over checked', () => {

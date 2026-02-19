@@ -1,0 +1,129 @@
+@use "../tokens" as tokens;
+
+// ===================
+// Skeleton Component
+// ===================
+
+.#{tokens.$prefix}-skeleton {
+  // Layout
+  display: block;
+
+  // Visual
+  background-color: tokens.$skeleton-background;
+
+  // ===================
+  // Variants
+  // ===================
+  &[data-variant="text"] {
+    border-radius: tokens.$radius-sm;
+    width: 100%;
+  }
+
+  &[data-variant="circular"] {
+    border-radius: tokens.$radius-full;
+  }
+
+  &[data-variant="rectangular"] {
+    border-radius: tokens.$radius-md;
+  }
+
+  // ===================
+  // Sizes
+  // ===================
+  &[data-size="sm"] {
+    height: 16px;
+
+    &[data-variant="circular"] {
+      width: 16px;
+    }
+
+    &[data-variant="rectangular"] {
+      width: 100%;
+    }
+  }
+
+  &[data-size="md"] {
+    height: 24px;
+
+    &[data-variant="circular"] {
+      width: 24px;
+    }
+
+    &[data-variant="rectangular"] {
+      width: 100%;
+    }
+  }
+
+  &[data-size="lg"] {
+    height: 40px;
+
+    &[data-variant="circular"] {
+      width: 40px;
+    }
+
+    &[data-variant="rectangular"] {
+      width: 100%;
+    }
+  }
+
+  &[data-size="full"] {
+    width: 100%;
+    height: 100%;
+
+    &[data-variant="circular"] {
+      width: 100%;
+    }
+  }
+
+  // ===================
+  // Animations
+  // ===================
+  &[data-animation="pulse"] {
+    animation: skeleton-pulse tokens.$duration-slow-02 tokens.$easing-standard infinite alternate;
+  }
+
+  &[data-animation="wave"] {
+    background: linear-gradient(
+      90deg,
+      #{tokens.$skeleton-background} 25%,
+      #{tokens.$skeleton-element} 50%,
+      #{tokens.$skeleton-background} 75%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-wave 1.5s ease-in-out infinite;
+  }
+
+  &[data-animation="none"] {
+    animation: none;
+  }
+}
+
+// ===================
+// Keyframes
+// ===================
+@keyframes skeleton-pulse {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.4;
+  }
+}
+
+@keyframes skeleton-wave {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+// ===================
+// Reduced motion support
+// ===================
+@media (prefers-reduced-motion: reduce) {
+  .#{tokens.$prefix}-skeleton {
+    animation: none;
+  }
+}
