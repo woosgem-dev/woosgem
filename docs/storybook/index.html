@@ -24,6 +24,9 @@
       --lit-color: #f0883e;
       --lit-bg: rgba(240, 136, 62, 0.1);
       --lit-border: rgba(240, 136, 62, 0.3);
+      --playground-color: #bc8cff;
+      --playground-bg: rgba(188, 140, 255, 0.1);
+      --playground-border: rgba(188, 140, 255, 0.3);
     }
 
     html { scroll-behavior: smooth; }
@@ -192,6 +195,12 @@
     .card.lit { animation: fadeInUp 0.5s ease-out 0.5s both; }
     .card.lit:hover { border-color: var(--lit-border); }
     .card.lit::before { background: var(--lit-color); }
+
+    .card.playground { animation: fadeInUp 0.5s ease-out 0.55s both; }
+    .card.playground:hover { border-color: var(--playground-border); }
+    .card.playground::before { background: var(--playground-color); }
+    .card.playground .card-icon { background: var(--playground-bg); color: var(--playground-color); }
+    .card.playground .card-footer { color: var(--playground-color); }
 
     .card-icon {
       width: 44px;
@@ -403,6 +412,26 @@
         <p class="card-desc">Lit 3 Web Components. Custom elements, light DOM, works anywhere.</p>
         <div class="card-footer">
           Open Storybook
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
+      </a>
+    </div>
+
+    <div class="section-label">Tools</div>
+
+    <div class="cards" style="grid-template-columns: 1fr;">
+      <a class="card playground" href="./playground/">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="13.5" cy="6.5" r="2.5"/>
+            <path d="M17 2c0 4-4 6-4 10"/>
+            <path d="M7 22a5 5 0 0 1 0-10h10a5 5 0 0 1 0 10z"/>
+          </svg>
+        </div>
+        <h2>CSP Playground</h2>
+        <p class="card-desc">Pick a primary color, toggle light/dark — watch 81 tokens generate in real-time with live component preview.</p>
+        <div class="card-footer">
+          Open Playground
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </div>
       </a>
