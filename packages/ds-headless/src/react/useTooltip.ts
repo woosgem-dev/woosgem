@@ -43,14 +43,12 @@ export function useTooltip(options: UseTooltipOptions = {}) {
     const el = triggerRef.current;
     if (!el) return;
 
-    const cleanup = createTooltipHandlers(el, {
+    return createTooltipHandlers(el, {
       onShow: () => setIsVisible(true),
       onHide: () => setIsVisible(false),
       trigger,
       delay,
     });
-
-    return cleanup;
   }, [trigger, delay]);
 
   useEffect(() => {

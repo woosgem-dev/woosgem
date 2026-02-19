@@ -16,11 +16,6 @@ import {
 } from '@woosgem-dev/core';
 import { useId } from './_internal/useId';
 
-/**
- * Tooltip component props.
- * Combines style props with all standard div HTML attributes,
- * while excluding protected attributes used by the design system.
- */
 export type TooltipProps = Prettify<
   TooltipStyleProps &
     Omit<
@@ -43,7 +38,6 @@ export type TooltipProps = Prettify<
     }
 >;
 
-/** Ref type for Tooltip component */
 export type TooltipRef = HTMLDivElement;
 
 /**
@@ -120,7 +114,6 @@ const TooltipBase = forwardRef<TooltipRef, TooltipProps>(function Tooltip(
     };
   }, []);
 
-  // Get attrs from Core definition
   const attrs = TooltipDef.mapPropsToAttrs({
     content,
     position,
@@ -131,23 +124,20 @@ const TooltipBase = forwardRef<TooltipRef, TooltipProps>(function Tooltip(
     disabled,
   });
 
-  // Build trigger handlers based on trigger type
-  const triggerHandlers =
-    trigger === 'hover'
-      ? {
-          onMouseEnter: showTooltip,
-          onMouseLeave: hideTooltip,
-        }
-      : trigger === 'focus'
-        ? {
-            onFocus: showTooltip,
-            onBlur: hideTooltip,
-          }
-        : trigger === 'click'
-          ? {
-              onClick: toggleTooltip,
-            }
-          : {};
+  function getTriggerHandlers() {
+    if (trigger === 'hover') {
+      return { onMouseEnter: showTooltip, onMouseLeave: hideTooltip };
+    }
+    if (trigger === 'focus') {
+      return { onFocus: showTooltip, onBlur: hideTooltip };
+    }
+    if (trigger === 'click') {
+      return { onClick: toggleTooltip };
+    }
+    return {};
+  }
+
+  const triggerHandlers = getTriggerHandlers();
 
   const finalClassName = className ? `wg-tooltip-wrapper ${className}` : 'wg-tooltip-wrapper';
 
@@ -159,12 +149,10 @@ const TooltipBase = forwardRef<TooltipRef, TooltipProps>(function Tooltip(
       {...triggerHandlers}
       {...restProps}
     >
-      {/* Trigger element with aria-describedby */}
       <span className="wg-tooltip__trigger" aria-describedby={isVisible ? tooltipId : undefined}>
         {children}
       </span>
 
-      {/* Tooltip content */}
       <div
         id={tooltipId}
         className={attrs.class}

@@ -50,8 +50,6 @@ export function createComponent<
 
   type Element = HTMLElementTagNameMap[Tag];
 
-  // Using any here to avoid complex forwardRef generic inference issues
-  // The actual component is properly typed via type assertion at export
   const Component = forwardRef(function Component(
     props: BaseComponentProps & Record<string, unknown>,
     ref: Ref<Element>

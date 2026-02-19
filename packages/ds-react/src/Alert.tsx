@@ -1,6 +1,14 @@
-import type { ComponentPropsWithoutRef, ComponentType } from 'react';
-import { Alert as AlertDef, type AlertStyleProps, type Prettify } from '@woosgem-dev/core';
-import { createComponent } from './_internal/createComponent';
+import {
+  forwardRef,
+  memo,
+  useMemo,
+  type ComponentPropsWithoutRef,
+} from 'react';
+import {
+  Alert as AlertDef,
+  type AlertStyleProps,
+  type Prettify,
+} from '@woosgem-dev/core';
 
 /**
  * Alert component props.
@@ -25,7 +33,70 @@ export type AlertProps = Prettify<
 /** Ref type for Alert component */
 export type AlertRef = HTMLDivElement;
 
-const BaseAlert = createComponent(AlertDef);
+const AlertComponent = memo(
+  forwardRef<AlertRef, AlertProps>(function Alert(props, ref) {
+    const {
+      variant,
+      status,
+      closable,
+      onClose,
+      children,
+      className,
+      ...restProps
+    } = props;
+
+    const attrs = useMemo(
+      () => AlertDef.mapPropsToAttrs({
+        variant: variant ?? AlertDef.defaultProps.variant,
+        status: status ?? AlertDef.defaultProps.status,
+        closable: closable ?? AlertDef.defaultProps.closable,
+      }),
+      [variant, status, closable],
+    );
+
+    const finalClassName = className ? `${attrs.class} ${className}` : attrs.class;
+
+    return (
+      <div
+        ref={ref}
+        {...restProps}
+        className={finalClassName}
+        data-variant={attrs['data-variant']}
+        data-status={attrs['data-status']}
+        data-closable={attrs['data-closable']}
+        role={attrs.role}
+      >
+        <div className="wg-alert__content">{children}</div>
+        {closable && (
+          <button
+            type="button"
+            className="wg-alert__close"
+            aria-label="Close"
+            onClick={onClose}
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 4L4 12M4 4l8 8"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        )}
+      </div>
+    );
+  }),
+);
+
+AlertComponent.displayName = 'Alert';
 
 /**
  * Alert component for displaying important messages.
@@ -45,4 +116,4 @@ const BaseAlert = createComponent(AlertDef);
  * </Alert>
  * ```
  */
-export const Alert = BaseAlert as ComponentType<AlertProps>;
+export const Alert = AlertComponent;

@@ -12,9 +12,7 @@ import {
 } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
-// ============================================
-// Slider
-// ============================================
+//Slider
 
 export type SliderProps = Prettify<
   SliderStyleProps &
@@ -32,11 +30,9 @@ export type SliderProps = Prettify<
 
 export type SliderRef = HTMLDivElement;
 
-export const Slider = createComponent(SliderDef, {}) as ComponentType<SliderProps>;
+export const Slider = createComponent(SliderDef) as ComponentType<SliderProps>;
 
-// ============================================
-// SliderTrack
-// ============================================
+//SliderTrack
 
 export type SliderTrackProps = Prettify<
   SliderTrackStyleProps &
@@ -45,11 +41,9 @@ export type SliderTrackProps = Prettify<
 
 export type SliderTrackRef = HTMLDivElement;
 
-export const SliderTrack = createComponent(SliderTrackDef, {}) as ComponentType<SliderTrackProps>;
+export const SliderTrack = createComponent(SliderTrackDef) as ComponentType<SliderTrackProps>;
 
-// ============================================
-// SliderFill
-// ============================================
+//SliderFill
 
 export type SliderFillProps = Prettify<
   SliderFillStyleProps &
@@ -58,11 +52,9 @@ export type SliderFillProps = Prettify<
 
 export type SliderFillRef = HTMLDivElement;
 
-export const SliderFill = createComponent(SliderFillDef, {}) as ComponentType<SliderFillProps>;
+export const SliderFill = createComponent(SliderFillDef) as ComponentType<SliderFillProps>;
 
-// ============================================
-// SliderThumb
-// ============================================
+//SliderThumb
 
 export type SliderThumbProps = Prettify<
   SliderThumbStyleProps &
@@ -74,4 +66,4 @@ export type SliderThumbProps = Prettify<
 
 export type SliderThumbRef = HTMLDivElement;
 
-export const SliderThumb = createComponent(SliderThumbDef, {}) as ComponentType<SliderThumbProps>;
+export const SliderThumb = createComponent(SliderThumbDef) as ComponentType<SliderThumbProps>;

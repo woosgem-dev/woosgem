@@ -1,6 +1,6 @@
 {
   "name": "@woosgem-dev/headless",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Framework-agnostic headless UI primitives for WooSGem Design System",
   "author": "woosgem",
   "license": "MIT",

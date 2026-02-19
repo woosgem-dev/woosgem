@@ -1,6 +1,6 @@
 {
   "name": "@woosgem-dev/storybook-lit",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Lit Web Components Storybook for WooSGem Design System",
   "author": "woosgem",
   "license": "MIT",

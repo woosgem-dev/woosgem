@@ -1,6 +1,6 @@
 {
   "name": "@woosgem-dev/storybook",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Storybook documentation for WooSGem Design System",
   "author": "woosgem",
   "license": "MIT",
@@ -38,4 +38,3 @@
     "vite": "^6.0.0"
   }
 }
-

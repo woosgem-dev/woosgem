@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit';
 import type { TemplateResult } from 'lit';
 import { Toast as ToastCore } from '@woosgem-dev/core';
-import { createComponent, applyAttrsToElement, emitEvent } from './_internal/createComponent';
+import { applyAttrsToElement, emitEvent } from './_internal/createComponent';
 
 /**
  * Toast - Lit Web Component
@@ -25,20 +25,6 @@ import { createComponent, applyAttrsToElement, emitEvent } from './_internal/cre
  * <wg-toast variant="info" duration="0" closable>This toast will not auto-dismiss.</wg-toast>
  * ```
  */
-export const Toast = createComponent(
-  ToastCore,
-  'wg-toast',
-  {
-    props: {
-      variant: { type: String, default: 'info' },
-      position: { type: String, default: 'top-right' },
-      duration: { type: Number, default: 5000 },
-      closable: { type: Boolean, default: true },
-      visible: { type: Boolean, default: true },
-    },
-  }
-);
-
 // Extended Toast class with auto-dismiss functionality
 class ToastElement extends LitElement {
   static properties = {
@@ -57,7 +43,7 @@ class ToastElement extends LitElement {
 
   private timerId: ReturnType<typeof setTimeout> | null = null;
 
-  // Light DOM ?¬ìš©
+  // Uses Light DOM
   createRenderRoot(): HTMLElement {
     return this;
   }
@@ -136,4 +122,4 @@ declare global {
   }
 }
 
-export { ToastElement };
+export { ToastElement, ToastElement as Toast };

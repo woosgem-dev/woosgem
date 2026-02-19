@@ -1,6 +1,6 @@
 {
   "name": "@woosgem-dev/vue",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Vue component wrappers for WooSGem Design System",
   "author": "woosgem",
   "license": "MIT",
@@ -47,4 +47,3 @@
     "vue": "^3.5.13"
   }
 }
-

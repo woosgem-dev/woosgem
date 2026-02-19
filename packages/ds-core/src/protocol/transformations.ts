@@ -78,9 +78,7 @@ export const transforms = {
   /**
    * Darken by 3% (for subtle background differences)
    */
-  darken3: (base: HexColor, mode: ThemeMode): HexColor => {
-    return mode === 'light' ? darken(base, 3) : darken(base, 3);
-  },
+  darken3: (base: HexColor, _mode: ThemeMode): HexColor => darken(base, 3),
 } as const;
 
 /**

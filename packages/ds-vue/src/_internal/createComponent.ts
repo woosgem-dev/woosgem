@@ -4,7 +4,6 @@ import type { ComponentDefinition } from '@woosgem-dev/core';
 
 type AnyComponentDefinition = ComponentDefinition<any, any, any>;
 
-// Vue prop definition type
 interface VuePropDefinition {
   type: PropType<unknown>;
   default: unknown;
@@ -23,7 +22,12 @@ interface VuePropDefinition {
 export function createComponent<Def extends AnyComponentDefinition>(definition: Def) {
   type StyleProps = Def['defaultProps'];
 
-  // Build Vue props definition from defaultProps
+  const TYPE_MAP: Record<string, PropType<unknown>> = {
+    boolean: Boolean as PropType<unknown>,
+    number: Number as PropType<unknown>,
+    string: String as PropType<unknown>,
+  };
+
   const propsDefinition: Record<string, VuePropDefinition> = {};
 
   for (const key in definition.defaultProps) {
@@ -31,11 +35,7 @@ export function createComponent<Def extends AnyComponentDefinition>(definition: 
     const propType = definition.propTypes[key];
 
     propsDefinition[key] = {
-      type: (typeof defaultValue === 'boolean'
-        ? Boolean
-        : typeof defaultValue === 'number'
-          ? Number
-          : String) as PropType<unknown>,
+      type: TYPE_MAP[typeof defaultValue] ?? (String as PropType<unknown>),
       default: defaultValue,
       validator: propType
         ? (value: unknown) => (propType as readonly unknown[]).includes(value)
@@ -46,15 +46,11 @@ export function createComponent<Def extends AnyComponentDefinition>(definition: 
   return defineComponent({
     name: definition.displayName,
 
-    // Disable automatic attrs inheritance to control protected attrs
     inheritAttrs: false,
 
     props: propsDefinition,
 
-    setup(props: Record<string, unknown>, ctx: SetupContext) {
-      const { slots, attrs } = ctx;
-
-      // Computed attrs - only recalculates when props change
+    setup(props: Record<string, unknown>, { slots, attrs }: SetupContext) {
       const domAttrs = computed(() => {
         return definition.mapPropsToAttrs(props as StyleProps);
       });
@@ -62,12 +58,10 @@ export function createComponent<Def extends AnyComponentDefinition>(definition: 
       return () => {
         const { class: baseClass, ...restAttrs } = domAttrs.value;
 
-        // Merge classes: component class + user class from attrs
         const mergedClass = attrs.class
           ? `${baseClass} ${attrs.class}`
           : baseClass;
 
-        // Filter out protected attributes from user attrs
         const safeAttrs: Record<string, unknown> = {};
         for (const key in attrs) {
           if (!PROTECTED_ATTRS_SET.has(key) && key !== 'class') {

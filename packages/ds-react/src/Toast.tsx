@@ -2,19 +2,15 @@ import {
   type ComponentPropsWithoutRef,
   type ComponentType,
   forwardRef,
+  memo,
+  useMemo,
   useEffect,
   useRef,
   useCallback,
   useState,
 } from 'react';
 import { Toast as ToastDef, type ToastStyleProps, type Prettify } from '@woosgem-dev/core';
-import { createComponent } from './_internal/createComponent';
 
-/**
- * Toast component props.
- * Combines style props with all standard div HTML attributes,
- * while excluding protected attributes used by the design system.
- */
 export type ToastProps = Prettify<
   ToastStyleProps &
     Omit<
@@ -40,92 +36,122 @@ export type ToastProps = Prettify<
     }
 >;
 
-/** Ref type for Toast component */
 export type ToastRef = HTMLDivElement;
-
-const BaseToast = createComponent(ToastDef);
 
 /**
  * Toast component for displaying temporary notification messages.
  *
- * Features:
- * - Auto-dismiss after configurable duration
- * - Multiple positions (top-right, top-left, bottom-right, bottom-left, top-center, bottom-center)
- * - Variants for different message types (info, success, warning, error)
- * - Optional close button
- * - Accessible with role="alert" and aria-live="polite"
- *
  * @example
  * ```tsx
- * // Basic usage
- * <Toast variant="success">
- *   Operation completed successfully!
- * </Toast>
+ * <Toast variant="success">Operation completed!</Toast>
  *
- * // With custom position and duration
- * <Toast
- *   variant="error"
- *   position="bottom-center"
- *   duration={10000}
- *   onClose={() => console.log('closed')}
- * >
- *   An error occurred!
- * </Toast>
- *
- * // Without auto-dismiss
  * <Toast variant="info" duration={0} closable>
  *   This toast will not auto-dismiss.
  * </Toast>
  * ```
  */
-export const ToastBase = forwardRef<ToastRef, ToastProps>((props, ref) => {
-  const {
-    duration = ToastDef.defaultProps.duration,
-    visible = ToastDef.defaultProps.visible,
-    onClose,
-    ...restProps
-  } = props;
+const ToastComponent = memo(
+  forwardRef<ToastRef, ToastProps>(function Toast(props, ref) {
+    const {
+      variant,
+      position,
+      duration = ToastDef.defaultProps.duration,
+      closable,
+      visible = ToastDef.defaultProps.visible,
+      onClose,
+      children,
+      className,
+      ...restProps
+    } = props;
 
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const handleClose = useCallback(() => {
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-      timerRef.current = null;
-    }
-    onClose?.();
-  }, [onClose]);
-
-  // Auto-dismiss logic
-  useEffect(() => {
-    if (visible && duration > 0) {
-      timerRef.current = setTimeout(() => {
-        handleClose();
-      }, duration);
-    }
-
-    return () => {
+    const handleClose = useCallback(() => {
       if (timerRef.current) {
         clearTimeout(timerRef.current);
         timerRef.current = null;
       }
-    };
-  }, [visible, duration, handleClose]);
+      onClose?.();
+    }, [onClose]);
 
-  if (!visible) {
-    return null;
-  }
+    useEffect(() => {
+      if (visible && duration > 0) {
+        timerRef.current = setTimeout(() => {
+          handleClose();
+        }, duration);
+      }
 
-  return <BaseToast ref={ref} visible={visible} duration={duration} {...restProps} />;
-});
+      return () => {
+        if (timerRef.current) {
+          clearTimeout(timerRef.current);
+          timerRef.current = null;
+        }
+      };
+    }, [visible, duration, handleClose]);
 
-ToastBase.displayName = 'Toast';
+    const attrs = useMemo(
+      () => ToastDef.mapPropsToAttrs({
+        variant: variant ?? ToastDef.defaultProps.variant,
+        position: position ?? ToastDef.defaultProps.position,
+        duration,
+        closable: closable ?? ToastDef.defaultProps.closable,
+        visible,
+      }),
+      [variant, position, duration, closable, visible],
+    );
 
-export const Toast = ToastBase as ComponentType<ToastProps>;
+    if (!visible) {
+      return null;
+    }
 
-// ============================================================================
-// Toast Container (for managing multiple toasts)
-// ============================================================================
+    const finalClassName = className ? `${attrs.class} ${className}` : attrs.class;
+
+    return (
+      <div
+        ref={ref}
+        {...restProps}
+        className={finalClassName}
+        data-variant={attrs['data-variant']}
+        data-position={attrs['data-position']}
+        data-closable={attrs['data-closable']}
+        data-visible={attrs['data-visible']}
+        role={attrs.role}
+        aria-live={attrs['aria-live']}
+        aria-atomic={attrs['aria-atomic']}
+      >
+        <div className="wg-toast__content">{children}</div>
+        {closable && (
+          <button
+            type="button"
+            className="wg-toast__close"
+            aria-label="Close notification"
+            onClick={handleClose}
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 4L4 12M4 4l8 8"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        )}
+      </div>
+    );
+  }),
+);
+
+ToastComponent.displayName = 'Toast';
+
+export const Toast = ToastComponent as ComponentType<ToastProps>;
 
 export interface ToastItem {
   id: string;
@@ -166,7 +192,6 @@ export interface ToastContainerProps {
  */
 export const ToastContainer = forwardRef<HTMLDivElement, ToastContainerProps>(
   ({ toasts, onDismiss, position = 'top-right' }, ref) => {
-    // Group toasts by position
     const groupedToasts = toasts.reduce(
       (acc, toast) => {
         const pos = toast.position || position;
@@ -208,10 +233,6 @@ export const ToastContainer = forwardRef<HTMLDivElement, ToastContainerProps>(
 );
 
 ToastContainer.displayName = 'ToastContainer';
-
-// ============================================================================
-// useToast Hook (optional utility)
-// ============================================================================
 
 export interface UseToastOptions {
   /** Default duration for toasts */
@@ -279,7 +300,6 @@ export function useToast(options: UseToastOptions = {}): UseToastReturn {
           },
         ];
 
-        // Limit number of toasts
         if (newToasts.length > maxToasts) {
           return newToasts.slice(-maxToasts);
         }

@@ -12,9 +12,7 @@ import {
 } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
-// ============================================
-// Menu
-// ============================================
+//Menu
 
 export type MenuProps = Prettify<
   MenuStyleProps &
@@ -29,11 +27,9 @@ export type MenuProps = Prettify<
 
 export type MenuRef = HTMLDivElement;
 
-export const Menu = createComponent(MenuDef, {}) as ComponentType<MenuProps>;
+export const Menu = createComponent(MenuDef) as ComponentType<MenuProps>;
 
-// ============================================
-// MenuItem
-// ============================================
+//MenuItem
 
 export type MenuItemProps = Prettify<
   MenuItemStyleProps &
@@ -52,11 +48,9 @@ export type MenuItemProps = Prettify<
 
 export type MenuItemRef = HTMLButtonElement;
 
-export const MenuItem = createComponent(MenuItemDef, {}) as ComponentType<MenuItemProps>;
+export const MenuItem = createComponent(MenuItemDef) as ComponentType<MenuItemProps>;
 
-// ============================================
-// MenuDivider
-// ============================================
+//MenuDivider
 
 export type MenuDividerProps = Prettify<
   MenuDividerStyleProps &
@@ -67,11 +61,9 @@ export type MenuDividerProps = Prettify<
 
 export type MenuDividerRef = HTMLDivElement;
 
-export const MenuDivider = createComponent(MenuDividerDef, {}) as ComponentType<MenuDividerProps>;
+export const MenuDivider = createComponent(MenuDividerDef) as ComponentType<MenuDividerProps>;
 
-// ============================================
-// MenuGroup
-// ============================================
+//MenuGroup
 
 export type MenuGroupProps = Prettify<
   MenuGroupStyleProps &
@@ -82,4 +74,4 @@ export type MenuGroupProps = Prettify<
 
 export type MenuGroupRef = HTMLDivElement;
 
-export const MenuGroup = createComponent(MenuGroupDef, {}) as ComponentType<MenuGroupProps>;
+export const MenuGroup = createComponent(MenuGroupDef) as ComponentType<MenuGroupProps>;

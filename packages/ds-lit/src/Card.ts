@@ -38,13 +38,6 @@ export const Card = createComponent(
       clickable: { type: Boolean, default: false },
     },
     events: {
-      click: (e: MouseEvent, component) => {
-        const el = component as unknown as { clickable: boolean };
-        // If clickable, also handle Enter/Space via keydown
-        if (el.clickable) {
-          // Click event is allowed
-        }
-      },
       keydown: (e: KeyboardEvent, component) => {
         const el = component as unknown as { clickable: boolean };
         if (el.clickable && (e.key === 'Enter' || e.key === ' ')) {

@@ -30,7 +30,6 @@
   // ===================
   &[data-variant="solid"] {
     background-color: var(--wg-divider-color);
-    border: none;
   }
 
   &[data-variant="dashed"] {
@@ -50,10 +49,6 @@
   // ===================
   // Spacing
   // ===================
-  &[data-spacing="none"] {
-    margin: 0;
-  }
-
   &[data-spacing="sm"] {
     &[data-orientation="horizontal"] {
       margin: tokens.$spacing-2 0;

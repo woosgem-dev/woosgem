@@ -1,4 +1,4 @@
-import { defineComponent, h, ref, watch, onUnmounted, computed, type PropType } from 'vue';
+import { defineComponent, h, ref, watch, onUnmounted, computed, type PropType, type Ref } from 'vue';
 import { Toast as ToastDef, type ToastStyleProps, type Prettify } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
@@ -141,9 +141,7 @@ export const Toast = defineComponent({
   },
 });
 
-// ============================================================================
 // Toast Container (for managing multiple toasts)
-// ============================================================================
 
 export interface ToastItem {
   id: string;
@@ -246,9 +244,7 @@ export const ToastContainer = defineComponent({
   },
 });
 
-// ============================================================================
 // useToast Composable (optional utility)
-// ============================================================================
 
 export interface UseToastOptions {
   /** Default duration for toasts */
@@ -260,7 +256,7 @@ export interface UseToastOptions {
 }
 
 export interface UseToastReturn {
-  toasts: typeof ref<ToastItem[]>;
+  toasts: Ref<ToastItem[]>;
   addToast: (content: string, options?: Partial<Omit<ToastItem, 'id' | 'content'>>) => string;
   removeToast: (id: string) => void;
   clearAll: () => void;

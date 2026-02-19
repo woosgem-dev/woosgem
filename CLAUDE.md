@@ -31,6 +31,4 @@ pnpm test:dashboard   # Tests + coverage dashboard
 | [DS Policy](./docs/policies/design-system.md) | 아키텍처, 상태 관리, 에러 처리 정책 |
 | [Architecture](./docs/architecture.md) | Package structure, core patterns |
 | [Development Guide](./docs/guides/development.md) | Commands, dev notes |
-| [Testing Guide](./docs/guides/testing.md) | TC 작성법, 테스트 프로세스 |
-| [Code Style](./docs/guides/code-style.md) | TypeScript, React/Vue rules |
 | [Roadmap](./docs/roadmap.md) | Project status, TODOs |

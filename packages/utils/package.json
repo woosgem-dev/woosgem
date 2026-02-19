@@ -1,6 +1,6 @@
 {
   "name": "@woosgem-dev/utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "General utility functions for WooSGem Design System",
   "author": "woosgem",
   "license": "MIT",
@@ -33,4 +33,3 @@
     "zod": "^4.3.6"
   }
 }
-

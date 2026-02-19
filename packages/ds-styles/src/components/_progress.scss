@@ -1,0 +1,149 @@
+@use "../tokens" as tokens;
+
+.#{tokens.$prefix}-progress {
+  // Layout
+  display: flex;
+  flex-direction: column;
+
+  // Box Model
+  width: 100%;
+
+  // ===================
+  // Track (background bar)
+  // ===================
+  .#{tokens.$prefix}-progress__track {
+    width: 100%;
+    overflow: hidden;
+    border-radius: tokens.$radius-full;
+    background-color: tokens.$background-muted;
+  }
+
+  // ===================
+  // Fill (progress indicator)
+  // ===================
+  .#{tokens.$prefix}-progress__fill {
+    // Layout
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    // Box Model
+    width: var(--progress-value, 0%);
+    min-width: 0;
+
+    // Visual
+    border-radius: tokens.$radius-full;
+    background-color: var(--wg-progress-fill, #{tokens.$primary});
+
+    // Misc
+    transition: width tokens.$duration-moderate-02 tokens.$easing-standard;
+  }
+
+  // ===================
+  // Label
+  // ===================
+  .#{tokens.$prefix}-progress__label {
+    padding: 0 tokens.$spacing-2;
+    font-family: tokens.$font-family-default;
+    font-weight: tokens.$font-weight-medium;
+    color: tokens.$text-inverse;
+    white-space: nowrap;
+  }
+
+  // ===================
+  // Sizes
+  // ===================
+  &[data-size="sm"] {
+    .#{tokens.$prefix}-progress__track {
+      height: 6px;
+    }
+
+    .#{tokens.$prefix}-progress__fill {
+      height: 6px;
+    }
+
+    .#{tokens.$prefix}-progress__label {
+      font-size: tokens.$font-size-12;
+    }
+  }
+
+  &[data-size="md"] {
+    .#{tokens.$prefix}-progress__track {
+      height: 10px;
+    }
+
+    .#{tokens.$prefix}-progress__fill {
+      height: 10px;
+    }
+
+    .#{tokens.$prefix}-progress__label {
+      font-size: tokens.$font-size-12;
+    }
+  }
+
+  &[data-size="lg"] {
+    .#{tokens.$prefix}-progress__track {
+      height: 16px;
+    }
+
+    .#{tokens.$prefix}-progress__fill {
+      height: 16px;
+    }
+
+    .#{tokens.$prefix}-progress__label {
+      font-size: tokens.$font-size-12;
+    }
+  }
+
+  // ===================
+  // Colors
+  // ===================
+  &[data-color="primary"] {
+    --wg-progress-fill: #{tokens.$primary};
+  }
+
+  &[data-color="success"] {
+    --wg-progress-fill: #{tokens.$success};
+  }
+
+  &[data-color="warning"] {
+    --wg-progress-fill: #{tokens.$warning};
+  }
+
+  &[data-color="danger"] {
+    --wg-progress-fill: #{tokens.$danger};
+  }
+
+  &[data-color="neutral"] {
+    --wg-progress-fill: #{tokens.$text-muted};
+  }
+
+  // ===================
+  // Gradient Variant
+  // ===================
+  &[data-variant="gradient"] {
+    &[data-color="primary"] {
+      .#{tokens.$prefix}-progress__fill {
+        background: linear-gradient(90deg, #{tokens.$primary-alpha-20}, #{tokens.$primary});
+      }
+    }
+
+    &[data-color="success"] {
+      .#{tokens.$prefix}-progress__fill {
+        background: linear-gradient(90deg, #{tokens.$green-light}, #{tokens.$success});
+      }
+    }
+
+    &[data-color="warning"] {
+      .#{tokens.$prefix}-progress__fill {
+        background: linear-gradient(90deg, #{tokens.$yellow-light}, #{tokens.$warning});
+      }
+    }
+
+    &[data-color="danger"] {
+      .#{tokens.$prefix}-progress__fill {
+        background: linear-gradient(90deg, #{tokens.$red-light}, #{tokens.$danger});
+      }
+    }
+  }
+}

@@ -1,5 +1,4 @@
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
-import type { Prettify } from '@woosgem-dev/core';
 import {
   Table as TableDef,
   TableHead as TableHeadDef,
@@ -7,6 +6,7 @@ import {
   TableRow as TableRowDef,
   TableCell as TableCellDef,
   TableHeaderCell as TableHeaderCellDef,
+  type Prettify,
   type TableStyleProps,
   type TableHeadStyleProps,
   type TableBodyStyleProps,
@@ -16,9 +16,7 @@ import {
 } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
-// ============================================
-// Table
-// ============================================
+//Table
 
 export type TableProps = Prettify<
   TableStyleProps &
@@ -55,37 +53,25 @@ export type TableRef = HTMLTableElement;
  * </Table>
  * ```
  */
-export const Table = createComponent(TableDef, {}) as ComponentType<TableProps>;
+export const Table = createComponent(TableDef) as ComponentType<TableProps>;
 
-// ============================================
-// TableHead
-// ============================================
+//TableHead
 
 export type TableHeadProps = Prettify<TableHeadStyleProps & ComponentPropsWithoutRef<'thead'>>;
 
 export type TableHeadRef = HTMLTableSectionElement;
 
-/**
- * Table head section.
- */
-export const TableHead = createComponent(TableHeadDef, {}) as ComponentType<TableHeadProps>;
+export const TableHead = createComponent(TableHeadDef) as ComponentType<TableHeadProps>;
 
-// ============================================
-// TableBody
-// ============================================
+//TableBody
 
 export type TableBodyProps = Prettify<TableBodyStyleProps & ComponentPropsWithoutRef<'tbody'>>;
 
 export type TableBodyRef = HTMLTableSectionElement;
 
-/**
- * Table body section.
- */
-export const TableBody = createComponent(TableBodyDef, {}) as ComponentType<TableBodyProps>;
+export const TableBody = createComponent(TableBodyDef) as ComponentType<TableBodyProps>;
 
-// ============================================
-// TableRow
-// ============================================
+//TableRow
 
 export type TableRowProps = Prettify<
   TableRowStyleProps &
@@ -100,14 +86,9 @@ export type TableRowProps = Prettify<
 
 export type TableRowRef = HTMLTableRowElement;
 
-/**
- * Table row with optional selected state.
- */
-export const TableRow = createComponent(TableRowDef, {}) as ComponentType<TableRowProps>;
+export const TableRow = createComponent(TableRowDef) as ComponentType<TableRowProps>;
 
-// ============================================
-// TableCell
-// ============================================
+//TableCell
 
 export type TableCellProps = Prettify<
   TableCellStyleProps &
@@ -118,14 +99,9 @@ export type TableCellProps = Prettify<
 
 export type TableCellRef = HTMLTableCellElement;
 
-/**
- * Table data cell with optional alignment.
- */
-export const TableCell = createComponent(TableCellDef, {}) as ComponentType<TableCellProps>;
+export const TableCell = createComponent(TableCellDef) as ComponentType<TableCellProps>;
 
-// ============================================
-// TableHeaderCell
-// ============================================
+//TableHeaderCell
 
 export type TableHeaderCellProps = Prettify<
   TableHeaderCellStyleProps &
@@ -141,7 +117,4 @@ export type TableHeaderCellProps = Prettify<
 
 export type TableHeaderCellRef = HTMLTableCellElement;
 
-/**
- * Table header cell with optional alignment and sortable indicator.
- */
-export const TableHeaderCell = createComponent(TableHeaderCellDef, {}) as ComponentType<TableHeaderCellProps>;
+export const TableHeaderCell = createComponent(TableHeaderCellDef) as ComponentType<TableHeaderCellProps>;

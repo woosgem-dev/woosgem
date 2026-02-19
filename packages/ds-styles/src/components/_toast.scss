@@ -49,7 +49,7 @@
   }
 
   .#{tokens.$prefix}-toast__description {
-    color: var(--wg-toast-description, #{tokens.$text-muted});
+    color: var(--wg-toast-description, #{tokens.$text});
   }
 
   // Action slot (close button, etc.)
@@ -91,7 +91,6 @@
     --wg-toast-color: #{tokens.$info};
     --wg-toast-icon: #{tokens.$info};
     --wg-toast-border: #{tokens.$info};
-    --wg-toast-description: #{tokens.$text};
   }
 
   &[data-variant="success"] {
@@ -99,7 +98,6 @@
     --wg-toast-color: #{tokens.$success};
     --wg-toast-icon: #{tokens.$success};
     --wg-toast-border: #{tokens.$success};
-    --wg-toast-description: #{tokens.$text};
   }
 
   &[data-variant="warning"] {
@@ -107,7 +105,6 @@
     --wg-toast-color: #{tokens.$warning};
     --wg-toast-icon: #{tokens.$warning};
     --wg-toast-border: #{tokens.$warning};
-    --wg-toast-description: #{tokens.$text};
   }
 
   &[data-variant="error"] {
@@ -115,18 +112,14 @@
     --wg-toast-color: #{tokens.$danger};
     --wg-toast-icon: #{tokens.$danger};
     --wg-toast-border: #{tokens.$danger};
-    --wg-toast-description: #{tokens.$text};
   }
 
   // Closable state
   &[data-closable] {
-    padding-right: tokens.$spacing-10;
-    position: relative;
-
     .#{tokens.$prefix}-toast__close {
-      position: absolute;
-      top: tokens.$spacing-2;
-      right: tokens.$spacing-2;
+      flex-shrink: 0;
+      align-self: flex-start;
+      margin-left: auto;
     }
   }
 

@@ -12,9 +12,7 @@ import {
 } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
-// ============================================
-// Accordion
-// ============================================
+//Accordion
 
 export type AccordionProps = Prettify<
   AccordionStyleProps &
@@ -30,11 +28,9 @@ export type AccordionProps = Prettify<
 
 export type AccordionRef = HTMLDivElement;
 
-export const Accordion = createComponent(AccordionDef, {}) as ComponentType<AccordionProps>;
+export const Accordion = createComponent(AccordionDef) as ComponentType<AccordionProps>;
 
-// ============================================
-// AccordionItem
-// ============================================
+//AccordionItem
 
 export type AccordionItemProps = Prettify<
   AccordionItemStyleProps &
@@ -45,11 +41,9 @@ export type AccordionItemProps = Prettify<
 
 export type AccordionItemRef = HTMLDivElement;
 
-export const AccordionItem = createComponent(AccordionItemDef, {}) as ComponentType<AccordionItemProps>;
+export const AccordionItem = createComponent(AccordionItemDef) as ComponentType<AccordionItemProps>;
 
-// ============================================
-// AccordionTrigger
-// ============================================
+//AccordionTrigger
 
 export type AccordionTriggerProps = Prettify<
   AccordionTriggerStyleProps &
@@ -60,11 +54,9 @@ export type AccordionTriggerProps = Prettify<
 
 export type AccordionTriggerRef = HTMLButtonElement;
 
-export const AccordionTrigger = createComponent(AccordionTriggerDef, {}) as ComponentType<AccordionTriggerProps>;
+export const AccordionTrigger = createComponent(AccordionTriggerDef) as ComponentType<AccordionTriggerProps>;
 
-// ============================================
-// AccordionContent
-// ============================================
+//AccordionContent
 
 export type AccordionContentProps = Prettify<
   AccordionContentStyleProps &
@@ -75,4 +67,4 @@ export type AccordionContentProps = Prettify<
 
 export type AccordionContentRef = HTMLDivElement;
 
-export const AccordionContent = createComponent(AccordionContentDef, {}) as ComponentType<AccordionContentProps>;
+export const AccordionContent = createComponent(AccordionContentDef) as ComponentType<AccordionContentProps>;

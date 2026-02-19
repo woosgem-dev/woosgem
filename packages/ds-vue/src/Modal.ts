@@ -124,22 +124,18 @@ export const Modal = defineComponent({
       }
     };
 
-    // Focus restoration
     watch(
       () => props.open,
       (isOpen) => {
         if (isOpen) {
           previousActiveElement.value = document.activeElement as HTMLElement;
-        } else {
-          if (previousActiveElement.value) {
-            previousActiveElement.value.focus();
-          }
+          return;
         }
+        previousActiveElement.value?.focus();
       },
       { immediate: true },
     );
 
-    // Computed attrs from core
     const modalAttrs = computed(() => ModalDef.mapPropsToAttrs({
       open: props.open,
       size: props.size,

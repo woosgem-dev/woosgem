@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "ts-mcp": {
+      "command": "ts-mcp",
+      "args": [
+        "/Users/hyukho/Desktop/Workspace/woosgem"
+      ]
+    }
+  }
+}

@@ -1,14 +1,10 @@
 /**
  * Color Token Types
  *
- * 실제 값은 ds-styles에서 CSS 변수로 정의됨
- * --wg-global-color-* : Theme/CSP로만 변함
- * --wg-{component}-*  : 프레임워크별 오버라이딩이 가능함
+ * Actual values defined as CSS variables in ds-styles
+ * --wg-global-color-*: Only changes via Theme/CSP
+ * --wg-{component}-*: Can be overridden per framework
  */
-
-// ===================
-// Semantic Color Keys
-// ===================
 
 export const SemanticColors = [
   'primary',
@@ -21,10 +17,6 @@ export const SemanticColors = [
 ] as const;
 
 export type SemanticColor = (typeof SemanticColors)[number];
-
-// ===================
-// Text Color Keys
-// ===================
 
 export const TextColors = [
   'default',
@@ -39,10 +31,6 @@ export const TextColors = [
 
 export type TextColor = (typeof TextColors)[number];
 
-// ===================
-// Background Color Keys
-// ===================
-
 export const BackgroundColors = [
   'default',
   'subtle',
@@ -51,10 +39,6 @@ export const BackgroundColors = [
 ] as const;
 
 export type BackgroundColor = (typeof BackgroundColors)[number];
-
-// ===================
-// Border Color Keys
-// ===================
 
 export const BorderColors = [
   'default',

@@ -28,11 +28,6 @@ import {
 } from '@woosgem-dev/headless/react';
 import { createComponent } from './_internal/createComponent';
 
-/**
- * Modal component props.
- * Combines style props with all standard div HTML attributes,
- * while excluding protected attributes used by the design system.
- */
 export type ModalProps = Prettify<
   ModalStyleProps &
     Omit<
@@ -65,10 +60,9 @@ export type ModalProps = Prettify<
     }
 >;
 
-/** Ref type for Modal component */
 export type ModalRef = HTMLDivElement;
 
-const BaseModal = createComponent(ModalDef, {});
+const BaseModal = createComponent(ModalDef);
 
 /**
  * Modal component for displaying content in a dialog overlay.
@@ -108,19 +102,16 @@ const ModalComponent = forwardRef<ModalRef, ModalProps>(function Modal(
     onClose?.();
   }, [onClose]);
 
-  // Headless primitives
   useScrollLock(open);
   useEscapeKey(open && closable && !disableEscapeKey, escapeCallback);
   useFocusTrap(modalRef, open && !disableFocusTrap);
 
-  // Handle overlay click
   const handleOverlayClick = useCallback(() => {
     if (closable && !disableOverlayClick && onClose) {
       onClose();
     }
   }, [closable, disableOverlayClick, onClose]);
 
-  // Focus restoration
   useEffect(() => {
     if (open) {
       previousActiveElement.current = document.activeElement as HTMLElement;
@@ -134,7 +125,6 @@ const ModalComponent = forwardRef<ModalRef, ModalProps>(function Modal(
     return undefined;
   }, [open]);
 
-  // Don't render if not open
   if (!open) {
     return null;
   }
@@ -170,7 +160,6 @@ const ModalComponent = forwardRef<ModalRef, ModalProps>(function Modal(
     </div>
   );
 
-  // Render to portal
   const portalContainer = container || (typeof document !== 'undefined' ? document.body : null);
 
   if (!portalContainer) {

@@ -6,28 +6,20 @@
 
 import { z } from 'zod';
 
-/** Email validation schema */
 export const EmailSchema = z.string().email();
 
-/** URL validation schema */
 export const UrlSchema = z.string().url();
 
-/** Non-empty string schema */
 export const NonEmptyStringSchema = z.string().min(1);
 
-/** Positive number schema */
 export const PositiveNumberSchema = z.number().positive();
 
-/** Non-negative number schema */
 export const NonNegativeNumberSchema = z.number().nonnegative();
 
-/** Integer schema */
 export const IntegerSchema = z.number().int();
 
-/** Positive integer schema */
 export const PositiveIntegerSchema = z.number().int().positive();
 
-/** UUID v4 schema */
 export const UuidSchema = z.string().uuid();
 
 /**

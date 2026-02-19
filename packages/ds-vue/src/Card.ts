@@ -57,9 +57,7 @@ export type CardProps = Prettify<
  */
 export const Card = createComponent(CardDef) as DefineComponent<CardProps>;
 
-// ============================================
 // CardHeader
-// ============================================
 
 export type CardHeaderProps = Prettify<
   CardHeaderStyleProps & {
@@ -72,9 +70,7 @@ export type CardHeaderProps = Prettify<
  */
 export const CardHeader = createComponent(CardHeaderDef) as DefineComponent<CardHeaderProps>;
 
-// ============================================
 // CardBody
-// ============================================
 
 export type CardBodyProps = Prettify<
   CardBodyStyleProps & {
@@ -87,9 +83,7 @@ export type CardBodyProps = Prettify<
  */
 export const CardBody = createComponent(CardBodyDef) as DefineComponent<CardBodyProps>;
 
-// ============================================
 // CardFooter
-// ============================================
 
 export type CardFooterProps = Prettify<
   CardFooterStyleProps & {

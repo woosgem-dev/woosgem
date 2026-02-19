@@ -8,13 +8,8 @@ import {
   type TooltipStyleProps,
 } from '@woosgem-dev/core';
 
-/**
- * Tooltip component props.
- * Combines style props with specific allowed native props.
- */
 export type TooltipProps = Prettify<
   TooltipStyleProps & {
-    /** Additional CSS class */
     class?: string;
   }
 >;
@@ -137,23 +132,14 @@ export const Tooltip = defineComponent({
   },
 
   render() {
-    // Build trigger handlers based on trigger type
-    const triggerHandlers =
-      this.trigger === 'hover'
-        ? {
-            onMouseenter: this.showTooltip,
-            onMouseleave: this.hideTooltip,
-          }
-        : this.trigger === 'focus'
-          ? {
-              onFocus: this.showTooltip,
-              onBlur: this.hideTooltip,
-            }
-          : this.trigger === 'click'
-            ? {
-                onClick: this.toggleTooltip,
-              }
-            : {};
+    let triggerHandlers: Record<string, () => void> = {};
+    if (this.trigger === 'hover') {
+      triggerHandlers = { onMouseenter: this.showTooltip, onMouseleave: this.hideTooltip };
+    } else if (this.trigger === 'focus') {
+      triggerHandlers = { onFocus: this.showTooltip, onBlur: this.hideTooltip };
+    } else if (this.trigger === 'click') {
+      triggerHandlers = { onClick: this.toggleTooltip };
+    }
 
     const wrapperClass = this.$attrs.class
       ? `wg-tooltip-wrapper ${this.$attrs.class}`
@@ -169,7 +155,6 @@ export const Tooltip = defineComponent({
         ...triggerHandlers,
       },
       [
-        // Trigger element with aria-describedby
         h(
           'span',
           {

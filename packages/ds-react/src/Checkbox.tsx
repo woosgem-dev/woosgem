@@ -22,9 +22,7 @@ import {
 } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
-// ===================
 // Legacy Checkbox (single element)
-// ===================
 
 /**
  * Checkbox component props.
@@ -65,12 +63,6 @@ const BaseCheckbox = createComponent(CheckboxDef);
  * </Checkbox>
  * ```
  */
-export const Checkbox = BaseCheckbox as ComponentType<CheckboxProps>;
-
-// ===================
-// Compound Components (Checkbox.*)
-// ===================
-
 // Context for sharing state
 interface CheckboxContextValue {
   size: CheckboxSize;
@@ -89,9 +81,7 @@ function useCheckboxContext() {
   return context;
 }
 
-// ===================
 // CheckboxRoot
-// ===================
 
 export type CheckboxRootProps = Prettify<
   CheckboxRootStyleProps &
@@ -160,9 +150,7 @@ CheckboxRootComponent.displayName = 'CheckboxRoot';
  */
 export const CheckboxRoot = CheckboxRootComponent;
 
-// ===================
 // CheckboxIndicator
-// ===================
 
 export type CheckboxIndicatorProps = Prettify<
   Omit<CheckboxIndicatorStyleProps, 'size' | 'checked' | 'indeterminate' | 'disabled'> &
@@ -207,9 +195,7 @@ CheckboxIndicatorComponent.displayName = 'CheckboxIndicator';
  */
 export const CheckboxIndicator = CheckboxIndicatorComponent;
 
-// ===================
 // CheckboxLabel
-// ===================
 
 export type CheckboxLabelProps = Prettify<
   Omit<CheckboxLabelStyleProps, 'disabled'> &
@@ -251,3 +237,26 @@ CheckboxLabelComponent.displayName = 'CheckboxLabel';
  * Must be used within CheckboxRoot.
  */
 export const CheckboxLabel = CheckboxLabelComponent;
+
+// Unified Export (Legacy + Compound)
+
+/**
+ * Checkbox — legacy single-element component with compound sub-components.
+ *
+ * @example
+ * ```tsx
+ * // Compound (recommended)
+ * <Checkbox.Root checked={checked} onClick={toggle}>
+ *   <Checkbox.Indicator />
+ *   <Checkbox.Label>Accept terms</Checkbox.Label>
+ * </Checkbox.Root>
+ *
+ * // Legacy (single element)
+ * <Checkbox size="md" checked />
+ * ```
+ */
+export const Checkbox = Object.assign(BaseCheckbox as ComponentType<CheckboxProps>, {
+  Root: CheckboxRootComponent,
+  Indicator: CheckboxIndicatorComponent,
+  Label: CheckboxLabelComponent,
+});

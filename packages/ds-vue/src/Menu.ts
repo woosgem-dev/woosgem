@@ -12,33 +12,25 @@ import {
 } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
-// ============================================
 // Menu
-// ============================================
 
 export type MenuProps = Prettify<MenuStyleProps & { class?: string }>;
 
 export const Menu = createComponent(MenuDef) as DefineComponent<MenuProps>;
 
-// ============================================
 // MenuItem
-// ============================================
 
 export type MenuItemProps = Prettify<MenuItemStyleProps & { class?: string }>;
 
 export const MenuItem = createComponent(MenuItemDef) as DefineComponent<MenuItemProps>;
 
-// ============================================
 // MenuDivider
-// ============================================
 
 export type MenuDividerProps = Prettify<MenuDividerStyleProps & { class?: string }>;
 
 export const MenuDivider = createComponent(MenuDividerDef) as DefineComponent<MenuDividerProps>;
 
-// ============================================
 // MenuGroup
-// ============================================
 
 export type MenuGroupProps = Prettify<MenuGroupStyleProps & { class?: string }>;
 

@@ -263,4 +263,3 @@ export const TableHeaderCell = {
     slots: ['default'],
   },
 } as const satisfies ComponentDefinition<TableHeaderCellStyleProps, TableHeaderCellAttrs, 'th'>;
-

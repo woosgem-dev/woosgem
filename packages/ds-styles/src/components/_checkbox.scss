@@ -86,12 +86,6 @@
   // States
   // ===================
 
-  // Unchecked state
-  &[data-state="unchecked"] {
-    background-color: tokens.$background;
-    border-color: tokens.$border;
-  }
-
   // Checked state
   &[data-state="checked"] {
     background-color: tokens.$primary;
@@ -166,9 +160,15 @@
 // ===================
 
 .#{tokens.$prefix}-checkbox__label {
+  // Box Model
+  flex: 1;
+  min-width: 0;
+
+  // Typography
   font-size: tokens.$font-size-14;
   line-height: tokens.$line-height-normal;
   color: tokens.$text;
+  overflow-wrap: break-word;
 
   &[data-disabled] {
     color: tokens.$text-muted;

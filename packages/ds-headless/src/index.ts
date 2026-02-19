@@ -11,4 +11,13 @@ export {
   type TooltipCoords,
   type TooltipTriggerType,
   type TooltipOptions,
+  generateId,
+  resetIdCounter,
+  computeFieldAttributes,
+  type FieldConfig,
+  type FieldAttributes,
+  computeCheckboxAttributes,
+  type CheckboxConfig,
+  type CheckboxAttributes,
+  type CheckboxState,
 } from './vanilla/index';

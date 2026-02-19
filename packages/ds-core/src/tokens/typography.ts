@@ -1,19 +1,11 @@
 /**
  * Typography Token Types
  *
- * 실제 값은 ds-styles에서 CSS 변수로 정의됨 */
-
-// ===================
-// Font Family Keys
-// ===================
+ * Actual values defined as CSS variables in ds-styles */
 
 export const FontFamilyKeys = ['sans', 'mono', 'serif'] as const;
 
 export type FontFamilyKey = (typeof FontFamilyKeys)[number];
-
-// ===================
-// Type Scale Keys
-// ===================
 
 export const TypeScaleKeys = [
   '01', '02', '03', '04', '05', '06',
@@ -21,10 +13,6 @@ export const TypeScaleKeys = [
 ] as const;
 
 export type TypeScaleKey = (typeof TypeScaleKeys)[number];
-
-// ===================
-// Font Weight Keys
-// ===================
 
 export const FontWeightKeys = [
   'light',
@@ -36,10 +24,6 @@ export const FontWeightKeys = [
 
 export type FontWeightKey = (typeof FontWeightKeys)[number];
 
-// ===================
-// Line Height Keys
-// ===================
-
 export const LineHeightKeys = [
   'tight',
   'snug',
@@ -50,10 +34,6 @@ export const LineHeightKeys = [
 
 export type LineHeightKey = (typeof LineHeightKeys)[number];
 
-// ===================
-// Letter Spacing Keys
-// ===================
-
 export const LetterSpacingKeys = [
   'tight',
   'normal',
@@ -62,10 +42,6 @@ export const LetterSpacingKeys = [
 ] as const;
 
 export type LetterSpacingKey = (typeof LetterSpacingKeys)[number];
-
-// ===================
-// Semantic Type Token Keys
-// ===================
 
 export const TypeTokenKeys = [
   'caption-01',

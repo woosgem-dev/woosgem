@@ -1,6 +1,6 @@
 {
   "name": "@woosgem-dev/react",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React component wrappers for WooSGem Design System",
   "author": "woosgem",
   "license": "MIT",
@@ -52,4 +52,3 @@
     "vitest": "^4.0.18"
   }
 }
-

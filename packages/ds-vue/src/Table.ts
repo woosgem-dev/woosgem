@@ -1,5 +1,4 @@
 import type { DefineComponent } from 'vue';
-import type { Prettify } from '@woosgem-dev/core';
 import {
   Table as TableDef,
   TableHead as TableHeadDef,
@@ -7,6 +6,7 @@ import {
   TableRow as TableRowDef,
   TableCell as TableCellDef,
   TableHeaderCell as TableHeaderCellDef,
+  type Prettify,
   type TableStyleProps,
   type TableHeadStyleProps,
   type TableBodyStyleProps,
@@ -16,9 +16,7 @@ import {
 } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
-// ============================================
 // Table
-// ============================================
 
 export type TableProps = Prettify<
   TableStyleProps & {
@@ -49,9 +47,7 @@ export type TableProps = Prettify<
  */
 export const Table = createComponent(TableDef) as DefineComponent<TableProps>;
 
-// ============================================
 // TableHead
-// ============================================
 
 export type TableHeadProps = Prettify<
   TableHeadStyleProps & {
@@ -64,9 +60,7 @@ export type TableHeadProps = Prettify<
  */
 export const TableHead = createComponent(TableHeadDef) as DefineComponent<TableHeadProps>;
 
-// ============================================
 // TableBody
-// ============================================
 
 export type TableBodyProps = Prettify<
   TableBodyStyleProps & {
@@ -79,9 +73,7 @@ export type TableBodyProps = Prettify<
  */
 export const TableBody = createComponent(TableBodyDef) as DefineComponent<TableBodyProps>;
 
-// ============================================
 // TableRow
-// ============================================
 
 export type TableRowProps = Prettify<
   TableRowStyleProps & {
@@ -94,9 +86,7 @@ export type TableRowProps = Prettify<
  */
 export const TableRow = createComponent(TableRowDef) as DefineComponent<TableRowProps>;
 
-// ============================================
 // TableCell
-// ============================================
 
 export type TableCellProps = Prettify<
   TableCellStyleProps & {
@@ -109,9 +99,7 @@ export type TableCellProps = Prettify<
  */
 export const TableCell = createComponent(TableCellDef) as DefineComponent<TableCellProps>;
 
-// ============================================
 // TableHeaderCell
-// ============================================
 
 export type TableHeaderCellProps = Prettify<
   TableHeaderCellStyleProps & {

@@ -15,11 +15,10 @@
     width: 100%;
     height: 100%;
     fill: currentColor;
-    // 작은 사이즈에서 뿌옇게 보이는 현상 방지
+    // Prevent blurry rendering at small sizes
     shape-rendering: geometricPrecision;
   }
 
-  // 작은 사이즈에서 더 선명하게
   &[data-size="xs"],
   &[data-size="sm"] {
     svg {

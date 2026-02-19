@@ -3,8 +3,8 @@
 // Shadows, focus, overlays
 // ===================
 
-@use "colors" as *;
-@use "motion" as *;
+@use "colors" as colors;
+@use "motion" as motion;
 
 // ===================
 // Shadows
@@ -35,7 +35,7 @@ $shadow-scale: (
 
 $focus-ring-width: 2px;
 $focus-ring-offset: 2px;
-$focus-ring-color: $focus-ring;
+$focus-ring-color: colors.$focus-ring;
 
 // Focus ring styles
 @mixin focus-ring {
@@ -75,19 +75,19 @@ $focus-ring-color: $focus-ring;
 // ===================
 
 // Layer backgrounds (for nested UI elements)
-$layer-01: $background-subtle;
-$layer-02: $background;
-$layer-03: $background-subtle;
+$layer-01: colors.$background-subtle;
+$layer-02: colors.$background;
+$layer-03: colors.$background-subtle;
 
 // Layer hover states
-$layer-hover-01: $background-muted;
-$layer-hover-02: $background-subtle;
-$layer-hover-03: $background-muted;
+$layer-hover-01: colors.$background-muted;
+$layer-hover-02: colors.$background-subtle;
+$layer-hover-03: colors.$background-muted;
 
 // Layer active states
-$layer-active-01: $background-muted;
-$layer-active-02: $background-muted;
-$layer-active-03: $background-muted;
+$layer-active-01: colors.$background-muted;
+$layer-active-02: colors.$background-muted;
+$layer-active-03: colors.$background-muted;
 
 // Layer selected states
 $layer-selected-01: var(--wg-color-primary-alpha-10);
@@ -106,8 +106,8 @@ $overlay-dark: rgba(0, 0, 0, 0.7);
 // Skeleton (Loading states)
 // ===================
 
-$skeleton-background: $background-muted;
-$skeleton-element: $gray-300;
+$skeleton-background: colors.$background-muted;
+$skeleton-element: colors.$gray-300;
 
 // Skeleton animation
 @mixin skeleton-animation {
@@ -136,7 +136,7 @@ $skeleton-element: $gray-300;
 
 // Hover overlay (for interactive elements)
 @mixin hover-state {
-  transition: background-color $motion-quick;
+  transition: background-color motion.$motion-quick;
 
   &:hover:not(:disabled) {
     background-color: var(--wg-color-background-hover, rgba(0, 0, 0, 0.04));

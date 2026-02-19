@@ -12,11 +12,6 @@ import {
 } from '@woosgem-dev/core';
 import { createComponent } from './_internal/createComponent';
 
-/**
- * Card component props.
- * Combines style props with all standard div HTML attributes,
- * while excluding protected attributes used by the design system.
- */
 export type CardProps = Prettify<
   CardStyleProps &
     Omit<
@@ -34,7 +29,6 @@ export type CardProps = Prettify<
     }
 >;
 
-/** Ref type for Card component */
 export type CardRef = HTMLDivElement;
 
 /**
@@ -67,11 +61,9 @@ export type CardRef = HTMLDivElement;
  * </Card>
  * ```
  */
-export const Card = createComponent(CardDef, {}) as ComponentType<CardProps>;
+export const Card = createComponent(CardDef) as ComponentType<CardProps>;
 
-// ============================================
-// CardHeader
-// ============================================
+//CardHeader
 
 export type CardHeaderProps = Prettify<
   CardHeaderStyleProps &
@@ -82,27 +74,17 @@ export type CardHeaderProps = Prettify<
 
 export type CardHeaderRef = HTMLDivElement;
 
-/**
- * Card header section with optional divider.
- */
-export const CardHeader = createComponent(CardHeaderDef, {}) as ComponentType<CardHeaderProps>;
+export const CardHeader = createComponent(CardHeaderDef) as ComponentType<CardHeaderProps>;
 
-// ============================================
-// CardBody
-// ============================================
+//CardBody
 
 export type CardBodyProps = Prettify<CardBodyStyleProps & ComponentPropsWithoutRef<'div'>>;
 
 export type CardBodyRef = HTMLDivElement;
 
-/**
- * Card body section for main content.
- */
-export const CardBody = createComponent(CardBodyDef, {}) as ComponentType<CardBodyProps>;
+export const CardBody = createComponent(CardBodyDef) as ComponentType<CardBodyProps>;
 
-// ============================================
-// CardFooter
-// ============================================
+//CardFooter
 
 export type CardFooterProps = Prettify<
   CardFooterStyleProps &
@@ -114,7 +96,4 @@ export type CardFooterProps = Prettify<
 
 export type CardFooterRef = HTMLDivElement;
 
-/**
- * Card footer section with optional divider and alignment.
- */
-export const CardFooter = createComponent(CardFooterDef, {}) as ComponentType<CardFooterProps>;
+export const CardFooter = createComponent(CardFooterDef) as ComponentType<CardFooterProps>;
