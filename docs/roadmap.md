@@ -81,6 +81,7 @@
 
 ### Medium Priority
 
+- [ ] Refactor compound `data-state`: keep mutually exclusive values in `data-state` (checked/unchecked/indeterminate/selected), split stackable modifiers to independent attributes (`data-disabled`, `data-loading`)
 - [ ] Animation system
 - [ ] Storybook coverage for remaining components
 
