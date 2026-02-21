@@ -1,6 +1,6 @@
 {
   "name": "@woosgem-dev/lit",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "WooSGem Design System - Lit Web Components",
   "type": "module",
   "main": "./dist/index.js",

@@ -1,6 +1,6 @@
 {
   "name": "@woosgem-dev/styles",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "SCSS styles and theme system for WooSGem Design System",
   "author": "woosgem",
   "license": "MIT",

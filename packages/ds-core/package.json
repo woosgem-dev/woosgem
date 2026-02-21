@@ -1,6 +1,6 @@
 {
   "name": "@woosgem-dev/core",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Core definitions and Color Set Protocol for WooSGem Design System",
   "author": "woosgem",
   "license": "MIT",
