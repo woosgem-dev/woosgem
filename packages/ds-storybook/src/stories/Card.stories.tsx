@@ -150,10 +150,10 @@ export const WithHeader: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '600px' }}>
       <Card>
-        <CardHeader style={{ size: '16px' }}>
+        <CardHeader style={{ padding: '16px' }}>
           <h3 style={{ margin: 0, fontSize: '18px', fontWeight: 600 }}>Card with Header</h3>
         </CardHeader>
-        <div style={{ size: '16px' }}>
+        <div style={{ padding: '16px' }}>
           <p style={{ margin: 0 }}>
             The header section is separate from the body content. No divider by default.
           </p>
@@ -161,10 +161,10 @@ export const WithHeader: Story = {
       </Card>
 
       <Card>
-        <CardHeader divider style={{ size: '16px' }}>
+        <CardHeader divider style={{ padding: '16px' }}>
           <h3 style={{ margin: 0, fontSize: '18px', fontWeight: 600 }}>Header with Divider</h3>
         </CardHeader>
-        <div style={{ size: '16px' }}>
+        <div style={{ padding: '16px' }}>
           <p style={{ margin: 0 }}>
             Add divider prop to show a separator line below the header.
           </p>
@@ -178,22 +178,22 @@ export const WithFooter: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '600px' }}>
       <Card>
-        <div style={{ size: '16px' }}>
+        <div style={{ padding: '16px' }}>
           <h3 style={{ margin: '0 0 8px', fontSize: '18px', fontWeight: 600 }}>Card with Footer</h3>
           <p style={{ margin: 0 }}>Content area with action buttons in the footer.</p>
         </div>
-        <CardFooter style={{ size: '12px 16px' }}>
+        <CardFooter style={{ padding: '12px 16px' }}>
           <Button size="sm" variant="ghost">Cancel</Button>
           <Button size="sm">Confirm</Button>
         </CardFooter>
       </Card>
 
       <Card>
-        <div style={{ size: '16px' }}>
+        <div style={{ padding: '16px' }}>
           <h3 style={{ margin: '0 0 8px', fontSize: '18px', fontWeight: 600 }}>Footer with Divider</h3>
           <p style={{ margin: 0 }}>Add divider prop to separate footer from body.</p>
         </div>
-        <CardFooter divider align="end" style={{ size: '12px 16px' }}>
+        <CardFooter divider align="end" style={{ padding: '12px 16px' }}>
           <Button size="sm" variant="outline">Cancel</Button>
           <Button size="sm">Submit</Button>
         </CardFooter>
@@ -207,40 +207,40 @@ export const FooterAlignment: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '600px' }}>
       <Card>
-        <div style={{ size: '16px' }}>
+        <div style={{ padding: '16px' }}>
           <strong>Align Start (default)</strong>
         </div>
-        <CardFooter divider align="start" style={{ size: '12px 16px' }}>
+        <CardFooter divider align="start" style={{ padding: '12px 16px' }}>
           <Button size="sm">Left</Button>
           <Button size="sm" variant="outline">Button</Button>
         </CardFooter>
       </Card>
 
       <Card>
-        <div style={{ size: '16px' }}>
+        <div style={{ padding: '16px' }}>
           <strong>Align Center</strong>
         </div>
-        <CardFooter divider align="center" style={{ size: '12px 16px' }}>
+        <CardFooter divider align="center" style={{ padding: '12px 16px' }}>
           <Button size="sm">Center</Button>
           <Button size="sm" variant="outline">Button</Button>
         </CardFooter>
       </Card>
 
       <Card>
-        <div style={{ size: '16px' }}>
+        <div style={{ padding: '16px' }}>
           <strong>Align End</strong>
         </div>
-        <CardFooter divider align="end" style={{ size: '12px 16px' }}>
+        <CardFooter divider align="end" style={{ padding: '12px 16px' }}>
           <Button size="sm" variant="outline">Cancel</Button>
           <Button size="sm">Confirm</Button>
         </CardFooter>
       </Card>
 
       <Card>
-        <div style={{ size: '16px' }}>
+        <div style={{ padding: '16px' }}>
           <strong>Align Between (space-between)</strong>
         </div>
-        <CardFooter divider align="between" style={{ size: '12px 16px' }}>
+        <CardFooter divider align="between" style={{ padding: '12px 16px' }}>
           <Button size="sm" variant="ghost">Delete</Button>
           <div style={{ display: 'flex', gap: '8px' }}>
             <Button size="sm" variant="outline">Cancel</Button>
@@ -257,13 +257,13 @@ export const FullStructure: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', maxWidth: '900px' }}>
       <Card variant="outlined" style={{ flex: '1 1 350px' }}>
-        <CardHeader divider style={{ size: '16px' }}>
+        <CardHeader divider style={{ padding: '16px' }}>
           <h3 style={{ margin: 0, fontSize: '18px', fontWeight: 600 }}>User Profile</h3>
           <p style={{ margin: '4px 0 0', fontSize: '14px', color: 'var(--wg-color-text-secondary)' }}>
             Complete your profile information
           </p>
         </CardHeader>
-        <CardBody style={{ size: '16px' }}>
+        <CardBody style={{ padding: '16px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             <div>
               <strong style={{ display: 'block', marginBottom: '4px', fontSize: '14px' }}>Name</strong>
@@ -279,17 +279,17 @@ export const FullStructure: Story = {
             </div>
           </div>
         </CardBody>
-        <CardFooter divider align="end" style={{ size: '12px 16px' }}>
+        <CardFooter divider align="end" style={{ padding: '12px 16px' }}>
           <Button size="sm" variant="outline">Cancel</Button>
           <Button size="sm">Save Changes</Button>
         </CardFooter>
       </Card>
 
       <Card variant="elevated" style={{ flex: '1 1 350px' }}>
-        <CardHeader divider style={{ size: '16px' }}>
+        <CardHeader divider style={{ padding: '16px' }}>
           <h3 style={{ margin: 0, fontSize: '18px', fontWeight: 600 }}>Notification Settings</h3>
         </CardHeader>
-        <CardBody style={{ size: '16px' }}>
+        <CardBody style={{ padding: '16px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '14px' }}>
             <label style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <input type="checkbox" defaultChecked />
@@ -305,7 +305,7 @@ export const FullStructure: Story = {
             </label>
           </div>
         </CardBody>
-        <CardFooter divider align="between" style={{ size: '12px 16px' }}>
+        <CardFooter divider align="between" style={{ padding: '12px 16px' }}>
           <Button size="sm" variant="ghost">Reset to Default</Button>
           <Button size="sm">Apply</Button>
         </CardFooter>
@@ -366,7 +366,7 @@ export const RealWorldExample: Story = {
         }}>
           {'\u{1F3A7}'}
         </div>
-        <CardBody style={{ size: '16px' }}>
+        <CardBody style={{ padding: '16px' }}>
           <h3 style={{ margin: '0 0 8px', fontSize: '18px', fontWeight: 600 }}>Wireless Headphones</h3>
           <p style={{ margin: '0 0 12px', fontSize: '14px', color: 'var(--wg-color-text-secondary)' }}>
             Premium sound quality with active noise cancellation
@@ -375,7 +375,7 @@ export const RealWorldExample: Story = {
             $299
           </div>
         </CardBody>
-        <CardFooter style={{ size: '12px 16px' }}>
+        <CardFooter style={{ padding: '12px 16px' }}>
           <Button fullWidth>Add to Cart</Button>
         </CardFooter>
       </Card>
@@ -392,7 +392,7 @@ export const RealWorldExample: Story = {
         }}>
           {'\u231A'}
         </div>
-        <CardBody style={{ size: '16px' }}>
+        <CardBody style={{ padding: '16px' }}>
           <h3 style={{ margin: '0 0 8px', fontSize: '18px', fontWeight: 600 }}>Smart Watch Pro</h3>
           <p style={{ margin: '0 0 12px', fontSize: '14px', color: 'var(--wg-color-text-secondary)' }}>
             Track your fitness goals and stay connected
@@ -401,7 +401,7 @@ export const RealWorldExample: Story = {
             $449
           </div>
         </CardBody>
-        <CardFooter style={{ size: '12px 16px' }}>
+        <CardFooter style={{ padding: '12px 16px' }}>
           <Button fullWidth>Add to Cart</Button>
         </CardFooter>
       </Card>
@@ -418,7 +418,7 @@ export const RealWorldExample: Story = {
         }}>
           {'\u{1F4F1}'}
         </div>
-        <CardBody style={{ size: '16px' }}>
+        <CardBody style={{ padding: '16px' }}>
           <h3 style={{ margin: '0 0 8px', fontSize: '18px', fontWeight: 600 }}>Latest Smartphone</h3>
           <p style={{ margin: '0 0 12px', fontSize: '14px', color: 'var(--wg-color-text-secondary)' }}>
             Experience next-gen performance and camera
@@ -427,7 +427,7 @@ export const RealWorldExample: Story = {
             $999
           </div>
         </CardBody>
-        <CardFooter style={{ size: '12px 16px' }}>
+        <CardFooter style={{ padding: '12px 16px' }}>
           <Button fullWidth>Add to Cart</Button>
         </CardFooter>
       </Card>

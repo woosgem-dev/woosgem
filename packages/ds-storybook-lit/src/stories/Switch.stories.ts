@@ -112,8 +112,8 @@ class SwitchInteractiveDemo extends LitElement {
   @state() notifications = true;
   @state() darkMode = false;
   @state() autoSave = true;
-  createRenderRoot() { return this; }
-  render() {
+  override createRenderRoot() { return this; }
+  override render() {
     return html`
       <div style="display: flex; flex-direction: column; gap: 16px; padding: 24px; background-color: var(--wg-color-background-muted, #f5f5f5); border-radius: 12px; min-width: 300px">
         <div style="display: flex; justify-content: space-between; align-items: center">

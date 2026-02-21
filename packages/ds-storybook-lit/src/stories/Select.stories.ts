@@ -127,7 +127,7 @@ export const WithOptions: Story = {
 class SelectInteractiveDemo extends LitElement {
   @state() isOpen = false;
   @state() selectedValue = '';
-  createRenderRoot() { return this; }
+  override createRenderRoot() { return this; }
 
   private options = [
     { value: 'react', label: 'React' },
@@ -141,7 +141,7 @@ class SelectInteractiveDemo extends LitElement {
     this.isOpen = false;
   }
 
-  render() {
+  override render() {
     return html`
       <div style="position: relative; width: 300px">
         <wg-select

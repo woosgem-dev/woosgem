@@ -5,7 +5,6 @@ import {
   type TooltipPosition,
   type TooltipTrigger,
 } from '@woosgem-dev/core';
-import { applyAttrsToElement } from './_internal/createComponent';
 
 let tooltipIdCounter = 0;
 
@@ -27,7 +26,7 @@ let tooltipIdCounter = 0;
  * ```
  */
 export class Tooltip extends LitElement {
-  static properties = {
+  static override properties = {
     content: { type: String },
     position: { type: String },
     trigger: { type: String },
@@ -51,7 +50,7 @@ export class Tooltip extends LitElement {
   private _tooltipId = `wg-tooltip-${++tooltipIdCounter}`;
 
   // Light DOM for ds-styles compatibility
-  createRenderRoot(): HTMLElement {
+  override createRenderRoot(): HTMLElement {
     return this;
   }
 
@@ -97,18 +96,18 @@ export class Tooltip extends LitElement {
     );
   }
 
-  disconnectedCallback(): void {
+  override disconnectedCallback(): void {
     super.disconnectedCallback();
     if (this._timeoutId) {
       clearTimeout(this._timeoutId);
     }
   }
 
-  updated(): void {
+  override updated(): void {
     this._applyWrapperAttrs();
   }
 
-  connectedCallback(): void {
+  override connectedCallback(): void {
     super.connectedCallback();
     this._applyWrapperAttrs();
   }
@@ -118,7 +117,7 @@ export class Tooltip extends LitElement {
     this.setAttribute('data-position', this.position);
   }
 
-  render(): TemplateResult {
+  override render(): TemplateResult {
     const attrs = TooltipCore.mapPropsToAttrs({
       content: this.content,
       position: this.position,
@@ -128,24 +127,6 @@ export class Tooltip extends LitElement {
       visible: this._isVisible,
       disabled: this.disabled,
     });
-
-    // Build trigger handlers based on trigger type
-    const triggerHandlers =
-      this.trigger === 'hover'
-        ? {
-            '@mouseenter': this._showTooltip,
-            '@mouseleave': this._hideTooltip,
-          }
-        : this.trigger === 'focus'
-          ? {
-              '@focus': this._showTooltip,
-              '@blur': this._hideTooltip,
-            }
-          : this.trigger === 'click'
-            ? {
-                '@click': this._toggleTooltip,
-              }
-            : {};
 
     return html`
       <span

@@ -195,6 +195,9 @@ importers:
       '@storybook/test':
         specifier: ^8.6.15
         version: 8.6.15(storybook@8.6.15)
+      '@storybook/theming':
+        specifier: ^8.6.14
+        version: 8.6.14(storybook@8.6.15)
       '@types/node':
         specifier: ^25.1.0
         version: 25.1.0
@@ -245,6 +248,9 @@ importers:
         specifier: ^8.6.15
         version: 8.6.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.6.15)
       '@storybook/test':
+        specifier: ^8.6.15
+        version: 8.6.15(storybook@8.6.15)
+      '@storybook/theming':
         specifier: ^8.6.15
         version: 8.6.15(storybook@8.6.15)
       '@storybook/web-components':
@@ -1287,6 +1293,11 @@ packages:
     resolution: {integrity: sha512-EwquDRUDVvWcZds3T2abmB5wSN/Vattal4YtZ6fpBlIUqONV4o/cOBX39cFfQSUCBrIXIjQ6RmapQCHK/PvBYw==}
     peerDependencies:
       storybook: ^8.6.15
+
+  '@storybook/theming@8.6.14':
+    resolution: {integrity: sha512-r4y+LsiB37V5hzpQo+BM10PaCsp7YlZ0YcZzQP1OCkPlYXmUAFy2VvDKaFRpD8IeNPKug2u4iFm/laDEbs03dg==}
+    peerDependencies:
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
   '@storybook/theming@8.6.15':
     resolution: {integrity: sha512-dAbL0XOekyT6XsF49R6Etj3WxQ/LpdJDIswUUeHgVJ6/yd2opZOGbPxnwA3zlmAh1c0tvpPyhSDXxSG79u8e4Q==}
@@ -2886,8 +2897,8 @@ packages:
   vue-component-type-helpers@2.2.12:
     resolution: {integrity: sha512-YbGqHZ5/eW4SnkPNR44mKVc6ZKQoRs/Rux1sxC6rdwXb4qpbOSYfDr9DsTHolOTGmIKgM9j141mZbBeg05R1pw==}
 
-  vue-component-type-helpers@3.2.4:
-    resolution: {integrity: sha512-05lR16HeZDcDpB23ku5b5f1fBOoHqFnMiKRr2CiEvbG5Ux4Yi0McmQBOET0dR0nxDXosxyVqv67q6CzS3AK8rw==}
+  vue-component-type-helpers@3.2.5:
+    resolution: {integrity: sha512-tkvNr+bU8+xD/onAThIe7CHFvOJ/BO6XCOrxMzeytJq40nTfpGDJuVjyCM8ccGZKfAbGk2YfuZyDMXM56qheZQ==}
 
   vue-docgen-api@4.79.2:
     resolution: {integrity: sha512-n9ENAcs+40awPZMsas7STqjkZiVlIjxIKgiJr5rSohDP0/JCrD9VtlzNojafsA1MChm/hz2h3PDtUedx3lbgfA==}
@@ -3730,6 +3741,10 @@ snapshots:
       '@vitest/spy': 2.0.5
       storybook: 8.6.15
 
+  '@storybook/theming@8.6.14(storybook@8.6.15)':
+    dependencies:
+      storybook: 8.6.15
+
   '@storybook/theming@8.6.15(storybook@8.6.15)':
     dependencies:
       storybook: 8.6.15
@@ -3760,7 +3775,7 @@ snapshots:
       ts-dedent: 2.2.0
       type-fest: 2.19.0
       vue: 3.5.27(typescript@5.9.3)
-      vue-component-type-helpers: 3.2.4
+      vue-component-type-helpers: 3.2.5
 
   '@storybook/web-components-vite@8.6.15(lit@3.3.2)(storybook@8.6.15)(vite@6.4.1(@types/node@25.1.0)(sass@1.97.3)(tsx@4.21.0))':
     dependencies:
@@ -5508,7 +5523,7 @@ snapshots:
 
   vue-component-type-helpers@2.2.12: {}
 
-  vue-component-type-helpers@3.2.4: {}
+  vue-component-type-helpers@3.2.5: {}
 
   vue-docgen-api@4.79.2(vue@3.5.27(typescript@5.9.3)):
     dependencies:

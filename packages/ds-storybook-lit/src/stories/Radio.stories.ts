@@ -102,8 +102,8 @@ export const States: Story = {
 
 class RadioInteractiveDemo extends LitElement {
   @state() selected = 'option1';
-  createRenderRoot() { return this; }
-  render() {
+  override createRenderRoot() { return this; }
+  override render() {
     return html`
       <div style="display: flex; flex-direction: column; gap: 12px">
         ${['option1', 'option2', 'option3'].map(
@@ -167,8 +167,8 @@ export const RadioGroupHorizontal: Story = {
 
 class RadioFormDemo extends LitElement {
   @state() plan = 'pro';
-  createRenderRoot() { return this; }
-  render() {
+  override createRenderRoot() { return this; }
+  override render() {
     const options = [
       { id: 'free', label: 'Free', description: 'Basic features' },
       { id: 'pro', label: 'Pro', description: 'Advanced features + Support' },

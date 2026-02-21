@@ -59,8 +59,8 @@ export const Checked: Story = {
 
 class CheckboxInteractiveDemo extends LitElement {
   @state() checked = false;
-  createRenderRoot() { return this; }
-  render() {
+  override createRenderRoot() { return this; }
+  override render() {
     return html`
       <wg-checkbox
         ?checked=${this.checked}
@@ -101,7 +101,7 @@ export const Sizes: Story = {
 
 class CheckboxIndeterminateDemo extends LitElement {
   @state() items = [false, true, false];
-  createRenderRoot() { return this; }
+  override createRenderRoot() { return this; }
 
   get allChecked() { return this.items.every(Boolean); }
   get someChecked() { return this.items.some(Boolean); }
@@ -117,7 +117,7 @@ class CheckboxIndeterminateDemo extends LitElement {
     this.items = newItems;
   }
 
-  render() {
+  override render() {
     return html`
       <div style="display: flex; flex-direction: column; gap: 8px">
         <wg-checkbox
@@ -157,13 +157,13 @@ export const WithoutLabel: Story = {
 
 class CheckboxFormDemo extends LitElement {
   @state() values = { terms: false, newsletter: false, marketing: false };
-  createRenderRoot() { return this; }
+  override createRenderRoot() { return this; }
 
   toggle(key: 'terms' | 'newsletter' | 'marketing') {
     this.values = { ...this.values, [key]: !this.values[key] };
   }
 
-  render() {
+  override render() {
     return html`
       <div style="display: flex; flex-direction: column; gap: 12px">
         <wg-checkbox ?checked=${this.values.terms} @click=${() => this.toggle('terms')}>

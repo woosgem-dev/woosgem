@@ -107,8 +107,8 @@ export const AllThemes: Story = {
 
 class ThemeSwitcherDemo extends LitElement {
   @state() theme: 'default' | 'dark' = 'default';
-  createRenderRoot() { return this; }
-  render() {
+  override createRenderRoot() { return this; }
+  override render() {
     const isDark = this.theme === 'dark';
     return html`
       <div

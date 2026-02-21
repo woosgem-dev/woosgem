@@ -134,8 +134,8 @@ export const ZIndexLevels: Story = {
 
 class OverlayInteractiveDemo extends LitElement {
   @state() visible = false;
-  createRenderRoot() { return this; }
-  render() {
+  override createRenderRoot() { return this; }
+  override render() {
     return html`
       <div style="min-height: 100vh; padding: 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
         <div style="position: relative; z-index: 1; max-width: 600px; margin: 0 auto; padding: 32px; background: rgba(255, 255, 255, 0.95); border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1)">
@@ -160,8 +160,8 @@ export const Interactive: Story = {
 
 class OverlayBlurDemo extends LitElement {
   @state() visible = false;
-  createRenderRoot() { return this; }
-  render() {
+  override createRenderRoot() { return this; }
+  override render() {
     return html`
       <div style="min-height: 100vh; padding: 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
         <div style="position: relative; z-index: 1; max-width: 600px; margin: 0 auto; padding: 32px; background: rgba(255, 255, 255, 0.95); border-radius: 12px">

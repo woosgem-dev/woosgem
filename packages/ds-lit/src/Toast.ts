@@ -27,7 +27,7 @@ import { applyAttrsToElement, emitEvent } from './_internal/createComponent';
  */
 // Extended Toast class with auto-dismiss functionality
 class ToastElement extends LitElement {
-  static properties = {
+  static override properties = {
     variant: { type: String, reflect: true },
     position: { type: String, reflect: true },
     duration: { type: Number, reflect: true },
@@ -44,7 +44,7 @@ class ToastElement extends LitElement {
   private timerId: ReturnType<typeof setTimeout> | null = null;
 
   // Uses Light DOM
-  createRenderRoot(): HTMLElement {
+  override createRenderRoot(): HTMLElement {
     return this;
   }
 
@@ -81,18 +81,18 @@ class ToastElement extends LitElement {
     applyAttrsToElement(this, attrs as unknown as Record<string, unknown>);
   }
 
-  connectedCallback(): void {
+  override connectedCallback(): void {
     super.connectedCallback();
     this.applyAttrs();
     this.startTimer();
   }
 
-  disconnectedCallback(): void {
+  override disconnectedCallback(): void {
     super.disconnectedCallback();
     this.clearTimer();
   }
 
-  updated(changedProperties: Map<string, unknown>): void {
+  override updated(changedProperties: Map<string, unknown>): void {
     this.applyAttrs();
 
     // Restart timer if visibility or duration changes
@@ -105,7 +105,7 @@ class ToastElement extends LitElement {
     }
   }
 
-  render(): TemplateResult | null {
+  override render(): TemplateResult | null {
     if (!this.visible) {
       return null;
     }

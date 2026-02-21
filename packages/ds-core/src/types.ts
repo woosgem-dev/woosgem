@@ -10,7 +10,7 @@ export interface ComponentDefinition<
   /** Display name for debugging and DevTools */
   readonly displayName: string;
   /** Default values for all style props */
-  readonly defaultProps: Required<StyleProps>;
+  readonly defaultProps: { [K in keyof Required<StyleProps>]: StyleProps[K] };
   /** Allowed values for each style prop (for validation/documentation) */
   readonly propTypes: { [K in keyof StyleProps]?: readonly StyleProps[K][] };
   /** Maps style props to DOM attributes */

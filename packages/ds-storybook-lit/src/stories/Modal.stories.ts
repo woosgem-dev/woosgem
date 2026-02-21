@@ -89,8 +89,8 @@ export const Default: Story = {
 
 class ModalSizesDemo extends LitElement {
   @state() openSize: string | null = null;
-  createRenderRoot() { return this; }
-  render() {
+  override createRenderRoot() { return this; }
+  override render() {
     return pageBackground(html`
       <div style="max-width: 800px; margin: 0 auto; padding: 32px; background: rgba(255, 255, 255, 0.95); border-radius: 12px">
         <h2 style="margin-top: 0; margin-bottom: 24px; color: #333">Modal Sizes</h2>
@@ -129,8 +129,8 @@ export const Sizes: Story = {
 
 class ModalWithHeaderDemo extends LitElement {
   @state() open = false;
-  createRenderRoot() { return this; }
-  render() {
+  override createRenderRoot() { return this; }
+  override render() {
     return pageBackground(html`
       ${demoContent('Modal with Header')}
       <div style="max-width: 600px; margin: 20px auto; padding: 24px; background: rgba(255, 255, 255, 0.95); border-radius: 12px">
@@ -157,8 +157,8 @@ export const WithHeader: Story = {
 
 class ModalFullStructureDemo extends LitElement {
   @state() open = false;
-  createRenderRoot() { return this; }
-  render() {
+  override createRenderRoot() { return this; }
+  override render() {
     return pageBackground(html`
       ${demoContent('Complete Modal Structure')}
       <div style="max-width: 600px; margin: 20px auto; padding: 24px; background: rgba(255, 255, 255, 0.95); border-radius: 12px">
@@ -202,8 +202,8 @@ export const FullStructure: Story = {
 
 class ModalWithFooterDemo extends LitElement {
   @state() open = false;
-  createRenderRoot() { return this; }
-  render() {
+  override createRenderRoot() { return this; }
+  override render() {
     return pageBackground(html`
       ${demoContent('Modal with Footer')}
       <div style="max-width: 600px; margin: 20px auto; padding: 24px; background: rgba(255, 255, 255, 0.95); border-radius: 12px">
@@ -239,8 +239,8 @@ export const WithFooter: Story = {
 
 class ModalNonClosableDemo extends LitElement {
   @state() open = false;
-  createRenderRoot() { return this; }
-  render() {
+  override createRenderRoot() { return this; }
+  override render() {
     return pageBackground(html`
       ${demoContent('Non-Closable Modal')}
       <div style="max-width: 600px; margin: 20px auto; padding: 24px; background: rgba(255, 255, 255, 0.95); border-radius: 12px">
@@ -275,8 +275,8 @@ class ModalInteractiveDemo extends LitElement {
   @state() open = false;
   @state() size: string = 'md';
   @state() closable = true;
-  createRenderRoot() { return this; }
-  render() {
+  override createRenderRoot() { return this; }
+  override render() {
     return pageBackground(html`
       <div style="max-width: 800px; margin: 0 auto; padding: 32px; background: rgba(255, 255, 255, 0.95); border-radius: 12px">
         <h2 style="margin-top: 0; color: #333">Interactive Modal Demo</h2>
@@ -329,8 +329,8 @@ export const Interactive: Story = {
 
 class ModalFooterAlignDemo extends LitElement {
   @state() openAlign: string | null = null;
-  createRenderRoot() { return this; }
-  render() {
+  override createRenderRoot() { return this; }
+  override render() {
     return pageBackground(html`
       <div style="max-width: 800px; margin: 0 auto; padding: 32px; background: rgba(255, 255, 255, 0.95); border-radius: 12px">
         <h2 style="margin-top: 0; margin-bottom: 24px; color: #333">Footer Alignment</h2>
@@ -375,8 +375,8 @@ export const FooterAlignment: Story = {
 
 class ModalScrollableDemo extends LitElement {
   @state() open = false;
-  createRenderRoot() { return this; }
-  render() {
+  override createRenderRoot() { return this; }
+  override render() {
     return pageBackground(html`
       ${demoContent('Scrollable Modal Body')}
       <div style="max-width: 600px; margin: 20px auto; padding: 24px; background: rgba(255, 255, 255, 0.95); border-radius: 12px">

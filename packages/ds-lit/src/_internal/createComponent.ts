@@ -98,7 +98,7 @@ export function createComponent<
 
   // Create dynamic component class
   class GeneratedComponent extends LitElement {
-    static properties = properties;
+    static override properties = properties;
 
     // Set property defaults
     constructor() {
@@ -117,7 +117,7 @@ export function createComponent<
     }
 
     // Use Light DOM
-    createRenderRoot(): HTMLElement {
+    override createRenderRoot(): HTMLElement {
       return this;
     }
 
@@ -133,11 +133,11 @@ export function createComponent<
       applyAttrsToElement(this, attrs as Record<string, unknown>);
     }
 
-    updated(): void {
+    override updated(): void {
       this.applyAttrs();
     }
 
-    connectedCallback(): void {
+    override connectedCallback(): void {
       super.connectedCallback();
       this.applyAttrs();
     }
@@ -149,7 +149,7 @@ export function createComponent<
       }
     }
 
-    render(): TemplateResult {
+    override render(): TemplateResult {
       return html`<slot @click=${this.handleClick}></slot>`;
     }
   }

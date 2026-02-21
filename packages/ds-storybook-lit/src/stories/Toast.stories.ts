@@ -66,7 +66,7 @@ export const Default: Story = {
 
 class ToastVariantsDemo extends LitElement {
   @state() visibleToasts = { info: true, success: true, warning: true, error: true };
-  createRenderRoot() { return this; }
+  override createRenderRoot() { return this; }
 
   hideToast(key: string) {
     this.visibleToasts = { ...this.visibleToasts, [key]: false };
@@ -76,7 +76,7 @@ class ToastVariantsDemo extends LitElement {
     this.visibleToasts = { info: true, success: true, warning: true, error: true };
   }
 
-  render() {
+  override render() {
     return html`
       <div style="position: relative; width: 400px; height: 600px">
         <div style="display: flex; flex-direction: column; gap: 12px">
@@ -126,7 +126,7 @@ class ToastPositionsDemo extends LitElement {
     'top-center': true,
     'bottom-center': true,
   };
-  createRenderRoot() { return this; }
+  override createRenderRoot() { return this; }
 
   hidePosition(pos: string) {
     this.visiblePositions = { ...this.visiblePositions, [pos]: false };
@@ -143,7 +143,7 @@ class ToastPositionsDemo extends LitElement {
     };
   }
 
-  render() {
+  override render() {
     const positions = ['top-right', 'top-left', 'bottom-right', 'bottom-left', 'top-center', 'bottom-center'] as const;
     return html`
       <div style="position: relative; width: 600px; height: 400px; border: 2px dashed #ccc">
@@ -175,8 +175,8 @@ export const Positions: Story = {
 
 class ToastCloseDemo extends LitElement {
   @state() visible = true;
-  createRenderRoot() { return this; }
-  render() {
+  override createRenderRoot() { return this; }
+  override render() {
     return html`
       <div style="position: relative; width: 400px; height: 200px">
         ${this.visible ? html`
@@ -210,8 +210,8 @@ export const WithClose: Story = {
 
 class ToastAutoDismissDemo extends LitElement {
   @state() visible = true;
-  createRenderRoot() { return this; }
-  render() {
+  override createRenderRoot() { return this; }
+  override render() {
     return html`
       <div style="position: relative; width: 400px; height: 200px">
         ${this.visible ? html`
@@ -246,7 +246,7 @@ export const AutoDismiss: Story = {
 class ToastInteractiveDemo extends LitElement {
   @state() toasts: Array<{ id: number; message: string; variant: string; position: string }> = [];
   private nextId = 0;
-  createRenderRoot() { return this; }
+  override createRenderRoot() { return this; }
 
   addToast(message: string, variant: string, position = 'top-right') {
     this.toasts = [...this.toasts, { id: this.nextId++, message, variant, position }];
@@ -260,7 +260,7 @@ class ToastInteractiveDemo extends LitElement {
     this.toasts = [];
   }
 
-  render() {
+  override render() {
     return html`
       <div style="position: relative; width: 600px; min-height: 400px">
         <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px">
@@ -315,8 +315,8 @@ export const Interactive: Story = {
 
 class ToastNonClosableDemo extends LitElement {
   @state() visible = true;
-  createRenderRoot() { return this; }
-  render() {
+  override createRenderRoot() { return this; }
+  override render() {
     return html`
       <div style="position: relative; width: 400px; height: 200px">
         ${this.visible ? html`

@@ -97,8 +97,8 @@ export const Disabled: Story = {
 
 class SegmentedBuySellDemo extends LitElement {
   @state() selected: 'buy' | 'sell' = 'buy';
-  createRenderRoot() { return this; }
-  render() {
+  override createRenderRoot() { return this; }
+  override render() {
     return html`
       <div style="width: 300px">
         <wg-segmented-control size="lg" ?fullWidth=${true}>
@@ -121,8 +121,8 @@ export const BuySellExample: Story = {
 
 class SegmentedFilterDemo extends LitElement {
   @state() filter: 'all' | 'active' | 'completed' = 'all';
-  createRenderRoot() { return this; }
-  render() {
+  override createRenderRoot() { return this; }
+  override render() {
     return html`
       <div style="width: 400px">
         <h3 style="margin-bottom: 12px; font-size: 16px; font-weight: 600">Tasks Filter</h3>

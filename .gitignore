@@ -42,5 +42,8 @@ coverage/
 # Claude Code
 .claude/
 
+# ts-mcp
+.ts-mcp/
+
 # Storybook Assets
 storybook-static
