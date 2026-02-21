@@ -10,9 +10,9 @@
 - **@woosgem-dev/vue** - Vue component wrappers using `defineComponent`
 - **@woosgem-dev/lit** - Lit Web Component wrappers
 - **@woosgem-dev/icons** - Pure SVG icon assets (sm, md, lg) with theme support
-- **@woosgem-dev/storybook** - Component documentation (internal)
-
-**Utility Packages:**
+- **@woosgem-dev/storybook** - React Storybook (internal)
+- **@woosgem-dev/storybook-vue** - Vue Storybook (internal)
+- **@woosgem-dev/storybook-lit** - Lit Storybook (internal)
 - **@woosgem-dev/utils** - General utility functions
 
 ## Layer Architecture

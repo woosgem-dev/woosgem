@@ -6,10 +6,9 @@ WooSGem is a personal monorepo containing a multi-framework design system and ut
 - `@woosgem-dev/core` - Component definitions + CSP
 - `@woosgem-dev/headless` - Headless primitives (vanilla + React hooks + Vue composables)
 - `@woosgem-dev/styles` - SCSS styles & themes
-- `@woosgem-dev/react` - React wrappers (25 components)
-- `@woosgem-dev/vue` - Vue wrappers (25 components)
-- `@woosgem-dev/lit` - Lit Web Components (25 components)
-- `@woosgem-dev/utils` - Utilities
+- `@woosgem-dev/react` - React wrappers (35 components)
+- `@woosgem-dev/vue` - Vue wrappers (35 components)
+- `@woosgem-dev/lit` - Lit Web Components (35 components)
 - `@woosgem-dev/icons` - Pure SVG icon assets (private)
 - `@woosgem-dev/storybook` - Storybook (internal)
 
@@ -32,3 +31,4 @@ pnpm test:dashboard   # Tests + coverage dashboard
 | [Architecture](./docs/architecture.md) | Package structure, core patterns |
 | [Development Guide](./docs/guides/development.md) | Commands, dev notes |
 | [Roadmap](./docs/roadmap.md) | Project status, TODOs |
+| [Changelog](./CHANGELOG.md) | Release history |

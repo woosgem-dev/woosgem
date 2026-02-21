@@ -13,7 +13,7 @@ pnpm dev
 pnpm build
 
 # Run all tests
-pnpm test:all
+pnpm test
 
 # Run tests in watch mode
 pnpm test:watch
@@ -22,7 +22,7 @@ pnpm test:watch
 pnpm test:dashboard
 
 # Storybook (runs on port 6006)
-pnpm --filter @woosgem/ds-storybook dev
+pnpm --filter @woosgem-dev/storybook dev
 ```
 
 ## Development Notes
@@ -37,9 +37,11 @@ pnpm --filter @woosgem/ds-storybook dev
 1. **Core definition**: `packages/ds-core/src/components/ComponentName.ts`
 2. **React wrapper**: `packages/ds-react/src/ComponentName.tsx`
 3. **Vue wrapper**: `packages/ds-vue/src/ComponentName.ts`
-4. **SCSS styles**: `packages/ds-styles/src/components/_component-name.scss`
-5. **Stories**: `packages/ds-storybook/src/stories/ComponentName.stories.tsx`
-6. **Tests**: `packages/ds-{core,react,vue,lit}/__tests__/ComponentName.test.ts`
+4. **Lit wrapper**: `packages/ds-lit/src/ComponentName.ts`
+5. **SCSS styles**: `packages/ds-styles/src/components/_component-name.scss` (register in `_index.scss`)
+6. **Stories**: `packages/ds-storybook/src/stories/ComponentName.stories.tsx`
+7. **Tests**: `packages/ds-{core,react,vue,lit}/__tests__/ComponentName.test.ts`
+8. **Export**: Add to each package's `src/index.ts`
 
 ## Project Structure
 
@@ -55,8 +57,10 @@ woosgem/
 │   ├── ds-styles/          # SCSS styles
 │   ├── ds-icons/           # SVG icons
 │   ├── ds-headless/        # Headless primitives
-│   ├── ds-storybook/       # Storybook
-│   └── utils/              # Utilities
+│   ├── ds-lit/             # Lit Web Components
+│   ├── ds-storybook/       # React Storybook
+│   ├── ds-storybook-vue/   # Vue Storybook
+│   └── ds-storybook-lit/   # Lit Storybook
 ├── scripts/                 # Build scripts
 └── turbo.json               # Turbo configuration
 ```

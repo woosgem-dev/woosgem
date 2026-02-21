@@ -120,19 +120,18 @@ Phase 4 (P2): Tag, AvatarGroup, Breadcrumb, Accordion, Drawer, Pagination, Menu,
 
 ## Recent Changes
 
+- [x] **v0.1.0 released** — all 6 public packages published to GitHub Packages
+- [x] **Storybook complete** — all 35 components have stories (P1–P4)
 - [x] **P2 components** — 10 new components (Tag, AvatarGroup, Breadcrumb, Accordion, Drawer, Pagination, Menu, Table, Slider, Popover) across all frameworks
+- [x] **CSP auto-derivation** — secondary, semantic, and neutral colors from a single primary
 - [x] **Framework parity** — Vue and Lit now have Kbd, Progress, Skeleton, Overlay
-- [x] **Coverage improvement** — Progress, Checkbox compound, Toast tests added
-- [x] **Monorepo refactoring** — code cleanup, barrel fix, test distribution, headless extraction, Modal refactor, CSP pipeline
-- [x] **@woosgem-dev/headless** package created (vanilla + React hooks + Vue composables)
-- [x] PROTECTED_ATTRS moved to ds-core/constants.ts (single source of truth)
-- [x] Lit types aligned with core ComponentDefinition
-- [x] React internal/ renamed to _internal/ for consistency
+- [x] **Headless primitives** — `@woosgem-dev/headless` package (vanilla + React hooks + Vue composables)
+- [x] **Monorepo refactoring** — test distribution, headless extraction, Modal refactor, CSP pipeline
 
 ## Test Status
 
-- [x] 2,695 tests passing across 5 packages
-  - Core: 619 | React: 930 | Vue: 830 | Lit: 242 | Headless: 74
+- [x] 2,800 tests passing across 5 packages
+  - Core: 619 | React: 929 | Vue: 829 | Lit: 242 | Headless: 181
 - [x] Tests colocated with source packages (no centralized ds-test)
 - [x] Per-package `pnpm test` + monorepo-wide `pnpm test`
 
