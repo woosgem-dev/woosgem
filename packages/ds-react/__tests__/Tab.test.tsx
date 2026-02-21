@@ -95,7 +95,7 @@ describe('Tab', () => {
       expect(tab).toHaveAttribute('role', 'tab');
     });
 
-    it('TC-C134: selected + disabled 동시 true 시 selected 우선', () => {
+    it('TC-C134: selected + disabled compound state', () => {
       const coreAttrs = TabDef.mapPropsToAttrs({ selected: true, disabled: true });
 
       render(
@@ -105,9 +105,8 @@ describe('Tab', () => {
       );
       const tab = screen.getByRole('tab');
 
-      // selected 우선
-      expect(coreAttrs['data-state']).toBe('selected');
-      expect(tab).toHaveAttribute('data-state', 'selected');
+      expect(coreAttrs['data-state']).toBe('selected-disabled');
+      expect(tab).toHaveAttribute('data-state', 'selected-disabled');
       expect(tab).toBeDisabled();
     });
   });
@@ -244,7 +243,7 @@ describe('Tab', () => {
       expect(screen.getByRole('tab')).toBeDisabled();
     });
 
-    it('TC-O162: selected=true + disabled=true 시 selected 우선', () => {
+    it('TC-O162: selected=true + disabled=true compound state', () => {
       render(
         <Tab selected disabled>
           Both
@@ -252,7 +251,7 @@ describe('Tab', () => {
       );
       const tab = screen.getByRole('tab');
 
-      expect(tab).toHaveAttribute('data-state', 'selected');
+      expect(tab).toHaveAttribute('data-state', 'selected-disabled');
       expect(tab).toBeDisabled();
     });
 

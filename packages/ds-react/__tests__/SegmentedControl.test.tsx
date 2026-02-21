@@ -301,7 +301,7 @@ describe('SegmentedControlItem', () => {
       expect(item).toBeDisabled();
     });
 
-    it('TC-RI103: selected + disabled 동시 true 시 selected 우선', () => {
+    it('TC-RI103: selected + disabled compound state', () => {
       const coreAttrs = SegmentedControlItemDef.mapPropsToAttrs({ selected: true, disabled: true });
 
       render(
@@ -313,8 +313,8 @@ describe('SegmentedControlItem', () => {
       );
       const item = screen.getByRole('button');
 
-      expect(coreAttrs['data-state']).toBe('selected');
-      expect(item).toHaveAttribute('data-state', 'selected');
+      expect(coreAttrs['data-state']).toBe('selected-disabled');
+      expect(item).toHaveAttribute('data-state', 'selected-disabled');
     });
   });
 

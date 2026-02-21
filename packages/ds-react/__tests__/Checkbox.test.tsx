@@ -78,24 +78,24 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-state', coreAttrs['data-state']);
     });
 
-    it('TC-C130: disabled > indeterminate 우선순위', () => {
+    it('TC-C130: disabled + indeterminate compound state', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ disabled: true, indeterminate: true });
 
       render(<Checkbox disabled indeterminate />);
       const checkbox = document.querySelector('.wg-checkbox');
 
-      expect(coreAttrs['data-state']).toBe('disabled');
-      expect(checkbox).toHaveAttribute('data-state', 'disabled');
+      expect(coreAttrs['data-state']).toBe('indeterminate-disabled');
+      expect(checkbox).toHaveAttribute('data-state', 'indeterminate-disabled');
     });
 
-    it('TC-C131: disabled > checked 우선순위', () => {
+    it('TC-C131: disabled + checked compound state', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ disabled: true, checked: true });
 
       render(<Checkbox disabled checked />);
       const checkbox = document.querySelector('.wg-checkbox');
 
-      expect(coreAttrs['data-state']).toBe('disabled');
-      expect(checkbox).toHaveAttribute('data-state', 'disabled');
+      expect(coreAttrs['data-state']).toBe('checked-disabled');
+      expect(checkbox).toHaveAttribute('data-state', 'checked-disabled');
     });
 
     it('TC-C132: indeterminate > checked 우선순위', () => {
@@ -108,7 +108,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-state', 'indeterminate');
     });
 
-    it('TC-C133: 모든 상태 true 시 disabled 우선', () => {
+    it('TC-C133: 모든 상태 true 시 indeterminate-disabled compound state', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({
         disabled: true,
         indeterminate: true,
@@ -118,8 +118,8 @@ describe('Checkbox', () => {
       render(<Checkbox disabled indeterminate checked />);
       const checkbox = document.querySelector('.wg-checkbox');
 
-      expect(coreAttrs['data-state']).toBe('disabled');
-      expect(checkbox).toHaveAttribute('data-state', 'disabled');
+      expect(coreAttrs['data-state']).toBe('indeterminate-disabled');
+      expect(checkbox).toHaveAttribute('data-state', 'indeterminate-disabled');
     });
 
     it('TC-C110: size: sm가 적용된다', () => {
@@ -590,7 +590,7 @@ describe('CheckboxIndicator', () => {
       expect(indicator).toHaveAttribute('data-state', 'disabled');
     });
 
-    it('disabled > indeterminate 우선순위', () => {
+    it('disabled + indeterminate compound state', () => {
       const coreAttrs = CheckboxIndicatorDef.mapPropsToAttrs({ disabled: true, indeterminate: true });
 
       render(
@@ -600,11 +600,11 @@ describe('CheckboxIndicator', () => {
       );
       const indicator = document.querySelector('.wg-checkbox__indicator');
 
-      expect(coreAttrs['data-state']).toBe('disabled');
-      expect(indicator).toHaveAttribute('data-state', 'disabled');
+      expect(coreAttrs['data-state']).toBe('indeterminate-disabled');
+      expect(indicator).toHaveAttribute('data-state', 'indeterminate-disabled');
     });
 
-    it('disabled > checked 우선순위', () => {
+    it('disabled + checked compound state', () => {
       const coreAttrs = CheckboxIndicatorDef.mapPropsToAttrs({ disabled: true, checked: true });
 
       render(
@@ -614,8 +614,8 @@ describe('CheckboxIndicator', () => {
       );
       const indicator = document.querySelector('.wg-checkbox__indicator');
 
-      expect(coreAttrs['data-state']).toBe('disabled');
-      expect(indicator).toHaveAttribute('data-state', 'disabled');
+      expect(coreAttrs['data-state']).toBe('checked-disabled');
+      expect(indicator).toHaveAttribute('data-state', 'checked-disabled');
     });
 
     it('indeterminate > checked 우선순위', () => {
@@ -632,7 +632,7 @@ describe('CheckboxIndicator', () => {
       expect(indicator).toHaveAttribute('data-state', 'indeterminate');
     });
 
-    it('모든 상태 true 시 disabled 우선', () => {
+    it('모든 상태 true 시 indeterminate-disabled compound state', () => {
       const coreAttrs = CheckboxIndicatorDef.mapPropsToAttrs({
         disabled: true,
         indeterminate: true,
@@ -646,8 +646,8 @@ describe('CheckboxIndicator', () => {
       );
       const indicator = document.querySelector('.wg-checkbox__indicator');
 
-      expect(coreAttrs['data-state']).toBe('disabled');
-      expect(indicator).toHaveAttribute('data-state', 'disabled');
+      expect(coreAttrs['data-state']).toBe('indeterminate-disabled');
+      expect(indicator).toHaveAttribute('data-state', 'indeterminate-disabled');
     });
   });
 
@@ -868,7 +868,7 @@ describe('Checkbox Compound 통합', () => {
 
     // CheckboxIndicator inherits context
     expect(indicator).toHaveAttribute('data-size', 'lg');
-    expect(indicator).toHaveAttribute('data-state', 'disabled');
+    expect(indicator).toHaveAttribute('data-state', 'checked-disabled');
     expect(indicator).toHaveAttribute('aria-hidden', 'true');
 
     // CheckboxLabel inherits context

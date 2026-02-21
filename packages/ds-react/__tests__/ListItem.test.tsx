@@ -78,7 +78,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('aria-selected', 'true');
     });
 
-    it('TC-R106: selected + disabled 동시 true 시 selected 우선', () => {
+    it('TC-R106: selected + disabled compound state', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ selected: true, disabled: true });
 
       render(
@@ -88,8 +88,8 @@ describe('ListItem', () => {
       );
       const item = document.querySelector('.wg-list-item');
 
-      expect(coreAttrs['data-state']).toBe('selected');
-      expect(item).toHaveAttribute('data-state', 'selected');
+      expect(coreAttrs['data-state']).toBe('selected-disabled');
+      expect(item).toHaveAttribute('data-state', 'selected-disabled');
       expect(item).toHaveAttribute('aria-selected', 'true');
       expect(item).toHaveAttribute('aria-disabled', 'true');
     });
