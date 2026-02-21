@@ -27,11 +27,11 @@
 | Overlay | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Pagination | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Popover | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Progress | ✅ | ✅ | ✅ | ✅ | — | ✅ |
+| Progress | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Radio | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | SegmentedControl | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Select | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Skeleton | ✅ | ✅ | ✅ | ✅ | — | ✅ |
+| Skeleton | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Slider | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Spinner | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Switch | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -76,7 +76,7 @@
 
 ### High Priority
 
-- [ ] SCSS styles for Progress and Skeleton components
+- [x] SCSS styles for Progress and Skeleton components
 - [ ] Storybook stories for new P2 components
 
 ### Medium Priority

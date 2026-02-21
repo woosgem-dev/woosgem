@@ -4,9 +4,38 @@ import {
   useMemo,
   createElement,
   type ReactNode,
+  type CSSProperties,
   type Ref,
 } from 'react';
 import type { ComponentDefinition } from '@woosgem-dev/core';
+
+/**
+ * Converts a CSS style string to a React CSSProperties object.
+ * Handles both regular properties (kebab → camelCase) and CSS custom properties (--var).
+ */
+function parseStyleString(styleStr: string): CSSProperties {
+  const result: Record<string, string> = {};
+
+  for (const part of styleStr.split(';')) {
+    const trimmed = part.trim();
+    if (!trimmed) continue;
+
+    const colonIdx = trimmed.indexOf(':');
+    if (colonIdx === -1) continue;
+
+    const prop = trimmed.slice(0, colonIdx).trim();
+    const value = trimmed.slice(colonIdx + 1).trim();
+
+    if (prop.startsWith('--')) {
+      result[prop] = value;
+    } else {
+      const camelProp = prop.replace(/-([a-z])/g, (_, c: string) => c.toUpperCase());
+      result[camelProp] = value;
+    }
+  }
+
+  return result as CSSProperties;
+}
 
 /**
  * Base props that all created components receive
@@ -93,6 +122,13 @@ export function createComponent<
 
     // Remove the 'class' attribute since React uses 'className'
     delete finalProps['class'];
+
+    // Convert CSS string to React style object, merging with user's style
+    if (typeof finalProps.style === 'string') {
+      const parsed = parseStyleString(finalProps.style);
+      const userStyle = nativeProps.style as CSSProperties | undefined;
+      finalProps.style = userStyle ? { ...parsed, ...userStyle } : parsed;
+    }
 
     return createElement(definition.template.tag, finalProps, children);
   });
