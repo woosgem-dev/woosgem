@@ -77,7 +77,7 @@
 ### High Priority
 
 - [x] SCSS styles for Progress and Skeleton components
-- [ ] Storybook stories for new P2 components
+- [x] Storybook stories for new P2 components
 
 ### Medium Priority
 
