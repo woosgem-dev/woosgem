@@ -103,8 +103,8 @@ describe('Tab', () => {
       });
       const tab = screen.getByRole('tab');
 
-      expect(coreAttrs['data-state']).toBe('selected');
-      expect(tab).toHaveAttribute('data-state', 'selected');
+      expect(coreAttrs['data-state']).toBe('selected-disabled');
+      expect(tab).toHaveAttribute('data-state', 'selected-disabled');
       expect(tab).toHaveAttribute('aria-selected', 'true');
     });
 

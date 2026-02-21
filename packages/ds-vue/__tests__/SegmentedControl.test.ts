@@ -248,8 +248,8 @@ describe('SegmentedControlItem', () => {
       });
       const item = screen.getByRole('button');
 
-      expect(coreAttrs['data-state']).toBe('selected');
-      expect(item).toHaveAttribute('data-state', 'selected');
+      expect(coreAttrs['data-state']).toBe('selected-disabled');
+      expect(item).toHaveAttribute('data-state', 'selected-disabled');
       expect(item).toHaveAttribute('aria-selected', 'true');
     });
   });

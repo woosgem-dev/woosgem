@@ -78,8 +78,8 @@ describe('Checkbox', () => {
       });
       const checkbox = screen.getByLabelText('Priority test');
 
-      expect(coreAttrs['data-state']).toBe('disabled');
-      expect(checkbox).toHaveAttribute('data-state', 'disabled');
+      expect(coreAttrs['data-state']).toBe('indeterminate-disabled');
+      expect(checkbox).toHaveAttribute('data-state', 'indeterminate-disabled');
     });
 
     it('TC-V106: 상태 우선순위 - disabled > checked', () => {
@@ -91,8 +91,8 @@ describe('Checkbox', () => {
       });
       const checkbox = screen.getByLabelText('Priority test');
 
-      expect(coreAttrs['data-state']).toBe('disabled');
-      expect(checkbox).toHaveAttribute('data-state', 'disabled');
+      expect(coreAttrs['data-state']).toBe('checked-disabled');
+      expect(checkbox).toHaveAttribute('data-state', 'checked-disabled');
     });
 
     it('TC-V107: 상태 우선순위 - indeterminate > checked', () => {
