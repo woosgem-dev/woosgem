@@ -4,6 +4,9 @@
   "description": "Vue component wrappers for WooSGem Design System",
   "author": "woosgem",
   "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
